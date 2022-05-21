@@ -6,16 +6,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.widget.Button;
-import android.widget.RelativeLayout;
 import androidx.appcompat.widget.Toolbar;
-
 import com.acharyamukti.R;
 import com.acharyamukti.databinding.ActivityDashBoardBinding;
 import com.acharyamukti.fragment.FreeFragment;
 import com.acharyamukti.fragment.Profile;
-import com.acharyamukti.adapter.ImageSliderAdapter;
-import com.acharyamukti.adapter.ProfileAdapter;
 import com.acharyamukti.ui.home.HomeFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
