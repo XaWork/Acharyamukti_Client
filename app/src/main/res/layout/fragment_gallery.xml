@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="70dp"
+    android:fillViewport="true"
+    android:scrollbars="vertical"
+    android:background="@color/white"
+    tools:context=".ui.gallery.GalleryFragment">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp">
+
+
+        <TextView
+            android:id="@+id/text_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:id="@+id/text_gallery1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Who are me?"
+            android:textAllCaps="true"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/about_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_gallery1"
+            android:scaleType="fitXY"
+            android:src="@drawable/imagelive" />
+
+        <TextView
+            android:id="@+id/text_long_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_image"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:lineSpacingExtra="10dp"
+            android:text="@string/text_acharyamukti_long_text"
+            android:textAllCaps="false"
+            android:textColor="@color/grey1"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/text_why_do"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_long_text"
+            android:layout_marginTop="5dp"
+            android:text="@string/text_why_do"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_mission_vision"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_why_do"
+            android:layout_marginTop="5dp"
+            android:text="@string/text_vision_mission"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_mission_vision_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_mission_vision"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:lineSpacingExtra="10dp"
+            android:text="@string/text_about_longtext"
+            android:textAllCaps="false"
+            android:textColor="@color/grey1"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/text_mission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_mission_vision_long"
+            android:layout_marginTop="5dp"
+            android:text="@string/text_mission"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_mission_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_mission"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:lineSpacingExtra="10dp"
+            android:text="@string/text_about_longtext"
+            android:textAllCaps="false"
+            android:textColor="@color/grey1"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/text_vision"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_mission_long"
+            android:layout_marginTop="5dp"
+            android:text="@string/text_vision"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_vision_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_vision"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:lineSpacingExtra="10dp"
+            android:text="@string/text_vision_long"
+            android:textAllCaps="false"
+            android:textColor="@color/grey1"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/text_customer_trust"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_vision_long"
+            android:layout_marginTop="5dp"
+            android:text="@string/text_customer_trust_us"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_trust_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_customer_trust"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:lineSpacingExtra="10dp"
+            android:text="@string/text_customer_trust_us_long"
+            android:textAllCaps="false"
+            android:textColor="@color/grey1"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/text_customer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_trust_long"
+            android:text="customercare@acharyamukti.com"
+            android:textColor="@color/yellow" />
+
+        <TextView
+            android:id="@+id/text_mobile"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_customer"
+            android:layout_marginTop="5dp"
+            android:text="@string/text_phone"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/text_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_customer"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/text_number"
+            android:textColor="@color/yellow" />
+
+        <TextView
+            android:id="@+id/text_our"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_number"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/text_our"
+            android:textColor="@color/yellow"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:id="@+id/about_leaner_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_our"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/image_happy"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/smile" />
+
+                    <TextView
+                        android:id="@+id/million"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="false"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="2+ Million"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/million"
+                        android:layout_marginStart="60dp"
+                        android:text="Happy Customer"
+                        android:textColor="@color/grey1"
+                        android:textStyle="normal" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/image_happy1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/expertise" />
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/million1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="false"
+                        android:layout_marginStart="60dp"
+                        android:text="2000+ Trusted"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/million1"
+                        android:layout_marginStart="60dp"
+                        android:text="Professionals"
+                        android:textColor="@color/grey1"
+                        android:textStyle="normal" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/image_happy3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/language" />
+
+                    <TextView
+                        android:id="@+id/million3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="false"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="11+"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/million3"
+                        android:layout_marginStart="60dp"
+                        android:text="Languages"
+                        android:textColor="@color/grey1"
+                        android:textStyle="normal" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/image_happy2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/countries" />
+
+                    <TextView
+                        android:id="@+id/million2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="false"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="85+"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/million2"
+                        android:layout_marginStart="60dp"
+                        android:text="Countries"
+                        android:textColor="@color/grey1"
+                        android:textStyle="normal" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/image_happy4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/experience" />
+
+                <TextView
+                    android:id="@+id/million4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="false"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="5dp"
+                    android:text="20+"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/million4"
+                    android:layout_marginStart="60dp"
+                    android:text="Experience"
+                    android:textColor="@color/grey1"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@+id/about_leaner_layout"
+            android:text="Minfotech India 2018-2022.All rights reserve"
+            android:textColor="@color/black"
+            android:textSize="8sp"
+            android:textStyle="normal" />
+    </RelativeLayout>
+
+</ScrollView>

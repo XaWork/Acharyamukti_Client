@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".fragment.Profile">
+
+    <RelativeLayout
+        android:id="@+id/profileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:background="#FAFAE3">
+
+        <TextView
+            android:id="@+id/profileUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingTop="15dp"
+            android:text="Acharyamukti"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileUsername"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:text="minfotech@gmail.com" />
+
+        <TextView
+            android:id="@+id/txtMobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtEmail"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="1456878552414"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/txtEditImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_baseline_edit_24" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="115dp"
+        android:background="#FAFAE3">
+
+        <TextView
+            android:id="@+id/txtLoyalty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawablePadding="10dp"
+            android:paddingTop="15dp"
+            android:text="My Loyalty Status"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtWallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLoyalty"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawablePadding="10dp"
+            android:paddingTop="15dp"
+            android:text="My Wallet"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtConsultation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtWallet"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawablePadding="10dp"
+            android:paddingTop="15dp"
+            android:text="Consultation"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtConsultation"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawablePadding="10dp"
+            android:paddingTop="15dp"
+            android:text="Payment"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtAcharyamukti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtPayment"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawablePadding="10dp"
+            android:paddingTop="15dp"
+            android:text="My Theacharyamukti"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtMyProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtAcharyamukti"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawablePadding="10dp"
+            android:paddingTop="15dp"
+            android:text="My Profile"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/Logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtMyProfile"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"
+            android:drawablePadding="10dp"
+            android:text="Logout"
+            android:textColor="@color/yellow" />
+    </RelativeLayout>
+</FrameLayout>
