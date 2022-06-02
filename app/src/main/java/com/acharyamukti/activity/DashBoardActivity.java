@@ -11,6 +11,7 @@ import com.acharyamukti.R;
 import com.acharyamukti.databinding.ActivityDashBoardBinding;
 import com.acharyamukti.fragment.FreeFragment;
 import com.acharyamukti.fragment.Profile;
+import com.acharyamukti.ui.gallery.GalleryFragment;
 import com.acharyamukti.ui.home.HomeFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -93,6 +94,13 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
                 FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction2.replace(R.id.frameLayout_dash, fragment2, "");
                 fragmentTransaction2.commit();
+                break;
+            case R.id.nav_gallery:
+                toolbar.setTitle("About us");
+                GalleryFragment fragment3= new GalleryFragment();
+                FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction3.replace(R.id.frameLayout_dash, fragment3, "");
+                fragmentTransaction3.commit();
                 break;
 
         }

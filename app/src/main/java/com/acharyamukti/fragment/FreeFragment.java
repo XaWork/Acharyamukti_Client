@@ -32,6 +32,7 @@ public class FreeFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         NewsAdapter newsAdapter = new NewsAdapter(getContext());
         recyclerView.setAdapter(newsAdapter);
+        recyclerView.setNestedScrollingEnabled(false);
         return view;
     }
 }
