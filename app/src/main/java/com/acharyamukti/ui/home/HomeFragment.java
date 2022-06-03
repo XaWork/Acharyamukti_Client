@@ -1,5 +1,6 @@
 package com.acharyamukti.ui.home;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -20,6 +23,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.acharyamukti.R;
 import com.acharyamukti.activity.ArcheryLive;
+import com.acharyamukti.activity.AstrologerProfile;
 import com.acharyamukti.adapter.ImageSliderAdapter;
 import com.acharyamukti.adapter.ProfileAdapter;
 import com.acharyamukti.databinding.FragmentHomeBinding;
@@ -29,6 +33,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private FragmentHomeBinding binding;
     Toolbar toolbar;
+    ImageView imageviewTime;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +60,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Button viewAll = root.findViewById(R.id.viewAll);
         viewAll.setOnClickListener(this);
         recyclerView.setHasFixedSize(true);
+        imageviewTime = root.findViewById(R.id.imageviewTime);
+        imageviewTime.setOnClickListener(this);
         return root;
     }
 
@@ -64,9 +71,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         binding = null;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(getContext(), ArcheryLive.class);
-        startActivity(intent);
+        switch (view.getId()) {
+            case R.id.imageviewTime:
+                Intent intent = new Intent(getActivity(), AstrologerProfile.class);
+                startActivity(intent);
+                break;
+            case R.id.viewAll:
+                Intent live = new Intent(getContext(), ArcheryLive.class);
+                startActivity(live);
+                break;
+        }
+
     }
 }

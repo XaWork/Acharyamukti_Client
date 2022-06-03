@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Acharyamukti">
         <activity
-            android:name=".AstrologerProfile"
+            android:name=".activity.AstrologerProfile"
             android:exported="false"
             android:label="@string/title_activity_astrologer_profile"
             android:theme="@style/Theme.Acharyamukti.NoActionBar" />
         <activity
-            android:name=".Experience"
+            android:name=".activity.Experience"
             android:exported="false" />
         <activity
             android:name=".activity.DashBoardActivity"
