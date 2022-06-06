@@ -22,7 +22,6 @@ public class AstrologerProfile extends AppCompatActivity {
         CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());
         setSupportActionBar(toolbar);
-        toolbar.setTitle("The Acharya Mukti");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

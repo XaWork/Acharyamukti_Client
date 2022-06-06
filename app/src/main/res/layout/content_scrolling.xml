@@ -8,10 +8,38 @@
     tools:context=".activity.AstrologerProfile"
     tools:showIn="@layout/activity_astrologer_profile">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+        android:layout_margin="10dp">
+
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/txtExperience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_school_24"
+            android:drawablePadding="10dp"
+            android:text="Experience" />
+
+        <TextView
+            android:id="@+id/txtExperience2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtExperience"
+            android:layout_marginStart="35dp"
+            android:textSize="12sp"
+            android:text="12 Years" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/txtExperience2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_school_24"
+            android:drawablePadding="10dp"
+            android:text="Experience" />
+
+    </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>
