@@ -6,23 +6,28 @@
     android:layout_margin="5dp"
     android:background="@drawable/sliderbanner1">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profileImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_centerVertical="true"
         android:layout_marginStart="15dp"
-        android:src="@drawable/ic_baseline_account_circle_24" />
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="5dp" />
 
     <TextView
-        android:gravity="center"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/profileImage"
         android:layout_centerVertical="true"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="20dp"
         android:background="@drawable/rectangle__layout_bg"
-        android:padding="5dp"
+        android:gravity="center"
+        android:paddingTop="3dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="3dp"
         android:text="Acharyamukti"
         android:textColor="@color/black"
         android:textSize="8sp" />
@@ -69,33 +74,36 @@
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="100dp"
-        android:layout_height="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/making"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="2dp"
         android:background="@drawable/rectangle__layout_bg"
         android:gravity="center"
-        android:text="05|11|2022"
+        android:padding="3dp"
+        android:text="05|11|2022, 5 PM IST"
         android:textColor="@color/black"
         android:textSize="8sp" />
 
-    <Button
-        android:layout_width="80dp"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_below="@+id/profileImage"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="10dp"
-        android:padding="5dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/rectangle__layout_bg"
         android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
+        android:drawablePadding="5dp"
+        android:padding="5dp"
+        android:paddingStart="10dp"
         android:text="Watch Now"
         android:textAllCaps="false"
-        android:textStyle="normal"
         android:textColor="@color/black"
-        android:textSize="8sp" />
+        android:textSize="8sp"
+        android:textStyle="normal" />
 
 </RelativeLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,38 +8,186 @@
     tools:context=".activity.AstrologerProfile"
     tools:showIn="@layout/activity_astrologer_profile">
 
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:textColor="@color/black"
-            android:id="@+id/txtExperience"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_baseline_school_24"
-            android:drawablePadding="10dp"
-            android:text="Experience" />
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/txtExperience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_school_24"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Experience"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtExperience2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtExperience"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:text="12 Years"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtConsultationCharge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtExperience2"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Consultation Charge"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtMin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtConsultationCharge"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:text="36/min"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtReview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtMin"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_reviews_24"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Review"
+                android:textColor="@color/black" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ratingRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/txtReview"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:text="36/min"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ratingRecyclerView"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Location"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtLocationName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtLocation"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:text="Delhi"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtLocationName"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_g_translate_24"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Language Spoken"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtSpoken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtLanguage"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:text="Hindi"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtExper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtSpoken"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_workspace_premium_24"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Language Spoken"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtExp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtExper"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:text="Hindi"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/txtExperience2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtExperience"
-            android:layout_marginStart="35dp"
-            android:textSize="12sp"
-            android:text="12 Years" />
+            android:textStyle="bold"
+            android:layout_marginEnd="5dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F4EDED"
+            android:drawableRight="@drawable/ic_baseline_message_24"
+            android:gravity="center"
+            android:paddingEnd="40dp"
+            android:text="Offline"
+            android:textAllCaps="false" />
 
         <TextView
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/txtExperience2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_baseline_school_24"
-            android:drawablePadding="10dp"
-            android:text="Experience" />
-
-    </RelativeLayout>
-
-</androidx.core.widget.NestedScrollView>
+            android:textStyle="bold"
+            android:layout_marginStart="5dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F4EDED"
+            android:drawableRight="@drawable/ic_baseline_call_24"
+            android:gravity="center"
+            android:paddingEnd="40dp"
+            android:text="Offline"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</FrameLayout>

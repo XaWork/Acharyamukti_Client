@@ -18,12 +18,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.acharyamukti.R;
 import com.acharyamukti.activity.ArcheryLive;
 import com.acharyamukti.activity.AstrologerProfile;
+import com.acharyamukti.adapter.DataLiveAdapter;
 import com.acharyamukti.adapter.ImageSliderAdapter;
 import com.acharyamukti.adapter.ProfileAdapter;
 import com.acharyamukti.databinding.FragmentHomeBinding;
@@ -39,10 +41,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         int image[] = {R.drawable.sliderimagegrils, R.drawable.sliderbanner1, R.drawable.bannerimage};
@@ -60,8 +60,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Button viewAll = root.findViewById(R.id.viewAll);
         viewAll.setOnClickListener(this);
         recyclerView.setHasFixedSize(true);
-        imageviewTime = root.findViewById(R.id.imageviewTime);
-        imageviewTime.setOnClickListener(this);
+        RecyclerView recyclerView1 = root.findViewById(R.id.recyclerViewLive);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false);
+        recyclerView1.setLayoutManager(linearLayoutManager);
+        DataLiveAdapter dataLiveAdapter = new DataLiveAdapter(getActivity());
+        recyclerView1.setAdapter(dataLiveAdapter);
         return root;
     }
 
@@ -71,19 +74,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         binding = null;
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.imageviewTime:
-                Intent intent = new Intent(getActivity(), AstrologerProfile.class);
-                startActivity(intent);
-                break;
-            case R.id.viewAll:
-                Intent live = new Intent(getContext(), ArcheryLive.class);
-                startActivity(live);
-                break;
-        }
+        Intent live = new Intent(getContext(), ArcheryLive.class);
+        startActivity(live);
 
     }
 }

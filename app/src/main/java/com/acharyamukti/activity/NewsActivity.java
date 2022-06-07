@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.acharyamukti.R;
 
-public class Experience extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
