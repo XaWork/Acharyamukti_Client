@@ -1,20 +1,23 @@
 package com.acharyamukti.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acharyamukti.R;
+import com.acharyamukti.activity.AstrologerProfile;
 
-public class DataLiveAdapter extends RecyclerView.Adapter<DataLiveAdapter.ViewHolder>
-{
+public class DataLiveAdapter extends RecyclerView.Adapter<DataLiveAdapter.ViewHolder> {
     Context context;
+
     public DataLiveAdapter(Context context) {
-this.context=context;
+        this.context = context;
     }
 
     @NonNull
@@ -37,6 +40,15 @@ this.context=context;
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            ImageView profileImage = itemView.findViewById(R.id.profileImage);
+            profileImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, AstrologerProfile.class);
+                    context.startActivity(intent);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                }
+            });
         }
     }
 }

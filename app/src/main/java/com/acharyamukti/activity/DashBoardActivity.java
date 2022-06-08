@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+
 import androidx.appcompat.widget.Toolbar;
+
 import com.acharyamukti.R;
 import com.acharyamukti.databinding.ActivityDashBoardBinding;
 import com.acharyamukti.fragment.FreeFragment;
@@ -16,7 +18,9 @@ import com.acharyamukti.ui.home.HomeFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+
 import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -26,7 +30,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class DashBoardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemReselectedListener {
+public class DashBoardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityDashBoardBinding binding;
@@ -49,12 +53,14 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_dash_board);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        navigationView.setNavigationItemSelectedListener(this);
         BottomNavigationView bottomNavigationView;
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemReselectedListener(this);
-        toolbar =findViewById(R.id.toolbar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Home");    }
+        toolbar.setTitle("Home");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,8 +78,9 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
 
     @SuppressLint("NonConstantResourceId")
     @Override
-    public void onNavigationItemReselected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
             case R.id.itemHome:
                 toolbar.setTitle("Home");
                 HomeFragment fragment = new HomeFragment();
@@ -97,12 +104,28 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
                 break;
             case R.id.nav_gallery:
                 toolbar.setTitle("About us");
-                GalleryFragment fragment3= new GalleryFragment();
+                GalleryFragment fragment3 = new GalleryFragment();
                 FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction3.replace(R.id.frameLayout_dash, fragment3, "");
                 fragmentTransaction3.commit();
                 break;
-
+            case R.id.nav_horoscope:
+                Intent intent = new Intent(this, NewsActivity.class);
+                startActivity(intent);
+                break;
         }
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return false;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

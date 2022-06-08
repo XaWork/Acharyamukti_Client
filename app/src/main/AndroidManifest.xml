@@ -16,7 +16,8 @@
             android:theme="@style/Theme.Acharyamukti.NoActionBar" />
         <activity
             android:name=".activity.NewsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Horoscope"/>
         <activity
             android:name=".activity.DashBoardActivity"
             android:exported="true"

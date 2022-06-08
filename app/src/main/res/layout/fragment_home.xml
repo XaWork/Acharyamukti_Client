@@ -13,7 +13,7 @@
         android:layout_height="1dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/frame"
@@ -26,26 +26,45 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="65dp"
             android:fillViewport="true"
             android:scrollbars="vertical"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <RelativeLayout
-                android:id="@+id/relativeLayoutDashBoard"
+                android:id="@+id/relativeLayoutDashBoard1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <LinearLayout
+                    android:id="@+id/searchBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/yellow"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/search_bg"
+                        android:gravity="center_vertical"
+                        android:hint="Search for an astrologer or an experise."
+                        android:paddingStart="15dp" />
+                </LinearLayout>
+
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="220dp" />
+                    android:layout_height="190dp"
+                    android:layout_below="@id/searchBar" />
 
                 <LinearLayout
                     android:id="@+id/layoutLive"
@@ -68,23 +87,24 @@
                         android:layout_weight="1"
                         android:text="Join Acharyamukti Live"
                         android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/viewAll"
-                        android:layout_width="100dp"
-                        android:layout_height="30dp"
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/layout_bg"
+                        android:gravity="center"
                         android:text="View all"
                         android:textColor="@color/white"
-                        android:textSize="8sp" />
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewLive"
                     android:layout_width="match_parent"
-                    android:background="@drawable/rectangle__layout_bg"
                     android:layout_height="180dp"
                     android:layout_below="@+id/layoutLive" />
 
@@ -93,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/recyclerViewLive"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -104,10 +124,11 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="90dp"
+                            android:layout_height="80dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/text_bg"
+                            android:background="@drawable/rectangle__layout_bg"
+                            android:elevation="25dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -120,8 +141,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
                                 android:gravity="center"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="5dp"
                                 android:text="@string/text_love"
                                 android:textColor="@color/black"
                                 android:textSize="11sp" />
@@ -129,10 +151,11 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="90dp"
-                            android:layout_margin="5dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/text_bg"
+                            android:background="@drawable/rectangle__layout_bg"
+                            android:elevation="25dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -145,8 +168,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
                                 android:gravity="center"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="5dp"
                                 android:text="@string/text_marriage"
                                 android:textColor="@color/black"
                                 android:textSize="11sp" />
@@ -154,10 +178,11 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="90dp"
+                            android:layout_height="80dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/text_bg"
+                            android:background="@drawable/rectangle__layout_bg"
+                            android:elevation="25dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -170,8 +195,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
                                 android:gravity="center"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="5dp"
                                 android:text="@string/text_career"
                                 android:textColor="@color/black"
                                 android:textSize="11sp" />
@@ -186,10 +212,12 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="90dp"
-                            android:layout_margin="5dp"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/text_bg"
+                            android:background="@drawable/rectangle__layout_bg"
+                            android:elevation="25dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -202,8 +230,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
                                 android:gravity="center"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="5dp"
                                 android:text="@string/text_money"
                                 android:textColor="@color/black"
                                 android:textSize="11sp" />
@@ -211,10 +240,10 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="90dp"
-                            android:layout_margin="5dp"
+                            android:layout_height="80dp"
                             android:layout_weight="1"
-                            android:background="@drawable/text_bg"
+                            android:background="@drawable/rectangle__layout_bg"
+                            android:elevation="25dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -227,8 +256,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
                                 android:gravity="center"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="5dp"
                                 android:text="@string/text_business"
                                 android:textColor="@color/black"
                                 android:textSize="11sp" />
@@ -236,10 +266,12 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="90dp"
-                            android:layout_margin="5dp"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/text_bg"
+                            android:background="@drawable/rectangle__layout_bg"
+                            android:elevation="25dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -252,8 +284,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
                                 android:gravity="center"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="5dp"
                                 android:text="@string/text_life"
                                 android:textColor="@color/black"
                                 android:textSize="11sp" />
@@ -264,37 +297,14 @@
                 <ImageView
                     android:id="@+id/layoutDaily"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="80dp"
                     android:layout_below="@+id/linearIcon"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/dailyimage" />
-
-                <!--            <LinearLayout-->
-                <!--                android:id="@+id/layoutDaily1"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="50dp"-->
-                <!--                android:layout_below="@+id/layoutDaily"-->
-                <!--                android:background="@color/white"-->
-                <!--                android:gravity="center_vertical">-->
-
-                <!--                <TextView-->
-                <!--                    android:layout_width="0dp"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginStart="10dp"-->
-                <!--                    android:layout_weight="1"-->
-                <!--                    android:text="Join Acharyamukti Live"-->
-                <!--                    android:textColor="@color/black" />-->
-
-                <!--                <Button-->
-                <!--                    android:id="@+id/viewAll1"-->
-                <!--                    android:layout_width="100dp"-->
-                <!--                    android:layout_height="30dp"-->
-                <!--                    android:layout_marginEnd="10dp"-->
-                <!--                    android:background="@drawable/layout_bg"-->
-                <!--                    android:text="View all"-->
-                <!--                    android:textColor="@color/white"-->
-                <!--                    android:textSize="8sp" />-->
-                <!--            </LinearLayout>-->
 
                 <LinearLayout
                     android:id="@+id/layoutRecycler"
@@ -307,7 +317,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:orientation="horizontal">
 
 
@@ -319,16 +329,17 @@
                             android:gravity="center_vertical"
                             android:text="Currently available"
                             android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textStyle="normal" />
 
-                        <Button
-                            android:layout_width="100dp"
-                            android:layout_height="30dp"
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="70dp"
+                            android:layout_height="20dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/layout_bg"
                             android:text="@string/button_view_all"
                             android:textColor="@color/white"
-                            android:textSize="8sp"
+                            android:textSize="11sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 

@@ -11,6 +11,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
@@ -25,7 +26,7 @@
                 android:drawableLeft="@drawable/ic_baseline_school_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:text="Experience"
+                android:text="@string/text_exp"
                 android:textColor="@color/black" />
 
             <TextView
@@ -36,7 +37,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="12 Years"
+                android:text="@string/text_years"
                 android:textSize="12sp" />
 
             <TextView
@@ -48,7 +49,7 @@
                 android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:text="Consultation Charge"
+                android:text="@string/text_consultation"
                 android:textColor="@color/black" />
 
             <TextView
@@ -59,7 +60,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="36/min"
+                android:text="@string/text_charge"
                 android:textSize="12sp" />
 
             <TextView
@@ -71,7 +72,7 @@
                 android:drawableLeft="@drawable/ic_baseline_reviews_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:text="Review"
+                android:text="@string/text_review"
                 android:textColor="@color/black" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -82,7 +83,6 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="36/min"
                 android:textSize="12sp" />
 
             <TextView
@@ -94,7 +94,7 @@
                 android:drawableLeft="@drawable/ic_baseline_location_on_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:text="Location"
+                android:text="@string/text_location"
                 android:textColor="@color/black" />
 
             <TextView
@@ -105,7 +105,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="Delhi"
+                android:text="@string/text_place"
                 android:textSize="12sp" />
 
             <TextView
@@ -117,7 +117,7 @@
                 android:drawableLeft="@drawable/ic_baseline_g_translate_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:text="Language Spoken"
+                android:text="@string/text_language"
                 android:textColor="@color/black" />
 
             <TextView
@@ -128,7 +128,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="Hindi"
+                android:text="@string/text_hindi_english"
                 android:textSize="12sp" />
 
             <TextView
@@ -140,7 +140,7 @@
                 android:drawableLeft="@drawable/ic_baseline_workspace_premium_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:text="Language Spoken"
+                android:text="@string/text_expertise"
                 android:textColor="@color/black" />
 
             <TextView
@@ -151,7 +151,30 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="Hindi"
+                android:text="@string/text_vedic"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtProfileSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtExp1"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_summarize_24"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/text_profile_summary"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtSummary_long"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtProfileSummary"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:text="@string/text_profile_summary_long"
                 android:textSize="12sp" />
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
@@ -165,29 +188,29 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textStyle="bold"
-            android:layout_marginEnd="5dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:background="#F4EDED"
             android:drawableRight="@drawable/ic_baseline_message_24"
             android:gravity="center"
             android:paddingEnd="40dp"
             android:text="Offline"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textStyle="bold" />
 
         <TextView
-            android:textStyle="bold"
-            android:layout_marginStart="5dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="#F4EDED"
             android:drawableRight="@drawable/ic_baseline_call_24"
             android:gravity="center"
             android:paddingEnd="40dp"
             android:text="Offline"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textStyle="bold" />
     </LinearLayout>
 </FrameLayout>

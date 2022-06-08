@@ -34,8 +34,7 @@ import com.acharyamukti.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private FragmentHomeBinding binding;
-    Toolbar toolbar;
-    ImageView imageviewTime;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +44,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View root = binding.getRoot();
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        int image[] = {R.drawable.sliderimagegrils, R.drawable.sliderbanner1, R.drawable.bannerimage};
+        int image[] = {R.drawable.adsimage, R.drawable.sliderbanner1, R.drawable.bannerimage};
         ImageSliderAdapter imageSliderAdapter;
         ViewPager viewPager = root.findViewById(R.id.viewpager);
         imageSliderAdapter = new ImageSliderAdapter(getContext(), image);
@@ -57,7 +56,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView.setLayoutManager(gridLayoutManager);
         profileAdapter = new ProfileAdapter(getContext());
         recyclerView.setAdapter(profileAdapter);
-        Button viewAll = root.findViewById(R.id.viewAll);
+        TextView viewAll = root.findViewById(R.id.viewAll);
         viewAll.setOnClickListener(this);
         recyclerView.setHasFixedSize(true);
         RecyclerView recyclerView1 = root.findViewById(R.id.recyclerViewLive);

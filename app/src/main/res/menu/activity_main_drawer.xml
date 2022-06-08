@@ -14,8 +14,8 @@
             android:id="@+id/nav_slideshow"
             android:title="@string/menu_slideshow" />
         <item
-            android:id="@+id/nav_slide"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_horoscope"
+            android:title="Horoscope" />
         <item android:title="@string/menu_share" />
         <item android:title="@string/menu_ask" />
         <item android:title="@string/menu_privacy" />
