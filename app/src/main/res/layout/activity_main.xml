@@ -10,9 +10,9 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/yellow"
+        android:background="@color/white"
         app:title="Login"
-        app:titleTextColor="@color/white">
+        app:titleTextColor="@color/yellow">
 
         <ImageView
             android:layout_gravity="right"

@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Acharyamukti">
         <activity
+            android:name=".activity.KundaliniMarriage"
+            android:exported="false"
+            android:theme="@style/Theme.Acharyamukti.NoActionBar" />
+        <activity
             android:name=".activity.AstrologerProfile"
             android:exported="false"
             android:label="@string/title_activity_astrologer_profile"
@@ -17,7 +21,7 @@
         <activity
             android:name=".activity.NewsActivity"
             android:exported="false"
-            android:label="Horoscope"/>
+            android:label="Horoscope" />
         <activity
             android:name=".activity.DashBoardActivity"
             android:exported="true"

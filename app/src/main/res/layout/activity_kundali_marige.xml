@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.KundaliniMarriage">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:theme="@style/Theme.Acharyamukti.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarKun"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.Acharyamukti.PopupOverlay" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <CheckBox
+                android:id="@+id/checkbox0"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/viewall_bg"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="On chat"
+                android:textColor="@drawable/checkbox_selector"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/checkbox1"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/viewall_bg"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="Available"
+                android:textColor="@drawable/checkbox_selector"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+
+                android:id="@+id/checkbox2"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/viewall_bg"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="Filter"
+                android:textColor="@drawable/checkbox_selector"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/checkbox3"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:background="@drawable/viewall_bg"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="Search"
+                android:textColor="@drawable/checkbox_selector"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+</RelativeLayout>

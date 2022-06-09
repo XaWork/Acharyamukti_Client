@@ -155,19 +155,19 @@ People like talking to us and they call us again and again for best advice. They
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <!-- TODO: Remove or change this astroProfile text -->
-<string name="text_profile_name">Profile Name</string>
-<string name="text_exp">Experience</string>
-<string name="text_years">12 Years</string>
-<string name="text_consultation">Consultation Charge</string>
-<string name="text_charge">36/min</string>
-<string name="text_review">Review</string>
-<string name="text_location">Location</string>
-<string name="text_place">Delhi</string>
-<string name="text_language">Language Spoken</string>
-<string name="text_hindi_english">Hindi</string>
-<string name="text_expertise">Expertise</string>
-<string name="text_vedic">Vedic</string>
-<string name="text_profile_summary">Profile summary</string>
-<string name="text_profile_summary_long">Astrology is as old as is time, when a man on earth realized that events in his life are not happening the way they
+    <string name="text_profile_name">Profile Name</string>
+    <string name="text_exp">Experience</string>
+    <string name="text_years">12 Years</string>
+    <string name="text_consultation">Consultation Charge</string>
+    <string name="text_charge">36/min</string>
+    <string name="text_review">Review</string>
+    <string name="text_location">Location</string>
+    <string name="text_place">Delhi</string>
+    <string name="text_language">Language Spoken</string>
+    <string name="text_hindi_english">Hindi</string>
+    <string name="text_expertise">Expertise</string>
+    <string name="text_vedic">Vedic</string>
+    <string name="text_profile_summary">Profile summary</string>
+    <string name="text_profile_summary_long">Astrology is as old as is time, when a man on earth realized that events in his life are not happening the way they
     should or happening randomly, and following some particular pattern or cycle. Astrological predictions could be as basic as addressing personality traits, based out on the date of birth and sun sign to the most complex ones like predicting the destiny with aid from details like place, time, and date of birth. We all are interested in knowing what our future holds for us. There is hardly anyone who ignores the newspaper column every morning that forecasts the horoscope for the day.</string>
 </resources>
