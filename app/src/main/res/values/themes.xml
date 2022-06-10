@@ -2,15 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.Acharyamukti" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#F33148</item>
+        <item name="colorPrimary">@color/yellow</item>
         <item name="colorPrimaryVariant">@color/black</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#F33148</item>
         <item name="colorSecondaryVariant">@color/black</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">#FF5F1F</item>
+        <item name="android:statusBarColor" tools:targetApi="l">#EAC967</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -21,6 +21,18 @@
 
     <style name="Theme.Acharyamukti.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.Acharyamukti.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.Acharyamukti.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
 
+    <style name="AppThemeNoActionBar" parent="Theme.Acharyamukti.NoActionBar">
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryDark">@color/darkYellow</item>
+        <item name="colorAccent">@color/black</item>
+
+    </style>
+    <style name="AppThemeActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryDark">@color/darkYellow</item>
+        <item name="colorAccent">@color/black</item>
+
+    </style>
 </resources>

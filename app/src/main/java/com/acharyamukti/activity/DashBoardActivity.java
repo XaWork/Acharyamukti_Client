@@ -60,6 +60,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Home");
+
     }
 
     @Override

@@ -16,9 +16,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#FF6700"
-            app:popupTheme="@style/Theme.Acharyamukti.PopupOverlay">
-        </androidx.appcompat.widget.Toolbar>
+            android:background="@color/yellow"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="@color/black" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_dash_board" />

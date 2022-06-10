@@ -8,16 +8,17 @@
     tools:context=".activity.LoginActivity">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarLogin"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/white"
+        android:background="@color/yellow"
         app:title="Login"
-        app:titleTextColor="@color/yellow">
+        app:titleTextColor="@color/black">
 
         <ImageView
-            android:layout_gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="right"
             android:padding="12dp"
             android:src="@drawable/ic_baseline_close_24" />
 
@@ -25,41 +26,43 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
         android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="?actionBarSize"
             android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/bannerimage" />
+            <!--            <ImageView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="220dp"-->
+            <!--                android:scaleType="fitXY"-->
+            <!--                android:src="@drawable/bannerimage" />-->
 
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/yoga" />
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profileImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/logo"
+                app:civ_border_color="@color/yellow"
+                app:civ_border_width="2dp" />
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center_horizontal"
                 android:text="@string/text_name1"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <FrameLayout
@@ -78,7 +81,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:gravity="center_horizontal"
                         android:text="@string/text_name2"
                         android:textColor="@color/grey1"
@@ -87,9 +90,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="15dp"
                         android:background="@drawable/text_bg"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
@@ -134,9 +137,9 @@
                         android:id="@+id/btnOtp"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="20dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="15dp"
                         android:background="@drawable/text_bg"
                         android:text="@string/text_button"
                         android:textColor="@color/grey1"
@@ -146,11 +149,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
                         android:text="@string/text_name4"
                         android:textColor="@color/grey1"
-                        android:textSize="10sp" />
+                        android:textSize="12sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -165,7 +168,7 @@
                             android:layout_width="0dp"
                             android:layout_height="0.5dp"
                             android:layout_weight="1"
-                            android:background="@color/black" />
+                            android:background="@color/yellow" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -180,25 +183,27 @@
                             android:layout_width="0dp"
                             android:layout_height="0.5dp"
                             android:layout_weight="1"
-                            android:background="@color/black" />
+                            android:background="@color/yellow" />
                     </LinearLayout>
 
                     <Button
                         android:id="@+id/loginToEmail"
-                        android:layout_width="wrap_content"
+                        android:layout_width="190dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/text_bg"
                         android:drawableLeft="@drawable/ic_baseline_email_24"
                         android:drawablePadding="6dp"
                         android:gravity="center"
                         android:padding="5dp"
+                        android:paddingStart="20dp"
                         android:text="Login via Email"
                         android:textAllCaps="false"
-                        android:textColor="#000"
-                        android:textSize="11sp" />
+                        android:textColor="@color/grey1"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
             </FrameLayout>
 
@@ -208,20 +213,19 @@
     <LinearLayout
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@drawable/half_curve"
+        android:background="@drawable/rectangle_bg"
         android:orientation="horizontal"
-        android:paddingTop="20dp">
+        android:paddingTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/rectangle_bg"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal"
             android:paddingBottom="5dp">
 
@@ -245,8 +249,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
                     android:text="Video \nLive"
-                    android:textColor="@color/yellow"
-                    android:textSize="10sp" />
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -273,8 +277,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
                     android:text="Instant \nCalling"
-                    android:textColor="@color/yellow"
-                    android:textSize="10sp" />
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -301,8 +305,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
                     android:text="Instant \nChatting"
-                    android:textColor="@color/yellow"
-                    android:textSize="10sp" />
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -330,8 +334,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
                     android:text="Horoscope \nKundali"
-                    android:textColor="@color/yellow"
-                    android:textSize="10sp" />
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 

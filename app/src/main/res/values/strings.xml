@@ -4,7 +4,7 @@
     <string name="text_name2">Please enter your mobile number to Login/Signup</string>
     <string name="text_name3">+91</string>
     <string name="text_button">Send otp</string>
-    <string name="text_name4">By proceeding, I agree to Term and conditions &amp; \nPrivacy Policy</string>
+    <string name="text_name4">By proceeding, I agree to Term and conditions &amp;Privacy Policy</string>
     <string name="text_name5">Or condition with</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

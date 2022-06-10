@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar"
     tools:openDrawer="start">
 
     <include
@@ -19,6 +20,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/white"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_dash_board"
         app:menu="@menu/activity_main_drawer" />
