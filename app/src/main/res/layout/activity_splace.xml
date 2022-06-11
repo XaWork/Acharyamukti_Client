@@ -3,25 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    android:layout_gravity="center"
     android:gravity="center"
     tools:context=".activity.LunchActivity">
 
     <ImageView
         android:id="@+id/lunchLogo"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/logo" />
-    <TextView
-        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profileImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
+        android:src="@drawable/logo"
+        app:civ_border_color="@color/yellow"
+        app:civ_border_width="2dp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="16sp"
+        android:layout_below="@+id/profileImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/text_luncher_name"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_below="@+id/lunchLogo"/>
+        android:textSize="18sp"
+        android:textStyle="bold" />
 </RelativeLayout>

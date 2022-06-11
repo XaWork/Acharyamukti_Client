@@ -26,7 +26,6 @@
         <activity
             android:name=".activity.DashBoardActivity"
             android:exported="true"
-            android:label="@string/title_activity_dash_board"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".activity.ArcheryLive"

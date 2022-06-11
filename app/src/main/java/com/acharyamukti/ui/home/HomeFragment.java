@@ -36,11 +36,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View root = binding.getRoot();
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        int image[] = {R.drawable.adsimage, R.drawable.sliderbanner1, R.drawable.bannerimage};
-        ImageSliderAdapter imageSliderAdapter;
-        ViewPager viewPager = root.findViewById(R.id.viewpager);
-        imageSliderAdapter = new ImageSliderAdapter(getContext(), image);
-        viewPager.setAdapter(imageSliderAdapter);
+//        int image[] = {R.drawable.adsimage, R.drawable.sliderbanner1, R.drawable.bannerimage};
+//        ImageSliderAdapter imageSliderAdapter;
+//        ViewPager viewPager = root.findViewById(R.id.viewpager);
+//        imageSliderAdapter = new ImageSliderAdapter(getContext(), image);
+//        viewPager.setAdapter(imageSliderAdapter);
         ProfileAdapter profileAdapter;
         RecyclerView recyclerView;
         recyclerView = root.findViewById(R.id.recyclerView);
@@ -64,10 +64,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         career.setOnClickListener(this);
         money = root.findViewById(R.id.money);
         money.setOnClickListener(this);
-        business = root.findViewById(R.id.business);
-        business.setOnClickListener(this);
-        everyDayLife = root.findViewById(R.id.everyDayLife);
-        everyDayLife.setOnClickListener(this);
+//        business = root.findViewById(R.id.business);
+//        business.setOnClickListener(this);
+//        everyDayLife = root.findViewById(R.id.everyDayLife);
+//        everyDayLife.setOnClickListener(this);
         return root;
     }
 
@@ -101,16 +101,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 money.putExtra("title", "Money & Investments");
                 startActivity(money);
                 break;
-            case R.id.business:
-                Intent business = new Intent(getContext(), KundaliniMarriage.class);
-                business.putExtra("title", "Business");
-                startActivity(business);
-                break;
-            case R.id.everyDayLife:
-                Intent every = new Intent(getContext(), KundaliniMarriage.class);
-                every.putExtra("title", "EveryDay Life");
-                startActivity(every);
-                break;
+//            case R.id.business:
+//                Intent business = new Intent(getContext(), KundaliniMarriage.class);
+//                business.putExtra("title", "Business");
+//                startActivity(business);
+//                break;
+//            case R.id.everyDayLife:
+//                Intent every = new Intent(getContext(), KundaliniMarriage.class);
+//                every.putExtra("title", "EveryDay Life");
+//                startActivity(every);
+//                break;
             case R.id.viewAll:
                 Intent live = new Intent(getContext(), ArcheryLive.class);
                 startActivity(live);

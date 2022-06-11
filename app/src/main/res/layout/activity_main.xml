@@ -122,11 +122,12 @@
                             android:background="@color/black" />
 
                         <EditText
+                            android:layout_marginEnd="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:hint="Mobile number"
                             android:inputType="number"
-                            android:paddingStart="15dp"
+                            android:layout_marginStart="15dp"
                             android:textColor="@color/grey1"
                             android:textColorHint="@color/grey1"
                             android:textSize="12sp" />
@@ -188,8 +189,8 @@
 
                     <Button
                         android:id="@+id/loginToEmail"
-                        android:layout_width="190dp"
-                        android:layout_height="25dp"
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
@@ -197,12 +198,12 @@
                         android:drawableLeft="@drawable/ic_baseline_email_24"
                         android:drawablePadding="6dp"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="2dp"
                         android:paddingStart="20dp"
                         android:text="Login via Email"
                         android:textAllCaps="false"
                         android:textColor="@color/grey1"
-                        android:textSize="12sp"
+                        android:textSize="9sp"
                         tools:ignore="RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
             </FrameLayout>

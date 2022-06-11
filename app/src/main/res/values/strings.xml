@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">The Acharyamukti</string>
+    <string name="text_luncher_name">The Acharya mukti</string>
     <string name="text_name1">Welcome to theacharyamukti</string>
-    <string name="text_name2">Please enter your mobile number to Login/Signup</string>
+    <string name="text_name2">First Chat with Astrologer is FREE!</string>
     <string name="text_name3">+91</string>
     <string name="text_button">Send otp</string>
     <string name="text_name4">By proceeding, I agree to Term and conditions &amp;Privacy Policy</string>
@@ -36,8 +37,9 @@
 
     <!--home screen-->
     <string name="text_love">Love &amp;\nRelationships</string>
+    <string name="text_horoscope">Horoscope\nDaily Life</string>
     <string name="text_marriage">Marriage &amp;\nKundali</string>
-    <string name="text_career">Career</string>
+    <string name="text_career">Career &amp;\nGrowth</string>
     <string name="text_money">Money &amp;\n\Investments</string>
     <string name="text_business">Business</string>
     <string name="text_life">Everyday Life</string>
