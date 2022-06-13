@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.NewsAdapter;
+import com.acharyamukti.adapter.ProfileAdapter;
 import com.acharyamukti.model.NewsModel;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class NewsActivity extends AppCompatActivity {
-    RecyclerView recyclerViewNews;
+    RecyclerView recyclerViewNews, recyclerViewHoroscope;
     List<NewsModel> newsModels = new ArrayList<>();
 
     @Override
@@ -26,6 +28,11 @@ public class NewsActivity extends AppCompatActivity {
         NewsAdapter newsAdapter = new NewsAdapter(getApplicationContext(), R.layout.custom_horoscope_layout, newsModels);
         recyclerViewNews.setAdapter(newsAdapter);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        recyclerViewHoroscope = findViewById(R.id.recyclerViewHoroscope);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+        recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
+        ProfileAdapter profileAdapter = new ProfileAdapter(getApplicationContext(),R.layout.custom_profile_layout,newsModels);
+        recyclerViewHoroscope.setAdapter(profileAdapter);
     }
 
     @Override

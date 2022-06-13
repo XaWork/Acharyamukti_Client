@@ -1,4 +1,5 @@
 package com.acharyamukti.ui.home;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,26 +8,37 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
+
 import com.acharyamukti.R;
 import com.acharyamukti.activity.ArcheryLive;
 import com.acharyamukti.activity.KundaliniMarriage;
+import com.acharyamukti.activity.NewsActivity;
 import com.acharyamukti.adapter.DataLiveAdapter;
-import com.acharyamukti.adapter.ImageSliderAdapter;
 import com.acharyamukti.adapter.ProfileAdapter;
 import com.acharyamukti.databinding.FragmentHomeBinding;
+import com.acharyamukti.model.NewsModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    LinearLayout relationShip, marriage, career, money, business, everyDayLife;
-    private FragmentHomeBinding binding;
-
+    LinearLayout relationShip, marriage, career, money, horoscope;
+    FragmentHomeBinding binding;
+    ProfileAdapter profileAdapter;
+    DataLiveAdapter dataLiveAdapter;
+    RecyclerView recyclerView, recyclerView1;
+    GridLayoutManager gridLayoutManager;
+    LinearLayoutManager linearLayoutManager;
+    TextView viewAll;
+    List<NewsModel> newsModels = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,25 +48,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View root = binding.getRoot();
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-//        int image[] = {R.drawable.adsimage, R.drawable.sliderbanner1, R.drawable.bannerimage};
-//        ImageSliderAdapter imageSliderAdapter;
-//        ViewPager viewPager = root.findViewById(R.id.viewpager);
-//        imageSliderAdapter = new ImageSliderAdapter(getContext(), image);
-//        viewPager.setAdapter(imageSliderAdapter);
-        ProfileAdapter profileAdapter;
-        RecyclerView recyclerView;
         recyclerView = root.findViewById(R.id.recyclerView);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
+        gridLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
-        profileAdapter = new ProfileAdapter(getContext());
+        profileAdapter = new ProfileAdapter(getActivity(), R.layout.custom_profile_layout, newsModels);
         recyclerView.setAdapter(profileAdapter);
-        TextView viewAll = root.findViewById(R.id.viewAll);
+        viewAll = root.findViewById(R.id.viewAll);
         viewAll.setOnClickListener(this);
         recyclerView.setHasFixedSize(true);
-        RecyclerView recyclerView1 = root.findViewById(R.id.recyclerViewLive);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+        recyclerView1 = root.findViewById(R.id.recyclerViewLive);
+        linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         recyclerView1.setLayoutManager(linearLayoutManager);
-        DataLiveAdapter dataLiveAdapter = new DataLiveAdapter(getActivity());
+        dataLiveAdapter = new DataLiveAdapter(getActivity());
         recyclerView1.setAdapter(dataLiveAdapter);
         relationShip = root.findViewById(R.id.loveRelationShip);
         relationShip.setOnClickListener(this);
@@ -64,10 +69,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         career.setOnClickListener(this);
         money = root.findViewById(R.id.money);
         money.setOnClickListener(this);
-//        business = root.findViewById(R.id.business);
-//        business.setOnClickListener(this);
-//        everyDayLife = root.findViewById(R.id.everyDayLife);
-//        everyDayLife.setOnClickListener(this);
+        horoscope = root.findViewById(R.id.horoscope);
+        horoscope.setOnClickListener(this);
         return root;
     }
 
@@ -101,19 +104,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 money.putExtra("title", "Money & Investments");
                 startActivity(money);
                 break;
-//            case R.id.business:
-//                Intent business = new Intent(getContext(), KundaliniMarriage.class);
-//                business.putExtra("title", "Business");
-//                startActivity(business);
-//                break;
-//            case R.id.everyDayLife:
-//                Intent every = new Intent(getContext(), KundaliniMarriage.class);
-//                every.putExtra("title", "EveryDay Life");
-//                startActivity(every);
-//                break;
             case R.id.viewAll:
                 Intent live = new Intent(getContext(), ArcheryLive.class);
                 startActivity(live);
+                break;
+            case R.id.horoscope:
+                Intent horoscope = new Intent(getContext(), NewsActivity.class);
+                horoscope.putExtra("title", "horoscope");
+                startActivity(horoscope);
                 break;
         }
 

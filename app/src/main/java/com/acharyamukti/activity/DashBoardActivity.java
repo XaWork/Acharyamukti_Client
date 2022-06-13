@@ -10,7 +10,6 @@ import android.view.Menu;
 import androidx.appcompat.widget.Toolbar;
 
 import com.acharyamukti.R;
-import com.acharyamukti.databinding.ActivityDashBoardBinding;
 import com.acharyamukti.fragment.FreeFragment;
 import com.acharyamukti.fragment.Profile;
 import com.acharyamukti.ui.gallery.GalleryFragment;
@@ -18,7 +17,7 @@ import com.acharyamukti.ui.home.HomeFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-
+import com.acharyamukti.databinding.ActivityDashBoardBinding;
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
@@ -60,7 +59,6 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Home");
-
     }
 
     @Override
