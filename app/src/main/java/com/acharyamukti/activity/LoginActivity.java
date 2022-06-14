@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -54,8 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnOtp:
-                Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
-                startActivity(intent);
+                dialog();
                 break;
             case R.id.loginToEmail:
                 layout.setVisibility(View.GONE);
@@ -64,5 +65,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
 
+    }
+
+    public void dialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.verify_otp);
+        Button btnVerify = dialog.findViewById(R.id.btnVerify);
+        btnVerify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
+                startActivity(intent);
+            }
+        });
+        dialog.show();
+        dialog.setCanceledOnTouchOutside(true);
     }
 }

@@ -39,19 +39,13 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <!--            <ImageView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="220dp"-->
-            <!--                android:scaleType="fitXY"-->
-            <!--                android:src="@drawable/bannerimage" />-->
-
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profileImage"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:src="@drawable/logo"
                 app:civ_border_color="@color/yellow"
-                app:civ_border_width="2dp" />
+                app:civ_border_width="2dp"/>
 
 
             <TextView
@@ -122,12 +116,12 @@
                             android:background="@color/black" />
 
                         <EditText
-                            android:layout_marginEnd="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
                             android:hint="Mobile number"
                             android:inputType="number"
-                            android:layout_marginStart="15dp"
                             android:textColor="@color/grey1"
                             android:textColorHint="@color/grey1"
                             android:textSize="12sp" />

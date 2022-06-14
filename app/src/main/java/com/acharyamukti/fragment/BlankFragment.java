@@ -1,5 +1,6 @@
 package com.acharyamukti.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,25 +13,11 @@ import android.widget.Button;
 
 import com.acharyamukti.R;
 import com.acharyamukti.activity.LoginActivity;
+import com.acharyamukti.activity.Register;
 
-///**
-// * A simple {@link Fragment} subclass.
-// * Use the {@link BlankFragment#newInstance} factory method to
-// * create an instance of this fragment.
-// */
+
 public class BlankFragment extends Fragment implements View.OnClickListener {
     Button login;
-//    public BlankFragment() {
-//        // Required empty public constructor
-//    }
-
-
-//    // TODO: Rename and change types and number of parameters
-//    public static BlankFragment newInstance(String param1, String param2) {
-//        BlankFragment fragment = new BlankFragment();
-//
-//        return fragment;
-//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,16 +28,27 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
         login = view.findViewById(R.id.btnLogin);
         login.setOnClickListener(this);
+        Button signup = view.findViewById(R.id.signup);
+        signup.setOnClickListener(this);
         return view;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivity(intent);
+        switch (view.getId()) {
+            case R.id.signup:
+                Intent intent = new Intent(getActivity(), Register.class);
+                startActivity(intent);
+                break;
+            case R.id.btnLogin:
+                Intent intent1 = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent1);
+                break;
+        }
+
     }
 }

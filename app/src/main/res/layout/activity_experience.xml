@@ -1,19 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp"
     android:background="@color/white"
     tools:context=".activity.NewsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarNews"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/yellow"
+        app:title="Horoscope"
+        app:titleTextColor="@color/black">
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/text_bg"
+            android:clickable="true"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@color/green"
+                android:src="@drawable/ic_baseline_whatsapp_24" />
+
+            <TextView
+                android:id="@+id/headerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:text="share"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHoroscope"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="100dp"
+        android:layout_below="@+id/toolbarNews" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewNews"
+    <ImageView
+        android:id="@+id/bannerNews"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</RelativeLayout>
+        android:layout_height="150dp"
+        android:layout_below="@+id/recyclerViewHoroscope"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/banner_top" />
+
+    <RadioGroup
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/bannerNews">
+
+        <RadioButton
+            android:background="@drawable/radio_flat_selector"
+            android:layout_weight="1"
+            android:id="@+id/radio0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:text="Daily" />
+
+        <RadioButton
+            android:background="@drawable/radio_flat_selector"
+            android:layout_weight="1"
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="Weekly"/>
+        <RadioButton
+            android:background="@drawable/radio_flat_selector"
+            android:layout_weight="1"
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="Monthly"/>
+
+    </RadioGroup>
+
+<androidx.recyclerview.widget.RecyclerView
+android:id="@+id/recyclerViewNews"
+android:layout_below="@+id/radioGroup"
+android:layout_height="match_parent"
+android:layout_width="match_parent" /></RelativeLayout>

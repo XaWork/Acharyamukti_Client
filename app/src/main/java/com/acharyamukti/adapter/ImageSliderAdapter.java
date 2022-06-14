@@ -40,10 +40,10 @@ public class ImageSliderAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = mLayoutInflater.inflate(R.layout.slider_image, container, false);
-        ImageView imageView=view.findViewById(R.id.imageViewMain);
-        imageView.setImageResource(image[position]);
-        Objects.requireNonNull(container).addView(view);
+        View view = mLayoutInflater.inflate(R.layout.verify_otp, container, false);
+//        ImageView imageView=view.findViewById(R.id.imageViewMain);
+//        imageView.setImageResource(image[position]);
+//        Objects.requireNonNull(container).addView(view);
 
         return view;
     }

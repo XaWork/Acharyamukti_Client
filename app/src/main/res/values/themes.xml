@@ -29,7 +29,7 @@
         <item name="colorAccent">@color/black</item>
 
     </style>
-    <style name="AppThemeActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
+    <style name="AppThemeActionBar" parent="@style/Theme.AppCompat.Light">
         <item name="colorPrimary">@color/yellow</item>
         <item name="colorPrimaryDark">@color/darkYellow</item>
         <item name="colorAccent">@color/black</item>
