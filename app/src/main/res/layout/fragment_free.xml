@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,20 +20,21 @@
             <ImageView
                 android:id="@+id/imagePersonal"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/personalbanner" />
+                android:src="@drawable/banner_top" />
 
             <TextView
                 android:id="@+id/compatible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="60dp"
                 android:gravity="center_horizontal"
                 android:text="Are you compatible \n together?"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
                 android:layout_marginEnd="65dp"
                 android:gravity="center_horizontal"
                 android:text="match your kundli"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -64,19 +64,19 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="Horoscope &amp; more"
+                    android:text="Horoscope &amp; more Blogs"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <Button
                     android:layout_width="100dp"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/layout_bg"
                     android:gravity="center"
                     android:text="@string/button_view_all"
-                    android:textColor="@color/white"
-                    android:textSize="8sp"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -85,25 +85,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/viewAllLayout" />
-
-            <ImageView
-                android:id="@+id/kundli"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@id/recyclerViewNews"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/kundalicreate" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@id/kundli"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/matchmakingkundli" />
         </RelativeLayout>
     </ScrollView>
 </FrameLayout>

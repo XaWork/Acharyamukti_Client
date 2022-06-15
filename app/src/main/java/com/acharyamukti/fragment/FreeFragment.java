@@ -19,6 +19,9 @@ import java.util.List;
 
 public class FreeFragment extends Fragment {
 private List<NewsModel>newsModels;
+    LinearLayoutManager linearLayoutManager;
+    RecyclerView recyclerView;
+    NewsAdapter newsAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,10 +32,10 @@ private List<NewsModel>newsModels;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_free, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewNews);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+        recyclerView = view.findViewById(R.id.recyclerViewNews);
+        linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        NewsAdapter newsAdapter = new NewsAdapter(getContext(), R.layout.custom_news_layout, newsModels);
+        newsAdapter = new NewsAdapter(getContext(), R.layout.custom_news_layout, newsModels);
         recyclerView.setAdapter(newsAdapter);
         recyclerView.setNestedScrollingEnabled(false);
         return view;

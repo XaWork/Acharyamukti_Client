@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.acharyamukti">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -26,7 +27,7 @@
             android:name=".activity.NewsActivity"
             android:exported="false"
             android:label="Horoscope"
-            android:theme="@style/AppThemeNoActionBar"/>
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".activity.DashBoardActivity"
             android:exported="true"
@@ -50,5 +51,4 @@
             android:exported="true"
             android:theme="@style/AppThemeNoActionBar" />
     </application>
-
 </manifest>

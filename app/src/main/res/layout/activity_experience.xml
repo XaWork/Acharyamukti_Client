@@ -54,50 +54,52 @@
         android:layout_below="@+id/recyclerViewHoroscope"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/banner_top" />
+        android:src="@drawable/horo_banner" />
 
     <RadioGroup
-        android:layout_margin="5dp"
-        android:orientation="horizontal"
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@+id/bannerNews">
+        android:layout_below="@+id/bannerNews"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
 
         <RadioButton
-            android:background="@drawable/radio_flat_selector"
-            android:layout_weight="1"
             android:id="@+id/radio0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
             android:button="@android:color/transparent"
-            android:checked="true"
             android:gravity="center"
-            android:text="Daily" />
+            android:text="Yesterday" />
 
         <RadioButton
-            android:background="@drawable/radio_flat_selector"
-            android:layout_weight="1"
             android:id="@+id/radio1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:button="@android:color/transparent"
-            android:gravity="center"
-            android:text="Weekly"/>
-        <RadioButton
-            android:background="@drawable/radio_flat_selector"
             android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:text="Today" />
+
+        <RadioButton
             android:id="@+id/radio2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
             android:button="@android:color/transparent"
             android:gravity="center"
-            android:text="Monthly"/>
+            android:text="Tomorrow" />
 
     </RadioGroup>
 
-<androidx.recyclerview.widget.RecyclerView
-android:id="@+id/recyclerViewNews"
-android:layout_below="@+id/radioGroup"
-android:layout_height="match_parent"
-android:layout_width="match_parent" /></RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/radioGroup" />
+</RelativeLayout>

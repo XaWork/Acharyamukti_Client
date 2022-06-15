@@ -27,54 +27,58 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:id="@+id/f_name"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
-            android:hint="First Name"
+            android:hint="@string/text_reg_fname"
             android:inputType="text"
             android:paddingLeft="10dp"
             android:textColor="@color/grey1"
             android:textColorHint="@color/grey1"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:id="@+id/l_name"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:hint="Last Name"
+            android:hint="@string/text_reg_lname"
             android:inputType="text"
             android:paddingStart="10dp"
             android:textColor="@color/grey1"
             android:textColorHint="@color/grey1"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="10dp"
+            android:id="@+id/reg_mobile"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:hint="Mobile Number"
+            android:hint="@string/text_reg_mobile"
             android:inputType="number"
             android:paddingStart="10dp"
             android:textColor="@color/grey1"
             android:textColorHint="@color/grey1"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="10dp"
+            android:id="@+id/reg_email"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:hint="Email Id"
+            android:hint="@string/text_reg_Email"
             android:inputType="textEmailAddress"
             android:paddingStart="10dp"
             android:textColor="@color/grey1"
             android:textColorHint="@color/grey1"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -82,24 +86,25 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:hint="Password"
+            android:id="@+id/reg_pass"
+            android:hint="@string/text_reg_pass"
             android:inputType="numberPassword"
             android:paddingStart="10dp"
             android:textColor="@color/grey1"
             android:textColorHint="@color/grey1"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/text_bg"
             android:text="Register"
             android:textAllCaps="true"
             android:textColor="@color/grey1"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 </ScrollView>

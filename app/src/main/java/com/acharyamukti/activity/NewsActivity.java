@@ -42,13 +42,17 @@ public class NewsActivity extends AppCompatActivity {
         recyclerViewHoroscope.setAdapter(profileAdapter);
         toolbar = findViewById(R.id.toolbarNews);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) ;
-        finish();
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }

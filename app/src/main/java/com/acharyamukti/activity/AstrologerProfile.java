@@ -20,6 +20,7 @@ public class AstrologerProfile extends AppCompatActivity {
     private ActivityAstrologerProfileBinding binding;
     RecyclerView recyclerView;
     ReviewAdapter reviewAdapter;
+    LinearLayoutManager linearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class AstrologerProfile extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.ratingRecyclerView);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        linearLayoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         reviewAdapter=new ReviewAdapter(getApplicationContext());
         recyclerView.setAdapter(reviewAdapter);

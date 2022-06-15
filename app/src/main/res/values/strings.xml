@@ -171,5 +171,12 @@ People like talking to us and they call us again and again for best advice. They
     <string name="text_vedic">Vedic</string>
     <string name="text_profile_summary">Profile summary</string>
     <string name="text_profile_summary_long">Astrology is as old as is time, when a man on earth realized that events in his life are not happening the way they
-    should or happening randomly, and following some particular pattern or cycle. Astrological predictions could be as basic as addressing personality traits, based out on the date of birth and sun sign to the most complex ones like predicting the destiny with aid from details like place, time, and date of birth. We all are interested in knowing what our future holds for us. There is hardly anyone who ignores the newspaper column every morning that forecasts the horoscope for the day.</string>
+        should or happening randomly, and following some particular pattern or cycle. Astrological predictions could be as basic as addressing personality traits, based out on the date of birth and sun sign to the most complex ones like predicting the destiny with aid from details like place, time, and date of birth. We all are interested in knowing what our future holds for us. There is hardly anyone who ignores the newspaper column every morning that forecasts the horoscope for the day.</string>
+    <string name="text_reg_fname">First Name</string>
+    <string name="text_reg_lname">Last Name</string>
+    <string name="text_reg_Email">Email</string>
+    <string name="text_reg_pass">Password</string>
+    <string name="text_reg_mobile">Mobile</string>
+
+
 </resources>
