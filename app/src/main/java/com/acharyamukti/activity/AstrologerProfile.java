@@ -2,12 +2,10 @@ package com.acharyamukti.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.ReviewAdapter;
 import com.acharyamukti.databinding.ActivityAstrologerProfileBinding;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class AstrologerProfile extends AppCompatActivity {
-
     private ActivityAstrologerProfileBinding binding;
     RecyclerView recyclerView;
     ReviewAdapter reviewAdapter;

@@ -6,8 +6,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.NewsAdapter;
@@ -18,13 +23,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class NewsActivity extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerViewNews, recyclerViewHoroscope;
     List<NewsModel> newsModels = new ArrayList<>();
     LinearLayoutManager layout, linearLayoutManager;
     NewsAdapter newsAdapter;
     ProfileAdapter profileAdapter;
     Toolbar toolbar;
+    RelativeLayout share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,8 @@ public class NewsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        share = findViewById(R.id.share);
+        share.setOnClickListener(this);
     }
 
     @Override
@@ -54,5 +62,19 @@ public class NewsActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+        shareAppLink();
+    }
+
+    private void shareAppLink() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.astroacharyamukti.app");
+        sendIntent.setType("text/plain");
+        sendIntent.setPackage("com.whatsapp");
+        startActivity(sendIntent);
     }
 }

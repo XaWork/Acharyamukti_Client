@@ -16,6 +16,7 @@
         app:titleTextColor="@color/black">
 
         <RelativeLayout
+            android:id="@+id/share"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_gravity="end"

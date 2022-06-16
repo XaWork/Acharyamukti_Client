@@ -3,6 +3,7 @@
     package="com.acharyamukti">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -10,6 +11,15 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
+        <activity
+            android:name=".activity.PaymentInformation"
+            android:exported="false"
+            android:label="Payment Information" />
+        <activity
+            android:name=".activity.Wallet"
+            android:exported="false"
+            android:label="Wallet"
+            android:theme="@style/AppThemeActionBar" />
         <activity
             android:name=".activity.Register"
             android:exported="false"
@@ -51,4 +61,5 @@
             android:exported="true"
             android:theme="@style/AppThemeNoActionBar" />
     </application>
+
 </manifest>

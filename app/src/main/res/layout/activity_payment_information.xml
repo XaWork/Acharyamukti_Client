@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.PaymentInformation">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+
+            <LinearLayout
+                android:id="@+id/paymentTotalLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_bg"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Details"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="Total Amount"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
+                            android:gravity="center_vertical"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="GST(18%)"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
+                            android:gravity="center_vertical"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="Total payable amount"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
+                            android:gravity="center_vertical"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/promoCode"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/paymentTotalLayout"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/promo_bg"
+                android:hint="Promo code"
+                android:paddingStart="15dp"
+                android:textColorHint="@color/black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/paymentTotalLayout"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/green"
+                android:gravity="center"
+                android:text="APPLY"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/promoCode"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/layout_bg"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="Payment method"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:buttonTint="@color/yellow"
+                        android:layoutDirection="rtl"
+                        android:text="Dabit card"
+                        android:textAlignment="textStart" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:buttonTint="@color/yellow"
+                        android:layoutDirection="rtl"
+                        android:text="Paytm"
+                        android:textAlignment="textStart" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:buttonTint="@color/yellow"
+                        android:layoutDirection="rtl"
+                        android:text="Credit card"
+                        android:textAlignment="textStart" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:buttonTint="@color/yellow"
+                        android:layoutDirection="rtl"
+                        android:text="Net Banking"
+                        android:textAlignment="textStart" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:buttonTint="@color/yellow"
+                        android:layoutDirection="rtl"
+                        android:text="Cred Pay"
+                        android:textAlignment="textStart" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:buttonTint="@color/yellow"
+                        android:layoutDirection="rtl"
+                        android:text="Wallet"
+                        android:textAlignment="textStart" />
+                </RadioGroup>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:background="@color/yellow"
+        android:text="Proceed to Pay"
+        android:textAllCaps="false" />
+</FrameLayout>
