@@ -9,33 +9,26 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acharyamukti.R;
-import com.acharyamukti.model.NewsModel;
 
-import java.util.List;
-
-public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHolder> {
+public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.ViewHolder> {
     Context context;
-    private List<NewsModel> newsModels;
-    private int layoutResourceId;
 
-
-    public ProfileAdapter(Context context, int layoutResourceId, List<NewsModel> newsModels) {
+    public UserDetailsAdapter(Context context) {
         this.context = context;
-        this.newsModels = newsModels;
-        this.layoutResourceId = layoutResourceId;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ProfileAdapter.ViewHolder(LayoutInflater.from(context).inflate(layoutResourceId, parent, false));
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_user_layout, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProfileAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
     }
+
 
     @Override
     public int getItemCount() {
@@ -47,5 +40,4 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
             super(itemView);
         }
     }
-
 }

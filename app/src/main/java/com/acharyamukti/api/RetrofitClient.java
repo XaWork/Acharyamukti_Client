@@ -1,13 +1,11 @@
 package com.acharyamukti.api;
 
-import androidx.annotation.NonNull;
-
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    public static String BASE_URL = "https://theacharyamukti.com/clientapi/";
+    public static String BASE_URL = "https://theacharyamukti.com/";
     private static RetrofitClient retrofitClient;
     private static Retrofit retrofit;
     private final OkHttpClient.Builder builder = new OkHttpClient.Builder();

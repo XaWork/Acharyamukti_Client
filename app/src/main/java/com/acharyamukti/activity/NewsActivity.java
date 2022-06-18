@@ -7,16 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.NewsAdapter;
-import com.acharyamukti.adapter.ProfileAdapter;
+import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.model.NewsModel;
 
 import java.util.ArrayList;
@@ -28,7 +26,7 @@ public class NewsActivity extends AppCompatActivity implements View.OnClickListe
     List<NewsModel> newsModels = new ArrayList<>();
     LinearLayoutManager layout, linearLayoutManager;
     NewsAdapter newsAdapter;
-    ProfileAdapter profileAdapter;
+    LiveAdapter liveAdapter;
     Toolbar toolbar;
     RelativeLayout share;
 
@@ -44,8 +42,8 @@ public class NewsActivity extends AppCompatActivity implements View.OnClickListe
         recyclerViewHoroscope = findViewById(R.id.recyclerViewHoroscope);
         linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
-        profileAdapter = new ProfileAdapter(getApplicationContext(), R.layout.custom_horoscope_icon, newsModels);
-        recyclerViewHoroscope.setAdapter(profileAdapter);
+        liveAdapter = new LiveAdapter(getApplicationContext(), R.layout.custom_horoscope_icon, newsModels);
+        recyclerViewHoroscope.setAdapter(liveAdapter);
         toolbar = findViewById(R.id.toolbarNews);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

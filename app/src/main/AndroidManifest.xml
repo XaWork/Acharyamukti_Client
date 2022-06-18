@@ -27,7 +27,8 @@
         <activity
             android:name=".activity.KundaliniMarriage"
             android:exported="false"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:theme="@style/AppThemeNoActionBar"
+            android:label="Talk with Astrologer"/>
         <activity
             android:name=".activity.AstrologerProfile"
             android:exported="false"

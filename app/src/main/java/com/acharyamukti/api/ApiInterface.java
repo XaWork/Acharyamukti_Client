@@ -12,7 +12,7 @@ import retrofit2.http.POST;
 public interface ApiInterface {
     @FormUrlEncoded
 
-    @POST("register1.php")
+    @POST("clientapi/register1.php?apicall=signup")
     Call<DataModel> register(
 
             @Field("fname") String firstname,
@@ -22,8 +22,10 @@ public interface ApiInterface {
             @Field("mobile") String mobile
     );
 
-    @GET("send-api.php")
+    @POST("clientapi/register1.php?apicall=login")
     Call<DataModel> login(
-            @Field("mobile") String mobile
+            @Field("email") String email,
+            @Field("password") String password
+
     );
 }

@@ -21,7 +21,7 @@ import com.acharyamukti.activity.ArcheryLive;
 import com.acharyamukti.activity.KundaliniMarriage;
 import com.acharyamukti.activity.NewsActivity;
 import com.acharyamukti.adapter.DataLiveAdapter;
-import com.acharyamukti.adapter.ProfileAdapter;
+import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.databinding.FragmentHomeBinding;
 import com.acharyamukti.model.NewsModel;
 
@@ -32,13 +32,14 @@ import java.util.List;
 public class HomeFragment extends Fragment implements View.OnClickListener {
     LinearLayout relationShip, marriage, career, money, horoscope;
     FragmentHomeBinding binding;
-    ProfileAdapter profileAdapter;
+    LiveAdapter liveAdapter;
     DataLiveAdapter dataLiveAdapter;
     RecyclerView recyclerView, recyclerView1;
     GridLayoutManager gridLayoutManager;
     LinearLayoutManager linearLayoutManager;
-    TextView viewAll;
+    TextView viewAll, viewAll2;
     List<NewsModel> newsModels = new ArrayList<>();
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,8 +52,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView = root.findViewById(R.id.recyclerView);
         gridLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
-        profileAdapter = new ProfileAdapter(getActivity(), R.layout.custom_profile_layout, newsModels);
-        recyclerView.setAdapter(profileAdapter);
+        liveAdapter = new LiveAdapter(getActivity(), R.layout.custom_profile_layout, newsModels);
+        recyclerView.setAdapter(liveAdapter);
         viewAll = root.findViewById(R.id.viewAll);
         viewAll.setOnClickListener(this);
         recyclerView.setHasFixedSize(true);
@@ -71,6 +72,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         money.setOnClickListener(this);
         horoscope = root.findViewById(R.id.horoscope);
         horoscope.setOnClickListener(this);
+        viewAll2 = root.findViewById(R.id.viewAll2);
+        viewAll2.setOnClickListener(this);
         return root;
     }
 
@@ -105,8 +108,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 startActivity(money);
                 break;
             case R.id.viewAll:
-                Intent live = new Intent(getContext(), ArcheryLive.class);
+                Intent live = new Intent(getContext(), KundaliniMarriage.class);
                 startActivity(live);
+                break;
+            case R.id.viewAll2:
+                Intent viewAll = new Intent(getContext(), KundaliniMarriage.class);
+                viewAll.putExtra("title", "");
+                startActivity(viewAll);
                 break;
             case R.id.horoscope:
                 Intent horoscope = new Intent(getContext(), NewsActivity.class);

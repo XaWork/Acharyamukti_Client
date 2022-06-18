@@ -14,6 +14,8 @@ import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.model.DataModel;
 
+import org.json.JSONObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -84,7 +86,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             mobileNumber.setError("Please Enter Password");
             return;
         }
-        if (mobile.length() ==9) {
+        if (mobile.length() == 9) {
             mobileNumber.requestFocus();
             mobileNumber.setError("Please Enter Password");
             return;
@@ -98,14 +100,21 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onResponse(Call<DataModel> call, Response<DataModel> response) {
                 DataModel dataModel = response.body();
-                if (response.isSuccessful()) {
-                    Intent intent = new Intent(Register.this, LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(Register.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+                try {
+
+                    if (response.isSuccessful()) {
+                        Intent intent = new Intent(Register.this, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "successFul", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(Register.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+
             }
 
             @Override
