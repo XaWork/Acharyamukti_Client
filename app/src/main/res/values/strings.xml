@@ -26,8 +26,9 @@
     <string name="action_search">Search</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">About Theacharyamukti</string>
-    <string name="menu_slideshow">Weekly update</string>
+    <string name="menu_gallery">About us</string>
+    <string name="menu_trans">Wallet Transactions</string>
+    <string name="menu_slideshow">Call history</string>
     <string name="menu_Help">Help and Support</string>
     <string name="menu_share">Share with Friends and Family</string>
     <string name="menu_ask">what can I ask</string>

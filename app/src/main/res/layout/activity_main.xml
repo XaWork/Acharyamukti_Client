@@ -116,6 +116,7 @@
                             android:background="@color/black" />
 
                         <EditText
+                            android:id="@+id/getOtpMobile"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginStart="15dp"
@@ -184,24 +185,18 @@
                     <Button
                         android:id="@+id/loginToEmail"
                         android:layout_width="150dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/text_bg"
-                        android:drawableLeft="@drawable/ic_baseline_email_24"
-                        android:drawablePadding="6dp"
                         android:gravity="center"
-                        android:padding="2dp"
-                        android:paddingStart="20dp"
                         android:text="Login via Email"
                         android:textAllCaps="false"
                         android:textColor="@color/grey1"
-                        android:textSize="9sp"
                         tools:ignore="RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
             </FrameLayout>
-
         </LinearLayout>
     </ScrollView>
 

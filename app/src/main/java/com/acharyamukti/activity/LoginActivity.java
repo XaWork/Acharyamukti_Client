@@ -12,14 +12,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.acharyamukti.R;
+import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.fragment.BlankFragment;
+import com.acharyamukti.model.DataModel;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     LinearLayout layout, navigationBar;
+    EditText mobileNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Toolbar toolbar = findViewById(R.id.toolbarLogin);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mobileNumber = findViewById(R.id.getOtpMobile);
     }
 
     @Override
@@ -81,5 +91,44 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
         dialog.show();
         dialog.setCanceledOnTouchOutside(true);
+    }
+
+    private void getOtp() {
+        String mobile = mobileNumber.getText().toString();
+        if (mobile.isEmpty()) {
+            mobileNumber.requestFocus();
+            mobileNumber.setError("Please Enter your Mobile No.");
+            return;
+        }
+        if (mobile.length() == 9) {
+            mobileNumber.requestFocus();
+            mobileNumber.setError("Mobile number Invalid");
+            return;
+        }
+        Call<DataModel> call = RetrofitClient
+                .getInstance()
+                .getApi()
+                .getOTP(mobile);
+        call.enqueue(new Callback<DataModel>() {
+            @Override
+            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+                DataModel dataModel = response.body();
+                if (response.isSuccessful()) {
+                    if (dataModel.getMessage().equals("Check OTP Your Mobile No")) {
+                        dialog();
+                        Toast.makeText(LoginActivity.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Enter valid mobile number", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DataModel> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

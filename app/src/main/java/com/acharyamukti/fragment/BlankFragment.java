@@ -14,10 +14,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.acharyamukti.R;
+import com.acharyamukti.activity.DashBoardActivity;
 import com.acharyamukti.activity.LoginActivity;
 import com.acharyamukti.activity.Register;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.model.DataModel;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -74,18 +76,20 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
             pass.setError("Please Enter Password");
             return;
         }
-        Call<DataModel> call = RetrofitClient
-                .getInstance()
-                .getApi()
-                .login(email, password);
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().login(email, password);
         call.enqueue(new Callback<DataModel>() {
             @Override
             public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+                DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
-                    Intent intent1 = new Intent(getActivity(), LoginActivity.class);
-                    startActivity(intent1);
+                    if (dataModel.getError().equals("Login Successful")) {
+                        Intent intent1 = new Intent(getActivity(), DashBoardActivity.class);
+                        startActivity(intent1);
+                    } else {
+                        Toast.makeText(getActivity(), "The username or password is incorrect", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
 

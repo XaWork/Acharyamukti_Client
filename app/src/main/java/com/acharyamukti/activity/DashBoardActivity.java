@@ -88,7 +88,6 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
                 || super.onSupportNavigateUp();
     }
 
-
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

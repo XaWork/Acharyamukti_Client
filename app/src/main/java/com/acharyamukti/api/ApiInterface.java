@@ -8,6 +8,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiInterface {
     @FormUrlEncoded
@@ -22,10 +23,22 @@ public interface ApiInterface {
             @Field("mobile") String mobile
     );
 
+    @FormUrlEncoded
     @POST("clientapi/register1.php?apicall=login")
     Call<DataModel> login(
             @Field("email") String email,
             @Field("password") String password
+    );
 
+    @FormUrlEncoded
+    @POST("appapi/send-api.php")
+    Call<DataModel> getOTP(
+            @Field("mobile") String mobile
+    );
+
+    @FormUrlEncoded
+    @POST("appapi/verify_otp.php")
+    Call<DataModel> verifyO(
+            @Field("mobile") String mobile
     );
 }
