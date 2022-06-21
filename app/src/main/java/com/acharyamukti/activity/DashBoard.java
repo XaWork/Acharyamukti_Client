@@ -10,11 +10,10 @@ import android.view.Menu;
 import androidx.appcompat.widget.Toolbar;
 
 import com.acharyamukti.R;
-import com.acharyamukti.fragment.FreeFragment;
+import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
 import com.acharyamukti.ui.gallery.GalleryFragment;
 import com.acharyamukti.ui.home.HomeFragment;
-import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.acharyamukti.databinding.ActivityDashBoardBinding;
@@ -30,7 +29,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class DashBoardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityDashBoardBinding binding;
@@ -102,7 +101,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.itemFree:
                 toolbar.setTitle("Free");
-                FreeFragment fragment1 = new FreeFragment();
+                Free fragment1 = new Free();
                 FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction1.replace(R.id.frameLayout_dash, fragment1, "");
                 fragmentTransaction1.commit();
@@ -122,7 +121,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
                 fragmentTransaction3.commit();
                 break;
             case R.id.nav_horoscope:
-                Intent intent = new Intent(this, NewsActivity.class);
+                Intent intent = new Intent(this, Horoscope.class);
                 startActivity(intent);
                 break;
         }

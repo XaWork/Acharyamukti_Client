@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
+            android:name=".activity.Search"
+            android:exported="false"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
             android:name=".activity.PaymentInformation"
             android:exported="false"
             android:label="Payment Information" />
@@ -27,20 +31,20 @@
         <activity
             android:name=".activity.KundaliniMarriage"
             android:exported="false"
-            android:theme="@style/AppThemeNoActionBar"
-            android:label="Talk with Astrologer"/>
+            android:label="Call with Astrologer"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".activity.AstrologerProfile"
             android:exported="false"
             android:label="@string/title_activity_astrologer_profile"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.NewsActivity"
+            android:name=".activity.Horoscope"
             android:exported="false"
             android:label="Horoscope"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.DashBoardActivity"
+            android:name=".activity.DashBoard"
             android:exported="true"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
@@ -48,7 +52,7 @@
             android:exported="false"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.LunchActivity"
+            android:name=".activity.Launcher"
             android:exported="true"
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
@@ -58,7 +62,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.Login"
             android:exported="true"
             android:theme="@style/AppThemeNoActionBar" />
     </application>

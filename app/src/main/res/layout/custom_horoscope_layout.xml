@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="Love life"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView

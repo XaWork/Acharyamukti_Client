@@ -3,7 +3,6 @@ package com.acharyamukti.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,7 +12,7 @@ import com.bumptech.glide.Glide;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LunchActivity extends AppCompatActivity {
+public class Launcher extends AppCompatActivity {
     ImageView imageView;
 
     @Override
@@ -24,7 +23,7 @@ public class LunchActivity extends AppCompatActivity {
         Glide.with(this).load(R.drawable.luncher_screen_new).into(imageView);
         new Timer().schedule(new TimerTask() {
             public void run() {
-                startActivity(new Intent(LunchActivity.this, LoginActivity.class));
+                startActivity(new Intent(Launcher.this, Login.class));
             }
         }, 3000);
     }

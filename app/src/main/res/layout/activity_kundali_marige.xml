@@ -9,15 +9,13 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:theme="@style/Theme.Acharyamukti.AppBarOverlay">
+        android:layout_height="120dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarKun"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/yellow"
-            app:popupTheme="@style/Theme.Acharyamukti.PopupOverlay"
             app:titleTextColor="@color/black" />
 
         <LinearLayout
@@ -29,8 +27,8 @@
 
             <CheckBox
                 android:id="@+id/checkbox0"
-                android:layout_width="60dp"
-                android:layout_height="20dp"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/radio_flat_selector"
                 android:button="@android:color/transparent"
@@ -38,13 +36,13 @@
                 android:padding="3dp"
                 android:text="On Call"
                 android:textColor="@drawable/checkbox_selector"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/checkbox1"
-                android:layout_width="70dp"
-                android:layout_height="20dp"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/radio_flat_selector"
                 android:button="@android:color/transparent"
@@ -52,14 +50,14 @@
                 android:padding="3dp"
                 android:text="Available"
                 android:textColor="@drawable/checkbox_selector"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <CheckBox
 
                 android:id="@+id/checkbox2"
-                android:layout_width="50dp"
-                android:layout_height="20dp"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/radio_flat_selector"
                 android:button="@android:color/transparent"
@@ -67,20 +65,20 @@
                 android:padding="3dp"
                 android:text="Filter"
                 android:textColor="@drawable/checkbox_selector"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/checkbox3"
-                android:layout_width="60dp"
-                android:layout_height="20dp"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
                 android:background="@drawable/radio_flat_selector"
                 android:button="@android:color/transparent"
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="Search"
                 android:textColor="@drawable/checkbox_selector"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>

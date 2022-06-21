@@ -14,8 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.acharyamukti.R;
-import com.acharyamukti.activity.DashBoardActivity;
-import com.acharyamukti.activity.LoginActivity;
+import com.acharyamukti.activity.DashBoard;
 import com.acharyamukti.activity.Register;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.model.DataModel;
@@ -25,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class BlankFragment extends Fragment implements View.OnClickListener {
+public class Login extends Fragment implements View.OnClickListener {
     Button login;
     EditText emailId, pass;
 
@@ -83,7 +82,7 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
                     if (dataModel.getError().equals("Login Successful")) {
-                        Intent intent1 = new Intent(getActivity(), DashBoardActivity.class);
+                        Intent intent1 = new Intent(getActivity(), DashBoard.class);
                         startActivity(intent1);
                     } else {
                         Toast.makeText(getActivity(), "The username or password is incorrect", Toast.LENGTH_SHORT).show();

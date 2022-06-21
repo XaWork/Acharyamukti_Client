@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class NewsActivity extends AppCompatActivity implements View.OnClickListener {
+public class Horoscope extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerViewNews, recyclerViewHoroscope;
     List<NewsModel> newsModels = new ArrayList<>();
     LinearLayoutManager layout, linearLayoutManager;
@@ -54,10 +54,9 @@ public class NewsActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

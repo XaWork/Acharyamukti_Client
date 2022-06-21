@@ -23,7 +23,7 @@ public class ArcheryLive extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbarLive);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Acharyamukti Live");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.recyclerViewLive);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -33,7 +33,7 @@ public class ArcheryLive extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) ;
+        item.getItemId();
         this.finish();
         return super.onOptionsItemSelected(item);
     }

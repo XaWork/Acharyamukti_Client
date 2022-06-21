@@ -17,7 +17,7 @@ import com.acharyamukti.model.NewsModel;
 
 import java.util.List;
 
-public class FreeFragment extends Fragment {
+public class Free extends Fragment {
 private List<NewsModel>newsModels;
     LinearLayoutManager linearLayoutManager;
     RecyclerView recyclerView;

@@ -13,9 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
+import com.acharyamukti.helper.DBHelper;
 import com.acharyamukti.model.DataModel;
-
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,6 +25,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     Button btnRegister;
     EditText first_name, last_name, mobileNumber, password, emailId;
     ProgressBar progressBar;
+    DBHelper dbHelper;
+    String fName, lName, email, mobile, pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,21 +40,35 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(this);
         progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
+        dbHelper = new DBHelper(this);
+
 
     }
 
     @Override
     public void onClick(View view) {
-        registerUser();
+        fName = first_name.getText().toString();
+        lName = last_name.getText().toString();
+        email = emailId.getText().toString();
+        pass = password.getText().toString();
+        mobile = mobileNumber.getText().toString();
+        if (fName.isEmpty() || lName.isEmpty() || mobile.isEmpty() || email.isEmpty() || pass.isEmpty()) {
+            Toast.makeText(this, "Table not create", Toast.LENGTH_SHORT).show();
+        } else {
+            dbHelper.insertData(fName, lName, mobile, email, pass);
+            Toast.makeText(this, "Table are create", Toast.LENGTH_SHORT).show();
+            registerUser();
+
+        }
     }
 
     private void registerUser() {
-        String fName = first_name.getText().toString();
-        String lName = last_name.getText().toString();
-        String email = emailId.getText().toString();
-        String pass = password.getText().toString();
-        String mobile = mobileNumber.getText().toString();
-
+        fName = first_name.getText().toString();
+        lName = last_name.getText().toString();
+        email = emailId.getText().toString();
+        pass = password.getText().toString();
+        mobile = mobileNumber.getText().toString();
         if (fName.isEmpty()) {
             first_name.requestFocus();
             first_name.setError("Please Enter First Name");
@@ -106,7 +121,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 DataModel dataModel = response.body();
                 try {
                     if (response.isSuccessful()) {
-                        Intent intent = new Intent(Register.this, LoginActivity.class);
+                        Intent intent = new Intent(Register.this, Login.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), dataModel.getMessage(), Toast.LENGTH_SHORT).show();

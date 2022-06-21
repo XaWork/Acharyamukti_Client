@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
-import com.acharyamukti.fragment.BlankFragment;
 import com.acharyamukti.model.DataModel;
 
 import retrofit2.Call;
@@ -26,7 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class Login extends AppCompatActivity implements View.OnClickListener {
     LinearLayout layout, navigationBar;
     EditText mobileNumber;
 
@@ -71,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.loginToEmail:
                 layout.setVisibility(View.GONE);
                 navigationBar.setVisibility(View.INVISIBLE);
-                getSupportFragmentManager().beginTransaction().add(R.id.fragment, new BlankFragment()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.fragment, new com.acharyamukti.fragment.Login()).commit();
                 break;
         }
 
@@ -85,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
+                Intent intent = new Intent(Login.this, DashBoard.class);
                 startActivity(intent);
             }
         });
@@ -116,9 +115,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (response.isSuccessful()) {
                     if (dataModel.getMessage().equals("Check OTP Your Mobile No")) {
                         dialog();
-                        Toast.makeText(LoginActivity.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Enter valid mobile number", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Enter valid mobile number", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
@@ -127,7 +126,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -17,9 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acharyamukti.R;
-import com.acharyamukti.activity.ArcheryLive;
 import com.acharyamukti.activity.KundaliniMarriage;
-import com.acharyamukti.activity.NewsActivity;
+import com.acharyamukti.activity.Horoscope;
 import com.acharyamukti.adapter.DataLiveAdapter;
 import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.databinding.FragmentHomeBinding;
@@ -117,7 +116,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 startActivity(viewAll);
                 break;
             case R.id.horoscope:
-                Intent horoscope = new Intent(getContext(), NewsActivity.class);
+                Intent horoscope = new Intent(getContext(), Horoscope.class);
                 horoscope.putExtra("title", "horoscope");
                 startActivity(horoscope);
                 break;
