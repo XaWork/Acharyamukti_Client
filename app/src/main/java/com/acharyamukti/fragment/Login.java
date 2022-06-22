@@ -1,7 +1,10 @@
 package com.acharyamukti.fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +20,7 @@ import com.acharyamukti.R;
 import com.acharyamukti.activity.DashBoard;
 import com.acharyamukti.activity.Register;
 import com.acharyamukti.api.RetrofitClient;
+import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.DataModel;
 
 import retrofit2.Call;
@@ -27,6 +31,7 @@ import retrofit2.Response;
 public class Login extends Fragment implements View.OnClickListener {
     Button login;
     EditText emailId, pass;
+    SharedPreferences sp;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +49,25 @@ public class Login extends Fragment implements View.OnClickListener {
         login.setOnClickListener(this);
         Button signup = view.findViewById(R.id.signup);
         signup.setOnClickListener(this);
+        sp = view.getContext().getSharedPreferences("login", MODE_PRIVATE);
+        if (sp.contains("username") && sp.contains("password")) {
+            startActivity(new Intent(getContext(), DashBoard.class));
+        }
         return view;
+    }
+
+    void loginCheck() {
+        if (emailId.getText().toString().equals("programmer") && pass.getText().toString().equals("programmer")) {
+            SharedPreferences.Editor e = sp.edit();
+            e.putString("username", "programmer");
+            e.putString("password", "programmer");
+            e.commit();
+
+            Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getContext(), DashBoard.class));
+        } else {
+            Toast.makeText(getContext(), "Incorrect Login Details", Toast.LENGTH_LONG).show();
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -57,6 +80,7 @@ public class Login extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btnLogin:
                 userLogin();
+                loginCheck();
                 break;
         }
 
@@ -81,7 +105,7 @@ public class Login extends Fragment implements View.OnClickListener {
             public void onResponse(Call<DataModel> call, Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
-                    if (dataModel.getError().equals("Login Successful")) {
+                    if (dataModel.getMessage().equals("Login successfull")) {
                         Intent intent1 = new Intent(getActivity(), DashBoard.class);
                         startActivity(intent1);
                     } else {
@@ -90,6 +114,8 @@ public class Login extends Fragment implements View.OnClickListener {
                 } else {
                     Toast.makeText(getActivity(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
                 }
+                String userId = dataModel.getUserid();
+                Backend.getInstance(getActivity()).saveUserId(userId);
             }
 
             @Override

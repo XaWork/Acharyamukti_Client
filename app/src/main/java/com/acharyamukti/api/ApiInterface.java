@@ -38,7 +38,9 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("appapi/verify_otp.php")
-    Call<DataModel> verifyO(
+    Call<DataModel> verifyOTP(
+            @Field("otp") String otp,
             @Field("mobile") String mobile
+
     );
 }

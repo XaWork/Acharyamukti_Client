@@ -20,6 +20,11 @@
             android:exported="false"
             android:label="Payment Information" />
         <activity
+            android:name=".activity.ProfileUpdate"
+            android:exported="false"
+            android:label="Edit"
+            android:theme="@style/AppThemeActionBar" />
+        <activity
             android:name=".activity.Wallet"
             android:exported="false"
             android:label="Wallet"
@@ -27,6 +32,7 @@
         <activity
             android:name=".activity.Register"
             android:exported="false"
+            android:label="Register"
             android:theme="@style/AppThemeActionBar" />
         <activity
             android:name=".activity.KundaliniMarriage"
@@ -55,16 +61,18 @@
             android:name=".activity.Launcher"
             android:exported="true"
             android:theme="@style/AppThemeNoActionBar">
+
+        </activity>
+        <activity
+            android:name=".activity.Login"
+            android:exported="true"
+            android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.Login"
-            android:exported="true"
-            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>
