@@ -47,14 +47,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         mobileNumber = findViewById(R.id.getOtpMobile);
-        if(CustomSharedPreferences.getUserName(Login.this).length() == 0)
-        {
-            // call Login Activity
-        }
-        else
-        {
-            // Stay at the current activity.
-        }
     }
 
     @Override
@@ -77,6 +69,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnOtp:
+                //  dialog();
                 getOtp();
                 break;
             case R.id.loginToEmail:
@@ -97,6 +90,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+                //   startActivity(intent);
                 verifyOTP();
             }
         });
@@ -166,10 +161,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     if (data.getError().equals("false")) {
                         Intent intent = new Intent(getApplicationContext(), DashBoard.class);
                         startActivity(intent);
+                        String userid = data.getUserid();
+                        Backend.getInstance(getApplicationContext()).saveUserId(userid);
                     } else {
                         Toast.makeText(Login.this, "OTP is not correct", Toast.LENGTH_SHORT).show();
                     }
-
                 } else {
                     Toast.makeText(getApplicationContext(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
                 }

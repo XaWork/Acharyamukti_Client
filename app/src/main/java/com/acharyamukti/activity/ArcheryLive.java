@@ -5,16 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.DataLiveAdapter;
 
 public class ArcheryLive extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerView;
+    LinearLayoutManager linearLayoutManager;
+    DataLiveAdapter dataLiveAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +25,9 @@ public class ArcheryLive extends AppCompatActivity {
         toolbar.setTitle("Acharyamukti Live");
         getActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.recyclerViewLive);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        DataLiveAdapter dataLiveAdapter = new DataLiveAdapter(getApplicationContext());
+        dataLiveAdapter = new DataLiveAdapter(getApplicationContext());
         recyclerView.setAdapter(dataLiveAdapter);
     }
 

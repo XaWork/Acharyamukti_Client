@@ -6,6 +6,7 @@
     android:padding="10dp">
 
     <ImageView
+        android:layout_centerHorizontal="true"
         android:id="@+id/profile_Image"
         android:layout_width="60dp"
         android:layout_height="60dp"

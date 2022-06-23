@@ -35,11 +35,8 @@ public class Profile extends Fragment implements View.OnClickListener {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sp = getContext().getSharedPreferences("login", MODE_PRIVATE);
-                SharedPreferences.Editor e = sp.edit();
-                e.clear();
-                e.commit();
                 Intent intent = new Intent(getActivity(), Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });

@@ -49,25 +49,25 @@ public class Login extends Fragment implements View.OnClickListener {
         login.setOnClickListener(this);
         Button signup = view.findViewById(R.id.signup);
         signup.setOnClickListener(this);
-        sp = view.getContext().getSharedPreferences("login", MODE_PRIVATE);
-        if (sp.contains("username") && sp.contains("password")) {
-            startActivity(new Intent(getContext(), DashBoard.class));
-        }
+//        sp = view.getContext().getSharedPreferences("login", MODE_PRIVATE);
+//        if (sp.contains("username") && sp.contains("password")) {
+//            startActivity(new Intent(getContext(), DashBoard.class));
+//        }
         return view;
-    }
+//    }
+//
+//    void loginCheck() {
+//        if (emailId.getText().toString().equals("programmer") && pass.getText().toString().equals("programmer")) {
+//            SharedPreferences.Editor e = sp.edit();
+//            e.putString("username", "programmer");
+//            e.putString("password", "programmer");
+//            e.commit();
+//
+//            Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_LONG).show();
+//            startActivity(new Intent(getContext(), DashBoard.class));
+//        } else {
+//            Toast.makeText(getContext(), "Incorrect Login Details", Toast.LENGTH_LONG).show();
 
-    void loginCheck() {
-        if (emailId.getText().toString().equals("programmer") && pass.getText().toString().equals("programmer")) {
-            SharedPreferences.Editor e = sp.edit();
-            e.putString("username", "programmer");
-            e.putString("password", "programmer");
-            e.commit();
-
-            Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(getContext(), DashBoard.class));
-        } else {
-            Toast.makeText(getContext(), "Incorrect Login Details", Toast.LENGTH_LONG).show();
-        }
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -80,7 +80,6 @@ public class Login extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btnLogin:
                 userLogin();
-                loginCheck();
                 break;
         }
 

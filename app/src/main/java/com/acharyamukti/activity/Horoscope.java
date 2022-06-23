@@ -5,20 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
-
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.NewsAdapter;
 import com.acharyamukti.adapter.LiveAdapter;
+import com.acharyamukti.api.RetrofitClient;
+import com.acharyamukti.model.ImageModel;
 import com.acharyamukti.model.NewsModel;
-
 import java.util.ArrayList;
 import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Horoscope extends AppCompatActivity implements View.OnClickListener {
@@ -29,7 +31,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
     LiveAdapter liveAdapter;
     Toolbar toolbar;
     RelativeLayout share;
-
+    List<ImageModel> imageModels ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,17 +41,13 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         recyclerViewNews.setLayoutManager(layout);
         newsAdapter = new NewsAdapter(getApplicationContext(), R.layout.custom_horoscope_layout, newsModels);
         recyclerViewNews.setAdapter(newsAdapter);
-        recyclerViewHoroscope = findViewById(R.id.recyclerViewHoroscope);
-        linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-        recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
-        liveAdapter = new LiveAdapter(getApplicationContext(), R.layout.custom_horoscope_icon, newsModels);
-        recyclerViewHoroscope.setAdapter(liveAdapter);
         toolbar = findViewById(R.id.toolbarNews);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         share = findViewById(R.id.share);
         share.setOnClickListener(this);
+        getHoroscope();
     }
 
     @Override
@@ -59,6 +57,14 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setDataInRecyclerView() {
+        recyclerViewHoroscope = findViewById(R.id.recyclerViewHoroscope);
+        linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+        recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
+        liveAdapter = new LiveAdapter(getApplicationContext(), R.layout.custom_horoscope_icon, imageModels);
+        recyclerViewHoroscope.setAdapter(liveAdapter);
     }
 
     @Override
@@ -73,5 +79,22 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         sendIntent.setType("text/plain");
         sendIntent.setPackage("com.whatsapp");
         startActivity(sendIntent);
+    }
+
+    private void getHoroscope() {
+        Call<ImageModel> imageModelCall = RetrofitClient.getInstance().getApi().getHoroscope();
+        imageModelCall.enqueue(new Callback<ImageModel>() {
+            @Override
+            public void onResponse(Call<ImageModel> call, Response<ImageModel> response) {
+                ImageModel imageModel = response.body();
+                if (response.isSuccessful()) {
+                    setDataInRecyclerView();
+                }
+            }
+            @Override
+            public void onFailure(Call<ImageModel> call, Throwable t) {
+
+            }
+        });
     }
 }

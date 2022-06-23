@@ -1,17 +1,26 @@
 package com.acharyamukti.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.preference.PreferenceManager;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.acharyamukti.R;
 import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
+import com.acharyamukti.helper.Backend;
 import com.acharyamukti.ui.gallery.GalleryFragment;
 import com.acharyamukti.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,6 +37,9 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -35,11 +47,11 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     private ActivityDashBoardBinding binding;
     private int currentPageBest = 0;
     private Toolbar toolbar;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityDashBoardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarDashBoard.toolbar);
@@ -59,12 +71,47 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Home");
+        getDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                // close your dialog
+                dialog.dismiss();
+            }
+
+        }, 10000);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.dash_board, menu);
         return true;
+    }
+
+    public void getDialog() {
+        dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottom_sheet_dialog_layout);
+        ImageView cancel = dialog.findViewById(R.id.cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        Button claim = dialog.findViewById(R.id.claim);
+        claim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent claim = new Intent(getApplicationContext(), Wallet.class);
+                startActivity(claim);
+            }
+        });
+        dialog.show();
+        //   dialog.currentthread().sleep(1000);
+        dialog.setCanceledOnTouchOutside(true);
     }
 
     @SuppressLint("NonConstantResourceId")

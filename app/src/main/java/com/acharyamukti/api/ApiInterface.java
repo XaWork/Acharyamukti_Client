@@ -2,6 +2,7 @@ package com.acharyamukti.api;
 
 
 import com.acharyamukti.model.DataModel;
+import com.acharyamukti.model.ImageModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -43,4 +44,7 @@ public interface ApiInterface {
             @Field("mobile") String mobile
 
     );
+
+    @GET("clientapi/daily-horoscope.php")
+    Call<ImageModel> getHoroscope();
 }

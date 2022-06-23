@@ -22,6 +22,7 @@ import com.acharyamukti.activity.Horoscope;
 import com.acharyamukti.adapter.DataLiveAdapter;
 import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.databinding.FragmentHomeBinding;
+import com.acharyamukti.model.ImageModel;
 import com.acharyamukti.model.NewsModel;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     GridLayoutManager gridLayoutManager;
     LinearLayoutManager linearLayoutManager;
     TextView viewAll, viewAll2;
-    List<NewsModel> newsModels = new ArrayList<>();
+    List<ImageModel>imageModels=new ArrayList<>();
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -51,7 +52,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView = root.findViewById(R.id.recyclerView);
         gridLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
-        liveAdapter = new LiveAdapter(getActivity(), R.layout.custom_profile_layout, newsModels);
+        liveAdapter = new LiveAdapter(getActivity(), R.layout.custom_profile_layout, imageModels);
         recyclerView.setAdapter(liveAdapter);
         viewAll = root.findViewById(R.id.viewAll);
         viewAll.setOnClickListener(this);
