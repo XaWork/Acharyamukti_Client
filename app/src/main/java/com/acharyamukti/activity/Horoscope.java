@@ -19,10 +19,14 @@ import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.model.ImageModel;
 import com.acharyamukti.model.NewsModel;
-
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,7 +40,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
     LiveAdapter liveAdapter;
     Toolbar toolbar;
     RelativeLayout share;
-    List<ImageModel> imageModels;
+    List<ImageModel> imageModels = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,8 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         recyclerViewHoroscope = findViewById(R.id.recyclerViewHoroscope);
         share = findViewById(R.id.share);
         share.setOnClickListener(this);
-        getHoroscope();
+        getData();
+     //   getHoroscope();
     }
 
     @Override
@@ -88,13 +93,27 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
             public void onResponse(Call<List<ImageModel>> call, Response<List<ImageModel>> response) {
                 if (response.isSuccessful()) {
                     imageModels = response.body();
-                    for (int i = 0; i < imageModels.size(); i++) {
-                        linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false);
-                        recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
-                        liveAdapter = new LiveAdapter(getApplicationContext(), R.layout.custom_horoscope_icon, imageModels);
-                        recyclerViewHoroscope.setAdapter(liveAdapter);
+                    try {
+                        JSONObject jsonObject = new JSONObject();
+                        JSONArray jsonArray = jsonObject.getJSONArray("body");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jo = jsonArray.getJSONObject(i);
+                            ImageModel imageModel = new ImageModel(
+                                    jo.getString("horoscop_id"),
+                                    jo.getString("horoscop_name"),
+                                    jo.getString("horoscop_icon"));
+                            imageModels.add(imageModel);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                }else {
+                    //   for (int i = 0; i < imageModels.size(); i++) {
+                    linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false);
+                    recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
+                    liveAdapter = new LiveAdapter(getApplicationContext(), R.layout.custom_horoscope_icon, imageModels);
+                    recyclerViewHoroscope.setAdapter(liveAdapter);
+                    //     }
+                } else {
                     Toast.makeText(Horoscope.this, "error", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -103,7 +122,34 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
             public void onFailure(Call<List<ImageModel>> call, Throwable t) {
                 Toast.makeText(Horoscope.this, "Fail to get data", Toast.LENGTH_SHORT).show();
             }
-
         });
+    }
+
+    private void getData() {
+        String url = "https://theacharyamukti.com/clientapi/daily-horoscope.php";
+        linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false);
+        recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
+        RequestQueue request = Volley.newRequestQueue(this);
+        StringRequest request1 = new StringRequest(Request.Method.GET, url, response -> {
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                JSONArray jsonArray = jsonObject.getJSONArray("body");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jo = jsonArray.getJSONObject(i);
+                    ImageModel imageModel = new ImageModel(
+                            jo.getString("horoscop_id"),
+                            jo.getString("horoscop_name"),
+                            jo.getString("horoscop_icon"));
+                    imageModels.add(imageModel);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            liveAdapter = new LiveAdapter(getApplicationContext(), R.layout.custom_horoscope_icon, imageModels);
+            liveAdapter.notifyDataSetChanged();
+            recyclerViewHoroscope.setAdapter(liveAdapter);
+        }, error -> {
+        });
+        request.add(request1);
     }
 }

@@ -16,7 +16,6 @@ public class RetrofitClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(builder.build())
                 .build();
-
     }
 
     public static synchronized RetrofitClient getInstance() {
@@ -28,6 +27,5 @@ public class RetrofitClient {
 
     public ApiInterface getApi() {
         return retrofit.create(ApiInterface.class);
-
     }
 }

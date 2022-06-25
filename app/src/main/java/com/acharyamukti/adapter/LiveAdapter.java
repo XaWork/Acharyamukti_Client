@@ -9,19 +9,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.acharyamukti.R;
 import com.acharyamukti.model.ImageModel;
-import com.acharyamukti.model.NewsModel;
 import com.bumptech.glide.Glide;
-
 import java.util.List;
 
 
 public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.ViewHolder> {
     Context context;
-    private List<ImageModel> imageModels;
-    private int layoutResourceId;
+    private final List<ImageModel>imageModels;
+    private final int layoutResourceId;
 
 
     public LiveAdapter(Context context, int layoutResourceId, List<ImageModel> imageModels) {
