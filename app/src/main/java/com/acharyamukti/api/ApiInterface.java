@@ -3,7 +3,9 @@ package com.acharyamukti.api;
 
 import com.acharyamukti.model.DataModel;
 import com.acharyamukti.model.ImageModel;
+
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -46,4 +48,10 @@ public interface ApiInterface {
 
     @GET("clientapi/daily-horoscope.php")
     Call<List<ImageModel>> getHoroscope();
+
+    @FormUrlEncoded
+    @POST("clientapi/daily-horoscope-more.php?")
+    Call<DataModel> getBannerData(
+            @Field("horoscop_name") String title
+    );
 }

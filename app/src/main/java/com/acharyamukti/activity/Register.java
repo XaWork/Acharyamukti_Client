@@ -8,14 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.DBHelper;
 import com.acharyamukti.model.DataModel;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

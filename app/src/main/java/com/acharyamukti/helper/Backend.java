@@ -29,4 +29,13 @@ public class Backend {
         editor.apply();
     }
 
+    public String getHoroscope() {
+        return preferences.getString("horoscop_name", "");
+    }
+
+    public void saveHoroscope(String horoscop_name) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("horoscop_name", horoscop_name);
+        editor.apply();
+    }
 }
