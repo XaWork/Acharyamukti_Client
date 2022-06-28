@@ -14,9 +14,7 @@ import android.view.Menu;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import androidx.appcompat.widget.Toolbar;
-
 import com.acharyamukti.R;
 import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
@@ -26,7 +24,6 @@ import com.acharyamukti.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.acharyamukti.databinding.ActivityDashBoardBinding;
-
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
@@ -36,7 +33,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Timer;
 import java.util.TimerTask;
 

@@ -37,8 +37,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="@string/text_years"
-                android:textSize="12sp" />
+                android:text="@string/text_years" />
 
             <TextView
                 android:id="@+id/txtConsultationCharge"
@@ -60,8 +59,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="@string/text_charge"
-                android:textSize="12sp" />
+                android:text="@string/text_charge" />
 
             <TextView
                 android:id="@+id/txtReview"
@@ -105,8 +103,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="@string/text_place"
-                android:textSize="12sp" />
+                android:text="@string/text_place" />
 
             <TextView
                 android:id="@+id/txtLanguage"
@@ -128,8 +125,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="@string/text_hindi_english"
-                android:textSize="12sp" />
+                android:text="@string/text_hindi_english" />
 
             <TextView
                 android:id="@+id/txtExper"
@@ -151,8 +147,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="@string/text_vedic"
-                android:textSize="12sp" />
+                android:text="@string/text_vedic" />
 
             <TextView
                 android:id="@+id/txtProfileSummary"
@@ -174,14 +169,13 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="@string/text_profile_summary_long"
-                android:textSize="12sp" />
+                android:text="@string/text_profile_summary_long" />
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_gravity="bottom"
         android:layout_margin="10dp"
         android:layout_marginStart="10dp"
@@ -192,12 +186,13 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:background="#F4EDED"
+            android:background="@color/yellow"
             android:drawableRight="@drawable/ic_baseline_message_24"
             android:gravity="center"
             android:paddingEnd="40dp"
             android:text="Offline"
             android:textAllCaps="false"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
@@ -205,12 +200,13 @@
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="#F4EDED"
+            android:background="@color/yellow"
             android:drawableRight="@drawable/ic_baseline_call_24"
             android:gravity="center"
             android:paddingEnd="40dp"
             android:text="Offline"
             android:textAllCaps="false"
+            android:textColor="@color/black"
             android:textStyle="bold" />
     </LinearLayout>
 </FrameLayout>

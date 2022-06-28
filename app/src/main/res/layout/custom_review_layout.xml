@@ -16,11 +16,11 @@
             android:paddingEnd="10dp"
             android:layout_width="60dp"
             android:layout_height="25dp"
-            android:background="@drawable/viewall_bg"
+            android:background="@drawable/green_conner_bg"
             android:drawableRight="@drawable/ic_baseline_star_rate_24"
             android:gravity="center"
             android:text="5"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
         <TextView
@@ -41,6 +41,7 @@
     </LinearLayout>
 
     <TextView
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ratingLayout"
