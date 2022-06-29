@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
+            android:name=".activity.BlogDetails"
+            android:exported="true"
+            android:label="Blog Details"
+            android:theme="@style/NoActionBar" />
+        <activity
             android:name=".activity.Search"
             android:exported="false"
             android:theme="@style/AppThemeNoActionBar" />
@@ -70,8 +75,7 @@
         <activity
             android:name=".activity.Login"
             android:exported="true"
-            android:theme="@style/AppThemeNoActionBar">
-        </activity>
+            android:theme="@style/AppThemeNoActionBar"/>
     </application>
 
 </manifest>

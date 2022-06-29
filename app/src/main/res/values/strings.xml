@@ -179,6 +179,7 @@ People like talking to us and they call us again and again for best advice. They
     <string name="text_reg_pass">Password</string>
     <string name="text_reg_mobile">Mobile</string>
     <string name="text_reg_address">Address</string>
+    <string name="title_activity_blog_details">BlogDetails</string>
 
 
 </resources>

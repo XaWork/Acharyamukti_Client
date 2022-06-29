@@ -19,11 +19,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.acharyamukti.R;
 import com.acharyamukti.activity.KundaliniMarriage;
 import com.acharyamukti.activity.Horoscope;
-import com.acharyamukti.adapter.DataLiveAdapter;
-import com.acharyamukti.adapter.LiveAdapter;
+import com.acharyamukti.adapter.AstroProfile;
+import com.acharyamukti.adapter.HoroscopeAdapter;
+import com.acharyamukti.adapter.Live;
 import com.acharyamukti.databinding.FragmentHomeBinding;
 import com.acharyamukti.model.ImageModel;
-import com.acharyamukti.model.NewsModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +32,8 @@ import java.util.List;
 public class HomeFragment extends Fragment implements View.OnClickListener {
     LinearLayout relationShip, marriage, career, money, horoscope;
     FragmentHomeBinding binding;
-    LiveAdapter liveAdapter;
-    DataLiveAdapter dataLiveAdapter;
+    Live liveAdapter;
+    AstroProfile astroProfile;
     RecyclerView recyclerView, recyclerView1;
     GridLayoutManager gridLayoutManager;
     LinearLayoutManager linearLayoutManager;
@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView = root.findViewById(R.id.recyclerView);
         gridLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
-        liveAdapter = new LiveAdapter(getActivity(), R.layout.custom_profile_layout, imageModels);
+        liveAdapter = new Live(getActivity(), imageModels);
         recyclerView.setAdapter(liveAdapter);
         viewAll = root.findViewById(R.id.viewAll);
         viewAll.setOnClickListener(this);
@@ -60,8 +60,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView1 = root.findViewById(R.id.recyclerViewLive);
         linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         recyclerView1.setLayoutManager(linearLayoutManager);
-        dataLiveAdapter = new DataLiveAdapter(getActivity());
-        recyclerView1.setAdapter(dataLiveAdapter);
+        astroProfile = new AstroProfile(getActivity());
+        recyclerView1.setAdapter(astroProfile);
         relationShip = root.findViewById(R.id.loveRelationShip);
         relationShip.setOnClickListener(this);
         marriage = root.findViewById(R.id.marriageKundly);

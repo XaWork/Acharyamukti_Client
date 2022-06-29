@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.MenuItem;
 import com.acharyamukti.R;
-import com.acharyamukti.adapter.DataLiveAdapter;
+import com.acharyamukti.adapter.AstroProfile;
 
 public class ArcheryLive extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
-    DataLiveAdapter dataLiveAdapter;
+    AstroProfile astroProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +27,8 @@ public class ArcheryLive extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewLive);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        dataLiveAdapter = new DataLiveAdapter(getApplicationContext());
-        recyclerView.setAdapter(dataLiveAdapter);
+        astroProfile = new AstroProfile(getApplicationContext());
+        recyclerView.setAdapter(astroProfile);
     }
 
     @Override

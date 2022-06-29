@@ -1,5 +1,6 @@
 package com.acharyamukti.fragment;
 
+import android.content.Intent;
 import android.hardware.lights.LightState;
 import android.os.Bundle;
 
@@ -10,15 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.acharyamukti.R;
+import com.acharyamukti.activity.BlogDetails;
 import com.acharyamukti.adapter.NewsAdapter;
 import com.acharyamukti.model.NewsModel;
 
 import java.util.List;
 
-public class Free extends Fragment {
-private List<NewsModel>newsModels;
+public class Free extends Fragment implements View.OnClickListener {
+    private List<NewsModel> newsModels;
     LinearLayoutManager linearLayoutManager;
     RecyclerView recyclerView;
     NewsAdapter newsAdapter;
@@ -38,6 +41,26 @@ private List<NewsModel>newsModels;
         newsAdapter = new NewsAdapter(getContext(), R.layout.custom_news_layout, newsModels);
         recyclerView.setAdapter(newsAdapter);
         recyclerView.setNestedScrollingEnabled(false);
+        Button viewAllData = view.findViewById(R.id.viewAllBlogData);
+        viewAllData.setOnClickListener(this);
+//        newsAdapter.setOnPageItemClickListener(new NewsAdapter.OnPageItemClickListener() {
+//            @Override
+//            public void onPageItemClick(int position, NewsModel newsModel) {
+//                switch (position) {
+//                    case 0:
+//                        Intent intent = new Intent(getActivity(), BlogDetails.class);
+//                        startActivity(intent);
+//                        break;
+//                }
+//
+//            }
+//        });
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(getActivity(), BlogDetails.class);
+        startActivity(intent);
     }
 }

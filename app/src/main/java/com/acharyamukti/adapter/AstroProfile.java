@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.acharyamukti.R;
 import com.acharyamukti.activity.AstrologerProfile;
 
-public class DataLiveAdapter extends RecyclerView.Adapter<DataLiveAdapter.ViewHolder> {
+public class AstroProfile extends RecyclerView.Adapter<AstroProfile.ViewHolder> {
     Context context;
 
-    public DataLiveAdapter(Context context) {
+    public AstroProfile(Context context) {
         this.context = context;
     }
 

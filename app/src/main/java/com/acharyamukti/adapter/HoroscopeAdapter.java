@@ -9,34 +9,34 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.acharyamukti.R;
-import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.ImageModel;
 import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 
-public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.ViewHolder> {
+public class HoroscopeAdapter extends RecyclerView.Adapter<HoroscopeAdapter.ViewHolder> {
     Context context;
-    private final List<ImageModel>imageModels;
-    private final int layoutResourceId;
+    private final List<ImageModel> imageModels;
 
 
-    public LiveAdapter(Context context, int layoutResourceId, List<ImageModel> imageModels) {
+    public HoroscopeAdapter(Context context, List<ImageModel> imageModels) {
         this.context = context;
         this.imageModels = imageModels;
-        this.layoutResourceId = layoutResourceId;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new LiveAdapter.ViewHolder(LayoutInflater.from(context).inflate(layoutResourceId, parent, false));
-
+        /* return new HoroscopeAdapter.ViewHolder(LayoutInflater.from(context).inflate(layoutResourceId, parent, false));*/
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_horoscope_icon, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LiveAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HoroscopeAdapter.ViewHolder holder, int position) {
         ImageModel data = imageModels.get(position);
         holder.txtName.setText(data.getHoroscop_name());
         Glide.with(context).load(data.getHoroscop_icon()).into(holder.profile_Image);

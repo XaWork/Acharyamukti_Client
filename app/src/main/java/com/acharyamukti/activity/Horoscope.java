@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.NewsAdapter;
-import com.acharyamukti.adapter.LiveAdapter;
+import com.acharyamukti.adapter.HoroscopeAdapter;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.DataModel;
@@ -43,7 +43,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
     List<NewsModel> newsModels = new ArrayList<>();
     LinearLayoutManager layout, linearLayoutManager;
     NewsAdapter newsAdapter;
-    LiveAdapter liveAdapter;
+    HoroscopeAdapter liveAdapter;
     Toolbar toolbar;
     RelativeLayout share;
     List<ImageModel> imageModels = new ArrayList<>();
@@ -115,10 +115,10 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
                         e.printStackTrace();
                     }
                     //   for (int i = 0; i < imageModels.size(); i++) {
-                    linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false);
-                    recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
-                    liveAdapter = new LiveAdapter(getApplicationContext(), R.layout.custom_horoscope_icon, imageModels);
-                    recyclerViewHoroscope.setAdapter(liveAdapter);
+//                    linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false);
+//                    recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
+//                    liveAdapter = new HoroscopeAdapter(getApplicationContext(), R.layout.custom_horoscope_icon, imageModels);
+//                    recyclerViewHoroscope.setAdapter(liveAdapter);
                     //     }
                 } else {
                     Toast.makeText(Horoscope.this, "error", Toast.LENGTH_SHORT).show();
@@ -153,7 +153,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            liveAdapter = new LiveAdapter(getApplicationContext(), R.layout.custom_horoscope_icon, imageModels);
+            liveAdapter = new HoroscopeAdapter(getApplicationContext(), imageModels);
             liveAdapter.notifyDataSetChanged();
             recyclerViewHoroscope.setAdapter(liveAdapter);
         }, error -> {

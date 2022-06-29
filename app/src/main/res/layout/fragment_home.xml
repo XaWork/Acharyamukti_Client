@@ -322,9 +322,11 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="150dp" />
 
                     <LinearLayout
+                        android:background="#DFF8F5D9"
+                        android:padding="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -342,6 +344,7 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
+                                android:padding="8dp"
                                 android:src="@drawable/private01" />
 
                             <TextView
@@ -362,13 +365,14 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/private01" />
+                                android:padding="10dp"
+                                android:src="@drawable/profile_summery" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Private &amp;\nConfidential"
+                                android:text="Verified &amp;\nAstrologer"
                                 android:textColor="@color/black" />
                         </LinearLayout>
 
@@ -382,13 +386,14 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/private01" />
+                                android:padding="8dp"
+                                android:src="@drawable/secure_payment" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="Private &amp;\nConfidential"
+                                android:text="Secure &amp;\nPayment"
                                 android:textColor="@color/black" />
                         </LinearLayout>
                     </LinearLayout>
