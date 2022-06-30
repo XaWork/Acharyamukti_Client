@@ -324,15 +324,67 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp" />
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:elevation="15dp"
+                        app:cardCornerRadius="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#E6FBFAF6"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Feedback to the CEO office"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="5dp"
+                                android:text="Please Share your honest feedback to help us improve"
+                                android:textSize="11sp"
+                                android:textStyle="normal" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_margin="10dp"
+                                android:background="@color/white"
+                                android:ems="10"
+                                android:imeOptions="actionDone"
+                                android:inputType="textImeMultiLine"
+                                android:paddingStart="10dp"
+                                android:text="Start typing here"
+                                android:textAlignment="textStart"
+                                android:textSize="12sp" />
+
+                            <Button
+                                android:layout_margin="10dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="140dp"
+                                android:layout_height="35dp"
+                                android:text="send"
+                                android:background="@drawable/text_bg"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
                     <LinearLayout
-                        android:background="#DFF8F5D9"
-                        android:padding="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
+                        android:background="#DFF8F5D9"
                         android:gravity="center_horizontal"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="10dp">
 
                         <LinearLayout
                             android:layout_width="0dp"

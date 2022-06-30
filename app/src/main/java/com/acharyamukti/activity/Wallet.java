@@ -17,7 +17,7 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+    //    getActionBar().setDisplayHomeAsUpEnabled(true);
         text1 = findViewById(R.id.txtRs1);
         text2 = findViewById(R.id.txtRs2);
         text3 = findViewById(R.id.txtRs3);

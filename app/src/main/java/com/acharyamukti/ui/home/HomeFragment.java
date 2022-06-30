@@ -8,14 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.acharyamukti.R;
 import com.acharyamukti.activity.KundaliniMarriage;
 import com.acharyamukti.activity.Horoscope;
@@ -24,7 +22,6 @@ import com.acharyamukti.adapter.HoroscopeAdapter;
 import com.acharyamukti.adapter.Live;
 import com.acharyamukti.databinding.FragmentHomeBinding;
 import com.acharyamukti.model.ImageModel;
-
 import java.util.ArrayList;
 import java.util.List;
 

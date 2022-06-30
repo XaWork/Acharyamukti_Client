@@ -5,13 +5,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.ImageView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.acharyamukti.R;
 import com.acharyamukti.helper.Backend;
 import com.bumptech.glide.Glide;
-
 import java.util.Timer;
 import java.util.TimerTask;
 

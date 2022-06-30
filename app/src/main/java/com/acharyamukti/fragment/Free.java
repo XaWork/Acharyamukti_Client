@@ -1,7 +1,6 @@
 package com.acharyamukti.fragment;
 
 import android.content.Intent;
-import android.hardware.lights.LightState;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.acharyamukti.R;
-import com.acharyamukti.activity.BlogDetails;
 import com.acharyamukti.adapter.NewsAdapter;
 import com.acharyamukti.model.NewsModel;
 
@@ -60,7 +58,7 @@ public class Free extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(getActivity(), BlogDetails.class);
-        startActivity(intent);
+//        Intent intent = new Intent(getActivity(), BlogDetails.class);
+//        startActivity(intent);
     }
 }

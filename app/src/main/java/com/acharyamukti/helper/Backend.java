@@ -38,4 +38,54 @@ public class Backend {
         editor.putString("horoscop_name", horoscop_name);
         editor.apply();
     }
+
+    public String getName() {
+        return preferences.getString("name", "");
+    }
+
+    public void saveName(String name) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("name", name);
+        editor.apply();
+    }
+
+    public String getMobile() {
+        return preferences.getString("mobile", "");
+    }
+
+    public void saveMobile(String mobile) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("mobile", mobile);
+        editor.apply();
+    }
+
+    public String getEmail() {
+        return preferences.getString("email", "");
+    }
+
+    public void saveEmail(String email) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("email", email);
+        editor.apply();
+    }
+
+    public String getLastName() {
+        return preferences.getString("lName", "");
+    }
+
+    public void saveLastname(String lName) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("lName", lName);
+        editor.apply();
+    }
+
+    public String getAddress() {
+        return preferences.getString("address", "");
+    }
+
+    public void saveAddress(String address) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("address", address);
+        editor.apply();
+    }
 }

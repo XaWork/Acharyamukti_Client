@@ -12,11 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
-            android:name=".activity.BlogDetails"
-            android:exported="true"
-            android:label="Blog Details"
-            android:theme="@style/NoActionBar" />
-        <activity
             android:name=".activity.Search"
             android:exported="false"
             android:theme="@style/AppThemeNoActionBar" />
@@ -31,7 +26,7 @@
             android:theme="@style/AppThemeActionBar" />
         <activity
             android:name=".activity.Wallet"
-            android:exported="false"
+            android:exported="true"
             android:label="Wallet"
             android:theme="@style/AppThemeActionBar" />
         <activity
@@ -68,14 +63,13 @@
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.Login"
             android:exported="true"
-            android:theme="@style/AppThemeNoActionBar"/>
+            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>

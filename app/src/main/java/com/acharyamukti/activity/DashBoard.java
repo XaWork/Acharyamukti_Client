@@ -14,7 +14,10 @@ import android.view.Menu;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
+
 import com.acharyamukti.R;
 import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
@@ -24,6 +27,7 @@ import com.acharyamukti.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.acharyamukti.databinding.ActivityDashBoardBinding;
+
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
@@ -33,6 +37,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -91,6 +96,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottom_sheet_dialog_layout);
         ImageView cancel = dialog.findViewById(R.id.cancel);
+        TextView dialog_name = dialog.findViewById(R.id.dialog_name);
+        String name = Backend.getInstance(this).getName();
+        dialog_name.setText(name);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -180,6 +188,5 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
     @Override
     public void onClick(View view) {
-
     }
 }
