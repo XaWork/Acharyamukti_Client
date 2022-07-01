@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.acharyamukti.R;
+import com.acharyamukti.activity.BlogDetails;
 import com.acharyamukti.adapter.NewsAdapter;
 import com.acharyamukti.model.NewsModel;
 
@@ -41,24 +42,12 @@ public class Free extends Fragment implements View.OnClickListener {
         recyclerView.setNestedScrollingEnabled(false);
         Button viewAllData = view.findViewById(R.id.viewAllBlogData);
         viewAllData.setOnClickListener(this);
-//        newsAdapter.setOnPageItemClickListener(new NewsAdapter.OnPageItemClickListener() {
-//            @Override
-//            public void onPageItemClick(int position, NewsModel newsModel) {
-//                switch (position) {
-//                    case 0:
-//                        Intent intent = new Intent(getActivity(), BlogDetails.class);
-//                        startActivity(intent);
-//                        break;
-//                }
-//
-//            }
-//        });
         return view;
     }
 
     @Override
     public void onClick(View view) {
-//        Intent intent = new Intent(getActivity(), BlogDetails.class);
-//        startActivity(intent);
+        Intent intent = new Intent(getActivity(), BlogDetails.class);
+        startActivity(intent);
     }
 }

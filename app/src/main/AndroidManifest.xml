@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
+            android:name=".activity.BlogDetails"
+            android:exported="false"
+            android:label="The Acharyamukti blog"
+            android:theme="@style/AppThemeNoActionBar"/>
+        <activity
             android:name=".activity.Search"
             android:exported="false"
             android:theme="@style/AppThemeNoActionBar" />
@@ -63,6 +68,7 @@
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -3,11 +3,8 @@ package com.acharyamukti.activity;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -15,9 +12,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.widget.Toolbar;
-
 import com.acharyamukti.R;
 import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
@@ -27,7 +22,6 @@ import com.acharyamukti.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.acharyamukti.databinding.ActivityDashBoardBinding;
-
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
@@ -38,15 +32,13 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityDashBoardBinding binding;
-    private int currentPageBest = 0;
+    private final int currentPageBest = 0;
     private Toolbar toolbar;
     Dialog dialog;
 

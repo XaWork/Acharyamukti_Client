@@ -1,22 +1,26 @@
 package com.acharyamukti.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.acharyamukti.R;
+import com.acharyamukti.activity.BlogDetails;
 import com.acharyamukti.model.NewsModel;
+
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     private final Context context;
     private final int layoutResourceId;
     List<NewsModel> newsModels;
-    private OnPageItemClickListener onPageItemClickListener;
 
     public NewsAdapter(Context context, int layoutResourceId, List<NewsModel> newsModels) {
         this.context = context;
@@ -29,22 +33,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder,int position) {
-        //    holder.titleView.setText(newsModel.getTitle());
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                NewsModel newsModel=holder.getAdapterPosition();
-//                if (onPageItemClickListener != null) {
-//                    NewsAdapter.this.onPageItemClickListener.onPageItemClick(newsModels);
-//                    notifyDataSetChanged();
-//                }
+                Intent intent = new Intent(context, BlogDetails.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
 
             }
         });
-    }
-
-    public void setOnPageItemClickListener(OnPageItemClickListener onPageItemClickListener) {
     }
 
     @Override
@@ -65,7 +63,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         }
     }
 
-    public interface OnPageItemClickListener {
-        void onPageItemClick(String title, NewsModel newsModel);
-    }
+//    public interface OnPageItemClickListener {
+//        void onPageItemClick(String title, NewsModel newsModel);
+//    }
 }
