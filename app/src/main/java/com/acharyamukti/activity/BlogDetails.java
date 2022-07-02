@@ -2,22 +2,31 @@ package com.acharyamukti.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import com.acharyamukti.R;
 
+import java.util.Objects;
+
 public class BlogDetails extends AppCompatActivity implements View.OnClickListener {
     ImageView sharing;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blog_details);
-        sharing = findViewById(R.id.sharing);
+        setContentView(R.layout.content_scroller_layout);
+        sharing = findViewById(R.id.someImage);
         sharing.setOnClickListener(this);
-        //    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -29,12 +38,22 @@ public class BlogDetails extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-//        Intent sendIntent = new Intent();
-//        sendIntent.setAction(Intent.ACTION_SEND);
-//        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://theacharyamukti.com/blog");
-//        sendIntent.setType("text/plain");
-//        sendIntent.setPackage("com.whatsapp");
-//        sendIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(sendIntent);
+        shareViaWhatsApp();
+    }
+
+    public void shareViaWhatsApp() {
+        Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+        whatsappIntent.setType("text/plain");
+        whatsappIntent.setPackage("com.whatsapp");
+        whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Application of social rating share with your friend");
+        try {
+            Objects.requireNonNull(getApplicationContext()).startActivity(whatsappIntent);
+        } catch (android.content.ActivityNotFoundException ex) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://theacharyamukti.com/blog"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            this.startActivity(intent);
+            this.finish();
+
+        }
     }
 }

@@ -177,7 +177,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
     }
-
     @Override
     public void onClick(View view) {
     }

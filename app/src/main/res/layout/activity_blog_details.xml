@@ -1,116 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lite_yellow"
-    android:fillViewport="true"
     android:scrollbars="vertical"
-    tools:context=".activity.BlogDetails">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.BlogDetails"
+    tools:showIn="@layout/content_scroller_layout">
 
-    <LinearLayout
-        android:id="@+id/reltive"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="vertical">
-
-        <!--        <androidx.cardview.widget.CardView-->
-        <!--            android:id="@+id/newsCard"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:elevation="25dp"-->
-        <!--            card_view:cardElevation="30dp"-->
-        <!--            card_view:cardPreventCornerOverlap="false">-->
-        <FrameLayout
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
-            <ImageView
-                android:id="@+id/newsImage"
+            <TextView
+                android:id="@+id/textDate"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/home_image" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:gravity="end"
+                android:text="Updated Sat, 25 Jun 2022 7:04 PM IST"
+                android:textColor="@color/black"
+                android:textStyle="italic" />
 
-        <!--        </androidx.cardview.widget.CardView>-->
-
-<!--        <FrameLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/white">-->
-
-            <RelativeLayout
-                android:background="@drawable/whitewithoutconner_bg"
-                android:layout_marginTop="280dp"
+            <TextView
+                android:id="@+id/blogTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/textDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:text="Updated Sat, 25 Jun 2022 7:04 PM IST"
-                    android:textColor="@color/black"
-                    android:textStyle="italic" />
-
-                <LinearLayout
-                    android:id="@+id/likeIcon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textDate"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:button="@drawable/viewall_bg" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textDate"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="What Does Narendra Modi’s Zodiac Sign Say About His Personality?"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
-                    <ImageView
-                        android:id="@+id/sharing"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_gravity="end"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_baseline_share_24" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/blogTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/likeIcon"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:text="What Does Narendra Modi’s Zodiac Sign Say About His Personality?"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/blogTitle"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:lineSpacingExtra="5dp"
-                    android:text="@string/large_text"
-                    android:textColor="@color/grey1"
-                    android:textSize="16sp"
-                    android:textStyle="normal" />
-            </RelativeLayout>
-        </FrameLayout>
-    </LinearLayout>
-</ScrollView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/blogTitle"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:lineSpacingExtra="5dp"
+                android:text="@string/large_text"
+                android:textColor="@color/grey1"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+        </RelativeLayout>
+        <!--        </FrameLayout>-->
+        <!--    </LinearLayout>-->
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>
