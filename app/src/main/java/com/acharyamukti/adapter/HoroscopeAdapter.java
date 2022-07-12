@@ -20,6 +20,7 @@ import java.util.List;
 public class HoroscopeAdapter extends RecyclerView.Adapter<HoroscopeAdapter.ViewHolder> {
     Context context;
     private final List<ImageModel> imageModels;
+    private OnPageItemClickListener onPageItemClickListener;
 
 
     public HoroscopeAdapter(Context context, List<ImageModel> imageModels) {
@@ -40,6 +41,16 @@ public class HoroscopeAdapter extends RecyclerView.Adapter<HoroscopeAdapter.View
         ImageModel data = imageModels.get(position);
         holder.txtName.setText(data.getHoroscop_name());
         Glide.with(context).load(data.getHoroscop_icon()).into(holder.profile_Image);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HoroscopeAdapter.this.onPageItemClickListener.onPageItemClick(holder.getAdapterPosition(),data.getHoroscop_id());
+            }
+        });
+    }
+
+    public void setOnPageItemClickListener(OnPageItemClickListener onPageItemClickListener) {
+        this.onPageItemClickListener = onPageItemClickListener;
     }
 
     @Override
@@ -58,4 +69,7 @@ public class HoroscopeAdapter extends RecyclerView.Adapter<HoroscopeAdapter.View
         }
     }
 
+    public interface OnPageItemClickListener {
+        void onPageItemClick(int position, String title);
+    }
 }

@@ -16,7 +16,6 @@
         android:src="@drawable/marriage_kundali" />
 
     <TextView
-        android:id="@+id/txtName"
         android:layout_width="60dp"
         android:layout_height="1dp"
         android:gravity="center"
@@ -25,6 +24,7 @@
         android:textStyle="normal" />
 
     <TextView
+        android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/profile_Image"

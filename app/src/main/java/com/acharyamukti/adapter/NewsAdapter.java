@@ -63,7 +63,5 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         }
     }
 
-//    public interface OnPageItemClickListener {
-//        void onPageItemClick(String title, NewsModel newsModel);
-//    }
+
 }

@@ -3,42 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:padding="5dp"
-    android:background="@color/white"
-    android:orientation="horizontal">
+    android:background="@drawable/custom_horoscope_bg"
+    android:orientation="horizontal"
+    android:padding="5dp">
 
     <ImageView
-        android:background="@drawable/custom_horoscope_bg"
-        android:padding="10dp"
         android:id="@+id/newsImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="10dp"
         android:scaleType="fitXY"
         android:src="@drawable/love_and_relationship" />
 
     <LinearLayout
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:orientation="vertical">
 
-
         <TextView
-            android:layout_marginStart="10dp"
-            android:id="@+id/txtTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Love life"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_marginStart="10dp"
             android:id="@+id/subTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
             android:lines="3"
             android:text="@string/text_about_longtext"
@@ -49,6 +37,6 @@
             android:id="@+id/txtDate"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:textStyle="italic"/>
+            android:textStyle="italic" />
     </LinearLayout>
 </LinearLayout>

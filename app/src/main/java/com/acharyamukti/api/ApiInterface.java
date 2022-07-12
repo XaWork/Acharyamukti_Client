@@ -2,6 +2,7 @@ package com.acharyamukti.api;
 
 
 import com.acharyamukti.model.DataModel;
+import com.acharyamukti.model.HoroscopeModel;
 import com.acharyamukti.model.ImageModel;
 
 import java.util.List;
@@ -50,8 +51,8 @@ public interface ApiInterface {
     Call<List<ImageModel>> getHoroscope();
 
     @FormUrlEncoded
-    @POST("clientapi/daily-horoscope-more.php?")
-    Call<DataModel> getBannerData(
+    @POST("clientapi/daily-horoscope-more.php")
+    Call<HoroscopeModel> getBlog(
             @Field("horoscop_name") String title
     );
 }
