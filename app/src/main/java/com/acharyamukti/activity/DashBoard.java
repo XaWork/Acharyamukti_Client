@@ -106,7 +106,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             }
         });
         dialog.show();
-        //   dialog.currentthread().sleep(1000);
         dialog.setCanceledOnTouchOutside(true);
     }
 

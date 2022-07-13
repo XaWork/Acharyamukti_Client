@@ -7,7 +7,7 @@
     android:background="@drawable/rectangle__layout_bg">
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profileImage"
+        android:id="@+id/astroImage"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
@@ -20,7 +20,7 @@
         android:id="@+id/profileName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profileImage"
+        android:layout_below="@+id/astroImage"
         android:layout_centerHorizontal="true"
         android:background="@drawable/search_bg"
         android:gravity="center"
@@ -45,6 +45,7 @@
         android:textSize="11sp" />
 
     <TextView
+        android:id="@+id/connect"
         android:layout_width="70dp"
         android:layout_height="20dp"
         android:layout_below="@+id/charge"

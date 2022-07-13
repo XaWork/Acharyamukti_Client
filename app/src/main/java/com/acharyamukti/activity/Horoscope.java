@@ -77,7 +77,6 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         bannerTitle = findViewById(R.id.bannerTitle);
         desc = findViewById(R.id.bannerDescription);
         getData();
-        //      getBannerData();
         String title = "";
         getHoroscopeData(title);
     }
