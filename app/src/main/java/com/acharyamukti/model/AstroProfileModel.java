@@ -8,8 +8,10 @@ public class AstroProfileModel {
     String callrate;
     String language;
     String asttype;
+    String avgrating1;
+    String status;
 
-    public AstroProfileModel(String image, String name, String reg_id, String experience, String callrate, String language, String asttype, String avgrating1) {
+    public AstroProfileModel(String image, String name, String reg_id, String experience, String callrate, String language, String asttype,String avgrating1) {
         this.image = image;
         this.name = name;
         this.reg_id = reg_id;
@@ -17,7 +19,23 @@ public class AstroProfileModel {
         this.callrate = callrate;
         this.language = language;
         this.asttype = asttype;
+        this.avgrating1 = avgrating1;
+
     }
+
+
+    public AstroProfileModel(String image, String status, String name, String reg_id, String experience, String callrate, String language, String asttype, String avgrating1) {
+        this.image = image;
+        this.status = status;
+        this.name = name;
+        this.reg_id = reg_id;
+        this.experience = experience;
+        this.callrate = callrate;
+        this.language = language;
+        this.asttype = asttype;
+        this.avgrating1 = avgrating1;
+    }
+
 
     public String getImage() {
         return image;
@@ -73,5 +91,21 @@ public class AstroProfileModel {
 
     public void setAsttype(String asttype) {
         this.asttype = asttype;
+    }
+
+    public String getAvgrating1() {
+        return avgrating1;
+    }
+
+    public void setAvgrating1(String avgrating1) {
+        this.avgrating1 = avgrating1;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

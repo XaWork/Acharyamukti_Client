@@ -42,7 +42,7 @@ public class ArcheryLive extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewLive);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        getProfileData();
+   //     getProfileData();
     }
 
     @Override
@@ -51,37 +51,37 @@ public class ArcheryLive extends AppCompatActivity {
         this.finish();
         return super.onOptionsItemSelected(item);
     }
-
-    private void getProfileData() {
-        final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
-        String url = "https://theacharyamukti.com/clientapi/online-astro.php";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray arr = response.getJSONArray("body");
-                    for (int i = 0; i < arr.length(); i++) {
-                        JSONObject jb = arr.getJSONObject(i);
-                        AstroProfileModel astro = new AstroProfileModel(
-                                jb.getString("name"),
-                                jb.getString("reg_id"),
-                                jb.getString("experience"),
-                                jb.getString("callrate"),
-                                jb.getString("language"),
-                                jb.getString("asttype"),
-                                jb.getString("avgrating1"), jb.getString("avgrating1"));
-                        astroProfileModels.add(astro);
-                    }
-                    astroProfile = new AstroProfile(getApplicationContext(),astroProfileModels);
-                    astroProfile.notifyDataSetChanged();
-                    recyclerView.setAdapter(astroProfile);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }, error -> Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show());
-        requestQueue.add(objectRequest);
-    }
+//
+//    private void getProfileData() {
+//        final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
+//        String url = "https://theacharyamukti.com/clientapi/online-astro.php";
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                try {
+//                    JSONArray arr = response.getJSONArray("body");
+//                    for (int i = 0; i < arr.length(); i++) {
+//                        JSONObject jb = arr.getJSONObject(i);
+//                        AstroProfileModel astro = new AstroProfileModel(
+//                                jb.getString("name"),
+//                                jb.getString("reg_id"),
+//                                jb.getString("experience"),
+//                                jb.getString("callrate"),
+//                                jb.getString("language"),
+//                                jb.getString("asttype"),
+//                                jb.getString("avgrating1"), jb.getString("avgrating1"));
+//                        astroProfileModels.add(astro);
+//                    }
+//                    astroProfile = new AstroProfile(getApplicationContext(),astroProfileModels);
+//                    astroProfile.notifyDataSetChanged();
+//                    recyclerView.setAdapter(astroProfile);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, error -> Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show());
+//        requestQueue.add(objectRequest);
+//    }
 
 }

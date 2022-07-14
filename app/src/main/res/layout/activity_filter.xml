@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".activity.FilterActivity">
+
+    <TextView
+        android:id="@+id/astroType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Astrologer Type"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/checkBoxLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/astroType"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Vedic" />
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Tarot" />
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Numerology" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/checkBoxLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBoxLayout"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Vastu" />
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Fengshui" />
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="KP" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/checkBoxLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBoxLayout1"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Prashna" />
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Reiki Healing" />
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Yoga/meditation" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/checkBoxLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBoxLayout2"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Pranic Healing" />
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center" />
+
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center" />
+    </LinearLayout>
+</RelativeLayout>

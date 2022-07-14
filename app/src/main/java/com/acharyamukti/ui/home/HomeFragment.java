@@ -28,7 +28,9 @@ import com.acharyamukti.model.ImageModel;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -169,41 +171,5 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         requestQueue.add(objectRequest);
     }
 
-//    private void getProfileDta() {
-//        final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
-//        String url = "https://theacharyamukti.com/clientapi/online-astro.php";
-//        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-//        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                try {
-//                    JSONObject obj = new JSONObject(response);
-//                    JSONArray arr = obj.getJSONArray("body");
-//                    for (int i = 0; i < arr.length(); i++) {
-//                        JSONObject jb = arr.getJSONObject(i);
-//                        AstroProfileModel astro = new AstroProfileModel(
-//                                jb.getString("name"),
-//                                jb.getString("reg_id"),
-//                                jb.getString("experience"),
-//                                jb.getString("callrate"),
-//                                jb.getString("language"),
-//                                jb.getString("asttype"),
-//                                jb.getString("avgrating1"));
-//                        astroProfileModels.add(astro);
-//                    }
-//                    astroProfile = new AstroProfile(getContext(), astroProfileModels);
-//                    astroProfile.notifyDataSetChanged();
-//                    recyclerView1.setAdapter(astroProfile);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        });
-//        requestQueue.add(request);
-//    }
+
 }

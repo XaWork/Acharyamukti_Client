@@ -45,7 +45,7 @@ public class AstroProfile extends RecyclerView.Adapter<AstroProfile.ViewHolder> 
         AstroProfileModel astroModel = astroProfileModels.get(position);
         holder.name.setText(astroModel.getName());
         holder.charge.setText(astroModel.getCallrate());
-        String url = astroModel.getImage();
+        String url = "http://theacharyamukti.com/image/astro/"+astroModel.getImage();
         Picasso.with(context).load(url).into(holder.circleImageView);
         Log.d("image",url);
     }

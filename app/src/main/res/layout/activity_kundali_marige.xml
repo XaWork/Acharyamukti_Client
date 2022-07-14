@@ -54,7 +54,6 @@
                 android:textStyle="bold" />
 
             <CheckBox
-
                 android:id="@+id/checkbox2"
                 android:layout_width="60dp"
                 android:layout_height="35dp"

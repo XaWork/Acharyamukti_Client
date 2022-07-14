@@ -4,17 +4,25 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acharyamukti.R;
+import com.acharyamukti.model.AstroProfileModel;
+
+import java.util.List;
 
 public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.ViewHolder> {
     Context context;
+    List<AstroProfileModel> astroProfileModels;
 
-    public UserDetailsAdapter(Context context) {
+    public UserDetailsAdapter(Context context, List<AstroProfileModel> astroProfileModels) {
         this.context = context;
+        this.astroProfileModels = astroProfileModels;
+
     }
 
     @NonNull
@@ -26,18 +34,31 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        AstroProfileModel model = astroProfileModels.get(position);
+        holder.profile_name.setText(model.getName());
+        holder.charge.setText(model.getCallrate());
+        holder.exp.setText(model.getExperience());
+        holder.status.setText(model.getStatus());
     }
 
 
     @Override
     public int getItemCount() {
-        return 10;
+        return astroProfileModels.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView profile_name, charge, vedic, status, exp;
+        ImageView imageView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            profile_name = itemView.findViewById(R.id.ProfileName);
+            charge = itemView.findViewById(R.id.chargeOnline);
+            vedic = itemView.findViewById(R.id.exptz);
+            status = itemView.findViewById(R.id.status);
+            exp = itemView.findViewById(R.id.exp);
+            imageView = itemView.findViewById(R.id.imageViewAstro);
         }
     }
 }
