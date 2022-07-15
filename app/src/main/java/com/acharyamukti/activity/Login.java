@@ -3,7 +3,6 @@ package com.acharyamukti.activity;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,9 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
-import com.acharyamukti.helper.CustomSharedPreferences;
 import com.acharyamukti.model.DataModel;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -69,7 +66,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnOtp:
-                //  dialog();
                 getOtp();
                 break;
             case R.id.loginToEmail:
@@ -78,7 +74,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 getSupportFragmentManager().beginTransaction().add(R.id.fragment, new com.acharyamukti.fragment.Login()).commit();
                 break;
         }
-
     }
 
     public void dialog() {
@@ -90,8 +85,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Intent intent = new Intent(getApplicationContext(), DashBoard.class);
-                //   startActivity(intent);
                 verifyOTP();
             }
         });

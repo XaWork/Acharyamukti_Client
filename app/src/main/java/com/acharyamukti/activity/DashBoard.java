@@ -38,7 +38,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityDashBoardBinding binding;
-    private final int currentPageBest = 0;
     private Toolbar toolbar;
     Dialog dialog;
 
@@ -66,14 +65,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         toolbar.setTitle("Home");
         getDialog();
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                // close your dialog
-                dialog.dismiss();
-            }
-
+        handler.postDelayed(() -> {
+            // close your dialog
+            dialog.dismiss();
         }, 10000);
     }
 
@@ -91,19 +85,11 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         TextView dialog_name = dialog.findViewById(R.id.dialog_name);
         String name = Backend.getInstance(this).getName();
         dialog_name.setText(name);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        cancel.setOnClickListener(view -> dialog.dismiss());
         Button claim = dialog.findViewById(R.id.claim);
-        claim.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent claim = new Intent(getApplicationContext(), Wallet.class);
-                startActivity(claim);
-            }
+        claim.setOnClickListener(view -> {
+            Intent claim1 = new Intent(getApplicationContext(), Wallet.class);
+            startActivity(claim1);
         });
         dialog.show();
         dialog.setCanceledOnTouchOutside(true);

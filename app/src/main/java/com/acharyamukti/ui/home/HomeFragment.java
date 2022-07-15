@@ -21,7 +21,7 @@ import com.acharyamukti.R;
 import com.acharyamukti.activity.KundaliniMarriage;
 import com.acharyamukti.activity.Horoscope;
 import com.acharyamukti.adapter.AstroProfile;
-import com.acharyamukti.adapter.Live;
+import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.databinding.FragmentHomeBinding;
 import com.acharyamukti.model.AstroProfileModel;
 import com.acharyamukti.model.ImageModel;
@@ -43,7 +43,7 @@ import java.util.List;
 public class HomeFragment extends Fragment implements View.OnClickListener {
     LinearLayout relationShip, marriage, career, money, horoscope;
     FragmentHomeBinding binding;
-    Live liveAdapter;
+    LiveAdapter liveAdapter;
     AstroProfile astroProfile;
     RecyclerView recyclerView, recyclerView1;
     GridLayoutManager gridLayoutManager;
@@ -63,16 +63,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView = root.findViewById(R.id.recyclerView);
         gridLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
-        liveAdapter = new Live(getActivity(), imageModels);
-        recyclerView.setAdapter(liveAdapter);
         viewAll = root.findViewById(R.id.viewAll);
         viewAll.setOnClickListener(this);
         recyclerView.setHasFixedSize(true);
         recyclerView1 = root.findViewById(R.id.recyclerViewLive);
         linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         recyclerView1.setLayoutManager(linearLayoutManager);
-//        astroProfile = new AstroProfile(getActivity());
-//        recyclerView1.setAdapter(astroProfile);
         relationShip = root.findViewById(R.id.loveRelationShip);
         relationShip.setOnClickListener(this);
         marriage = root.findViewById(R.id.marriageKundly);
@@ -86,6 +82,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         viewAll2 = root.findViewById(R.id.viewAll2);
         viewAll2.setOnClickListener(this);
         getProfileData();
+        getLiveData();
         return root;
     }
 
@@ -171,5 +168,43 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         requestQueue.add(objectRequest);
     }
 
+    private void getLiveData() {
+        final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
+        String url = "https://theacharyamukti.com/clientapi/online-astro.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    JSONArray arr = obj.getJSONArray("body");
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject jb = arr.getJSONObject(i);
+                        AstroProfileModel astro = new AstroProfileModel(
+                                jb.getString("image"),
+                                jb.getString("status"),
+                                jb.getString("name"),
+                                jb.getString("reg_id"),
+                                jb.getString("experience"),
+                                jb.getString("callrate"),
+                                jb.getString("language"),
+                                jb.getString("asttype"),
+                                jb.getString("avgrating1"));
 
+                        astroProfileModels.add(astro);
+                    }
+                    liveAdapter = new LiveAdapter(getActivity(), astroProfileModels);
+                    recyclerView.setAdapter(liveAdapter);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue.add(request);
+    }
 }

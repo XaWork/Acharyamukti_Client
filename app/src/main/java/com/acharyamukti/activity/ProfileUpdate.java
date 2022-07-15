@@ -31,10 +31,6 @@ public class ProfileUpdate extends AppCompatActivity {
         email.setText(emailId);
         mobileNumber = Backend.getInstance(this).getMobile();
         mobile.setText(mobileNumber);
-//        fName = name.getText().toString();
-//        lName = l_name.getText().toString();
-//        emailId = email.getText().toString();
-//        mobileNumber = mobile.getText().toString();
     }
 
     @Override

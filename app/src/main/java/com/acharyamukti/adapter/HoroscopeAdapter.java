@@ -31,7 +31,6 @@ public class HoroscopeAdapter extends RecyclerView.Adapter<HoroscopeAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        /* return new HoroscopeAdapter.ViewHolder(LayoutInflater.from(context).inflate(layoutResourceId, parent, false));*/
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_horoscope_icon, parent, false);
         return new ViewHolder(view);
     }

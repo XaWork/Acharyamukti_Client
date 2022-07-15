@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.acharyamukti.R;
 import com.acharyamukti.model.AstroProfileModel;
-
+import com.squareup.picasso.Picasso;
 import java.util.List;
+
+
 
 public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.ViewHolder> {
     Context context;
@@ -36,9 +36,17 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         AstroProfileModel model = astroProfileModels.get(position);
         holder.profile_name.setText(model.getName());
+        holder.vedic.setText(model.getAsttype());
         holder.charge.setText(model.getCallrate());
         holder.exp.setText(model.getExperience());
         holder.status.setText(model.getStatus());
+        Picasso.with(context).load(model.getImage()).into(holder.imageView);
+        if (model.getStatus().equals("Online")) {
+            holder.status.setBackgroundResource(R.drawable.green_conner_bg);
+        } else {
+            holder.status.setBackgroundResource(R.drawable.red_without_conner_bg);
+        }
+
     }
 
 

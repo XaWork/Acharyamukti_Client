@@ -18,16 +18,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acharyamukti.R;
-import com.acharyamukti.adapter.AstroProfile;
-import com.acharyamukti.adapter.Live;
-import com.acharyamukti.adapter.NewsAdapter;
+import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.adapter.HoroscopeAdapter;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
-import com.acharyamukti.model.DataModel;
+import com.acharyamukti.model.AstroProfileModel;
 import com.acharyamukti.model.HoroscopeModel;
 import com.acharyamukti.model.ImageModel;
-import com.acharyamukti.model.NewsModel;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -35,7 +32,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +44,8 @@ import retrofit2.Response;
 public class Horoscope extends AppCompatActivity implements View.OnClickListener {
     RecyclerView liveRecyclerView, recyclerViewHoroscope;
     LinearLayoutManager linearLayoutManager;
-    HoroscopeAdapter liveAdapter;
+    HoroscopeAdapter horoscopeAdapter;
+    LiveAdapter liveAdapter;
     Toolbar toolbar;
     RelativeLayout share;
     List<ImageModel> imageModels = new ArrayList<>();
@@ -61,8 +58,6 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         liveRecyclerView = findViewById(R.id.liveRecyclerView);
         linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         liveRecyclerView.setLayoutManager(linearLayoutManager);
-        Live liveAdapter = new Live(getApplicationContext(), imageModels);
-        liveRecyclerView.setAdapter(liveAdapter);
         toolbar = findViewById(R.id.toolbarNews);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -79,6 +74,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         getData();
         String title = "";
         getHoroscopeData(title);
+        getLiveData();
     }
 
     @Override
@@ -126,50 +122,47 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            liveAdapter = new HoroscopeAdapter(getApplicationContext(), imageModels);
-            liveAdapter.notifyDataSetChanged();
-            recyclerViewHoroscope.setAdapter(liveAdapter);
-            liveAdapter.setOnPageItemClickListener(new HoroscopeAdapter.OnPageItemClickListener() {
-                @Override
-                public void onPageItemClick(int position, String title) {
-                    switch (title) {
-                        case "PISCES-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "AQUARIUS-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "CAPRICORN-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "SAGITTARIUS-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "SCORPIO-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "LIBRA-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "VIRGO-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "LEO-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "CANCER-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "Gemini-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "TAURUS-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                        case "Aries-Daily-Horoscope":
-                            getHoroscopeData(title);
-                            break;
-                    }
+            horoscopeAdapter = new HoroscopeAdapter(getApplicationContext(), imageModels);
+            horoscopeAdapter.notifyDataSetChanged();
+            recyclerViewHoroscope.setAdapter(horoscopeAdapter);
+            horoscopeAdapter.setOnPageItemClickListener((position, title) -> {
+                switch (title) {
+                    case "PISCES-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "AQUARIUS-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "CAPRICORN-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "SAGITTARIUS-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "SCORPIO-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "LIBRA-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "VIRGO-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "LEO-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "CANCER-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "Gemini-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "TAURUS-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
+                    case "Aries-Daily-Horoscope":
+                        getHoroscopeData(title);
+                        break;
                 }
             });
         }, error -> {
@@ -203,5 +196,38 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
                 Toast.makeText(Horoscope.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void getLiveData() {
+        final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
+        String url = "https://theacharyamukti.com/clientapi/online-astro.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
+            try {
+                JSONObject obj = new JSONObject(response);
+                JSONArray arr = obj.getJSONArray("body");
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject jb = arr.getJSONObject(i);
+                    AstroProfileModel astro = new AstroProfileModel(
+                            jb.getString("image"),
+                            jb.getString("status"),
+                            jb.getString("name"),
+                            jb.getString("reg_id"),
+                            jb.getString("experience"),
+                            jb.getString("callrate"),
+                            jb.getString("language"),
+                            jb.getString("asttype"),
+                            jb.getString("avgrating1"));
+
+                    astroProfileModels.add(astro);
+                }
+                liveAdapter = new LiveAdapter(getApplicationContext(), astroProfileModels);
+                liveAdapter.notifyDataSetChanged();
+                liveRecyclerView.setAdapter(liveAdapter);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, error -> Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show());
+        requestQueue.add(request);
     }
 }
