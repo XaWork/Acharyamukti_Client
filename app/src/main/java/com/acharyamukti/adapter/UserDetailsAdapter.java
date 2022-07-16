@@ -1,10 +1,12 @@
 package com.acharyamukti.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +42,9 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
         holder.charge.setText(model.getCallrate());
         holder.exp.setText(model.getExperience());
         holder.status.setText(model.getStatus());
+        String rating=model.getAvgrating1();
+        Float f= Float.parseFloat(rating);
+        holder.ratingBar.setRating(f);
         Picasso.with(context).load(model.getImage()).into(holder.imageView);
         if (model.getStatus().equals("Online")) {
             holder.status.setBackgroundResource(R.drawable.green_conner_bg);
@@ -58,6 +63,7 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView profile_name, charge, vedic, status, exp;
         ImageView imageView;
+        RatingBar ratingBar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +73,7 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
             status = itemView.findViewById(R.id.status);
             exp = itemView.findViewById(R.id.exp);
             imageView = itemView.findViewById(R.id.imageViewAstro);
+            ratingBar=itemView.findViewById(R.id.ratingBar);
         }
     }
 }

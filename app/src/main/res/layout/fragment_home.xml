@@ -74,7 +74,6 @@
                                 android:background="@drawable/custom_horoscope_bg"
                                 android:padding="5dp"
                                 android:src="@drawable/horoscope_slider" />
-
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -437,7 +436,7 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:padding="8dp"
+                                android:padding="10dp"
                                 android:src="@drawable/private01" />
 
                             <TextView
@@ -458,7 +457,7 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:padding="10dp"
+                                android:padding="12dp"
                                 android:src="@drawable/profile_summery" />
 
                             <TextView
@@ -479,7 +478,7 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:padding="8dp"
+                                android:padding="12dp"
                                 android:src="@drawable/secure_payment" />
 
                             <TextView

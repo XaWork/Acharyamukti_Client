@@ -26,7 +26,6 @@ public class ArcheryLive extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewLive);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-   //     getProfileData();
     }
 
     @Override
