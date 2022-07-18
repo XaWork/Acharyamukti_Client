@@ -24,7 +24,7 @@ public class BlogDetails extends AppCompatActivity implements View.OnClickListen
         sharing.setOnClickListener(this);
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -51,7 +51,6 @@ public class BlogDetails extends AppCompatActivity implements View.OnClickListen
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             this.startActivity(intent);
             this.finish();
-
         }
     }
 }

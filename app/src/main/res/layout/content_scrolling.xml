@@ -9,6 +9,7 @@
     tools:showIn="@layout/activity_astrologer_profile">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"
@@ -84,32 +85,10 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/txtLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ratingRecyclerView"
-                android:layout_marginTop="10dp"
-                android:drawableLeft="@drawable/ic_baseline_location_on_24"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/text_location"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/txtLocationName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtLocation"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="5dp"
-                android:gravity="center_vertical"
-                android:text="@string/text_place" />
-
-            <TextView
                 android:id="@+id/txtLanguage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtLocationName"
+                android:layout_below="@+id/ratingRecyclerView"
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/ic_baseline_g_translate_24"
                 android:drawablePadding="10dp"

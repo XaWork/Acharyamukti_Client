@@ -13,6 +13,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/extRating"
             android:paddingEnd="10dp"
             android:layout_width="60dp"
             android:layout_height="25dp"
@@ -24,6 +25,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -32,6 +34,7 @@
             android:textColor="@color/black" />
 
         <TextView
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -41,12 +44,13 @@
     </LinearLayout>
 
     <TextView
-        android:textColor="@color/black"
+        android:id="@+id/comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ratingLayout"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1"
-        android:text="Thank you so much............"/>
+        android:text="Thank you so much............"
+        android:textColor="@color/black" />
 </RelativeLayout>

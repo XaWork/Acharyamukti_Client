@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.acharyamukti.R;
 import com.acharyamukti.activity.KundaliniMarriage;
 import com.acharyamukti.activity.Horoscope;
-import com.acharyamukti.adapter.AstroProfile;
+import com.acharyamukti.adapter.AstroProfileAdapter;
 import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.databinding.FragmentHomeBinding;
 import com.acharyamukti.model.AstroProfileModel;
@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     LinearLayout relationShip, marriage, career, money, horoscope;
     FragmentHomeBinding binding;
     LiveAdapter liveAdapter;
-    AstroProfile astroProfile;
+    AstroProfileAdapter astroProfile;
     RecyclerView recyclerView, recyclerView1;
     GridLayoutManager gridLayoutManager;
     LinearLayoutManager linearLayoutManager;
@@ -156,7 +156,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                                 jb.getString("avgrating1"));
                         astroProfileModels.add(astro);
                     }
-                    astroProfile = new AstroProfile(getContext(), astroProfileModels);
+                    astroProfile = new AstroProfileAdapter(getContext(), astroProfileModels);
                     astroProfile.notifyDataSetChanged();
                     recyclerView1.setAdapter(astroProfile);
                 } catch (Exception e) {

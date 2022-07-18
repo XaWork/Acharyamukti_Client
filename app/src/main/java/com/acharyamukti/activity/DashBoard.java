@@ -37,14 +37,13 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private ActivityDashBoardBinding binding;
     private Toolbar toolbar;
     Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityDashBoardBinding.inflate(getLayoutInflater());
+        com.acharyamukti.databinding.ActivityDashBoardBinding binding = ActivityDashBoardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarDashBoard.toolbar);
         DrawerLayout drawer = binding.drawerLayout;

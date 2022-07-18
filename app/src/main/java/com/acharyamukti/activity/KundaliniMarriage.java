@@ -24,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class KundaliniMarriage extends AppCompatActivity implements View.OnClickListener {
     Toolbar toolbarKun;
@@ -42,7 +43,7 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
         toolbarKun = findViewById(R.id.toolbarKun);
         setSupportActionBar(toolbarKun);
         toolbarKun.setTitle("Call with Astrologer");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         search = findViewById(R.id.checkbox3);
         search.setOnClickListener(this);
         filter = findViewById(R.id.checkbox2);
@@ -78,7 +79,6 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
             case R.id.checkbox1:
                 getOnlineAstro();
                 break;
-
         }
 
     }
@@ -120,7 +120,7 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
         final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
         String url = "https://theacharyamukti.com/clientapi/online-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
+        @SuppressLint("NotifyDataSetChanged") StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
             try {
                 JSONObject obj = new JSONObject(response);
                 JSONArray arr = obj.getJSONArray("body");
@@ -136,7 +136,6 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
                             jb.getString("language"),
                             jb.getString("asttype"),
                             jb.getString("avgrating1"));
-
                     astroProfileModels.add(astro);
                 }
                 userDetailsAdapter = new UserDetailsAdapter(getApplicationContext(), astroProfileModels);

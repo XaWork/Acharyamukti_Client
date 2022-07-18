@@ -10,6 +10,8 @@ import android.widget.EditText;
 import com.acharyamukti.R;
 import com.acharyamukti.helper.Backend;
 
+import java.util.Objects;
+
 public class ProfileUpdate extends AppCompatActivity {
     EditText name, l_name, mobile, email;
     String fName, lName, emailId, mobileNumber;
@@ -18,7 +20,7 @@ public class ProfileUpdate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_update);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         name = findViewById(R.id.fName);
         l_name = findViewById(R.id.lName);
         mobile = findViewById(R.id.mobile);

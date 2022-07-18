@@ -20,6 +20,9 @@ import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.DataModel;
+
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,7 +45,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         navigationBar = findViewById(R.id.navigationBar);
         Toolbar toolbar = findViewById(R.id.toolbarLogin);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         mobileNumber = findViewById(R.id.getOtpMobile);
     }
 
@@ -82,12 +85,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         dialog.setContentView(R.layout.verify_otp);
         Button btnVerify = dialog.findViewById(R.id.btnVerify);
         etOTP = dialog.findViewById(R.id.etOTP);
-        btnVerify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                verifyOTP();
-            }
-        });
+        btnVerify.setOnClickListener(view -> verifyOTP());
         dialog.show();
         dialog.setCanceledOnTouchOutside(true);
     }

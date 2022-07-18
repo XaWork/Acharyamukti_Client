@@ -3,22 +3,20 @@ package com.acharyamukti.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.Toast;
-
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.UserDetailsAdapter;
 import com.acharyamukti.model.AstroProfileModel;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,12 +58,12 @@ public class Search extends AppCompatActivity implements SearchView.OnQueryTextL
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        getSearchingData();
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        getSearchingData();
         return false;
     }
 
@@ -95,7 +93,12 @@ public class Search extends AppCompatActivity implements SearchView.OnQueryTextL
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(Search.this, error.toString(), Toast.LENGTH_SHORT).show());
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Search.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
         request.add(stringRequest);
     }
 }

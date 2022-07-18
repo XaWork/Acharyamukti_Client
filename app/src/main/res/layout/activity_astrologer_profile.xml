@@ -10,28 +10,29 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/AppThemeActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:titleEnabled="false"
-            android:background="@drawable/atro_profile_bg"
-            android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fitsSystemWindows="false"
             app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false"
             app:toolbarId="@+id/toolbar">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                app:title="Astro Profile"
+                android:id="@+id/toolbarAstro"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:background="@color/yellow"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppThemeActionBar"
+                app:title="Astro Profile"
                 app:titleTextColor="@color/black">
 
                 <ImageView
@@ -45,12 +46,12 @@
             </androidx.appcompat.widget.Toolbar>
 
             <RelativeLayout
-                android:paddingStart="30dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profileImage"
+                    android:id="@+id/profileImageSingle"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="?actionBarSize"
@@ -59,7 +60,7 @@
                     android:src="@drawable/logo" />
 
                 <TextView
-                    android:id="@+id/profileName"
+                    android:id="@+id/profileNameS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="110dp"
@@ -74,7 +75,7 @@
                     android:id="@+id/designation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/profileName"
+                    android:layout_below="@+id/profileNameS"
                     android:layout_marginStart="114dp"
                     android:paddingTop="5dp"
                     android:text="Designation"
@@ -96,23 +97,22 @@
                     android:text="4.7"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <TextView
-                    android:layout_marginBottom="5dp"
-                    android:layout_width="120dp"
-                    android:layout_height="25dp"
-                    android:layout_below="@+id/total_rating"
                     android:layout_alignParentEnd="true"
+                    android:id="@+id/user_online_status"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/total_rating"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="15dp"
                     android:background="@drawable/search_bg"
                     android:gravity="center"
-                    android:padding="3dp"
-                    android:text="Next online in 2 hours"
+                    android:padding="5dp"
+                    android:text="Call status"
                     android:textColor="@color/black"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
+                    android:textStyle="normal" />
             </RelativeLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

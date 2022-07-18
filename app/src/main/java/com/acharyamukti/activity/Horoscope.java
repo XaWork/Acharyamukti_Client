@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,7 +62,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         liveRecyclerView.setLayoutManager(linearLayoutManager);
         toolbar = findViewById(R.id.toolbarNews);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         recyclerViewHoroscope = findViewById(R.id.recyclerViewHoroscope);
         share = findViewById(R.id.share);
         share.setOnClickListener(this);
@@ -106,7 +108,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false);
         recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
         RequestQueue request = Volley.newRequestQueue(this);
-        StringRequest request1 = new StringRequest(Request.Method.GET, url, response -> {
+        @SuppressLint("NotifyDataSetChanged") StringRequest request1 = new StringRequest(Request.Method.GET, url, response -> {
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONArray jsonArray = jsonObject.getJSONArray("body");
@@ -202,7 +204,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
         String url = "https://theacharyamukti.com/clientapi/online-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
+        @SuppressLint("NotifyDataSetChanged") StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
             try {
                 JSONObject obj = new JSONObject(response);
                 JSONArray arr = obj.getJSONArray("body");

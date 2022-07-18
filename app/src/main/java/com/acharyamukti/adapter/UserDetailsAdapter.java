@@ -1,6 +1,7 @@
 package com.acharyamukti.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +9,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.acharyamukti.R;
+import com.acharyamukti.activity.AstrologerProfile;
 import com.acharyamukti.model.AstroProfileModel;
 import com.squareup.picasso.Picasso;
-import java.util.List;
 
+import java.util.List;
 
 
 public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.ViewHolder> {
@@ -42,8 +46,9 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
         holder.charge.setText(model.getCallrate());
         holder.exp.setText(model.getExperience());
         holder.status.setText(model.getStatus());
-        String rating=model.getAvgrating1();
-        Float f= Float.parseFloat(rating);
+        String userId = model.getReg_id();
+        String rating = model.getAvgrating1();
+        Float f = Float.parseFloat(rating);
         holder.ratingBar.setRating(f);
         Picasso.with(context).load(model.getImage()).into(holder.imageView);
         if (model.getStatus().equals("Online")) {
@@ -51,6 +56,15 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
         } else {
             holder.status.setBackgroundResource(R.drawable.red_without_conner_bg);
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, AstrologerProfile.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("reg_id", userId);
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -73,7 +87,7 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
             status = itemView.findViewById(R.id.status);
             exp = itemView.findViewById(R.id.exp);
             imageView = itemView.findViewById(R.id.imageViewAstro);
-            ratingBar=itemView.findViewById(R.id.ratingBar);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
         }
     }
 }
