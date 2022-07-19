@@ -4,16 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.Search">
-
-    <SearchView
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginBottom="7dp"
-        android:background="@color/white" />
+<EditText
+    android:hint="Enter search"
+    android:singleLine="true"
+    android:imeOptions="actionSearch"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/search_bar"/>
+<!--    <androidx.appcompat.widget.SearchView-->
+<!--        android:id="@+id/search_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="7dp"-->
+<!--        android:layout_marginTop="7dp"-->
+<!--        android:layout_marginRight="7dp"-->
+<!--        android:layout_marginBottom="7dp"-->
+<!--        android:background="@color/white" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSearch"

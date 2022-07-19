@@ -2,8 +2,10 @@ package com.acharyamukti.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.MenuItem;
+
 import com.acharyamukti.R;
 
 public class PaymentInformation extends AppCompatActivity {
@@ -18,6 +20,7 @@ public class PaymentInformation extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         onBackPressed();
+        item.getItemId();
         finish();
         return super.onOptionsItemSelected(item);
     }

@@ -22,9 +22,11 @@ import com.acharyamukti.activity.KundaliniMarriage;
 import com.acharyamukti.activity.Horoscope;
 import com.acharyamukti.adapter.AstroProfileAdapter;
 import com.acharyamukti.adapter.LiveAdapter;
+import com.acharyamukti.adapter.NewsAdapter;
 import com.acharyamukti.databinding.FragmentHomeBinding;
 import com.acharyamukti.model.AstroProfileModel;
 import com.acharyamukti.model.ImageModel;
+import com.acharyamukti.model.NewsModel;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -45,12 +47,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     FragmentHomeBinding binding;
     LiveAdapter liveAdapter;
     AstroProfileAdapter astroProfile;
-    RecyclerView recyclerView, recyclerView1;
+    RecyclerView recyclerView, recyclerView1, recyclerViewBlogDetails;
     GridLayoutManager gridLayoutManager;
     LinearLayoutManager linearLayoutManager;
     TextView viewAll, viewAll2;
-    List<ImageModel> imageModels = new ArrayList<>();
-
+    List<NewsModel> newsModels = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -61,14 +62,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         recyclerView = root.findViewById(R.id.recyclerView);
-        gridLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
+        gridLayoutManager = new GridLayoutManager(getContext(), 1,
+                GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
         viewAll = root.findViewById(R.id.viewAll);
         viewAll.setOnClickListener(this);
         recyclerView.setHasFixedSize(true);
         recyclerView1 = root.findViewById(R.id.recyclerViewLive);
-        linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+        linearLayoutManager = new LinearLayoutManager(getContext(),
+                RecyclerView.HORIZONTAL, false);
         recyclerView1.setLayoutManager(linearLayoutManager);
+        recyclerViewBlogDetails = root.findViewById(R.id.recyclerViewBlogDetails);
+        GridLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 1, RecyclerView.HORIZONTAL, false);
+        recyclerViewBlogDetails.setLayoutManager(linearLayoutManager);
+        NewsAdapter newsAdapter = new NewsAdapter(getContext(), R.layout.lasted_custom_blog, newsModels);
+        recyclerViewBlogDetails.setAdapter(newsAdapter);
+        recyclerViewBlogDetails.setNestedScrollingEnabled(false);
         relationShip = root.findViewById(R.id.loveRelationShip);
         relationShip.setOnClickListener(this);
         marriage = root.findViewById(R.id.marriageKundly);

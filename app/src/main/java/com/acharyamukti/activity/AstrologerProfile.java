@@ -42,7 +42,10 @@ public class AstrologerProfile extends AppCompatActivity {
     ReviewAdapter reviewAdapter;
     LinearLayoutManager linearLayoutManager;
     ImageView profileImage;
-    TextView profileName, designation, status, rating, txtExperience2, txtMin, txtSpoken, txtExp1, txtSummary_long;
+    TextView profileName, designation,
+            status, rating, txtExperience2,
+            txtMin, txtSpoken, txtExp1,
+            txtSummary_long;
     Toolbar toolbar;
 
     @Override
@@ -55,11 +58,11 @@ public class AstrologerProfile extends AppCompatActivity {
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());
-        profileImage = binding.profileImageSingle;
-        profileName = binding.profileNameS;
-        designation = binding.designation;
-        status = binding.userOnlineStatus;
-        rating = binding.totalRating;
+        profileImage = findViewById(R.id.profileImageSingle);
+        profileName = findViewById(R.id.profileNameS);
+        designation = findViewById(R.id.designation);
+        status = findViewById(R.id.user_online_status);
+        rating = findViewById(R.id.total_rating);
         txtExperience2 = findViewById(R.id.txtExperience2);
         txtMin = findViewById(R.id.txtMin);
         txtSpoken = findViewById(R.id.txtSpoken);
