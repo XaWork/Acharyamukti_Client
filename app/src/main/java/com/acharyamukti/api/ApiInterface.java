@@ -1,6 +1,7 @@
 package com.acharyamukti.api;
 
 
+import com.acharyamukti.model.BlogModel;
 import com.acharyamukti.model.DataModel;
 import com.acharyamukti.model.HoroscopeModel;
 import com.acharyamukti.model.ImageModel;
@@ -54,5 +55,10 @@ public interface ApiInterface {
     @POST("clientapi/daily-horoscope-more.php")
     Call<HoroscopeModel> getBlog(
             @Field("horoscop_name") String title
+    );
+    @FormUrlEncoded
+    @POST("clientapi/blog-details.php")
+    Call<BlogModel>getBlogDetails(
+            @Field("blog_id")String id
     );
 }

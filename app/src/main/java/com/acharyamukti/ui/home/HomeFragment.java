@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,19 +24,14 @@ import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.adapter.NewsAdapter;
 import com.acharyamukti.databinding.FragmentHomeBinding;
 import com.acharyamukti.model.AstroProfileModel;
-import com.acharyamukti.model.ImageModel;
-import com.acharyamukti.model.NewsModel;
+import com.acharyamukti.model.BlogModel;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +45,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     GridLayoutManager gridLayoutManager;
     LinearLayoutManager linearLayoutManager;
     TextView viewAll, viewAll2;
-    List<NewsModel> newsModels = new ArrayList<>();
+    List<BlogModel> blogModels = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,24 +54,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        recyclerView = root.findViewById(R.id.recyclerView);
-        gridLayoutManager = new GridLayoutManager(getContext(), 1,
-                GridLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        homeViewModel.getText().
+                observe(getViewLifecycleOwner(),
+                        textView::setText);
         viewAll = root.findViewById(R.id.viewAll);
         viewAll.setOnClickListener(this);
-        recyclerView.setHasFixedSize(true);
-        recyclerView1 = root.findViewById(R.id.recyclerViewLive);
-        linearLayoutManager = new LinearLayoutManager(getContext(),
-                RecyclerView.HORIZONTAL, false);
-        recyclerView1.setLayoutManager(linearLayoutManager);
-        recyclerViewBlogDetails = root.findViewById(R.id.recyclerViewBlogDetails);
-        GridLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 1, RecyclerView.HORIZONTAL, false);
-        recyclerViewBlogDetails.setLayoutManager(linearLayoutManager);
-        NewsAdapter newsAdapter = new NewsAdapter(getContext(), R.layout.lasted_custom_blog, newsModels);
-        recyclerViewBlogDetails.setAdapter(newsAdapter);
-        recyclerViewBlogDetails.setNestedScrollingEnabled(false);
         relationShip = root.findViewById(R.id.loveRelationShip);
         relationShip.setOnClickListener(this);
         marriage = root.findViewById(R.id.marriageKundly);
@@ -92,6 +73,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         viewAll2.setOnClickListener(this);
         getProfileData();
         getLiveData();
+        RecyclerViewData(root);
         return root;
     }
 
@@ -99,6 +81,28 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void RecyclerViewData(View root) {
+        recyclerView = root.findViewById(R.id.recyclerView);
+        gridLayoutManager = new GridLayoutManager(getContext(), 1,
+                GridLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView1 = root.findViewById(R.id.recyclerViewLive);
+        linearLayoutManager = new LinearLayoutManager(getContext(),
+                RecyclerView.HORIZONTAL, false);
+        recyclerView1.setLayoutManager(linearLayoutManager);
+        recyclerViewBlogDetails = root.findViewById(R.id.recyclerViewBlogDetails);
+        GridLayoutManager linearLayoutManager =
+                new GridLayoutManager(getContext(), 1,
+                        RecyclerView.HORIZONTAL, false);
+        recyclerViewBlogDetails.setLayoutManager(linearLayoutManager);
+        NewsAdapter newsAdapter = new NewsAdapter(getContext(),
+                R.layout.lasted_custom_blog, blogModels);
+        recyclerViewBlogDetails.setAdapter(newsAdapter);
+        recyclerViewBlogDetails.setNestedScrollingEnabled(false);
+        getBloData();
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -140,37 +144,33 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 startActivity(horoscope);
                 break;
         }
-
     }
 
     private void getProfileData() {
         final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
         String url = "https://theacharyamukti.com/clientapi/online-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray jsonArray = response.getJSONArray("body");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jb = jsonArray.getJSONObject(i);
-                        AstroProfileModel astro = new AstroProfileModel(
-                                jb.getString("image"),
-                                jb.getString("name"),
-                                jb.getString("reg_id"),
-                                jb.getString("experience"),
-                                jb.getString("callrate"),
-                                jb.getString("language"),
-                                jb.getString("asttype"),
-                                jb.getString("avgrating1"));
-                        astroProfileModels.add(astro);
-                    }
-                    astroProfile = new AstroProfileAdapter(getContext(), astroProfileModels);
-                    astroProfile.notifyDataSetChanged();
-                    recyclerView1.setAdapter(astroProfile);
-                } catch (Exception e) {
-                    e.printStackTrace();
+        @SuppressLint("NotifyDataSetChanged") JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
+            try {
+                JSONArray jsonArray = response.getJSONArray("body");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jb = jsonArray.getJSONObject(i);
+                    AstroProfileModel astro = new AstroProfileModel(
+                            jb.getString("image"),
+                            jb.getString("name"),
+                            jb.getString("reg_id"),
+                            jb.getString("experience"),
+                            jb.getString("callrate"),
+                            jb.getString("language"),
+                            jb.getString("asttype"),
+                            jb.getString("avgrating1"));
+                    astroProfileModels.add(astro);
                 }
+                astroProfile = new AstroProfileAdapter(getContext(), astroProfileModels);
+                astroProfile.notifyDataSetChanged();
+                recyclerView1.setAdapter(astroProfile);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }, error ->
                 Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show());
@@ -181,39 +181,57 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
         String url = "https://theacharyamukti.com/clientapi/online-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject obj = new JSONObject(response);
-                    JSONArray arr = obj.getJSONArray("body");
-                    for (int i = 0; i < arr.length(); i++) {
-                        JSONObject jb = arr.getJSONObject(i);
-                        AstroProfileModel astro = new AstroProfileModel(
-                                jb.getString("image"),
-                                jb.getString("status"),
-                                jb.getString("name"),
-                                jb.getString("reg_id"),
-                                jb.getString("experience"),
-                                jb.getString("callrate"),
-                                jb.getString("language"),
-                                jb.getString("asttype"),
-                                jb.getString("avgrating1"));
-
-                        astroProfileModels.add(astro);
-                    }
-                    liveAdapter = new LiveAdapter(getActivity(), astroProfileModels);
-                    recyclerView.setAdapter(liveAdapter);
-                } catch (Exception e) {
-                    e.printStackTrace();
+        StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
+            try {
+                JSONObject obj = new JSONObject(response);
+                JSONArray arr = obj.getJSONArray("body");
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject jb = arr.getJSONObject(i);
+                    AstroProfileModel astro = new AstroProfileModel(
+                            jb.getString("image"),
+                            jb.getString("status"),
+                            jb.getString("name"),
+                            jb.getString("reg_id"),
+                            jb.getString("experience"),
+                            jb.getString("callrate"),
+                            jb.getString("language"),
+                            jb.getString("asttype"),
+                            jb.getString("avgrating1"));
+                    astroProfileModels.add(astro);
                 }
+                liveAdapter = new LiveAdapter(getActivity(), astroProfileModels);
+                recyclerView.setAdapter(liveAdapter);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        }, error -> Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show());
         requestQueue.add(request);
+    }
+    private void getBloData() {
+        String url = "https://theacharyamukti.com/clientapi/blog.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
+        @SuppressLint("NotifyDataSetChanged") StringRequest stringRequest = new StringRequest(Request.Method.GET, url, response -> {
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                JSONArray jsonArray = jsonObject.getJSONArray("body");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jb = jsonArray.getJSONObject(i);
+                    BlogModel blogModel = new BlogModel(
+                            jb.getString("date"),
+                            jb.getString("name"),
+                            jb.getString("blog_id"),
+                            jb.getString("description"),
+                            jb.getString("image")
+                    );
+                    blogModels.add(blogModel);
+                }
+               NewsAdapter newsAdapter = new NewsAdapter(getContext(), R.layout.custom_news_layout, blogModels);
+                newsAdapter.notifyDataSetChanged();
+                recyclerView.setAdapter(newsAdapter);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, error -> Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show());
+        requestQueue.add(stringRequest);
     }
 }

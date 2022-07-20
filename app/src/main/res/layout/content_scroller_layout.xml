@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_height="250dp"
         android:fitsSystemWindows="true"
         android:theme="@style/AppThemeActionBar">
 
@@ -18,19 +18,29 @@
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_image"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:titleEnabled="false"
             app:toolbarId="@+id/toolbar">
+            <ImageView
+                android:paddingTop="5dp"
+                android:id="@+id/blogImage"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:src="@drawable/home_image"
+                app:layout_collapseMode="parallax"/>
+
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                android:background="#1BFFFFFF"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppThemeActionBar"
                 app:title="Astro Profile"
                 android:gravity="center_vertical"
                 app:titleTextColor="@color/black">
@@ -56,7 +66,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="310dp"
+                android:layout_marginTop="230dp"
                 android:background="@drawable/whitewithoutconner_bg" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
