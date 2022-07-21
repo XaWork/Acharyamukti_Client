@@ -92,7 +92,6 @@ public class BlogDetails extends AppCompatActivity implements View.OnClickListen
                     Glide.with(getApplicationContext()).load(url).into(blogImage);
                 }
             }
-
             @Override
             public void onFailure(Call<BlogModel> call, Throwable t) {
                 Toast.makeText(BlogDetails.this, t.toString(), Toast.LENGTH_SHORT).show();

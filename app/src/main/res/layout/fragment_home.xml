@@ -394,7 +394,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="180dp"
+                        android:layout_height="150dp"
                         android:paddingBottom="10dp"/>
                     <LinearLayout
                         android:id="@+id/bannerImage2"
@@ -466,6 +466,7 @@
                                 android:textStyle="normal" />
 
                             <EditText
+                                android:id="@+id/feedback"
                                 android:layout_width="match_parent"
                                 android:layout_height="100dp"
                                 android:layout_margin="10dp"
@@ -480,12 +481,13 @@
                                 android:textSize="12sp" />
 
                             <Button
+                                android:id="@+id/sendFeedback"
                                 android:layout_width="140dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_margin="5dp"
                                 android:background="@drawable/text_bg"
-                                android:text="send" />
+                                android:text="send"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 

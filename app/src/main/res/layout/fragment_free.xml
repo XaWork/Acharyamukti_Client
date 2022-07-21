@@ -17,75 +17,74 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imagePersonal"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/banner_top" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imagePersonal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="150dp"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:scaleType="fitXY"-->
+<!--                android:src="@drawable/banner_top" />-->
 
-            <TextView
-                android:id="@+id/compatible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="60dp"
-                android:gravity="center_horizontal"
-                android:text="Are you compatible \n together?"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/compatible"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:layout_marginEnd="60dp"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:text="Are you compatible \n together?"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:id="@+id/matchKundali"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/compatible"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="65dp"
-                android:gravity="center_horizontal"
-                android:text="match your kundli"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/matchKundali"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/compatible"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginEnd="65dp"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:text="match your kundli"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="16sp" />-->
 
-            <LinearLayout
-                android:id="@+id/viewAllLayout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@+id/imagePersonal"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/viewAllLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_below="@+id/imagePersonal"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Horoscope &amp; more Blogs"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:text="Horoscope &amp; more Blogs"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold" />-->
 
-                <Button
-                    android:id="@+id/viewAllBlogData"
-                    android:layout_width="100dp"
-                    android:layout_height="35dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/layout_bg"
-                    android:gravity="center"
-                    android:text="@string/button_view_all"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+<!--                <Button-->
+<!--                    android:id="@+id/viewAllBlogData"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="35dp"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    android:background="@drawable/layout_bg"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/button_view_all"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="10sp"-->
+<!--                    android:textStyle="bold" />-->
+<!--            </LinearLayout>-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewNews"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/viewAllLayout" />
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
     </ScrollView>
 </FrameLayout>

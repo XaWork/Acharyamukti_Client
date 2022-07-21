@@ -56,9 +56,17 @@ public interface ApiInterface {
     Call<HoroscopeModel> getBlog(
             @Field("horoscop_name") String title
     );
+
     @FormUrlEncoded
     @POST("clientapi/blog-details.php")
-    Call<BlogModel>getBlogDetails(
-            @Field("blog_id")String id
+    Call<BlogModel> getBlogDetails(
+            @Field("blog_id") String id
+    );
+
+    @FormUrlEncoded
+    @POST("clientapi/feedback.php")
+    Call<DataModel> postFeedBack(
+            @Field("user_id") String userId,
+            @Field("content") String content
     );
 }

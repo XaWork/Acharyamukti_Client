@@ -1,12 +1,9 @@
 package com.acharyamukti.fragment;
 
-import static android.content.Context.MODE_PRIVATE;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -15,14 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.acharyamukti.R;
 import com.acharyamukti.activity.DashBoard;
 import com.acharyamukti.activity.Register;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.DataModel;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,7 +26,6 @@ import retrofit2.Response;
 public class Login extends Fragment implements View.OnClickListener {
     Button login;
     EditText emailId, pass;
-    SharedPreferences sp;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,7 +78,6 @@ public class Login extends Fragment implements View.OnClickListener {
         }
 
     }
-
     private void userLogin() {
         String email = emailId.getText().toString();
         String password = pass.getText().toString();
@@ -116,7 +109,6 @@ public class Login extends Fragment implements View.OnClickListener {
                 String userId = dataModel.getUserid();
                 Backend.getInstance(getActivity()).saveUserId(userId);
             }
-
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_SHORT).show();

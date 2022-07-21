@@ -1,14 +1,18 @@
 package com.acharyamukti.ui.home;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -22,18 +26,27 @@ import com.acharyamukti.activity.Horoscope;
 import com.acharyamukti.adapter.AstroProfileAdapter;
 import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.adapter.NewsAdapter;
+import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.databinding.FragmentHomeBinding;
+import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.AstroProfileModel;
 import com.acharyamukti.model.BlogModel;
+import com.acharyamukti.model.DataModel;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -46,6 +59,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     LinearLayoutManager linearLayoutManager;
     TextView viewAll, viewAll2;
     List<BlogModel> blogModels = new ArrayList<>();
+    NewsAdapter newsAdapter;
+    TextView feedback;
+    Button sendFeedback;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -71,9 +87,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         horoscope.setOnClickListener(this);
         viewAll2 = root.findViewById(R.id.viewAll2);
         viewAll2.setOnClickListener(this);
+        feedback = root.findViewById(R.id.feedback);
+        sendFeedback = root.findViewById(R.id.sendFeedback);
+        sendFeedback.setOnClickListener(this);
         getProfileData();
         getLiveData();
-        RecyclerViewData(root);
+        recyclerViewData(root);
+
         return root;
     }
 
@@ -83,7 +103,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         binding = null;
     }
 
-    private void RecyclerViewData(View root) {
+    private void messageAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Notice");
+        builder.setMessage("Launching this missile will destroy the entire universe. Is this what you intended to do?");
+        builder.setPositiveButton("Launch missile", null);
+        builder.setNeutralButton("Remind me later", null);
+        builder.setNegativeButton("Cancel", null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
+    private void recyclerViewData(View root) {
         recyclerView = root.findViewById(R.id.recyclerView);
         gridLayoutManager = new GridLayoutManager(getContext(), 1,
                 GridLayoutManager.HORIZONTAL, false);
@@ -98,9 +130,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 new GridLayoutManager(getContext(), 1,
                         RecyclerView.HORIZONTAL, false);
         recyclerViewBlogDetails.setLayoutManager(linearLayoutManager);
-        NewsAdapter newsAdapter = new NewsAdapter(getContext(),
-                R.layout.lasted_custom_blog, blogModels);
-        recyclerViewBlogDetails.setAdapter(newsAdapter);
         recyclerViewBlogDetails.setNestedScrollingEnabled(false);
         getBloData();
     }
@@ -142,6 +171,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Intent horoscope = new Intent(getContext(), Horoscope.class);
                 horoscope.putExtra("title", "horoscope");
                 startActivity(horoscope);
+                break;
+            case R.id.sendFeedback:
+                postFeedBackData();
                 break;
         }
     }
@@ -207,6 +239,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }, error -> Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show());
         requestQueue.add(request);
     }
+
     private void getBloData() {
         String url = "https://theacharyamukti.com/clientapi/blog.php";
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
@@ -225,13 +258,37 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     );
                     blogModels.add(blogModel);
                 }
-               NewsAdapter newsAdapter = new NewsAdapter(getContext(), R.layout.custom_news_layout, blogModels);
+                newsAdapter = new NewsAdapter(getContext(), R.layout.lasted_custom_blog, blogModels);
                 newsAdapter.notifyDataSetChanged();
-                recyclerView.setAdapter(newsAdapter);
+                recyclerViewBlogDetails.setAdapter(newsAdapter);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }, error -> Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show());
         requestQueue.add(stringRequest);
+    }
+
+    private void postFeedBackData() {
+        String content = feedback.getText().toString();
+        String userId = Backend.getInstance(getContext()).getUserId();
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().postFeedBack(userId, content);
+        call.enqueue(new Callback<DataModel>() {
+            @Override
+            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+                DataModel dataModel = response.body();
+                if (response.isSuccessful()) {
+                    if (dataModel.getError().equals("false")) {
+                        Toast.makeText(getContext(), dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        messageAlert();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), dataModel.getError(), Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<DataModel> call, Throwable t) {
+                Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
