@@ -2,30 +2,39 @@ package com.acharyamukti.fragment;
 
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import com.acharyamukti.R;
 import com.acharyamukti.activity.DashBoard;
 import com.acharyamukti.activity.Register;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.DataModel;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Login extends Fragment implements View.OnClickListener {
+public class EmailLogin extends Fragment implements View.OnClickListener {
     Button login;
     EditText emailId, pass;
+    TextView forgotPass, etEmail;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,9 @@ public class Login extends Fragment implements View.OnClickListener {
         login.setOnClickListener(this);
         Button signup = view.findViewById(R.id.signup);
         signup.setOnClickListener(this);
+        forgotPass = view.findViewById(R.id.forgotPass);
+        forgotPass.setOnClickListener(this);
+
 //        sp = view.getContext().getSharedPreferences("login", MODE_PRIVATE);
 //        if (sp.contains("username") && sp.contains("password")) {
 //            startActivity(new Intent(getContext(), DashBoard.class));
@@ -64,6 +76,19 @@ public class Login extends Fragment implements View.OnClickListener {
 
     }
 
+    private void dialog() {
+        Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.custom_forgot_pass);
+        ImageView cancelImage = dialog.findViewById(R.id.cancelImage);
+        cancelImage.setOnClickListener(view -> dialog.dismiss());
+        etEmail = dialog.findViewById(R.id.etEmail);
+        String sendUrl = etEmail.getText().toString();
+        forgotPass(sendUrl);
+        dialog.show();
+    }
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
@@ -75,9 +100,13 @@ public class Login extends Fragment implements View.OnClickListener {
             case R.id.btnLogin:
                 userLogin();
                 break;
+            case R.id.forgotPass:
+                dialog();
+                break;
         }
 
     }
+
     private void userLogin() {
         String email = emailId.getText().toString();
         String password = pass.getText().toString();
@@ -109,9 +138,33 @@ public class Login extends Fragment implements View.OnClickListener {
                 String userId = dataModel.getUserid();
                 Backend.getInstance(getActivity()).saveUserId(userId);
             }
+
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void forgotPass(String sendUrl) {
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().postPasswordLink(sendUrl);
+        call.enqueue(new Callback<DataModel>() {
+            @Override
+            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+                DataModel dataModel = response.body();
+                if (response.isSuccessful()) {
+                    if (dataModel.getError().equals("false")) {
+                        Toast.makeText(getContext(), "Check your mail for forgot password link", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DataModel> call, Throwable t) {
+                Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }

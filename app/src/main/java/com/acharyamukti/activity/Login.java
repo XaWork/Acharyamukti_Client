@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
+import com.acharyamukti.fragment.EmailLogin;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.DataModel;
 
@@ -74,7 +75,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.loginToEmail:
                 layout.setVisibility(View.GONE);
                 navigationBar.setVisibility(View.INVISIBLE);
-                getSupportFragmentManager().beginTransaction().add(R.id.fragment, new com.acharyamukti.fragment.Login()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.fragment, new EmailLogin()).commit();
                 break;
         }
     }

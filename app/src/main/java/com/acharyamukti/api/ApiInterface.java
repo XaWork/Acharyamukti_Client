@@ -69,4 +69,12 @@ public interface ApiInterface {
             @Field("user_id") String userId,
             @Field("content") String content
     );
+
+    @FormUrlEncoded
+    @POST("clientapi/forgot-pass.php")
+    Call<DataModel> postPasswordLink(
+            @Field("email") String email
+    );
+
+
 }

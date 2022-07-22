@@ -12,16 +12,21 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
+
 import com.acharyamukti.R;
+import com.acharyamukti.fragment.CallHistory;
 import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.ui.gallery.GalleryFragment;
 import com.acharyamukti.ui.home.HomeFragment;
+import com.acharyamukti.ui.slideshow.SlideshowFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.acharyamukti.databinding.ActivityDashBoardBinding;
+
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
@@ -31,7 +36,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
-
 
 
 public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
@@ -151,6 +155,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 Intent intent = new Intent(this, Horoscope.class);
                 startActivity(intent);
                 break;
+            case R.id.nav_slideshow:
+                toolbar.setTitle("Call history");
+                SlideshowFragment fragment4 = new SlideshowFragment();
+                FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction4.replace(R.id.frameLayout_dash, fragment4, "");
+                fragmentTransaction4.commit();
+                break;
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -161,6 +172,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
     }
+
     @Override
     public void onClick(View view) {
     }

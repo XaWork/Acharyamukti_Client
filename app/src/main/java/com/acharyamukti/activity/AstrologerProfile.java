@@ -165,4 +165,5 @@ public class AstrologerProfile extends AppCompatActivity {
         };
         request.add(stringRequest);
     }
+
 }
