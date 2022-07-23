@@ -2,7 +2,9 @@ package com.acharyamukti.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +35,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     LinearLayout layout, navigationBar;
     EditText mobileNumber;
     EditText etOTP;
+    SharedPreferences shp;
+    SharedPreferences.Editor shpEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         mobileNumber = findViewById(R.id.getOtpMobile);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyLogin.txt", Context.MODE_PRIVATE);
+        boolean loginCheck = sharedPreferences.getBoolean("FirstLogin", false);
+        if (loginCheck) {
+            Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -62,6 +72,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         this.finish();
         super.onBackPressed();
 
+
     }
 
 
@@ -71,6 +82,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.btnOtp:
                 getOtp();
+                SharedPreferences sharedPreferences = getSharedPreferences("MyLogin.txt", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("FirstLogin", true);
+                editor.commit();
                 break;
             case R.id.loginToEmail:
                 layout.setVisibility(View.GONE);
@@ -115,6 +130,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 if (response.isSuccessful()) {
                     if (dataModel.getMessage().equals("Check OTP Your Mobile No")) {
                         dialog();
+                        if (dataModel.getUserid() == null) {
+                            shp = getSharedPreferences("myPreferences", MODE_PRIVATE);
+                        }
                         Toast.makeText(Login.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(Login.this, "Enter valid mobile number", Toast.LENGTH_SHORT).show();

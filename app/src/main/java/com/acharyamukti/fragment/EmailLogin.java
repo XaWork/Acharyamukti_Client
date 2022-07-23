@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +34,7 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
     Button login;
     EditText emailId, pass;
     TextView forgotPass, etEmail;
+    Dialog dialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,30 +54,11 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
         signup.setOnClickListener(this);
         forgotPass = view.findViewById(R.id.forgotPass);
         forgotPass.setOnClickListener(this);
-
-//        sp = view.getContext().getSharedPreferences("login", MODE_PRIVATE);
-//        if (sp.contains("username") && sp.contains("password")) {
-//            startActivity(new Intent(getContext(), DashBoard.class));
-//        }
         return view;
-//    }
-//
-//    void loginCheck() {
-//        if (emailId.getText().toString().equals("programmer") && pass.getText().toString().equals("programmer")) {
-//            SharedPreferences.Editor e = sp.edit();
-//            e.putString("username", "programmer");
-//            e.putString("password", "programmer");
-//            e.commit();
-//
-//            Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_LONG).show();
-//            startActivity(new Intent(getContext(), DashBoard.class));
-//        } else {
-//            Toast.makeText(getContext(), "Incorrect Login Details", Toast.LENGTH_LONG).show();
-
     }
 
     private void dialog() {
-        Dialog dialog = new Dialog(getActivity());
+         dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.custom_forgot_pass);
@@ -85,8 +66,30 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
         cancelImage.setOnClickListener(view -> dialog.dismiss());
         etEmail = dialog.findViewById(R.id.etEmail);
         String sendUrl = etEmail.getText().toString();
-        forgotPass(sendUrl);
+        Button send = dialog.findViewById(R.id.btnSendLink);
+        send.setOnClickListener(view ->
+        {
+            if (sendUrl == null) {
+                Toast.makeText(getActivity(), "Please Enter the email Id", Toast.LENGTH_SHORT).show();
+            } else {
+                forgotPass(sendUrl);
+            }
+        });
         dialog.show();
+        dialog.setCanceledOnTouchOutside(false);
+    }
+
+    private void getEmailDialog() {
+        Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.custom_check_mail);
+        ImageView close = dialog.findViewById(R.id.close);
+        close.setOnClickListener(view -> dialog.dismiss());
+        dialog.show();
+        dialog.setCanceledOnTouchOutside(false);
+
+
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -153,10 +156,13 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
             public void onResponse(Call<DataModel> call, Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
+                    dialog.dismiss();
                     if (dataModel.getError().equals("false")) {
+                        getEmailDialog();
                         Toast.makeText(getContext(), "Check your mail for forgot password link", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                        getEmailDialog();
                     }
                 }
             }
