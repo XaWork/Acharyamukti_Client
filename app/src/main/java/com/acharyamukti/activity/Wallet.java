@@ -2,22 +2,36 @@ package com.acharyamukti.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.acharyamukti.R;
+import com.acharyamukti.api.RetrofitClient;
+import com.acharyamukti.helper.Backend;
+import com.acharyamukti.model.DataModel;
+
+import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Wallet extends AppCompatActivity implements View.OnClickListener {
-    TextView text1, text2, text3, text4, text5, text6;
+    TextView text0, text1, text2, text3, text4, text5, text6, totalBalance;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
-    //    getActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        text0 = findViewById(R.id.txtRs0);
         text1 = findViewById(R.id.txtRs1);
         text2 = findViewById(R.id.txtRs2);
         text3 = findViewById(R.id.txtRs3);
@@ -25,6 +39,14 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
         text5 = findViewById(R.id.txtRs5);
         text6 = findViewById(R.id.txtRs6);
         text1.setOnClickListener(this);
+        totalBalance = findViewById(R.id.totalBalance);
+        userId = Backend.getInstance(this).getUserId();
+        if (userId != null) {
+            getTotalBalance(userId);
+        } else {
+            Toast.makeText(this, "User are not login", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
@@ -38,6 +60,11 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.txtRs0:
+                Intent txt1 = new Intent(getApplicationContext(), PaymentInformation.class);
+                txt1.putExtra("balance", "1");
+                startActivity(txt1);
+                break;
             case R.id.txtRs1:
                 Intent intent = new Intent(getApplicationContext(), PaymentInformation.class);
                 intent.putExtra("balance", "100");
@@ -69,5 +96,24 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
                 startActivity(txt6);
                 break;
         }
+    }
+
+    private void getTotalBalance(String userId) {
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().getTotalBalance(userId);
+        call.enqueue(new Callback<DataModel>() {
+            @Override
+            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+                DataModel dataModel = response.body();
+                if (response.isSuccessful()) {
+                    if (dataModel.getError().equals("false")) {
+                        String total = dataModel.getWallet();
+                        totalBalance.setText(total);
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<DataModel> call, Throwable t) {
+            }
+        });
     }
 }

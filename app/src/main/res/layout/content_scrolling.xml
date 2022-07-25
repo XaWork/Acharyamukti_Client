@@ -237,6 +237,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/calling"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"

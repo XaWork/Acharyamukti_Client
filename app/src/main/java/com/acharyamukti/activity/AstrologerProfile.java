@@ -3,13 +3,16 @@ package com.acharyamukti.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.ReviewAdapter;
+import com.acharyamukti.api.ApiInterface;
 import com.acharyamukti.databinding.ActivityAstrologerProfileBinding;
 import com.acharyamukti.model.ReviewModel;
 import com.android.volley.Request;
@@ -19,7 +22,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.common.internal.Constants;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.gson.Gson;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +33,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -36,8 +42,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AstrologerProfile extends AppCompatActivity {
+
+public class AstrologerProfile extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerView;
     ReviewAdapter reviewAdapter;
     LinearLayoutManager linearLayoutManager;
@@ -45,7 +56,7 @@ public class AstrologerProfile extends AppCompatActivity {
     TextView profileName, designation,
             status, rating, txtExperience2,
             txtMin, txtSpoken, txtExp1,
-            txtSummary_long;
+            txtSummary_long, calling;
     Toolbar toolbar;
 
     @Override
@@ -76,6 +87,8 @@ public class AstrologerProfile extends AppCompatActivity {
         String userid = intent.getStringExtra("reg_id");
         getProfileData(userid);
         getClientReview(userid);
+        calling = findViewById(R.id.calling);
+        calling.setOnClickListener(this);
     }
 
     @Override
@@ -166,4 +179,41 @@ public class AstrologerProfile extends AppCompatActivity {
         request.add(stringRequest);
     }
 
+    private void getCallForAstrologer() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://kpi.knowlarity.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        try {
+            Map<String, String> requestBody = new HashMap<>();
+            requestBody.put("k_number", "919513632690");
+            requestBody.put("agent_number", "916201989968");
+            requestBody.put("customer_number", "916201989968");
+            requestBody.put("caller_id", "918035338348");
+            Call<Object> call = apiInterface.getUser(requestBody);
+            call.enqueue(new Callback<Object>() {
+                @Override
+                public void onResponse(Call<Object> call, retrofit2.Response<Object> response) {
+                    try {
+                        JSONObject object = new JSONObject(new Gson().toJson(response.body()));
+                        Log.e("TAG", "onResponse: " + object);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                @Override
+                public void onFailure(Call<Object> call, Throwable t) {
+                    Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        getCallForAstrologer();
+    }
 }
