@@ -3,6 +3,7 @@ package com.acharyamukti.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.widget.ImageView;
 
@@ -18,6 +19,7 @@ import java.util.TimerTask;
 public class Launcher extends AppCompatActivity {
     ImageView imageView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,20 +27,19 @@ public class Launcher extends AppCompatActivity {
         imageView = findViewById(R.id.lunchLogo);
         Glide.with(this).load(R.drawable.luncher_screen_new).into(imageView);
         String userId = Backend.getInstance(this).getUserId();
-
-        new Timer().schedule(new TimerTask() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), Login.class);
+                SharedPreferences sharedPreferences=getSharedPreferences(Login.PRES_NAME,MODE_PRIVATE);
+                boolean hasLoggedIn=sharedPreferences.getBoolean("hasLoggedIn",false);
+                Intent intent;
+                if (hasLoggedIn){
+                    intent = new Intent(getApplicationContext(), DashBoard.class);
+                }else {
+                    intent = new Intent(getApplicationContext(), Login.class);
+                }
                 startActivity(intent);
-//                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//                if (userId==null) {
-//                    Intent intent = new Intent(getApplicationContext(), Login.class);
-//                    startActivity(intent);
-//                    finish();
-//                } else {
-//                    Intent intent = new Intent(getApplicationContext(), DashBoard.class);
-//                    startActivity(intent);
-//                }
+                finish();
             }
         }, 3000);
     }

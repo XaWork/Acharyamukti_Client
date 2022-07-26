@@ -3,7 +3,9 @@ package com.acharyamukti.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import com.acharyamukti.R;
 import com.acharyamukti.activity.DashBoard;
+import com.acharyamukti.activity.Login;
 import com.acharyamukti.activity.Register;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
@@ -101,6 +104,10 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.btnLogin:
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Login.PRES_NAME, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("hasLoggedIn", true);
+                editor.commit();
                 userLogin();
                 break;
             case R.id.forgotPass:
@@ -166,7 +173,6 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();

@@ -14,10 +14,10 @@ import com.acharyamukti.R;
 import com.acharyamukti.adapter.ReviewAdapter;
 import com.acharyamukti.api.ApiInterface;
 import com.acharyamukti.databinding.ActivityAstrologerProfileBinding;
+import com.acharyamukti.model.CallDataModel;
 import com.acharyamukti.model.ReviewModel;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -44,6 +44,7 @@ import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -180,36 +181,31 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     }
 
     private void getCallForAstrologer() {
+        String k_number = "919513632690";
+        String agent_number = "916201989968";
+        String customer_number = "916201989968";
+        String caller_id = "918035338348";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://kpi.knowlarity.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        try {
-            Map<String, String> requestBody = new HashMap<>();
-            requestBody.put("k_number", "919513632690");
-            requestBody.put("agent_number", "916201989968");
-            requestBody.put("customer_number", "916201989968");
-            requestBody.put("caller_id", "918035338348");
-            Call<Object> call = apiInterface.getUser(requestBody);
-            call.enqueue(new Callback<Object>() {
-                @Override
-                public void onResponse(Call<Object> call, retrofit2.Response<Object> response) {
-                    try {
-                        JSONObject object = new JSONObject(new Gson().toJson(response.body()));
-                        Log.e("TAG", "onResponse: " + object);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+        final CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id);
+        Call<CallDataModel> dataModelCall = apiInterface.getCalling(callDataModel);
+        dataModelCall.enqueue(new Callback<CallDataModel>() {
+            @Override
+            public void onResponse(Call<CallDataModel> call, Response<CallDataModel> response) {
+                CallDataModel dataModel = response.body();
+                if (response.isSuccessful()) {
+                    Toast.makeText(AstrologerProfile.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                @Override
-                public void onFailure(Call<Object> call, Throwable t) {
-                    Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            }
+
+            @Override
+            public void onFailure(Call<CallDataModel> call, Throwable t) {
+                Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText mobileNumber;
     EditText etOTP;
     SharedPreferences shp;
-    SharedPreferences.Editor shpEditor;
+    public static String PRES_NAME = "profile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +52,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         mobileNumber = findViewById(R.id.getOtpMobile);
-        SharedPreferences sharedPreferences = getSharedPreferences("MyLogin.txt", Context.MODE_PRIVATE);
-        boolean loginCheck = sharedPreferences.getBoolean("FirstLogin", false);
-        if (loginCheck) {
-            Intent intent = new Intent(getApplicationContext(), DashBoard.class);
-            startActivity(intent);
-        }
     }
 
     @Override
@@ -81,11 +75,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnOtp:
-                getOtp();
-                SharedPreferences sharedPreferences = getSharedPreferences("MyLogin.txt", Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences = getSharedPreferences(Login.PRES_NAME, MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("FirstLogin", true);
+                editor.putBoolean("hasLoggedIn", true);
                 editor.commit();
+                getOtp();
                 break;
             case R.id.loginToEmail:
                 layout.setVisibility(View.GONE);

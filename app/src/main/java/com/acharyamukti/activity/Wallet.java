@@ -39,6 +39,12 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
         text5 = findViewById(R.id.txtRs5);
         text6 = findViewById(R.id.txtRs6);
         text1.setOnClickListener(this);
+        text2.setOnClickListener(this);
+        text3.setOnClickListener(this);
+        text4.setOnClickListener(this);
+        text5.setOnClickListener(this);
+        text6.setOnClickListener(this);
+        text0.setOnClickListener(this);
         totalBalance = findViewById(R.id.totalBalance);
         userId = Backend.getInstance(this).getUserId();
         if (userId != null) {
@@ -97,7 +103,6 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
                 break;
         }
     }
-
     private void getTotalBalance(String userId) {
         Call<DataModel> call = RetrofitClient.getInstance().getApi().getTotalBalance(userId);
         call.enqueue(new Callback<DataModel>() {
@@ -108,11 +113,14 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
                     if (dataModel.getError().equals("false")) {
                         String total = dataModel.getWallet();
                         totalBalance.setText(total);
+                    } else {
+                        Toast.makeText(Wallet.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
+                Toast.makeText(Wallet.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
