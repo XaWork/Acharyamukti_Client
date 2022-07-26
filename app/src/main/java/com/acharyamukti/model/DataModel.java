@@ -7,15 +7,25 @@ public class DataModel {
     private String message;
     private String heading;
     private String today_horo;
+    private String wallet;
 
 
-    public DataModel(String error, String mobile, String message, String userid, String heading, String today_horo) {
+    public DataModel(String error, String mobile, String message, String userid, String heading, String today_horo, String wallet) {
         this.userid = userid;
         this.error = error;
         this.mobile = mobile;
         this.message = message;
-        this.heading=heading;
-        this.today_horo=today_horo;
+        this.heading = heading;
+        this.today_horo = today_horo;
+        this.wallet = wallet;
+    }
+
+    public String getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(String wallet) {
+        this.wallet = wallet;
     }
 
     public String getHeading() {

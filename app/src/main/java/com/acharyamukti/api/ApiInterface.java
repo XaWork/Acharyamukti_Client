@@ -2,13 +2,16 @@ package com.acharyamukti.api;
 
 
 import com.acharyamukti.model.BlogModel;
+import com.acharyamukti.model.CallDataModel;
 import com.acharyamukti.model.DataModel;
 import com.acharyamukti.model.HoroscopeModel;
 import com.acharyamukti.model.ImageModel;
 
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -76,5 +79,21 @@ public interface ApiInterface {
             @Field("email") String email
     );
 
+    @FormUrlEncoded
+    @POST("Basic/v1/account/call/makecall")
+    Call<CallDataModel> getCalling(@Body CallDataModel dataModel);
 
+    @FormUrlEncoded
+    @POST("clientapi/wallet.php")
+    Call<DataModel> getTotalBalance(
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
+    @POST("clientapi/pay.php")
+    Call<DataModel> postPaymentDetails(
+            @Field("user_id") String user_id,
+            @Field("account_credited") String acc_details
+    );
 }
+

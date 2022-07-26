@@ -12,7 +12,6 @@ import com.acharyamukti.databinding.FragmentGalleryBinding;
 
 
 public class GalleryFragment extends Fragment {
-
     private FragmentGalleryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,

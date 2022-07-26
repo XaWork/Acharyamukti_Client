@@ -25,10 +25,12 @@
             android:id="@+id/nav_horoscope"
             android:title="Horoscope" />
         <item android:title="@string/menu_share"
+            android:id="@+id/nav_share"
             android:icon="@drawable/ic_baseline_share_24"
             />
         <item android:title="@string/menu_ask"
-            android:icon="@drawable/ic_baseline_help_24"/>
+            android:icon="@drawable/ic_baseline_help_24"
+            android:id="@+id/can_ask"/>
         <item android:title="@string/menu_privacy"
             android:icon="@drawable/ic_baseline_privacy_tip_24"/>
         <item android:title="@string/menu_login"

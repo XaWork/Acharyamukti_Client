@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -15,10 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
+            android:name=".activity.TermAndCondition"
+            android:exported="false"
+            android:theme="@style/AppThemeActionBar" />
+        <activity
+            android:name=".activity.WhatCanAsk"
+            android:exported="false"
+            android:label="What can you ask" />
+        <activity
             android:name=".activity.FilterActivity"
             android:exported="false"
             android:label="Filter"
-            android:theme="@style/AppThemeActionBar"/>
+            android:theme="@style/AppThemeActionBar" />
         <activity
             android:name=".activity.BlogDetails"
             android:exported="false"
@@ -31,7 +39,8 @@
         <activity
             android:name=".activity.PaymentInformation"
             android:exported="false"
-            android:label="Payment Information" />
+            android:label="Payment Information"
+            android:theme="@style/AppThemeActionBar"/>
         <activity
             android:name=".activity.ProfileUpdate"
             android:exported="false"

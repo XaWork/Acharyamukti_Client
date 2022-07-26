@@ -2,7 +2,9 @@ package com.acharyamukti.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +35,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     LinearLayout layout, navigationBar;
     EditText mobileNumber;
     EditText etOTP;
+    SharedPreferences shp;
+    public static String PRES_NAME = "profile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         this.finish();
         super.onBackPressed();
 
+
     }
 
 
@@ -70,6 +75,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnOtp:
+                SharedPreferences sharedPreferences = getSharedPreferences(Login.PRES_NAME, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("hasLoggedIn", true);
+                editor.commit();
                 getOtp();
                 break;
             case R.id.loginToEmail:
@@ -115,6 +124,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 if (response.isSuccessful()) {
                     if (dataModel.getMessage().equals("Check OTP Your Mobile No")) {
                         dialog();
+                        if (dataModel.getUserid() == null) {
+                            shp = getSharedPreferences("myPreferences", MODE_PRIVATE);
+                        }
                         Toast.makeText(Login.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(Login.this, "Enter valid mobile number", Toast.LENGTH_SHORT).show();

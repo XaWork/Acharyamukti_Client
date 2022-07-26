@@ -145,6 +145,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 fragmentTransaction2.commit();
                 break;
             case R.id.nav_gallery:
+//                Intent about = new Intent(getApplicationContext(), TermAndCondition.class);
+//                startActivity(about);
                 toolbar.setTitle("About us");
                 GalleryFragment fragment3 = new GalleryFragment();
                 FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
@@ -162,6 +164,17 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 fragmentTransaction4.replace(R.id.frameLayout_dash, fragment4, "");
                 fragmentTransaction4.commit();
                 break;
+            case R.id.can_ask:
+                Intent ask = new Intent(this, WhatCanAsk.class);
+                startActivity(ask);
+                break;
+            case R.id.nav_share:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+                sendIntent.setType("text/plain");
+                sendIntent.setPackage("com.whatsapp");
+                startActivity(sendIntent);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
