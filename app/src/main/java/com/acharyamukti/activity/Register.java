@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.acharyamukti.R;
@@ -119,7 +120,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
         call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 try {
                     if (response.isSuccessful()) {
@@ -130,10 +131,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                         Intent intent = new Intent(Register.this, Login.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+                        assert dataModel != null;
                         Toast.makeText(getApplicationContext(), dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
                         progressBar.setVisibility(View.VISIBLE);
+                        assert dataModel != null;
                         Toast.makeText(Register.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
@@ -143,7 +146,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             }
 
             @Override
-            public void onFailure(Call<DataModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 progressBar.setVisibility(View.VISIBLE);
                 Toast.makeText(Register.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }

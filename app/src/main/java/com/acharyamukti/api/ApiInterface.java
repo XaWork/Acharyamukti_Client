@@ -6,10 +6,7 @@ import com.acharyamukti.model.CallDataModel;
 import com.acharyamukti.model.DataModel;
 import com.acharyamukti.model.HoroscopeModel;
 import com.acharyamukti.model.ImageModel;
-
 import java.util.List;
-import java.util.Map;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;

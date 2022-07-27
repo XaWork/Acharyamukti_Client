@@ -177,18 +177,25 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         call.enqueue(new Callback<HoroscopeModel>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
-            public void onResponse(Call<HoroscopeModel> call, Response<HoroscopeModel> response) {
+            public void onResponse(@NonNull Call<HoroscopeModel> call, @NonNull Response<HoroscopeModel> response) {
                 HoroscopeModel model = response.body();
                 if (response.isSuccessful()) {
+                    assert model != null;
                     bannerTitle.setText(model.getHeading());
                     desc.setText(Html.fromHtml(model.getToday_horo(), Html.FROM_HTML_MODE_COMPACT));
                     desc.setText(model.getToday_horo());
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        desc.setText(Html.fromHtml(model.getToday_horo(), Html.FROM_HTML_MODE_COMPACT));
+                    } else {
+                        desc.setText(Html.fromHtml(model.getToday_horo()));
+                    }
                     love.setText(model.getLove_horo_desc());
                     career.setText(model.getCareer_horo_desc());
                     health.setText(model.getHealth_horo_desc());
                     money.setText(model.getFinance_horo_desc());
                     travels.setText(model.getTravel_horo_desc());
                 } else {
+                    assert model != null;
                     Toast.makeText(Horoscope.this, model.getError(), Toast.LENGTH_SHORT).show();
                 }
             }

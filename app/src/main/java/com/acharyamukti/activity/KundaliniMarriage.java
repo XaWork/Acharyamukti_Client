@@ -87,7 +87,7 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
         final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
         String url = "https://theacharyamukti.com/clientapi/avl-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
+        @SuppressLint("NotifyDataSetChanged") StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
             try {
                 JSONObject obj = new JSONObject(response);
                 JSONArray arr = obj.getJSONArray("body");

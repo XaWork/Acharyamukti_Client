@@ -88,4 +88,14 @@ public class Backend {
         editor.putString("address", address);
         editor.apply();
     }
+
+    public String getWalletBalance() {
+        return preferences.getString("wallet", "");
+    }
+
+    public void saveWalletBalance(String wallet) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("wallet", wallet);
+        editor.apply();
+    }
 }

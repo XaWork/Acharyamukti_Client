@@ -105,12 +105,10 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
             options.put("theme.color", "#3399cc");
             options.put("currency", "INR");
             options.put("amount", amount);//pass amount in currency subunits
-
             JSONObject prefill = new JSONObject();
             prefill.put("email", email_id);
             prefill.put("contact", mobile);
             options.put("prefill", prefill);
-
             JSONObject retryObj = new JSONObject();
             retryObj.put("enabled", true);
             retryObj.put("max_count", 4);
@@ -127,7 +125,6 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
     public void onPaymentSuccess(String s) {
         Toast.makeText(PaymentInformation.this, "Payment Success", Toast.LENGTH_LONG).show();
         Log.d("paymentId", "razorpayPaymentID");
-
     }
 
     @Override
@@ -145,9 +142,10 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
         Call<DataModel> call = RetrofitClient.getInstance().getApi().postPaymentDetails(userId, userAmount);
         call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
+                    assert dataModel != null;
                     if (dataModel.getError().equals("false")) {
                         Toast.makeText(PaymentInformation.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
@@ -156,7 +154,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
                 }
             }
             @Override
-            public void onFailure(Call<DataModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(PaymentInformation.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });

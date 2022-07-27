@@ -34,7 +34,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public NewsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public NewsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(context).inflate(layoutResourceId, parent, false));
     }
 

@@ -19,9 +19,6 @@ public class BlogModel {
         return blog_id;
     }
 
-    public void setBlog_id(String blog_id) {
-        this.blog_id = blog_id;
-    }
 
     public String getDate() {
         return date;
@@ -41,10 +38,6 @@ public class BlogModel {
 
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getImage() {

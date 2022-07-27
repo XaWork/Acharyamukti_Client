@@ -19,7 +19,32 @@
             android:background="@color/yellow"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Home"
-            app:titleTextColor="@color/black" />
+            app:titleTextColor="@color/black">
+
+            <LinearLayout
+                android:id="@+id/walletLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:background="@drawable/radio_flat_selected"
+                android:gravity="center"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_account_balance_wallet_24" />
+
+                <TextView
+                    android:id="@+id/walletAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_baseline_currency_rupee_24"
+                    android:gravity="center"
+                    android:text="0.0"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_dash_board" />
