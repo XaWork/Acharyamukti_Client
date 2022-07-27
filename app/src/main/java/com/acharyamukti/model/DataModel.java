@@ -24,26 +24,6 @@ public class DataModel {
         return wallet;
     }
 
-    public void setWallet(String wallet) {
-        this.wallet = wallet;
-    }
-
-    public String getHeading() {
-        return heading;
-    }
-
-    public void setHeading(String heading) {
-        this.heading = heading;
-    }
-
-    public String getToday_horo() {
-        return today_horo;
-    }
-
-    public void setToday_horo(String today_horo) {
-        this.today_horo = today_horo;
-    }
-
     public String getUserid() {
         return userid;
     }
@@ -72,7 +52,4 @@ public class DataModel {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

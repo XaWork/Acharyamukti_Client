@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -61,7 +62,7 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
     }
 
     private void dialog() {
-         dialog = new Dialog(getActivity());
+        dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.custom_forgot_pass);
@@ -72,7 +73,7 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
         Button send = dialog.findViewById(R.id.btnSendLink);
         send.setOnClickListener(view ->
         {
-            if (sendUrl == null) {
+            if (sendUrl.equals(null)) {
                 Toast.makeText(getActivity(), "Please Enter the email Id", Toast.LENGTH_SHORT).show();
             } else {
                 forgotPass(sendUrl);
@@ -104,10 +105,10 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.btnLogin:
-                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Login.PRES_NAME, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(Login.PRES_NAME, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("hasLoggedIn", true);
-                editor.commit();
+                editor.apply();
                 userLogin();
                 break;
             case R.id.forgotPass:
@@ -133,9 +134,10 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
         Call<DataModel> call = RetrofitClient.getInstance().getApi().login(email, password);
         call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
+                    assert dataModel != null;
                     if (dataModel.getMessage().equals("Login successfull")) {
                         Intent intent1 = new Intent(getActivity(), DashBoard.class);
                         startActivity(intent1);
@@ -145,12 +147,13 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                 } else {
                     Toast.makeText(getActivity(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
                 }
+                assert dataModel != null;
                 String userId = dataModel.getUserid();
                 Backend.getInstance(getActivity()).saveUserId(userId);
             }
 
             @Override
-            public void onFailure(Call<DataModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -160,10 +163,11 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
         Call<DataModel> call = RetrofitClient.getInstance().getApi().postPasswordLink(sendUrl);
         call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
                     dialog.dismiss();
+                    assert dataModel != null;
                     if (dataModel.getError().equals("false")) {
                         getEmailDialog();
                         Toast.makeText(getContext(), "Check your mail for forgot password link", Toast.LENGTH_SHORT).show();
@@ -174,9 +178,8 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                 }
             }
             @Override
-            public void onFailure(Call<DataModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-
             }
         });
     }

@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.acharyamukti.R;
 import com.acharyamukti.model.AstroProfileModel;
-import com.acharyamukti.model.ImageModel;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.ViewHolder> {

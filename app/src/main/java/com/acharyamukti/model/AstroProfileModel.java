@@ -57,50 +57,22 @@ public class AstroProfileModel {
         return reg_id;
     }
 
-    public void setReg_id(String reg_id) {
-        this.reg_id = reg_id;
-    }
-
     public String getExperience() {
         return experience;
-    }
-
-    public void setExperience(String experience) {
-        this.experience = experience;
     }
 
     public String getCallrate() {
         return callrate;
     }
 
-    public void setCallrate(String callrate) {
-        this.callrate = callrate;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
     public String getAsttype() {
         return asttype;
     }
 
-    public void setAsttype(String asttype) {
-        this.asttype = asttype;
-    }
 
     public String getAvgrating1() {
         return avgrating1;
     }
-
-    public void setAvgrating1(String avgrating1) {
-        this.avgrating1 = avgrating1;
-    }
-
     public String getStatus() {
         return status;
     }

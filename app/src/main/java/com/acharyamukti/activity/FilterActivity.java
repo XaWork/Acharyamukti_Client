@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import com.acharyamukti.R;
-
 import java.util.Objects;
 
 public class FilterActivity extends AppCompatActivity {

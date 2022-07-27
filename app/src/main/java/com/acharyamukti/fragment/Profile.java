@@ -37,12 +37,9 @@ public class Profile extends Fragment implements View.OnClickListener {
         mobile.setText(mobileNumber);
         txtEditImage.setOnClickListener(this);
         TextView logout = view.findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Login.class);
-                startActivity(intent);
-            }
+        logout.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), Login.class);
+            startActivity(intent);
         });
         return view;
     }

@@ -1,22 +1,18 @@
 package com.acharyamukti.fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.acharyamukti.R;
-import com.acharyamukti.activity.BlogDetails;
 import com.acharyamukti.adapter.NewsAdapter;
 import com.acharyamukti.model.BlogModel;
 import com.android.volley.Request;
@@ -47,15 +43,14 @@ public class Free extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_free, container, false);
         recyclerView = view.findViewById(R.id.recyclerViewNews);
-        linearLayoutManager = new GridLayoutManager(getContext(),1);
+        linearLayoutManager = new GridLayoutManager(getContext(), 1);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
-//        Button viewAllData = view.findViewById(R.id.viewAllBlogData);
-//        viewAllData.setOnClickListener(this);
         getBloData();
         return view;
     }
+
     private void getBloData() {
         String url = "https://theacharyamukti.com/clientapi/blog.php";
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
@@ -77,17 +72,7 @@ public class Free extends Fragment {
                 newsAdapter = new NewsAdapter(getContext(), R.layout.custom_news_layout, blogModels);
                 newsAdapter.notifyDataSetChanged();
                 recyclerView.setAdapter(newsAdapter);
-                newsAdapter.setOnItemClickListener(new NewsAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(int position, BlogModel blogModel) {
-//                        switch (position) {
-//                            case 1:
-//                            Intent intent = new Intent(getContext(), BlogDetails.class);
-//                            intent.putExtra("blog_id", blogModel.getBlog_id());
-//                            startActivity(intent);
-//                            break;
-//                        }
-                    }
+                newsAdapter.setOnItemClickListener((position, blogModel) -> {
                 });
             } catch (Exception e) {
                 e.printStackTrace();

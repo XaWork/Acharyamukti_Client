@@ -8,9 +8,9 @@ public class RetrofitClient {
     public static String BASE_URL = "https://theacharyamukti.com/";
     private static RetrofitClient retrofitClient;
     private static Retrofit retrofit;
-    private final OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
     private RetrofitClient() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

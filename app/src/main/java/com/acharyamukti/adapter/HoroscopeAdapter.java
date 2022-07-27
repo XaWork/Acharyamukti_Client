@@ -40,12 +40,7 @@ public class HoroscopeAdapter extends RecyclerView.Adapter<HoroscopeAdapter.View
         ImageModel data = imageModels.get(position);
         holder.txtName.setText(data.getHoroscop_name());
         Glide.with(context).load(data.getHoroscop_icon()).into(holder.profile_Image);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HoroscopeAdapter.this.onPageItemClickListener.onPageItemClick(holder.getAdapterPosition(),data.getHoroscop_id());
-            }
-        });
+        holder.itemView.setOnClickListener(view -> HoroscopeAdapter.this.onPageItemClickListener.onPageItemClick(holder.getAdapterPosition(),data.getHoroscop_id()));
     }
 
     public void setOnPageItemClickListener(OnPageItemClickListener onPageItemClickListener) {

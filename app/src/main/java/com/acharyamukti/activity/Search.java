@@ -118,6 +118,4 @@ public class Search extends AppCompatActivity implements TextWatcher {
         };
         request.add(stringRequest);
     }
-
-
 }

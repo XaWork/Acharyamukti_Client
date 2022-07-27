@@ -6,7 +6,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -77,7 +79,6 @@ public class BlogDetails extends AppCompatActivity implements View.OnClickListen
             this.finish();
         }
     }
-
     private void getBlogDetails() {
         Call<BlogModel> call = RetrofitClient.getInstance().getApi().getBlogDetails(id);
         call.enqueue(new Callback<BlogModel>() {
@@ -86,7 +87,11 @@ public class BlogDetails extends AppCompatActivity implements View.OnClickListen
                 BlogModel blogModel = response.body();
                 if (response.isSuccessful()) {
                     blogTitle.setText(blogModel.getName());
-                    blogDes.setText(blogModel.getDescription());
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        blogDes.setText(Html.fromHtml(blogModel.getDescription(), Html.FROM_HTML_MODE_COMPACT));
+                    } else {
+                        blogDes.setText(Html.fromHtml(blogModel.getDescription()));
+                    }
                     textDate.setText(blogModel.getDate());
                     String url = "https://theacharyamukti.com/image/product/" + blogModel.getImage();
                     Glide.with(getApplicationContext()).load(url).into(blogImage);

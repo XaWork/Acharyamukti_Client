@@ -11,12 +11,12 @@ import android.view.Menu;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.acharyamukti.R;
-import com.acharyamukti.fragment.CallHistory;
 import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
 import com.acharyamukti.helper.Backend;
@@ -43,6 +43,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     private AppBarConfiguration mAppBarConfiguration;
     private Toolbar toolbar;
     Dialog dialog;
+    LinearLayout walletLayout;
+    TextView walletAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,11 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Home");
+        walletLayout = findViewById(R.id.walletLayout);
+        walletLayout.setOnClickListener(this);
+        walletAmount = findViewById(R.id.walletAmount);
+        String totalBalance = Backend.getInstance(this).getWalletBalance();
+        walletAmount.setText(totalBalance);
         getDialog();
         Handler handler = new Handler();
         handler.postDelayed(() -> {
@@ -75,7 +82,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         getMenuInflater().inflate(R.menu.dash_board, menu);
         return true;
     }
@@ -101,13 +108,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.mWallet:
-                Intent intent = new Intent(getApplicationContext(), Wallet.class);
-                startActivity(intent);
-                break;
-
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -188,5 +188,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
     @Override
     public void onClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), Wallet.class);
+        startActivity(intent);
     }
 }

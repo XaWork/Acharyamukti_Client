@@ -2,7 +2,6 @@ package com.acharyamukti.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -78,7 +77,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 SharedPreferences sharedPreferences = getSharedPreferences(Login.PRES_NAME, MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("hasLoggedIn", true);
-                editor.commit();
+                editor.apply();
                 getOtp();
                 break;
             case R.id.loginToEmail:
@@ -119,9 +118,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 .getOTP(mobile);
         call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
+                    assert dataModel != null;
                     if (dataModel.getMessage().equals("Check OTP Your Mobile No")) {
                         dialog();
                         if (dataModel.getUserid() == null) {
@@ -137,7 +137,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
 
             @Override
-            public void onFailure(Call<DataModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -159,9 +159,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         Call<DataModel> call = RetrofitClient.getInstance().getApi().verifyOTP(otp, mobile);
         call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel data = response.body();
                 if (response.isSuccessful()) {
+                    assert data != null;
                     if (data.getError().equals("false")) {
                         Intent intent = new Intent(getApplicationContext(), DashBoard.class);
                         startActivity(intent);
@@ -176,7 +177,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
 
             @Override
-            public void onFailure(Call<DataModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
