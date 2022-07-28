@@ -175,6 +175,11 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 sendIntent.setType("text/plain");
                 sendIntent.setPackage("com.whatsapp");
                 startActivity(sendIntent);
+                break;
+            case R.id.privacyPolicy:
+                Intent privacy = new Intent(getApplicationContext(), PrivacyPolicy.class);
+                startActivity(privacy);
+                break;
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

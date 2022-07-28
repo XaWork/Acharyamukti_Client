@@ -32,7 +32,8 @@
             android:icon="@drawable/ic_baseline_help_24"
             android:id="@+id/can_ask"/>
         <item android:title="@string/menu_privacy"
-            android:icon="@drawable/ic_baseline_privacy_tip_24"/>
+            android:icon="@drawable/ic_baseline_privacy_tip_24"
+            android:id="@+id/privacyPolicy"/>
         <item android:title="@string/menu_login"
             android:icon="@drawable/ic_baseline_login_24"/>
         <item android:title="@string/menu_reports"
