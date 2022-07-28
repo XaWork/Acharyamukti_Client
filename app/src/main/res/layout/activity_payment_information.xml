@@ -40,6 +40,7 @@
                     <TableRow>
 
                         <TextView
+                            android:id="@+id/amount"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_weight="1"
@@ -61,7 +62,7 @@
                     <TableRow>
 
                         <TextView
-
+                            android:id="@+id/gst"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_weight="1"
@@ -79,8 +80,11 @@
                             android:textColor="@color/black"
                             android:textSize="16sp" />
                     </TableRow>
+
                     <TableRow>
+
                         <TextView
+                            android:id="@+id/totalAmount"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_weight="1"
@@ -125,83 +129,11 @@
                 android:gravity="center"
                 android:text="APPLY"
                 android:textColor="@color/white" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/promoCode"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/layout_bg"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:gravity="center_vertical"
-                    android:text="Payment method"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="normal" />
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:buttonTint="@color/yellow"
-                        android:layoutDirection="rtl"
-                        android:text="Dabit card"
-                        android:textAlignment="textStart" />
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:buttonTint="@color/yellow"
-                        android:layoutDirection="rtl"
-                        android:text="Paytm"
-                        android:textAlignment="textStart" />
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:buttonTint="@color/yellow"
-                        android:layoutDirection="rtl"
-                        android:text="Credit card"
-                        android:textAlignment="textStart" />
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:buttonTint="@color/yellow"
-                        android:layoutDirection="rtl"
-                        android:text="Net Banking"
-                        android:textAlignment="textStart" />
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:buttonTint="@color/yellow"
-                        android:layoutDirection="rtl"
-                        android:text="Cred Pay"
-                        android:textAlignment="textStart" />
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:buttonTint="@color/yellow"
-                        android:layoutDirection="rtl"
-                        android:text="Wallet"
-                        android:textAlignment="textStart" />
-                </RadioGroup>
-            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 
     <Button
+        android:id="@+id/processToPay"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="bottom"

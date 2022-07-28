@@ -82,7 +82,7 @@ public interface ApiInterface {
             @Field("email") String email
     );
 
-    @FormUrlEncoded
+    
     @Headers({
             "Content-Type: application/json",
             "Authorization: 800333b2-405d-4947-899f-f7686663d30f",

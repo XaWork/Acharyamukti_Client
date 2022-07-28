@@ -247,12 +247,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
-                headers.put("Content-Length", "<calculated when request is sent>");
-                headers.put("Host", "<calculated when request is sent>");
-                headers.put("User-Agent", "PostmanRuntime/7.29.2");
-                headers.put("Accept", "*/*");
-                headers.put("Accept-Encoding", "gzip, deflate, br");
-                headers.put("Authorization", "bearer"+"800333b2-405d-4947-899f-f7686663d30f");
+                headers.put("Authorization", "800333b2-405d-4947-899f-f7686663d30f");
                 headers.put("x-api-key", "6m9Ux0on1k1opZ1qyEZMr4cl29UfAPqK2rryZCZR");
                 return headers;
             }
