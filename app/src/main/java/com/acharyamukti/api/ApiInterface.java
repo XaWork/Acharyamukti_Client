@@ -6,12 +6,18 @@ import com.acharyamukti.model.CallDataModel;
 import com.acharyamukti.model.DataModel;
 import com.acharyamukti.model.HoroscopeModel;
 import com.acharyamukti.model.ImageModel;
+
 import java.util.List;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
@@ -77,6 +83,11 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
+    @Headers({
+            "Content-Type: application/json",
+            "Authorization: 800333b2-405d-4947-899f-f7686663d30f",
+            "x-api-key: 6m9Ux0on1k1opZ1qyEZMr4cl29UfAPqK2rryZCZR"
+    })
     @POST("Basic/v1/account/call/makecall")
     Call<CallDataModel> getCalling(@Body CallDataModel dataModel);
 

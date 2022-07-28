@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.ReviewAdapter;
 import com.acharyamukti.api.ApiInterface;
@@ -15,13 +16,21 @@ import com.acharyamukti.databinding.ActivityAstrologerProfileBinding;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.CallDataModel;
 import com.acharyamukti.model.ReviewModel;
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -177,10 +186,10 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     }
 
     private void getCallForAstrologer() {
-        String k_number = "919513632690";
-        String agent_number = "916201989968";
-        String customer_number = "916201989968";
-        String caller_id = "918035338348";
+        String k_number = "9513632690";
+        String agent_number = "8010104747";
+        String customer_number = "7330004646";
+        String caller_id = "8035338348";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://kpi.knowlarity.com/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -190,20 +199,87 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         Call<CallDataModel> dataModelCall = apiInterface.getCalling(callDataModel);
         dataModelCall.enqueue(new Callback<CallDataModel>() {
             @Override
-            public void onResponse(Call<CallDataModel> call, Response<CallDataModel> response) {
+            public void onResponse(@NonNull Call<CallDataModel> call, @NonNull Response<CallDataModel> response) {
                 CallDataModel dataModel = response.body();
                 if (response.isSuccessful()) {
+                    assert dataModel != null;
                     Toast.makeText(AstrologerProfile.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
-            public void onFailure(Call<CallDataModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<CallDataModel> call, @NonNull Throwable t) {
                 Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     @Override
     public void onClick(View view) {
-        getCallForAstrologer();
+        getCall();
+    }
+
+    private void getCall() {
+        String url = "https://kpi.knowlarity.com/Basic/v1/account/call/makecall";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String status = jsonObject.getString("status");
+                    if (status.equals("success")) {
+                        Toast.makeText(AstrologerProfile.this, "Success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(AstrologerProfile.this, "error", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, error -> {
+            Toast.makeText(AstrologerProfile.this, error.toString(), Toast.LENGTH_SHORT).show();
+
+        }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
+                headers.put("Content-Length", "<calculated when request is sent>");
+                headers.put("Host", "<calculated when request is sent>");
+                headers.put("User-Agent", "PostmanRuntime/7.29.2");
+                headers.put("Accept", "*/*");
+                headers.put("Accept-Encoding", "gzip, deflate, br");
+                headers.put("Authorization", "bearer"+"800333b2-405d-4947-899f-f7686663d30f");
+                headers.put("x-api-key", "6m9Ux0on1k1opZ1qyEZMr4cl29UfAPqK2rryZCZR");
+                return headers;
+            }
+
+
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() {
+                HashMap<String, String> params = new HashMap<>();
+                params.put("k_number", "+919513632690");
+                params.put("agent_number", "+918010104747");
+                params.put("customer_number", "+917330004646");
+                params.put("caller_id", "+918035338348");
+                return params;
+            }
+
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
+        DiskBasedCache cache = new
+                DiskBasedCache(getApplicationContext().getCacheDir(), 500 * 1024 * 1024);
+        requestQueue = new RequestQueue(cache, new BasicNetwork(new
+                HurlStack()));
+        requestQueue.start();
     }
 }
