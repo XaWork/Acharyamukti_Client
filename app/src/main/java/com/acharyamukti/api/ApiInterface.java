@@ -76,7 +76,6 @@ public interface ApiInterface {
             @Field("content") String content
     );
 
-    @FormUrlEncoded
     @POST("clientapi/forgot-pass.php")
     Call<DataModel> postPasswordLink(
             @Field("email") String email
@@ -102,6 +101,12 @@ public interface ApiInterface {
     Call<DataModel> postPaymentDetails(
             @Field("user_id") String user_id,
             @Field("account_credited") String acc_details
+    );
+    @FormUrlEncoded
+    @POST("clientapi/calling.php")
+    Call<DataModel> getCallDurations(
+            @Field("user_id") String userId,
+            @Field("reg_id") String reg_id
     );
 }
 

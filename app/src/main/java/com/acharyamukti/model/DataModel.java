@@ -5,19 +5,43 @@ public class DataModel {
     private String error;
     private String mobile;
     private String message;
-    private String heading;
-    private String today_horo;
+    private String status;
+    private String callDurationTime;
     private String wallet;
 
 
-    public DataModel(String error, String mobile, String message, String userid, String heading, String today_horo, String wallet) {
+    public DataModel(String error, String mobile, String message, String userid, String status, String callDurationTime, String wallet) {
         this.userid = userid;
         this.error = error;
         this.mobile = mobile;
         this.message = message;
-        this.heading = heading;
-        this.today_horo = today_horo;
+        this.status = status;
+        this.callDurationTime = callDurationTime;
         this.wallet = wallet;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setWallet(String wallet) {
+        this.wallet = wallet;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCallDurationTime() {
+        return callDurationTime;
+    }
+
+    public void setCallDurationTime(String callDurationTime) {
+        this.callDurationTime = callDurationTime;
     }
 
     public String getWallet() {

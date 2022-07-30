@@ -12,9 +12,11 @@ import android.widget.Toast;
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.ReviewAdapter;
 import com.acharyamukti.api.ApiInterface;
+import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.databinding.ActivityAstrologerProfileBinding;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.CallDataModel;
+import com.acharyamukti.model.DataModel;
 import com.acharyamukti.model.ReviewModel;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -59,6 +61,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             txtMin, txtSpoken, txtExp1,
             txtSummary_long, calling;
     Toolbar toolbar;
+    String userid,reg_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,95 +186,61 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     }
 
     private void getCallForAstrologer() {
-        String k_number = "9513632690";
-        String agent_number = "8010104747";
-        String customer_number = "7330004646";
-        String caller_id = "8035338348";
+        String k_number = "+919513632690";
+        String agentNumber = Backend.getInstance(this).getAstroMobile();
+        String agent_number = "+91" + agentNumber;
+        String customerNumber = Backend.getInstance(this).getMobile();
+        String customer_number = "+91" + customerNumber;
+        String caller_id = "+918035338348";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://kpi.knowlarity.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        final CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id);
+        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id);
         Call<CallDataModel> dataModelCall = apiInterface.getCalling(callDataModel);
         dataModelCall.enqueue(new Callback<CallDataModel>() {
             @Override
             public void onResponse(@NonNull Call<CallDataModel> call, @NonNull Response<CallDataModel> response) {
-                CallDataModel dataModel = response.body();
+                CallDataModel dataModelCall = response.body();
                 if (response.isSuccessful()) {
-                    assert dataModel != null;
-                    Toast.makeText(AstrologerProfile.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    assert dataModelCall != null;
+                    Toast.makeText(AstrologerProfile.this, dataModelCall.getStatus(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(AstrologerProfile.this, "error", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<CallDataModel> call, @NonNull Throwable t) {
                 Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
     @Override
     public void onClick(View view) {
-        getCall();
+        getCallForAstrologer();
     }
 
-    private void getCall() {
-        String url = "https://kpi.knowlarity.com/Basic/v1/account/call/makecall";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
+    private void getCallDuration() {
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().getCallDurations(userid, reg_id);
+        call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    String status = jsonObject.getString("status");
-                    if (status.equals("success")) {
-                        Toast.makeText(AstrologerProfile.this, "Success", Toast.LENGTH_SHORT).show();
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
+                DataModel data = response.body();
+                if (response.isSuccessful()) {
+                    assert data != null;
+                    String callDuration = data.getCallDurationTime();
+                    if (callDuration != null) {
+                        Backend.getInstance(getApplicationContext()).saveCallDuration(callDuration);
                     } else {
-                        Toast.makeText(AstrologerProfile.this, "error", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(AstrologerProfile.this, data.getStatus(), Toast.LENGTH_SHORT).show();
                     }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
-        }, error -> {
-            Toast.makeText(AstrologerProfile.this, error.toString(), Toast.LENGTH_SHORT).show();
-
-        }) {
             @Override
-            public Map<String, String> getHeaders() {
-                HashMap<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/json");
-                headers.put("Authorization", "800333b2-405d-4947-899f-f7686663d30f");
-                headers.put("x-api-key", "6m9Ux0on1k1opZ1qyEZMr4cl29UfAPqK2rryZCZR");
-                return headers;
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
+                Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
-
-
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() {
-                HashMap<String, String> params = new HashMap<>();
-                params.put("k_number", "+919513632690");
-                params.put("agent_number", "+918010104747");
-                params.put("customer_number", "+917330004646");
-                params.put("caller_id", "+918035338348");
-                return params;
-            }
-
-        };
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-                10000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(stringRequest);
-        DiskBasedCache cache = new
-                DiskBasedCache(getApplicationContext().getCacheDir(), 500 * 1024 * 1024);
-        requestQueue = new RequestQueue(cache, new BasicNetwork(new
-                HurlStack()));
-        requestQueue.start();
+        });
     }
 }

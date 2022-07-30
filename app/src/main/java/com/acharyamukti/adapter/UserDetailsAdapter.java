@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.acharyamukti.R;
 import com.acharyamukti.activity.AstrologerProfile;
+import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.AstroProfileModel;
 import com.squareup.picasso.Picasso;
 import java.util.List;
@@ -42,7 +43,8 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
         holder.charge.setText(model.getCallrate());
         holder.exp.setText(model.getExperience());
         holder.status.setText(model.getStatus());
-        String userId = model.getReg_id();
+        String reg_id = model.getReg_id();
+        Backend.getInstance(context).saveReg_id(reg_id);
         String rating = model.getAvgrating1();
         Float f = Float.parseFloat(rating);
         holder.ratingBar.setRating(f);
@@ -55,7 +57,7 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, AstrologerProfile.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("reg_id", userId);
+            intent.putExtra("reg_id", reg_id);
             context.startActivity(intent);
         });
 

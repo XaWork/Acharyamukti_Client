@@ -97,5 +97,33 @@ public class Backend {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("wallet", wallet);
         editor.apply();
+    }public void saveAstroMobile(String astro_mobile) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("astro_moble", astro_mobile);
+        editor.apply();
+    }
+
+    public String getAstroMobile() {
+        return preferences.getString("astro_moble", "");
+    }
+
+    public void saveReg_id(String reg_id) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("reg_id", reg_id);
+        editor.apply();
+    }
+
+    public String getReg_id() {
+        return preferences.getString("reg_id", "");
+    }
+
+    public void saveCallDuration(String callDuration) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("callDurationTime", callDuration);
+        editor.apply();
+    }
+
+    public String getCallDuration() {
+        return preferences.getString("callDurationTime", "");
     }
 }
