@@ -125,7 +125,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 try {
                     if (response.isSuccessful()) {
                         Backend.getInstance(getApplicationContext()).saveName(fName);
-                        Backend.getInstance(getApplicationContext()).saveMobile(mobile);
+                     //   Backend.getInstance(getApplicationContext()).saveMobile(mobile);
                         Backend.getInstance(getApplicationContext()).saveEmail(email);
                         Backend.getInstance(getApplicationContext()).saveLastname(lName);
                         Intent intent = new Intent(Register.this, Login.class);

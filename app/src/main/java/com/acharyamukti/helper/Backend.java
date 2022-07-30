@@ -79,16 +79,6 @@ public class Backend {
         editor.apply();
     }
 
-    public String getAddress() {
-        return preferences.getString("address", "");
-    }
-
-    public void saveAddress(String address) {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("address", address);
-        editor.apply();
-    }
-
     public String getWalletBalance() {
         return preferences.getString("wallet", "");
     }

@@ -109,6 +109,7 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
                 userDetailsAdapter = new UserDetailsAdapter(getApplicationContext(), astroProfileModels);
                 userDetailsAdapter.notifyDataSetChanged();
                 recyclerviewDetails.setAdapter(userDetailsAdapter);
+                recyclerviewDetails.setNestedScrollingEnabled(false);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -141,6 +142,7 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
                 userDetailsAdapter = new UserDetailsAdapter(getApplicationContext(), astroProfileModels);
                 userDetailsAdapter.notifyDataSetChanged();
                 recyclerviewDetails.setAdapter(userDetailsAdapter);
+                recyclerviewDetails.setNestedScrollingEnabled(false);
             } catch (Exception e) {
                 e.printStackTrace();
             }

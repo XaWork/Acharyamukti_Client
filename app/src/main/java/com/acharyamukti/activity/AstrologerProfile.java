@@ -1,10 +1,13 @@
 package com.acharyamukti.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,9 +63,9 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     TextView profileName, designation,
             status, rating, txtExperience2,
             txtMin, txtSpoken, txtExp1,
-            txtSummary_long, calling;
+            txtSummary_long, calling, calling_number;
     Toolbar toolbar;
-    String userid,reg_id;
+    String userid, reg_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +106,19 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         return super.onOptionsItemSelected(item);
     }
 
+    public void dialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.calling_dialog_layout);
+        Button goBack = dialog.findViewById(R.id.goBack);
+        calling_number = dialog.findViewById(R.id.calling_number);
+        String mobile=Backend.getInstance(this).getMobile();
+        calling_number.setText(mobile);
+        goBack.setOnClickListener(view -> dialog.dismiss());
+        dialog.show();
+        dialog.setCanceledOnTouchOutside(true);
+    }
+
     private void getProfileData(String userId) {
         String url = "https://theacharyamukti.com/clientapi/single-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -120,7 +137,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 String ratingTotal = jb.getString("avgrating1");
                 String summary = jb.getString("biographic");
                 Glide.with(this).load(image).into(profileImage);
-                Backend.getInstance(this).saveMobile(mobile);
+                Backend.getInstance(this).saveAstroMobile(mobile);
                 profileName.setText(name);
                 status.setText(userStatus);
                 calling.setText(userStatus);
@@ -204,18 +221,17 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             public void onResponse(@NonNull Call<CallDataModel> call, @NonNull Response<CallDataModel> response) {
                 CallDataModel dataModelCall = response.body();
                 if (response.isSuccessful()) {
-                    assert dataModelCall != null;
-                    Toast.makeText(AstrologerProfile.this, dataModelCall.getStatus(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(AstrologerProfile.this, "error", Toast.LENGTH_SHORT).show();
+                    dialog();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<CallDataModel> call, @NonNull Throwable t) {
                 Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     @Override
     public void onClick(View view) {
         getCallForAstrologer();
@@ -237,10 +253,13 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                     }
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+
 }

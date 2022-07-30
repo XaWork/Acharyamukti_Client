@@ -101,7 +101,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private void getOtp() {
         String mobile = mobileNumber.getText().toString();
-        Backend.getInstance(this).saveUserId(mobile);
+        Backend.getInstance(this).saveMobile(mobile);
         if (mobile.isEmpty()) {
             mobileNumber.requestFocus();
             mobileNumber.setError("Please Enter your Mobile No.");

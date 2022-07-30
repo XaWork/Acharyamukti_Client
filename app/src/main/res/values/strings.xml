@@ -180,6 +180,8 @@ People like talking to us and they call us again and again for best advice. They
     <string name="text_reg_mobile">Mobile</string>
     <string name="text_reg_address">Address</string>
     <string name="title_activity_blog_details">BlogDetails</string>
-
-
+    <!--calling dialog layout-->
+    <string name="text_calling">On processing</string>
+    <string name="text_wait">Please wait.....call will be come on this number</string>
+    <string name="text_come_on">After completed the call Please Click on GO Back Button</string>
 </resources>
