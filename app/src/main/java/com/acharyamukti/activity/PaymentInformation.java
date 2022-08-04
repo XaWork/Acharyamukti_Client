@@ -145,9 +145,10 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
         Call<DataModel> call = RetrofitClient.getInstance().getApi().postPaymentDetails(userId, userAmount);
         call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
+                    assert dataModel != null;
                     if (dataModel.getError().equals("false")) {
                         Toast.makeText(PaymentInformation.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
@@ -156,7 +157,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
                 }
             }
             @Override
-            public void onFailure(Call<DataModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(PaymentInformation.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });

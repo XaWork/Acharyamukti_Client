@@ -24,15 +24,17 @@
         android:orientation="horizontal">
 
         <CheckBox
+            android:id="@+id/checkbox1"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/radio_flat_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="Vedic" />
+            android:text="@string/text_check1" />
 
         <CheckBox
+            android:id="@+id/checkbox2"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
@@ -40,9 +42,10 @@
             android:background="@drawable/radio_flat_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="Tarot" />
+            android:text="@string/text_check2" />
 
         <CheckBox
+            android:id="@+id/checkbox3"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
@@ -50,7 +53,7 @@
             android:background="@drawable/radio_flat_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="Numerology" />
+            android:text="@string/text_check3" />
     </LinearLayout>
 
     <LinearLayout
@@ -62,15 +65,17 @@
         android:orientation="horizontal">
 
         <CheckBox
+            android:id="@+id/checkbox4"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/radio_flat_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="Vastu" />
+            android:text="@string/text_check4" />
 
         <CheckBox
+            android:id="@+id/checkbox5"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
@@ -78,9 +83,10 @@
             android:background="@drawable/radio_flat_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="Fengshui" />
+            android:text="@string/text_check5" />
 
         <CheckBox
+            android:id="@+id/checkbox6"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
@@ -88,7 +94,7 @@
             android:background="@drawable/radio_flat_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="KP" />
+            android:text="@string/text_check6" />
     </LinearLayout>
 
     <LinearLayout
@@ -100,15 +106,17 @@
         android:orientation="horizontal">
 
         <CheckBox
+            android:id="@+id/checkbox7"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/radio_flat_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="Prashna" />
+            android:text="@string/text_check7" />
 
         <CheckBox
+            android:id="@+id/checkbox8"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
@@ -116,9 +124,10 @@
             android:background="@drawable/radio_flat_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="Reiki Healing" />
+            android:text="@string/text_check8" />
 
         <CheckBox
+            android:id="@+id/checkbox9"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
@@ -126,7 +135,7 @@
             android:background="@drawable/radio_flat_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="Yoga/meditation" />
+            android:text="@string/text_check9" />
     </LinearLayout>
 
     <LinearLayout
@@ -138,13 +147,14 @@
         android:orientation="horizontal">
 
         <CheckBox
+            android:id="@+id/checkbox10"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/radio_flat_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="Pranic Healing" />
+            android:text="@string/text_check10" />
 
         <CheckBox
             android:layout_width="0dp"
