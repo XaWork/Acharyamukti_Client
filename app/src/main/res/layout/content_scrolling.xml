@@ -12,7 +12,6 @@
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
@@ -68,11 +67,11 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_alignParentEnd="true"
                 android:id="@+id/user_online_status"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/total_rating"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/search_bg"
@@ -81,11 +80,12 @@
                 android:text="Call status"
                 android:textColor="@color/black"
                 android:textStyle="normal" />
+
             <TextView
-                android:layout_below="@+id/user_online_status"
                 android:id="@+id/txtExperience"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/user_online_status"
                 android:drawableLeft="@drawable/ic_baseline_school_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
@@ -124,33 +124,12 @@
                 android:gravity="center_vertical"
                 android:text="@string/text_charge" />
 
-            <TextView
-                android:id="@+id/txtReview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtMin"
-                android:layout_marginTop="10dp"
-                android:drawableLeft="@drawable/ic_baseline_reviews_24"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/text_review"
-                android:textColor="@color/black" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ratingRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@+id/txtReview"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="5dp"
-                android:gravity="center_vertical"
-                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/txtLanguage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ratingRecyclerView"
+                android:layout_below="@+id/txtMin"
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/ic_baseline_g_translate_24"
                 android:drawablePadding="10dp"
@@ -211,44 +190,50 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
                 android:text="@string/text_profile_summary_long" />
+
+            <TextView
+                android:id="@+id/txtReview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtSummary_long"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_reviews_24"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/text_review"
+                android:textColor="@color/black" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ratingRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtReview"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:textSize="12sp" />
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_gravity="bottom"
-        android:layout_margin="10dp"
-        android:layout_marginStart="10dp"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:orientation="horizontal">-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
-            android:background="@color/yellow"
-            android:drawableRight="@drawable/ic_baseline_message_24"
-            android:gravity="center"
-            android:paddingEnd="40dp"
-            android:text="Offline"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/calling"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_weight="1"
-            android:background="@color/yellow"
-            android:drawableRight="@drawable/ic_baseline_call_24"
-            android:gravity="center"
-            android:paddingEnd="40dp"
-            android:text="Offline"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/calling"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:background="@color/yellow"-->
+<!--            android:drawableRight="@drawable/ic_baseline_call_24"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingEnd="40dp"-->
+<!--            android:text="Offline"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="bold" />-->
+<!--    </LinearLayout>-->
 </FrameLayout>

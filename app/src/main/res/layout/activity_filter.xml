@@ -172,4 +172,11 @@
             android:button="@null"
             android:gravity="center" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBoxLayout3"
+        android:layout_marginTop="20dp" />
 </RelativeLayout>

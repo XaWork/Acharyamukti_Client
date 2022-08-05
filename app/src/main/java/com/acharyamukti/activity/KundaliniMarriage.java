@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -80,7 +79,6 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
                 getOnlineAstro();
                 break;
         }
-
     }
 
     private void getProfileDta() {

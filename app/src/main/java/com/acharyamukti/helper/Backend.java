@@ -87,7 +87,9 @@ public class Backend {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("wallet", wallet);
         editor.apply();
-    }public void saveAstroMobile(String astro_mobile) {
+    }
+
+    public void saveAstroMobile(String astro_mobile) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("astro_moble", astro_mobile);
         editor.apply();
@@ -115,5 +117,15 @@ public class Backend {
 
     public String getCallDuration() {
         return preferences.getString("callDurationTime", "");
+    }
+
+    public String getStatus() {
+        return preferences.getString("status", "");
+    }
+
+    public void saveStatus(String status) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("status", status);
+        editor.apply();
     }
 }

@@ -3,7 +3,9 @@ package com.acharyamukti.activity;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -59,13 +61,14 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     RecyclerView recyclerView;
     ReviewAdapter reviewAdapter;
     LinearLayoutManager linearLayoutManager;
-    ImageView profileImage;
+    ImageView profileImage, share, calling;
     TextView profileName, designation,
             status, rating, txtExperience2,
             txtMin, txtSpoken, txtExp1,
-            txtSummary_long, calling, calling_number;
+            txtSummary_long, calling_number;
     Toolbar toolbar;
     String userid, reg_id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());
+        calling = binding.calling;
         profileImage = findViewById(R.id.profileImageSingle);
         profileName = findViewById(R.id.profileNameS);
         designation = findViewById(R.id.designation);
@@ -97,6 +101,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         getClientReview(userid);
         calling = findViewById(R.id.calling);
         calling.setOnClickListener(this);
+
     }
 
     @Override
@@ -112,7 +117,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         dialog.setContentView(R.layout.calling_dialog_layout);
         Button goBack = dialog.findViewById(R.id.goBack);
         calling_number = dialog.findViewById(R.id.calling_number);
-        String mobile=Backend.getInstance(this).getMobile();
+        String mobile = Backend.getInstance(this).getMobile();
         calling_number.setText(mobile);
         goBack.setOnClickListener(view -> dialog.dismiss());
         dialog.show();
@@ -140,13 +145,18 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 Backend.getInstance(this).saveAstroMobile(mobile);
                 profileName.setText(name);
                 status.setText(userStatus);
-                calling.setText(userStatus);
                 txtSpoken.setText(language);
                 txtExp1.setText(exp);
                 txtSummary_long.setText(summary);
                 rating.setText(ratingTotal);
                 designation.setText(astroType);
                 toolbar.setTitle(name);
+                Backend.getInstance(this).saveStatus(userStatus);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    txtSummary_long.setText(Html.fromHtml(summary, Html.FROM_HTML_MODE_COMPACT));
+                } else {
+                    txtSummary_long.setText(Html.fromHtml(summary));
+                }
                 if (userStatus.equals("Online")) {
                     status.setBackgroundResource(R.drawable.green_conner_bg);
                 } else {
@@ -234,7 +244,13 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        getCallForAstrologer();
+        String status = Backend.getInstance(this).getStatus();
+        if (status.equals("Online")) {
+            getCallForAstrologer();
+        }else {
+            Toast.makeText(this, "Astrologer is Offline", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void getCallDuration() {

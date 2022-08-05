@@ -20,7 +20,6 @@ public class AstroProfileModel {
         this.language = language;
         this.asttype = asttype;
         this.avgrating1 = avgrating1;
-
     }
 
 
