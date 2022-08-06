@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -45,6 +46,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     Dialog dialog;
     LinearLayout walletLayout;
     TextView walletAmount;
+    DrawerLayout drawer;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +55,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         com.acharyamukti.databinding.ActivityDashBoardBinding binding = ActivityDashBoardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarDashBoard.toolbar);
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+        drawer = binding.drawerLayout;
+        navigationView = binding.navView;
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
@@ -116,6 +119,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_dash_board);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+
     }
 
     @SuppressLint("NonConstantResourceId")

@@ -197,4 +197,8 @@ People like talking to us and they call us again and again for best advice. They
     <string name="text_check8">Reiki Healing</string>
     <string name="text_check9">Yoga/meditation</string>
     <string name="text_check10">Pranic Healing</string>
+    <!--Bottom Menu Item-->
+    <string name="text_home">Home</string>
+    <string name="text_free">Free</string>
+    <string name="text_profile">Profile</string>
 </resources>
