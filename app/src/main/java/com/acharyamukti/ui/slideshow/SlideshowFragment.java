@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.acharyamukti.adapter.CallAdapter;
 import com.acharyamukti.databinding.FragmentSlideshowBinding;
 import com.acharyamukti.helper.Backend;
@@ -20,8 +21,10 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,8 +35,7 @@ public class SlideshowFragment extends Fragment {
     RecyclerView rvCallHistory;
     CallAdapter callAdapter;
     List<CallingModel> calling = new ArrayList<>();
-
-    private FragmentSlideshowBinding binding;
+    FragmentSlideshowBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,7 +60,7 @@ public class SlideshowFragment extends Fragment {
     }
 
     private void getCallData() {
-        String userid ="290574";
+        String userid = Backend.getInstance(getActivity()).getUserId();
         String url = "https://theacharyamukti.com/clientapi/call-history.php";
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
         @SuppressLint("NotifyDataSetChanged") StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {

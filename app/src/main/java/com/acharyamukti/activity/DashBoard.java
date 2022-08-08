@@ -21,6 +21,7 @@ import com.acharyamukti.R;
 import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
 import com.acharyamukti.helper.Backend;
+import com.acharyamukti.ui.about.AboutFragment;
 import com.acharyamukti.ui.gallery.GalleryFragment;
 import com.acharyamukti.ui.home.HomeFragment;
 import com.acharyamukti.ui.slideshow.SlideshowFragment;
@@ -189,6 +190,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             case R.id.privacyPolicy:
                 Intent privacy = new Intent(getApplicationContext(), PrivacyPolicy.class);
                 startActivity(privacy);
+                break;
+            case R.id.menu_wallet:
+                toolbar.setTitle("Transaction Log");
+                AboutFragment aboutFragment = new AboutFragment();
+                FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction5.replace(R.id.frameLayout_dash, aboutFragment, "");
+                fragmentTransaction5.commit();
                 break;
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

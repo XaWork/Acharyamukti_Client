@@ -30,17 +30,18 @@
             android:layout_marginBottom="10dp"
             android:text="Who are me?"
             android:textAllCaps="true"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/about_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="170dp"
             android:layout_below="@id/text_gallery1"
+            android:layout_margin="15dp"
             android:scaleType="fitXY"
-            android:src="@drawable/imagelive" />
+            android:src="@drawable/about_us" />
 
         <TextView
             android:id="@+id/text_long_text"
@@ -53,7 +54,7 @@
             android:text="@string/text_acharyamukti_long_text"
             android:textAllCaps="false"
             android:textColor="@color/grey1"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="normal" />
 
         <TextView
@@ -75,7 +76,7 @@
             android:layout_marginTop="5dp"
             android:text="@string/text_vision_mission"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -89,7 +90,7 @@
             android:text="@string/text_about_longtext"
             android:textAllCaps="false"
             android:textColor="@color/grey1"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="normal" />
 
         <TextView
@@ -114,7 +115,7 @@
             android:text="@string/text_about_longtext"
             android:textAllCaps="false"
             android:textColor="@color/grey1"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="normal" />
 
         <TextView
@@ -139,7 +140,7 @@
             android:text="@string/text_vision_long"
             android:textAllCaps="false"
             android:textColor="@color/grey1"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="normal" />
 
         <TextView
@@ -164,18 +165,21 @@
             android:text="@string/text_customer_trust_us_long"
             android:textAllCaps="false"
             android:textColor="@color/grey1"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="normal" />
 
         <TextView
+            android:layout_marginTop="15dp"
             android:id="@+id/text_customer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_trust_long"
             android:text="customercare@acharyamukti.com"
-            android:textColor="@color/yellow" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
+            android:textStyle="bold"
             android:id="@+id/text_mobile"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
@@ -193,7 +197,7 @@
             android:layout_marginTop="6dp"
             android:layout_marginBottom="10dp"
             android:text="@string/text_number"
-            android:textColor="@color/yellow" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/text_our"
@@ -204,7 +208,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:text="@string/text_our"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -216,6 +220,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -231,7 +236,7 @@
                         android:id="@+id/image_happy"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/smile" />
+                        android:src="@drawable/happy_customer" />
 
                     <TextView
                         android:id="@+id/million"
@@ -270,7 +275,7 @@
                         android:id="@+id/image_happy1"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/expertise" />
+                        android:src="@drawable/trusted" />
 
                     <TextView
                         android:layout_marginTop="5dp"
@@ -295,6 +300,8 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -368,6 +375,7 @@
             </LinearLayout>
 
             <RelativeLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp">
