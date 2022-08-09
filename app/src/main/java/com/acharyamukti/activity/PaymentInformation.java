@@ -34,7 +34,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
     String orderId;
     String paymentId;
     Button processToPay;
-    String userAmount,totalGstAmount ;
+    String userAmount, totalGstAmount, profile_name;
     int num3;
     TextView amount, gst, totalAmount;
 
@@ -47,6 +47,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
         processToPay.setOnClickListener(this);
         email_id = Backend.getInstance(this).getEmail();
         mobile = Backend.getInstance(this).getMobile();
+        profile_name = Backend.getInstance(this).getName();
         Intent intent = getIntent();
         userAmount = intent.getStringExtra("balance");
         amount = findViewById(R.id.amount);
@@ -98,7 +99,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
         double amount = Double.parseDouble(totalGstAmount) * 100.00;
         try {
             JSONObject options = new JSONObject();
-            options.put("name", "Amrita");
+            options.put("name", profile_name);
             options.put("description", "Reference No. #123456");
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             //  options.put("order_id", "000010"); //from response of step 3.
@@ -127,6 +128,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
     public void onPaymentSuccess(String s) {
         Toast.makeText(PaymentInformation.this, "Payment Success", Toast.LENGTH_LONG).show();
         Log.d("paymentId", "razorpayPaymentID");
+        postPaymentDetails();
 
     }
 
@@ -156,6 +158,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
                     }
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(PaymentInformation.this, t.toString(), Toast.LENGTH_SHORT).show();

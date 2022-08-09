@@ -138,7 +138,7 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
                     assert dataModel != null;
-                    if (dataModel.getMessage().equals("Login successfull")) {
+                    if (dataModel.getMessage().equals("Login successfully")) {
                         Intent intent1 = new Intent(getActivity(), DashBoard.class);
                         startActivity(intent1);
                     } else {
@@ -158,7 +158,6 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
             }
         });
     }
-
     private void forgotPass(String sendUrl) {
         Call<DataModel> call = RetrofitClient.getInstance().getApi().postPasswordLink(sendUrl);
         call.enqueue(new Callback<DataModel>() {
@@ -175,6 +174,7 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                         Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                         getEmailDialog();
                     }
+
                 }
             }
             @Override

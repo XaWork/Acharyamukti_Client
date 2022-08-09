@@ -83,40 +83,13 @@
             app:cardElevation="15dp">
 
             <TextView
-                android:id="@+id/txtRs0"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="1"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="15dp">
-
-            <TextView
                 android:id="@+id/txtRs1"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="20dp"
                 android:text="100"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -139,11 +112,11 @@
             <TextView
                 android:id="@+id/txtRs2"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="20dp"
                 android:text="200"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -166,11 +139,11 @@
             <TextView
                 android:id="@+id/txtRs3"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="20dp"
                 android:text="500"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -202,11 +175,11 @@
             <TextView
                 android:id="@+id/txtRs4"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="20dp"
                 android:text="1000"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -229,11 +202,11 @@
             <TextView
                 android:id="@+id/txtRs5"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="20dp"
                 android:text="1500"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -256,24 +229,33 @@
             <TextView
                 android:id="@+id/txtRs6"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="20dp"
                 android:text="2000"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rechargePack3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rechargePack2"
+        android:orientation="vertical">
+
         <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
@@ -283,22 +265,23 @@
             <TextView
                 android:id="@+id/txtRs7"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="20dp"
                 android:text="2500"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
     <TextView
-        android:id="@+id/rechargePack3"
+        android:id="@+id/rechargePack4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rechargePack2"
+        android:layout_below="@+id/rechargePack3"
         android:layout_marginTop="20dp"
         android:gravity="bottom"
         android:text="Your recharge pack can be used multiple Astrologer"
@@ -309,7 +292,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rechargePack3"
+        android:layout_below="@+id/rechargePack4"
         android:layout_alignParentBottom="true"
         android:gravity="bottom"
         android:orientation="horizontal">

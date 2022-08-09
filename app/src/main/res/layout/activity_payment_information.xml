@@ -40,7 +40,6 @@
                     <TableRow>
 
                         <TextView
-                            android:id="@+id/amount"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_weight="1"
@@ -50,6 +49,7 @@
                             android:textSize="13sp" />
 
                         <TextView
+                            android:id="@+id/amount"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
@@ -62,7 +62,6 @@
                     <TableRow>
 
                         <TextView
-                            android:id="@+id/gst"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_weight="1"
@@ -72,6 +71,7 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/gst"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
@@ -84,7 +84,6 @@
                     <TableRow>
 
                         <TextView
-                            android:id="@+id/totalAmount"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_weight="1"
@@ -95,6 +94,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/totalAmount"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"

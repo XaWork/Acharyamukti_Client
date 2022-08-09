@@ -86,11 +86,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             emailId.setError("Please Enter Email");
             return;
         }
-        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailId.requestFocus();
-            emailId.setError("Please Enter correct Email");
-            return;
-        }
+
         if (pass.isEmpty()) {
             password.requestFocus();
             password.setError("Please Enter Password");
@@ -125,7 +121,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 try {
                     if (response.isSuccessful()) {
                         Backend.getInstance(getApplicationContext()).saveName(fName);
-                     //   Backend.getInstance(getApplicationContext()).saveMobile(mobile);
                         Backend.getInstance(getApplicationContext()).saveEmail(email);
                         Backend.getInstance(getApplicationContext()).saveLastname(lName);
                         Intent intent = new Intent(Register.this, Login.class);
@@ -142,7 +137,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
 
             @Override

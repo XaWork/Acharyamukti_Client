@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -34,8 +35,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     LinearLayout layout, navigationBar;
     EditText mobileNumber;
     EditText etOTP;
+    String Otp;
     SharedPreferences shp;
     public static String PRES_NAME = "profile";
+    ImageView close;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         mobileNumber = findViewById(R.id.getOtpMobile);
+        close = findViewById(R.id.icon_close);
+        close.setOnClickListener(this);
     }
 
     @Override
@@ -85,6 +90,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 navigationBar.setVisibility(View.INVISIBLE);
                 getSupportFragmentManager().beginTransaction().add(R.id.fragment, new EmailLogin()).commit();
                 break;
+            case R.id.icon_close:
+                Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+                startActivity(intent);
+                finish();
+                break;
         }
     }
 
@@ -94,6 +104,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         dialog.setContentView(R.layout.verify_otp);
         Button btnVerify = dialog.findViewById(R.id.btnVerify);
         etOTP = dialog.findViewById(R.id.etOTP);
+        Otp = etOTP.getText().toString();
         btnVerify.setOnClickListener(view -> verifyOTP());
         dialog.show();
         dialog.setCanceledOnTouchOutside(true);
@@ -144,7 +155,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void verifyOTP() {
-        String mobile = Backend.getInstance(this).getUserId();
+        String mobile = Backend.getInstance(this).getMobile();
         String otp = etOTP.getText().toString();
         if (otp.isEmpty()) {
             etOTP.requestFocus();

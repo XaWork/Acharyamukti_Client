@@ -27,7 +27,6 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        text0 = findViewById(R.id.txtRs0);
         text1 = findViewById(R.id.txtRs1);
         text2 = findViewById(R.id.txtRs2);
         text3 = findViewById(R.id.txtRs3);
@@ -40,7 +39,6 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
         text4.setOnClickListener(this);
         text5.setOnClickListener(this);
         text6.setOnClickListener(this);
-        text0.setOnClickListener(this);
         totalBalance = findViewById(R.id.totalBalance);
         userId = Backend.getInstance(this).getUserId();
         if (userId != null) {
@@ -62,11 +60,11 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.txtRs0:
-                Intent txt1 = new Intent(getApplicationContext(), PaymentInformation.class);
-                txt1.putExtra("balance", "1");
-                startActivity(txt1);
-                break;
+//            case R.id.txtRs0:
+//                Intent txt1 = new Intent(getApplicationContext(), PaymentInformation.class);
+//                txt1.putExtra("balance", "1");
+//                startActivity(txt1);
+//                break;
             case R.id.txtRs1:
                 Intent intent = new Intent(getApplicationContext(), PaymentInformation.class);
                 intent.putExtra("balance", "100");

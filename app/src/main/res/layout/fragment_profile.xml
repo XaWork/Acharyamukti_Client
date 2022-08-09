@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:id="@+id/profile_fragment"
     tools:context=".fragment.Profile">
 
     <RelativeLayout
@@ -62,25 +63,12 @@
         android:background="#BFFBFBEB">
 
         <TextView
-            android:id="@+id/txtLoyalty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
-            android:drawablePadding="10dp"
-            android:paddingTop="15dp"
-            android:text="My Loyalty Status"
-            android:textColor="@color/black" />
-
-        <TextView
             android:id="@+id/txtWallet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLoyalty"
             android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawableLeft="@drawable/ic_baseline_account_balance_wallet_24"
             android:drawablePadding="10dp"
             android:paddingTop="15dp"
             android:text="My Wallet"
@@ -93,10 +81,10 @@
             android:layout_below="@+id/txtWallet"
             android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawableLeft="@drawable/ic_baseline_history_24"
             android:drawablePadding="10dp"
             android:paddingTop="15dp"
-            android:text="Consultation"
+            android:text="Call History"
             android:textColor="@color/black" />
 
         <TextView
@@ -106,7 +94,7 @@
             android:layout_below="@+id/txtConsultation"
             android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
             android:drawablePadding="10dp"
             android:paddingTop="15dp"
             android:text="Payment"
@@ -119,7 +107,7 @@
             android:layout_below="@+id/txtPayment"
             android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawableLeft="@drawable/ic_baseline_menu_book_24"
             android:drawablePadding="10dp"
             android:paddingTop="15dp"
             android:text="My Theacharyamukti"
@@ -132,7 +120,7 @@
             android:layout_below="@+id/txtAcharyamukti"
             android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
             android:drawablePadding="10dp"
             android:paddingTop="15dp"
             android:text="My Profile"

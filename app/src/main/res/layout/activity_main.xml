@@ -16,15 +16,17 @@
         app:titleTextColor="@color/black">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/icon_close"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:padding="12dp"
+            android:padding="15dp"
             android:src="@drawable/ic_baseline_close_24" />
 
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="80dp"
@@ -65,11 +67,10 @@
                 android:layout_height="match_parent">
 
                 <ProgressBar
-                    android:layout_gravity="center"
                     android:id="@+id/idPBLoading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                     />
+                    android:layout_gravity="center" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
