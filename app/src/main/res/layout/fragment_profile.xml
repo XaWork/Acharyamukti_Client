@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:id="@+id/profile_fragment"
     tools:context=".fragment.Profile">
 
     <RelativeLayout
         android:id="@+id/profileLayout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="5dp"
-        android:background="#BFFBFBEB">
+        android:layout_marginTop="5dp">
 
         <TextView
             android:id="@+id/profileUsername"
@@ -59,85 +58,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="115dp"
-        android:background="#BFFBFBEB">
+        android:layout_marginTop="115dp">
 
-        <TextView
-            android:id="@+id/txtWallet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_account_balance_wallet_24"
-            android:drawablePadding="10dp"
-            android:paddingTop="15dp"
-            android:text="My Wallet"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/txtConsultation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtWallet"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_history_24"
-            android:drawablePadding="10dp"
-            android:paddingTop="15dp"
-            android:text="Call History"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/txtPayment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtConsultation"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
-            android:drawablePadding="10dp"
-            android:paddingTop="15dp"
-            android:text="Payment"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/txtAcharyamukti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtPayment"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_menu_book_24"
-            android:drawablePadding="10dp"
-            android:paddingTop="15dp"
-            android:text="My Theacharyamukti"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/txtMyProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtAcharyamukti"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
-            android:drawablePadding="10dp"
-            android:paddingTop="15dp"
-            android:text="My Profile"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtMyProfile"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="50dp"
-            android:drawablePadding="10dp"
-            android:text="Logout"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
     </RelativeLayout>
 </FrameLayout>

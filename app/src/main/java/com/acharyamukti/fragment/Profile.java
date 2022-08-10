@@ -49,12 +49,12 @@ public class Profile extends Fragment implements View.OnClickListener {
         email.setText(emailId);
         mobile.setText(mobileNumber);
         txtEditImage.setOnClickListener(this);
-        logout = view.findViewById(R.id.logout);
-        wallet = view.findViewById(R.id.txtWallet);
-        history = view.findViewById(R.id.txtConsultation);
-        history.setOnClickListener(this);
-        wallet.setOnClickListener(this);
-        logout.setOnClickListener(this);
+//        logout = view.findViewById(R.id.logout);
+//        wallet = view.findViewById(R.id.txtWallet);
+//        history = view.findViewById(R.id.txtConsultation);
+//        history.setOnClickListener(this);
+//        wallet.setOnClickListener(this);
+//        logout.setOnClickListener(this);
         return view;
     }
 
@@ -62,28 +62,28 @@ public class Profile extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.txtWallet:
-                Intent intent = new Intent(getContext(), Wallet.class);
-                startActivity(intent);
-                break;
-            case R.id.txtEditImage:
-                Intent image = new Intent(getContext(), ProfileUpdate.class);
-                startActivity(image);
-                break;
-            case R.id.logout:
-                email.setText("");
-                name.setText("");
-                mobile.setText("");
-                Intent login_screen = new Intent(getContext(), Login.class);
-                login_screen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(login_screen);
-                break;
-            case R.id.txtConsultation:
-                SlideshowFragment fragment4 = new SlideshowFragment();
-                FragmentTransaction fragmentTransaction4 = getParentFragmentManager().beginTransaction();
-                fragmentTransaction4.replace(R.id.profile_fragment, fragment4, "");
-                fragmentTransaction4.commit();
-                break;
+//            case R.id.txtWallet:
+//                Intent intent = new Intent(getContext(), Wallet.class);
+//                startActivity(intent);
+//                break;
+//            case R.id.txtEditImage:
+//                Intent image = new Intent(getContext(), ProfileUpdate.class);
+//                startActivity(image);
+//                break;
+//            case R.id.logout:
+//                email.setText("");
+//                name.setText("");
+//                mobile.setText("");
+//                Intent login_screen = new Intent(getContext(), Login.class);
+//                login_screen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(login_screen);
+//                break;
+//            case R.id.txtConsultation:
+//                SlideshowFragment fragment4 = new SlideshowFragment();
+//                FragmentTransaction fragmentTransaction4 = getParentFragmentManager().beginTransaction();
+//                fragmentTransaction4.replace(R.id.profile_fragment, fragment4, "");
+//                fragmentTransaction4.commit();
+//                break;
         }
 
     }

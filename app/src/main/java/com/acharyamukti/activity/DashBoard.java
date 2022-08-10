@@ -40,7 +40,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
-
     private AppBarConfiguration mAppBarConfiguration;
     private Toolbar toolbar;
     Dialog dialog;
@@ -141,7 +140,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 fragmentTransaction.commit();
                 break;
             case R.id.itemFree:
-                toolbar.setTitle("Free");
+                toolbar.setTitle("Blog");
                 Free fragment1 = new Free();
                 FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction1.replace(R.id.frameLayout_dash, fragment1, "");
@@ -155,8 +154,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 fragmentTransaction2.commit();
                 break;
             case R.id.nav_gallery:
-//                Intent about = new Intent(getApplicationContext(), TermAndCondition.class);
-//                startActivity(about);
                 toolbar.setTitle("About us");
                 GalleryFragment fragment3 = new GalleryFragment();
                 FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();

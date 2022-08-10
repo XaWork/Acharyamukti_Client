@@ -4,9 +4,10 @@
     android:layout_width="160dp"
     android:layout_height="wrap_content"
     card_view:cardElevation="15dp"
-    card_view:cardCornerRadius="10dp"
+    card_view:cardCornerRadius="5dp"
     android:clickable="true"
     android:focusable="true"
+    android:paddingBottom="10dp"
     android:layout_margin="5dp">
 
     <RelativeLayout
@@ -19,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             card_view:cardElevation="20dp"
-            card_view:cardCornerRadius="5dp"
+            card_view:cardCornerRadius="2dp"
             card_view:cardPreventCornerOverlap="false">
 
             <ImageView
@@ -42,7 +43,7 @@
             android:text="@string/text_mission"
             android:textColor="@color/black"
             android:textSize="13sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/subTitle"
@@ -56,7 +57,7 @@
             android:lines="2"
             android:text="Our mission is to reach more than 2 million customers worldwide. "
             android:textColor="@color/grey1"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/txtDate"
@@ -65,7 +66,7 @@
             android:layout_below="@+id/subTitle"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:gravity="end"
             android:text="15|06|2022,5 PM"
             android:textColor="@color/black"

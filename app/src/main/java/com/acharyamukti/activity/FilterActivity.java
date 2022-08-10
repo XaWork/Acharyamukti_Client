@@ -71,40 +71,40 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
+        String type = null;
         switch (view.getId()) {
             case R.id.checkbox1:
-                if (checkBox1.isChecked()) {
-                    String type = "Vedic";
-                    getFilterData(type);
-                } else if (checkBox2.isChecked()) {
-                    String type = "Vedic";
-
-                } else if (checkBox3.isChecked()) {
-                    String type = "Vedic";
-
-                } else if (checkBox4.isChecked()) {
-                    String type = "Vedic";
-
-                } else if (checkBox5.isChecked()) {
-                    String type = "Vedic";
-
-                } else if (checkBox6.isChecked()) {
-                    String type = "Vedic";
-
-                } else if (checkBox7.isChecked()) {
-                    String type = "Vedic";
-
-                } else if (checkBox8.isChecked()) {
-                    String type = "Vedic";
-
-                } else if (checkBox9.isChecked()) {
-                    String type = "Vedic";
-
-                } else if (checkBox10.isChecked()) {
-                    String type = "Vedic";
-                }
+                type = "Vedic";
+                break;
+            case R.id.checkbox2:
+                type = "Tarot";
+                break;
+            case R.id.checkbox3:
+                type = "Numerology";
+                break;
+            case R.id.checkbox4:
+                type = "Vastu";
+                break;
+            case R.id.checkbox5:
+                type = "Fengshui";
+                break;
+            case R.id.checkbox6:
+                type = "KP";
+                break;
+            case R.id.checkbox7:
+                type = "Prashna";
+                break;
+            case R.id.checkbox8:
+                type = "Reiki Healing";
+                break;
+            case R.id.checkbox9:
+                type = "Yoga/meditation";
+                break;
+            case R.id.checkbox10:
+                type = "Pranic Healing";
                 break;
         }
+        getFilterData(type);
     }
 
     private void getFilterData(String type) {

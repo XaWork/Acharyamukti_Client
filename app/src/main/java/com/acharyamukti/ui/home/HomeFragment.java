@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,10 +29,12 @@ import com.acharyamukti.adapter.LiveAdapter;
 import com.acharyamukti.adapter.NewsAdapter;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.databinding.FragmentHomeBinding;
+import com.acharyamukti.fragment.Free;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.AstroProfileModel;
 import com.acharyamukti.model.BlogModel;
 import com.acharyamukti.model.DataModel;
+import com.acharyamukti.ui.slideshow.SlideshowFragment;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -60,8 +63,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     TextView viewAll, viewAll2;
     List<BlogModel> blogModels = new ArrayList<>();
     NewsAdapter newsAdapter;
-    TextView feedback;
+    TextView feedback, viewAllBlog;
     Button sendFeedback;
+    Bundle bundle;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -90,10 +94,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         feedback = root.findViewById(R.id.feedback);
         sendFeedback = root.findViewById(R.id.sendFeedback);
         sendFeedback.setOnClickListener(this);
+        viewAllBlog = root.findViewById(R.id.viewAllBlog);
+        viewAllBlog.setOnClickListener(this);
         getProfileData();
         getLiveData();
         recyclerViewData(root);
-
+        String blog="Blog";
+        bundle = new Bundle();
+        bundle.putString("title",blog);
         return root;
     }
 
@@ -174,6 +182,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.sendFeedback:
                 postFeedBackData();
+                break;
+            case R.id.viewAllBlog:
+                Free fragment4 = new Free();
+                FragmentTransaction fragmentTransaction4 = getParentFragmentManager().beginTransaction();
+                fragmentTransaction4.replace(R.id.frame_layout_home, fragment4, "");
+                fragmentTransaction4.commit();
+                fragment4.setArguments(bundle);
                 break;
         }
     }
@@ -285,6 +300,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), dataModel.getError(), Toast.LENGTH_LONG).show();
                 }
             }
+
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_SHORT).show();
