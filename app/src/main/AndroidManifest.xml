@@ -4,8 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +14,11 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
+        <activity
+            android:name=".activity.ConsultNowActivity"
+            android:exported="false"
+            android:label="Consult Now"
+            android:theme="@style/AppThemeActionBar"/>
         <activity
             android:name=".activity.PrivacyPolicy"
             android:exported="false"
@@ -41,7 +46,7 @@
             android:name=".activity.PaymentInformation"
             android:exported="false"
             android:label="Payment Information"
-            android:theme="@style/AppThemeActionBar"/>
+            android:theme="@style/AppThemeActionBar" />
         <activity
             android:name=".activity.ProfileUpdate"
             android:exported="false"

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acharyamukti.R;
+import com.acharyamukti.activity.ConsultNowActivity;
 import com.acharyamukti.activity.KundaliniMarriage;
 import com.acharyamukti.activity.Horoscope;
 import com.acharyamukti.adapter.AstroProfileAdapter;
@@ -64,6 +66,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     List<BlogModel> blogModels = new ArrayList<>();
     NewsAdapter newsAdapter;
     TextView feedback, viewAllBlog;
+    ImageView consultNow;
     Button sendFeedback;
     Bundle bundle;
 
@@ -96,12 +99,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         sendFeedback.setOnClickListener(this);
         viewAllBlog = root.findViewById(R.id.viewAllBlog);
         viewAllBlog.setOnClickListener(this);
+        consultNow = root.findViewById(R.id.consult_now_image);
+        consultNow.setOnClickListener(this);
         getProfileData();
         getLiveData();
         recyclerViewData(root);
-        String blog="Blog";
+        String blog = "Blog";
         bundle = new Bundle();
-        bundle.putString("title",blog);
+        bundle.putString("title", blog);
         return root;
     }
 
@@ -189,6 +194,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 fragmentTransaction4.replace(R.id.frame_layout_home, fragment4, "");
                 fragmentTransaction4.commit();
                 fragment4.setArguments(bundle);
+                break;
+            case R.id.consult_now_image:
+                Intent intent = new Intent(getActivity(), ConsultNowActivity.class);
+                startActivity(intent);
                 break;
         }
     }

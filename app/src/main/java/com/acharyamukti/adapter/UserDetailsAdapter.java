@@ -25,6 +25,7 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
     public UserDetailsAdapter(Context context, List<AstroProfileModel> astroProfileModels) {
         this.context = context;
         this.astroProfileModels = astroProfileModels;
+        notifyDataSetChanged();
 
     }
 

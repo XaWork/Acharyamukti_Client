@@ -78,7 +78,6 @@ public class Search extends AppCompatActivity implements TextWatcher {
         }
         recyclerViewSearch.setAdapter(new UserDetailsAdapter(getApplicationContext(), astroProfileModels));
         userDetailsAdapter.notifyDataSetChanged();
-
     }
 
     private void getSearchingData() {
