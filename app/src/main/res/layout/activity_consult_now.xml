@@ -15,9 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="fitXY"
-            android:src="@drawable/consult_now_banner" />
+            android:src="@drawable/consult_now3" />
 
         <LinearLayout
+            android:id="@+id/recharge_pack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/banner_image"
@@ -26,7 +27,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view1"
                 android:layout_width="0dp"
-                android:layout_height="140dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -44,19 +45,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="15min"
-                        android:textColor="@color/yellow"
+                        android:text="15 min"
+                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Original_price"
+                        android:id="@+id/Original_price1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:paddingTop="5dp"
+                        android:paddingTop="10dp"
                         android:text="Original price: 2100 /-"
-                        android:textColor="@color/black"
+                        android:textColor="@color/grey1"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -81,22 +82,33 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:paddingTop="5dp"
-                            android:text="1100 /-"
+                            android:text=" 1100 /-"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
 
                     <Button
-                        android:textSize="11sp"
-                        android:textAllCaps="false"
-                        android:padding="5dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:textColor="@color/white"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/yellow"
+                        android:text="Book Now"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/grey1"
+                        android:padding="5dp"
                         android:text="For Appointment"
-                        android:background="@color/grey1"/>
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="9sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -104,23 +116,139 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view2"
                 android:layout_width="0dp"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="5dp">
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="30 min"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Original_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingTop="10dp"
+                        android:text="Original price: 3500 /-"
+                        android:textColor="@color/grey1"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="5dp"
+                            android:text="Discount price:"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/discount_price3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="5dp"
+                            android:text=" 2100 /-"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/yellow"
+                        android:text="Book Now"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/grey1"
+                        android:padding="5dp"
+                        android:text="For Appointment"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="9sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/recharge_pack1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recharge_pack"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="45 min"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Original_price2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingTop="10dp"
+                        android:text="Original price: 5100 /-"
+                        android:textColor="@color/grey1"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -137,13 +265,132 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:paddingTop="5dp"
-                            android:text="1100 /-"
+                            android:text=" 3000 /-"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/yellow"
+                        android:text="Book Now"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/grey1"
+                        android:padding="5dp"
+                        android:text="For Appointment"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="9sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="1 Hour"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Original_price3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingTop="10dp"
+                        android:text="Original price: 6500 /-"
+                        android:textColor="@color/grey1"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="5dp"
+                            android:text="Discount price:"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/discount_price4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="5dp"
+                            android:text=" 3900 /-"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/yellow"
+                        android:text="Book Now"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/grey1"
+                        android:padding="5dp"
+                        android:text="For Appointment"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="9sp" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recyclerViewConsult"
+            android:layout_below="@+id/recharge_pack1"/>
     </RelativeLayout>
 </ScrollView>
