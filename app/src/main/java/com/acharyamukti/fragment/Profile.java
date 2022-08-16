@@ -13,13 +13,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.acharyamukti.R;
 import com.acharyamukti.activity.Login;
 import com.acharyamukti.activity.ProfileUpdate;
 import com.acharyamukti.activity.Wallet;
+import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
+import com.acharyamukti.model.DataModel;
 import com.acharyamukti.ui.slideshow.SlideshowFragment;
+
+import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Profile extends Fragment implements View.OnClickListener {
@@ -42,49 +51,40 @@ public class Profile extends Fragment implements View.OnClickListener {
         name = view.findViewById(R.id.profileUsername);
         email = view.findViewById(R.id.txtEmail);
         mobile = view.findViewById(R.id.txtMobile);
-        profileName = Backend.getInstance(getContext()).getName();
-        emailId = Backend.getInstance(getContext()).getEmail();
-        mobileNumber = Backend.getInstance(getContext()).getMobile();
         name.setText(profileName);
         email.setText(emailId);
         mobile.setText(mobileNumber);
         txtEditImage.setOnClickListener(this);
-//        logout = view.findViewById(R.id.logout);
-//        wallet = view.findViewById(R.id.txtWallet);
-//        history = view.findViewById(R.id.txtConsultation);
-//        history.setOnClickListener(this);
-//        wallet.setOnClickListener(this);
-//        logout.setOnClickListener(this);
+        viewProfile();
         return view;
     }
 
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-//            case R.id.txtWallet:
-//                Intent intent = new Intent(getContext(), Wallet.class);
-//                startActivity(intent);
-//                break;
-//            case R.id.txtEditImage:
-//                Intent image = new Intent(getContext(), ProfileUpdate.class);
-//                startActivity(image);
-//                break;
-//            case R.id.logout:
-//                email.setText("");
-//                name.setText("");
-//                mobile.setText("");
-//                Intent login_screen = new Intent(getContext(), Login.class);
-//                login_screen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(login_screen);
-//                break;
-//            case R.id.txtConsultation:
-//                SlideshowFragment fragment4 = new SlideshowFragment();
-//                FragmentTransaction fragmentTransaction4 = getParentFragmentManager().beginTransaction();
-//                fragmentTransaction4.replace(R.id.profile_fragment, fragment4, "");
-//                fragmentTransaction4.commit();
-//                break;
-        }
+        Intent image = new Intent(getContext(), ProfileUpdate.class);
+        startActivity(image);
+    }
 
+    private void viewProfile() {
+        String user_id = Backend.getInstance(getContext()).getUserId();
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().viewProfile(user_id);
+        call.enqueue(new Callback<DataModel>() {
+            @Override
+            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+                DataModel dataModel = response.body();
+                if (response.isSuccessful()) {
+                    name.setText(Objects.requireNonNull(dataModel).getName());
+                    email.setText(dataModel.getEmail());
+                    mobile.setText(dataModel.getMobile());
+                } else {
+                    Toast.makeText(getContext(), Objects.requireNonNull(dataModel).getError(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<DataModel> call, Throwable t) {
+                Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

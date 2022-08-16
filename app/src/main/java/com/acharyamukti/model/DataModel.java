@@ -8,9 +8,11 @@ public class DataModel {
     private String status;
     private String callDurationTime;
     private String wallet;
+    private String name;
+    private String email;
 
 
-    public DataModel(String error, String mobile, String message, String userid, String status, String callDurationTime, String wallet) {
+    public DataModel(String error, String mobile, String message, String userid, String status, String callDurationTime, String wallet, String name, String email) {
         this.userid = userid;
         this.error = error;
         this.mobile = mobile;
@@ -18,6 +20,24 @@ public class DataModel {
         this.status = status;
         this.callDurationTime = callDurationTime;
         this.wallet = wallet;
+        this.name = name;
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setMessage(String message) {

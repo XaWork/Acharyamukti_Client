@@ -194,6 +194,10 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 fragmentTransaction5.replace(R.id.frameLayout_dash, aboutFragment, "");
                 fragmentTransaction5.commit();
                 break;
+            case R.id.logout:
+                Intent logout = new Intent(getApplicationContext(), Login.class);
+                startActivity(logout);
+                break;
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

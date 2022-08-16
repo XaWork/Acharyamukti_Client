@@ -34,19 +34,15 @@ import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.AstroProfileModel;
 import com.acharyamukti.model.BlogModel;
 import com.acharyamukti.model.DataModel;
-import com.acharyamukti.ui.slideshow.SlideshowFragment;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

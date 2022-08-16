@@ -81,7 +81,7 @@ public interface ApiInterface {
             @Field("email") String email
     );
 
-    
+
     @Headers({
             "Content-Type: application/json",
             "Authorization: 800333b2-405d-4947-899f-f7686663d30f",
@@ -102,11 +102,16 @@ public interface ApiInterface {
             @Field("user_id") String user_id,
             @Field("account_credited") String acc_details
     );
+
     @FormUrlEncoded
     @POST("clientapi/calling.php")
     Call<DataModel> getCallDurations(
             @Field("user_id") String userId,
             @Field("reg_id") String reg_id
     );
+
+    @FormUrlEncoded
+    @POST("/clientapi/profile.php")
+    Call<DataModel> viewProfile(@Field("user_id") String user_id);
 }
 
