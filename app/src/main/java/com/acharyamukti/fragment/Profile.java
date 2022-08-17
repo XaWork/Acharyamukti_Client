@@ -74,7 +74,7 @@ public class Profile extends Fragment implements View.OnClickListener {
             public void onResponse(Call<DataModel> call, Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
-                    name.setText(Objects.requireNonNull(dataModel).getName());
+                    name.setText(dataModel.getName());
                     email.setText(dataModel.getEmail());
                     mobile.setText(dataModel.getMobile());
                 } else {

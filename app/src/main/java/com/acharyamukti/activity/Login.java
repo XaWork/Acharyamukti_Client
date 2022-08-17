@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.fragment.EmailLogin;
 import com.acharyamukti.helper.Backend;
+import com.acharyamukti.helper.SessionManager;
 import com.acharyamukti.model.DataModel;
 
 import java.util.Objects;
@@ -38,6 +40,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     String Otp;
     SharedPreferences shp;
     public static String PRES_NAME = "profile";
+    ProgressBar progressBar;
     ImageView close;
 
     @Override
@@ -49,13 +52,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         Button loginToEmail = findViewById(R.id.loginToEmail);
         loginToEmail.setOnClickListener(this);
         layout = findViewById(R.id.linearLayout);
-        navigationBar = findViewById(R.id.navigationBar);
         Toolbar toolbar = findViewById(R.id.toolbarLogin);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         mobileNumber = findViewById(R.id.getOtpMobile);
         close = findViewById(R.id.icon_close);
         close.setOnClickListener(this);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -69,10 +73,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onBackPressed() {
         this.finish();
         super.onBackPressed();
-
-
     }
-
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -87,7 +88,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.loginToEmail:
                 layout.setVisibility(View.GONE);
-                navigationBar.setVisibility(View.INVISIBLE);
                 getSupportFragmentManager().beginTransaction().add(R.id.fragment, new EmailLogin()).commit();
                 break;
             case R.id.icon_close:
@@ -132,11 +132,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
+                    progressBar.setVisibility(View.INVISIBLE);
                     assert dataModel != null;
                     if (dataModel.getMessage().equals("Check OTP Your Mobile No")) {
                         dialog();
                         if (dataModel.getUserid() == null) {
                             shp = getSharedPreferences("myPreferences", MODE_PRIVATE);
+                            SessionManager sessionManager = new SessionManager(getApplicationContext());
+                            sessionManager.setLogin(true);
                         }
                         Toast.makeText(Login.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
@@ -146,10 +149,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -174,6 +177,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 DataModel data = response.body();
                 if (response.isSuccessful()) {
                     assert data != null;
+
                     if (data.getError().equals("false")) {
                         Intent intent = new Intent(getApplicationContext(), DashBoard.class);
                         startActivity(intent);

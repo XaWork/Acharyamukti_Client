@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -20,6 +21,7 @@ import com.acharyamukti.R;
 import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
 import com.acharyamukti.helper.Backend;
+import com.acharyamukti.helper.SessionManager;
 import com.acharyamukti.ui.about.AboutFragment;
 import com.acharyamukti.ui.gallery.GalleryFragment;
 import com.acharyamukti.ui.home.HomeFragment;
@@ -195,8 +197,10 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 fragmentTransaction5.commit();
                 break;
             case R.id.logout:
-                Intent logout = new Intent(getApplicationContext(), Login.class);
-                startActivity(logout);
+                    SessionManager sessionManager=new SessionManager(getApplicationContext());
+                    sessionManager.setLogin(false);
+                    Intent logout = new Intent(getApplicationContext(), Login.class);
+                    startActivity(logout);
                 break;
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

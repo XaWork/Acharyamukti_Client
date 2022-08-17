@@ -27,6 +27,7 @@ import com.acharyamukti.activity.Login;
 import com.acharyamukti.activity.Register;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
+import com.acharyamukti.helper.SessionManager;
 import com.acharyamukti.model.DataModel;
 
 import retrofit2.Call;
@@ -141,6 +142,8 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                     if (dataModel.getMessage().equals("Login successfully")) {
                         Intent intent1 = new Intent(getActivity(), DashBoard.class);
                         startActivity(intent1);
+                        SessionManager sessionManager = new SessionManager(getContext());
+                        sessionManager.setLogin(true);
                     } else {
                         Toast.makeText(getActivity(), "The username or password is incorrect", Toast.LENGTH_SHORT).show();
                     }
@@ -158,6 +161,7 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
             }
         });
     }
+
     private void forgotPass(String sendUrl) {
         Call<DataModel> call = RetrofitClient.getInstance().getApi().postPasswordLink(sendUrl);
         call.enqueue(new Callback<DataModel>() {
@@ -177,6 +181,7 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
 
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();

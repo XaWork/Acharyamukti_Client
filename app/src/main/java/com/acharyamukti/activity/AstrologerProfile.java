@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,6 +69,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             txtSummary_long, calling_number;
     Toolbar toolbar;
     String userid, reg_id;
+    ProgressBar progressBar;
 
 
     @Override
@@ -101,7 +103,8 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         getClientReview(userid);
         calling = findViewById(R.id.calling);
         calling.setOnClickListener(this);
-
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -129,6 +132,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
             try {
+                progressBar.setVisibility(View.INVISIBLE);
                 JSONObject jb = new JSONObject(response);
                 String image = jb.getString("image");
                 String mobile = jb.getString("astro_moble");
@@ -181,6 +185,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         String url = "https://theacharyamukti.com/clientapi/review.php";
         RequestQueue request = Volley.newRequestQueue(this);
         @SuppressLint("NotifyDataSetChanged") StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+            progressBar.setVisibility(View.INVISIBLE);
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONArray jsonArray = jsonObject.getJSONArray("body");
@@ -247,7 +252,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         String status = Backend.getInstance(this).getStatus();
         if (status.equals("Online")) {
             getCallForAstrologer();
-        }else {
+        } else {
             Toast.makeText(this, "Astrologer is Offline", Toast.LENGTH_SHORT).show();
         }
 

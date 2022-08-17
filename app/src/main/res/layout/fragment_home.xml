@@ -2,9 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_layout_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/frame_layout_home"
     android:background="@color/white"
     tools:context=".ui.home.HomeFragment">
 
@@ -15,7 +15,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
@@ -42,6 +45,8 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+
+
 
                 <HorizontalScrollView
                     android:id="@+id/nestedLayout"
@@ -383,13 +388,13 @@
                         android:paddingBottom="10dp" />
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/bannerImage2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
-                        app:cardCornerRadius="10dp"
-                        android:id="@+id/bannerImage2">
+                        app:cardCornerRadius="10dp">
 
 
                         <LinearLayout
