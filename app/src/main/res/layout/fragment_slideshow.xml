@@ -6,7 +6,12 @@
     android:background="@color/white"
     android:layout_marginBottom="50dp"
     tools:context=".ui.slideshow.SlideshowFragment">
-
+    <ProgressBar
+        android:layout_marginTop="10dp"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
     <TextView
         android:id="@+id/text_slideshow"
         android:layout_width="match_parent"

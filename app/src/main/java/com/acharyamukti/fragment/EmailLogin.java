@@ -18,6 +18,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
     EditText emailId, pass;
     TextView forgotPass, etEmail;
     Dialog dialog;
+    ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
         signup.setOnClickListener(this);
         forgotPass = view.findViewById(R.id.forgotPass);
         forgotPass.setOnClickListener(this);
+        progressBar=view.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
         return view;
     }
 
@@ -136,6 +140,7 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
         call.enqueue(new Callback<DataModel>() {
             @Override
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
+                progressBar.setVisibility(View.INVISIBLE);
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
                     assert dataModel != null;
@@ -154,9 +159,9 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                 String userId = dataModel.getUserid();
                 Backend.getInstance(getActivity()).saveUserId(userId);
             }
-
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
+                progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -166,7 +171,9 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
         Call<DataModel> call = RetrofitClient.getInstance().getApi().postPasswordLink(sendUrl);
         call.enqueue(new Callback<DataModel>() {
             @Override
+
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
+                progressBar.setVisibility(View.INVISIBLE);
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
                     dialog.dismiss();
@@ -178,12 +185,11 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                         Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                         getEmailDialog();
                     }
-
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
+                progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
             }
         });

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.acharyamukti.R;
@@ -32,6 +33,7 @@ public class Free extends Fragment {
     GridLayoutManager linearLayoutManager;
     RecyclerView recyclerView;
     NewsAdapter newsAdapter;
+    ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,8 @@ public class Free extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
+        progressBar=view.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
         getBloData();
         return view;
     }
@@ -55,6 +59,7 @@ public class Free extends Fragment {
         String url = "https://theacharyamukti.com/clientapi/blog.php";
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
         @SuppressLint("NotifyDataSetChanged") StringRequest stringRequest = new StringRequest(Request.Method.GET, url, response -> {
+            progressBar.setVisibility(View.INVISIBLE);
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONArray jsonArray = jsonObject.getJSONArray("body");
@@ -72,12 +77,15 @@ public class Free extends Fragment {
                 newsAdapter = new NewsAdapter(getContext(), R.layout.custom_news_layout, blogModels);
                 newsAdapter.notifyDataSetChanged();
                 recyclerView.setAdapter(newsAdapter);
+                recyclerView.setNestedScrollingEnabled(false);
                 newsAdapter.setOnItemClickListener((position, blogModel) -> {
                 });
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show());
+        }, error ->
+                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show());
+
         requestQueue.add(stringRequest);
     }
 }

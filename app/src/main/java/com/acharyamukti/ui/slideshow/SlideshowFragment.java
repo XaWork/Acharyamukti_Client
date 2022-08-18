@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.acharyamukti.R;
 import com.acharyamukti.adapter.CallAdapter;
 import com.acharyamukti.databinding.FragmentSlideshowBinding;
 import com.acharyamukti.helper.Backend;
@@ -36,6 +38,7 @@ public class SlideshowFragment extends Fragment {
     CallAdapter callAdapter;
     List<CallingModel> calling = new ArrayList<>();
     FragmentSlideshowBinding binding;
+    ProgressBar progressBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public class SlideshowFragment extends Fragment {
         rvCallHistory = binding.recyclerViewCallHistory;
         LinearLayoutManager linear = new LinearLayoutManager(getActivity());
         rvCallHistory.setLayoutManager(linear);
+        progressBar = root.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
         getCallData();
         return root;
     }
@@ -64,6 +69,7 @@ public class SlideshowFragment extends Fragment {
         String url = "https://theacharyamukti.com/clientapi/call-history.php";
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
         @SuppressLint("NotifyDataSetChanged") StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+            progressBar.setVisibility(View.INVISIBLE);
             try {
                 JSONObject obj = new JSONObject(response);
                 JSONArray arr = obj.getJSONArray("body");
@@ -86,7 +92,7 @@ public class SlideshowFragment extends Fragment {
             callAdapter.notifyDataSetChanged();
             rvCallHistory.setAdapter(callAdapter);
         }, error -> {
-
+            progressBar.setVisibility(View.INVISIBLE);
         }) {
             @Override
             protected Map<String, String> getParams() {

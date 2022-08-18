@@ -234,6 +234,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         dataModelCall.enqueue(new Callback<CallDataModel>() {
             @Override
             public void onResponse(@NonNull Call<CallDataModel> call, @NonNull Response<CallDataModel> response) {
+                progressBar.setVisibility(View.INVISIBLE);
                 CallDataModel dataModelCall = response.body();
                 if (response.isSuccessful()) {
                     dialog();
@@ -242,6 +243,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(@NonNull Call<CallDataModel> call, @NonNull Throwable t) {
+                progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -263,6 +265,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         call.enqueue(new Callback<DataModel>() {
             @Override
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
+                progressBar.setVisibility(View.INVISIBLE);
                 DataModel data = response.body();
                 if (response.isSuccessful()) {
                     assert data != null;
@@ -274,9 +277,9 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                     }
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
+                progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
