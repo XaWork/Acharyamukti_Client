@@ -2,17 +2,14 @@ package com.acharyamukti.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.NewsAdapter;
 import com.acharyamukti.model.BlogModel;
@@ -20,10 +17,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,7 +80,6 @@ public class Free extends Fragment {
             }
         }, error ->
                 Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show());
-
         requestQueue.add(stringRequest);
     }
 }
