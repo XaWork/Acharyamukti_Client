@@ -41,7 +41,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         BlogModel blogModel = blogModels.get(position);
-        holder.titleView.setText(blogModel.getName());
+       // holder.titleView.setText(blogModel.getName());
         holder.subTitle.setText(blogModel.getDescription());
         holder.date.setText(blogModel.getDate());
         String url = "https://theacharyamukti.com/image/product/" + blogModel.getImage();

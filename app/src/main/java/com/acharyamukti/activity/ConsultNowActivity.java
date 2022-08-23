@@ -6,9 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +31,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ConsultNowActivity extends AppCompatActivity {
-    TextView Original_price,Original_price1,Original_price2,Original_price3;
+public class ConsultNowActivity extends AppCompatActivity implements View.OnClickListener {
+    TextView Original_price, Original_price1, Original_price2, Original_price3;
     RecyclerView recyclerViewConsult;
+    Button book_now_pack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,8 @@ public class ConsultNowActivity extends AppCompatActivity {
         LinearLayoutManager layout = new LinearLayoutManager(this);
         recyclerViewConsult = findViewById(R.id.recyclerViewConsult);
         recyclerViewConsult.setLayoutManager(layout);
+        book_now_pack = findViewById(R.id.book_now_pack);
+        book_now_pack.setOnClickListener(this);
         getOnlineAstro();
     }
 
@@ -88,5 +95,17 @@ public class ConsultNowActivity extends AppCompatActivity {
             }
         }, error -> Toast.makeText(ConsultNowActivity.this, error.toString(), Toast.LENGTH_SHORT).show());
         requestQueue.add(request);
+    }
+
+    @Override
+    public void onClick(View view) {
+        buyNowDialog();
+    }
+
+    private void buyNowDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.book_now_custom_layout);
+        dialog.setCanceledOnTouchOutside(true);
     }
 }

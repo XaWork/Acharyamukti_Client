@@ -34,5 +34,4 @@ public class ArcheryLive extends AppCompatActivity {
         this.finish();
         return super.onOptionsItemSelected(item);
     }
-
 }

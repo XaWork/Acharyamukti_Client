@@ -13,9 +13,9 @@
         <ImageView
             android:id="@+id/banner_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:scaleType="fitXY"
-            android:src="@drawable/consult_now5" />
+            android:src="@drawable/offer_bg2" />
 
         <LinearLayout
             android:id="@+id/recharge_pack"
@@ -58,7 +58,7 @@
                         android:paddingTop="10dp"
                         android:text="Original price: 2100 /-"
                         android:textColor="@color/grey1"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -88,6 +88,7 @@
                     </LinearLayout>
 
                     <Button
+                        android:id="@+id/book_now_pack"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:layout_gravity="center_horizontal"
@@ -98,17 +99,17 @@
                         android:textColor="@color/black"
                         android:textSize="11sp" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/grey1"
-                        android:padding="5dp"
-                        android:text="For Appointment"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="9sp" />
+<!--                    <Button-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="25dp"-->
+<!--                        android:layout_gravity="center_horizontal"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@color/grey1"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:text="For Appointment"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="9sp" />-->
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -148,7 +149,7 @@
                         android:paddingTop="10dp"
                         android:text="Original price: 3500 /-"
                         android:textColor="@color/grey1"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -187,17 +188,17 @@
                         android:textColor="@color/black"
                         android:textSize="11sp" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/grey1"
-                        android:padding="5dp"
-                        android:text="For Appointment"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="9sp" />
+<!--                    <Button-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="25dp"-->
+<!--                        android:layout_gravity="center_horizontal"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@color/grey1"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:text="For Appointment"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="9sp" />-->
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -242,7 +243,7 @@
                         android:paddingTop="10dp"
                         android:text="Original price: 5100 /-"
                         android:textColor="@color/grey1"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -281,17 +282,17 @@
                         android:textColor="@color/black"
                         android:textSize="11sp" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/grey1"
-                        android:padding="5dp"
-                        android:text="For Appointment"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="9sp" />
+<!--                    <Button-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="25dp"-->
+<!--                        android:layout_gravity="center_horizontal"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@color/grey1"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:text="For Appointment"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="9sp" />-->
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -330,7 +331,7 @@
                         android:paddingTop="10dp"
                         android:text="Original price: 6500 /-"
                         android:textColor="@color/grey1"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -369,17 +370,17 @@
                         android:textColor="@color/black"
                         android:textSize="11sp" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/grey1"
-                        android:padding="5dp"
-                        android:text="For Appointment"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="9sp" />
+<!--                    <Button-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="25dp"-->
+<!--                        android:layout_gravity="center_horizontal"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@color/grey1"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:text="For Appointment"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="9sp" />-->
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

@@ -11,10 +11,12 @@
     android:layout_margin="5dp">
 
     <RelativeLayout
+        android:background="@drawable/astro_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="170dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/astroImage"
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -30,11 +32,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/astroImage"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/search_bg"
             android:gravity="center"
             android:paddingTop="5dp"
             android:text="Kuldeep"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="11sp"
             android:textStyle="bold" />
 
@@ -49,7 +50,7 @@
             android:paddingEnd="10dp"
             android:paddingBottom="3dp"
             android:text="33/min"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="11sp" />
 
         <TextView
