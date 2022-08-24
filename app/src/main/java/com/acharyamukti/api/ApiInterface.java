@@ -6,6 +6,7 @@ import com.acharyamukti.model.CallDataModel;
 import com.acharyamukti.model.DataModel;
 import com.acharyamukti.model.HoroscopeModel;
 import com.acharyamukti.model.ImageModel;
+import com.acharyamukti.model.UserProfileModel;
 
 import java.util.List;
 import java.util.Map;
@@ -113,5 +114,17 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("/clientapi/profile.php")
     Call<DataModel> viewProfile(@Field("user_id") String user_id);
+
+    @FormUrlEncoded
+    @POST("/clientapi/update-profile.php")
+    Call<UserProfileModel> updateProfile(
+            @Field("user_id") String userId,
+            @Field("fname") String fname,
+            @Field("lname") String lname,
+            @Field("email") String email,
+            @Field("mobile") String mobile,
+            @Field("password") String password);
+
+
 }
 

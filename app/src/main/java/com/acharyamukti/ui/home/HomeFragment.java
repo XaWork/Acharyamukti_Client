@@ -2,7 +2,6 @@ package com.acharyamukti.ui.home;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,7 +20,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.acharyamukti.R;
-import com.acharyamukti.activity.ConsultNowActivity;
+import com.acharyamukti.activity.ConsultNow;
 import com.acharyamukti.activity.KundaliniMarriage;
 import com.acharyamukti.activity.Horoscope;
 import com.acharyamukti.adapter.AstroProfileAdapter;
@@ -190,7 +189,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 fragment4.setArguments(bundle);
                 break;
             case R.id.consult_now_image:
-                Intent intent = new Intent(getActivity(), ConsultNowActivity.class);
+                Intent intent = new Intent(getActivity(), ConsultNow.class);
                 startActivity(intent);
                 break;
         }

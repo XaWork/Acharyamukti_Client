@@ -1,41 +1,31 @@
 package com.acharyamukti.fragment;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.acharyamukti.R;
-import com.acharyamukti.activity.Login;
 import com.acharyamukti.activity.ProfileUpdate;
-import com.acharyamukti.activity.Wallet;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.DataModel;
-import com.acharyamukti.ui.slideshow.SlideshowFragment;
-
 import java.util.Objects;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
 public class Profile extends Fragment implements View.OnClickListener {
-    TextView wallet, history, payment, about,
-            profile, name, email, mobile, logout;
+    TextView name, email, mobile;
     String profileName, emailId, mobileNumber;
     ImageView txtEditImage;
+    String fName, lName;
 
 
     @Override
@@ -51,11 +41,16 @@ public class Profile extends Fragment implements View.OnClickListener {
         name = view.findViewById(R.id.profileUsername);
         email = view.findViewById(R.id.txtEmail);
         mobile = view.findViewById(R.id.txtMobile);
-        name.setText(profileName);
-        email.setText(emailId);
-        mobile.setText(mobileNumber);
+//        name.setText(profileName);
+//        email.setText(emailId);
+//        mobile.setText(mobileNumber);
         txtEditImage.setOnClickListener(this);
-        viewProfile();
+        fName = Backend.getInstance(getContext()).getName();
+        name.setText(fName);
+        emailId = Backend.getInstance(getContext()).getEmail();
+        email.setText(emailId);
+        mobileNumber = Backend.getInstance(getContext()).getMobile();
+        mobile.setText(mobileNumber);
         return view;
     }
 
@@ -81,6 +76,7 @@ public class Profile extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(), Objects.requireNonNull(dataModel).getError(), Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();

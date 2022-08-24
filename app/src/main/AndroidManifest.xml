@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
-            android:name=".activity.ConsultNowActivity"
+            android:name=".activity.ConsultNow"
             android:exported="false"
             android:label="Consult Now"
             android:theme="@style/AppThemeActionBar"/>

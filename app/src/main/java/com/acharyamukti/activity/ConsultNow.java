@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ConsultNowActivity extends AppCompatActivity implements View.OnClickListener {
+public class ConsultNow extends AppCompatActivity implements View.OnClickListener {
     TextView Original_price, Original_price1, Original_price2, Original_price3;
     RecyclerView recyclerViewConsult;
     Button book_now_pack;
@@ -93,7 +93,7 @@ public class ConsultNowActivity extends AppCompatActivity implements View.OnClic
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(ConsultNowActivity.this, error.toString(), Toast.LENGTH_SHORT).show());
+        }, error -> Toast.makeText(ConsultNow.this, error.toString(), Toast.LENGTH_SHORT).show());
         requestQueue.add(request);
     }
 

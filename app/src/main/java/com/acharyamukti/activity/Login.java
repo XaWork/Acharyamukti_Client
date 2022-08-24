@@ -190,7 +190,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();

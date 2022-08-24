@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ConsultNowActivity">
+    tools:context=".activity.ConsultNow">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,8 +14,9 @@
             android:id="@+id/banner_image"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:background="@drawable/promo_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/offer_bg2" />
+            android:src="@drawable/recharge_pack" />
 
         <LinearLayout
             android:id="@+id/recharge_pack"
@@ -32,14 +33,15 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="5dp"
+                app:cardCornerRadius="15dp"
                 app:cardElevation="10dp">
 
                 <LinearLayout
+                    android:background="@drawable/promo_bg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -48,7 +50,7 @@
                         android:text="15 min"
                         android:textColor="@color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/Original_price1"
@@ -123,14 +125,15 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="5dp"
+                app:cardCornerRadius="15dp"
                 app:cardElevation="10dp">
 
                 <LinearLayout
+                    android:background="@drawable/promo_bg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -139,7 +142,7 @@
                         android:text="30 min"
                         android:textColor="@color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/Original_price"
@@ -217,14 +220,15 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="5dp"
+                app:cardCornerRadius="15dp"
                 app:cardElevation="10dp">
 
                 <LinearLayout
+                    android:background="@drawable/promo_bg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -305,14 +309,15 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="5dp"
+                app:cardCornerRadius="15dp"
                 app:cardElevation="10dp">
 
                 <LinearLayout
+                    android:background="@drawable/promo_bg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
