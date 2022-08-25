@@ -12,12 +12,12 @@ public class CallDataModel {
     String message;
     HashMap<String, Integer> additional_params = new HashMap<>();
 
-    public CallDataModel(String k_number, String agent_number, String customer_number, String caller_id) {
+    public CallDataModel(String k_number, String agent_number, String customer_number, String caller_id,int duration) {
         this.k_number = k_number;
         this.agent_number = agent_number;
         this.customer_number = customer_number;
         this.caller_id = caller_id;
-        this.additional_params.put("max_call_duration", 20);
+        this.additional_params.put("max_call_duration",duration);
     }
 
 

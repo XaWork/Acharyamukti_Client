@@ -41,9 +41,6 @@ public class Profile extends Fragment implements View.OnClickListener {
         name = view.findViewById(R.id.profileUsername);
         email = view.findViewById(R.id.txtEmail);
         mobile = view.findViewById(R.id.txtMobile);
-//        name.setText(profileName);
-//        email.setText(emailId);
-//        mobile.setText(mobileNumber);
         txtEditImage.setOnClickListener(this);
         fName = Backend.getInstance(getContext()).getName();
         name.setText(fName);

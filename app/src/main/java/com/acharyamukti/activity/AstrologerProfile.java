@@ -229,7 +229,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id);
+        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id,20);
         Call<CallDataModel> dataModelCall = apiInterface.getCalling(callDataModel);
         dataModelCall.enqueue(new Callback<CallDataModel>() {
             @Override
@@ -237,10 +237,10 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 progressBar.setVisibility(View.INVISIBLE);
                 CallDataModel dataModelCall = response.body();
                 if (response.isSuccessful()) {
+                    getCallDuration();
                     dialog();
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<CallDataModel> call, @NonNull Throwable t) {
                 progressBar.setVisibility(View.INVISIBLE);
@@ -259,7 +259,6 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         }
 
     }
-
     private void getCallDuration() {
         Call<DataModel> call = RetrofitClient.getInstance().getApi().getCallDurations(userid, reg_id);
         call.enqueue(new Callback<DataModel>() {
