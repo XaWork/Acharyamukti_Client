@@ -3,19 +3,25 @@ package com.acharyamukti.fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.acharyamukti.R;
 import com.acharyamukti.activity.ProfileUpdate;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.DataModel;
+
 import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,7 +29,7 @@ import retrofit2.Response;
 
 public class Profile extends Fragment implements View.OnClickListener {
     TextView name, email, mobile;
-    String profileName, emailId, mobileNumber;
+    String emailId, mobileNumber;
     ImageView txtEditImage;
     String fName, lName;
 
@@ -32,7 +38,6 @@ public class Profile extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +53,7 @@ public class Profile extends Fragment implements View.OnClickListener {
         email.setText(emailId);
         mobileNumber = Backend.getInstance(getContext()).getMobile();
         mobile.setText(mobileNumber);
+        viewProfile();
         return view;
     }
 
@@ -63,9 +69,10 @@ public class Profile extends Fragment implements View.OnClickListener {
         Call<DataModel> call = RetrofitClient.getInstance().getApi().viewProfile(user_id);
         call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
+                    assert dataModel != null;
                     name.setText(dataModel.getName());
                     email.setText(dataModel.getEmail());
                     mobile.setText(dataModel.getMobile());
@@ -73,9 +80,8 @@ public class Profile extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(), Objects.requireNonNull(dataModel).getError(), Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
-            public void onFailure(Call<DataModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
             }
         });

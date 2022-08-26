@@ -66,11 +66,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void registerUser() {
-        fName = first_name.getText().toString();
-        lName = last_name.getText().toString();
-        email = emailId.getText().toString();
-        pass = password.getText().toString();
-        mobile = mobileNumber.getText().toString();
+        fName = first_name.getText().toString().trim();
+        lName = last_name.getText().toString().trim();
+        email = emailId.getText().toString().trim();
+        pass = password.getText().toString().trim();
+        mobile = mobileNumber.getText().toString().trim();
         if (fName.isEmpty()) {
             first_name.requestFocus();
             first_name.setError("Please Enter First Name");

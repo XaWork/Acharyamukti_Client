@@ -16,387 +16,290 @@
             android:layout_height="300dp"
             android:background="@drawable/promo_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/recharge_pack" />
+            android:src="@drawable/consult_now_pack" />
 
-        <LinearLayout
+        <HorizontalScrollView
             android:id="@+id/recharge_pack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/banner_image"
-            android:orientation="horizontal">
+            android:fillViewport="true"
+            android:nestedScrollingEnabled="false"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:scrollbars="horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_view1"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:background="@drawable/promo_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="15dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="15 min"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/Original_price1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingTop="10dp"
-                        android:text="Original price: 2100 /-"
-                        android:textColor="@color/grey1"
-                        android:textStyle="normal" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view1"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="150dp"
+                    app:cardElevation="10dp">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:orientation="horizontal">
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:background="@drawable/promo_bg"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="15dp">
 
                         <TextView
-                            android:id="@+id/discount_price1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:paddingTop="5dp"
-                            android:text="Discount price:"
-                            android:textColor="@color/black"
+                            android:text="15 min"
+                            android:textAllCaps="true"
+                            android:textColor="#E10404"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/discount_price"
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_gravity="center_horizontal"
-                            android:paddingTop="5dp"
-                            android:text=" 1100 /-"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/discount_price1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/ic_baseline_currency_rupee_24"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/discount_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_vertical"
+                                android:paddingTop="5dp"
+                                android:text=" 1100 /-"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/book_now_pack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/text_bg"
+                            android:text="Book Now"
+                            android:textAllCaps="false"
                             android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textSize="11sp" />
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                    <Button
-                        android:id="@+id/book_now_pack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/yellow"
-                        android:text="Book Now"
-                        android:textAllCaps="false"
-                        android:textColor="@color/black"
-                        android:textSize="11sp" />
-
-<!--                    <Button-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="25dp"-->
-<!--                        android:layout_gravity="center_horizontal"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:background="@color/grey1"-->
-<!--                        android:padding="5dp"-->
-<!--                        android:text="For Appointment"-->
-<!--                        android:textAllCaps="false"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="9sp" />-->
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_view2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
-
-                <LinearLayout
-                    android:background="@drawable/promo_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="15dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="30 min"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/Original_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingTop="10dp"
-                        android:text="Original price: 3500 /-"
-                        android:textColor="@color/grey1"
-                        android:textStyle="normal" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view2"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="150dp"
+                    app:cardElevation="10dp">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:orientation="horizontal">
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:background="@drawable/promo_bg"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="15dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:paddingTop="5dp"
-                            android:text="Discount price:"
-                            android:textColor="@color/black"
+                            android:text="30 min"
+                            android:textAllCaps="true"
+                            android:textColor="#E10404"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/discount_price3"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:paddingTop="5dp"
-                            android:text=" 2100 /-"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/ic_baseline_currency_rupee_24"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/discount_price3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_vertical"
+                                android:text=" 2100 /-"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/text_bg"
+                            android:text="Book Now"
+                            android:textAllCaps="false"
                             android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textSize="11sp" />
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/yellow"
-                        android:text="Book Now"
-                        android:textAllCaps="false"
-                        android:textColor="@color/black"
-                        android:textSize="11sp" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="150dp"
+                    app:cardElevation="10dp">
 
-<!--                    <Button-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="25dp"-->
-<!--                        android:layout_gravity="center_horizontal"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:background="@color/grey1"-->
-<!--                        android:padding="5dp"-->
-<!--                        android:text="For Appointment"-->
-<!--                        android:textAllCaps="false"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="9sp" />-->
+                    <LinearLayout
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:background="@drawable/promo_bg"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="15dp">
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="45 min"
+                            android:textAllCaps="true"
+                            android:textColor="#E10404"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/recharge_pack1"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/ic_baseline_currency_rupee_24"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_vertical"
+                                android:text=" 3000 /-"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/text_bg"
+                            android:text="Book Now"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="150dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:background="@drawable/promo_bg"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="1 hour"
+                            android:textAllCaps="true"
+                            android:textColor="#E10404"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/ic_baseline_currency_rupee_24"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_vertical"
+                                android:text=" 3900 /-"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/text_bg"
+                            android:text="Book Now"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewConsult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/recharge_pack"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
-
-                <LinearLayout
-                    android:background="@drawable/promo_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="15dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="45 min"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/Original_price2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingTop="10dp"
-                        android:text="Original price: 5100 /-"
-                        android:textColor="@color/grey1"
-                        android:textStyle="normal" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:paddingTop="5dp"
-                            android:text="Discount price:"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/discount_price2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:paddingTop="5dp"
-                            android:text=" 3000 /-"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/yellow"
-                        android:text="Book Now"
-                        android:textAllCaps="false"
-                        android:textColor="@color/black"
-                        android:textSize="11sp" />
-
-<!--                    <Button-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="25dp"-->
-<!--                        android:layout_gravity="center_horizontal"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:background="@color/grey1"-->
-<!--                        android:padding="5dp"-->
-<!--                        android:text="For Appointment"-->
-<!--                        android:textAllCaps="false"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="9sp" />-->
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_view3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
-
-                <LinearLayout
-                    android:background="@drawable/promo_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="15dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="1 Hour"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/Original_price3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingTop="10dp"
-                        android:text="Original price: 6500 /-"
-                        android:textColor="@color/grey1"
-                        android:textStyle="normal" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:paddingTop="5dp"
-                            android:text="Discount price:"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/discount_price4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:paddingTop="5dp"
-                            android:text=" 3900 /-"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/yellow"
-                        android:text="Book Now"
-                        android:textAllCaps="false"
-                        android:textColor="@color/black"
-                        android:textSize="11sp" />
-
-<!--                    <Button-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="25dp"-->
-<!--                        android:layout_gravity="center_horizontal"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:background="@color/grey1"-->
-<!--                        android:padding="5dp"-->
-<!--                        android:text="For Appointment"-->
-<!--                        android:textAllCaps="false"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="9sp" />-->
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recyclerViewConsult"
-            android:layout_below="@+id/recharge_pack1"/>
+            android:layout_marginEnd="10dp" />
     </RelativeLayout>
 </ScrollView>

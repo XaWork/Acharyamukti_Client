@@ -122,9 +122,7 @@ public interface ApiInterface {
             @Field("fname") String fname,
             @Field("lname") String lname,
             @Field("email") String email,
-            @Field("mobile") String mobile,
-            @Field("password") String password);
-
+            @Field("mobile") String mobile);
 
 }
 

@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -48,7 +49,7 @@ import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    LinearLayout relationShip, marriage, career, money, horoscope;
+    CardView relationShip, marriage, career, money, horoscope;
     FragmentHomeBinding binding;
     LiveAdapter liveAdapter;
     AstroProfileAdapter astroProfile;
@@ -225,7 +226,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show());
         requestQueue.add(objectRequest);
     }
-
     private void getLiveData() {
         final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
         String url = "https://theacharyamukti.com/clientapi/online-astro.php";
@@ -284,14 +284,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }, error -> Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show());
         requestQueue.add(stringRequest);
     }
-
     private void postFeedBackData() {
         String content = feedback.getText().toString();
         String userId = Backend.getInstance(getContext()).getUserId();
         Call<DataModel> call = RetrofitClient.getInstance().getApi().postFeedBack(userId, content);
         call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+            public void onResponse(Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
                     if (dataModel.getError().equals("false")) {
@@ -302,7 +301,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), dataModel.getError(), Toast.LENGTH_LONG).show();
                 }
             }
-
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_SHORT).show();

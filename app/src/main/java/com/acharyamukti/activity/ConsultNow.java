@@ -32,7 +32,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class ConsultNow extends AppCompatActivity implements View.OnClickListener {
-    TextView Original_price, Original_price1, Original_price2, Original_price3;
     RecyclerView recyclerViewConsult;
     Button book_now_pack;
 
@@ -40,14 +39,6 @@ public class ConsultNow extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consult_now);
-        Original_price = findViewById(R.id.Original_price);
-        Original_price1 = findViewById(R.id.Original_price1);
-        Original_price2 = findViewById(R.id.Original_price2);
-        Original_price3 = findViewById(R.id.Original_price3);
-        Original_price.setPaintFlags(Original_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        Original_price1.setPaintFlags(Original_price1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        Original_price2.setPaintFlags(Original_price2.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        Original_price3.setPaintFlags(Original_price3.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         LinearLayoutManager layout = new LinearLayoutManager(this);
         recyclerViewConsult = findViewById(R.id.recyclerViewConsult);

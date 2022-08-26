@@ -15,10 +15,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
@@ -47,7 +49,6 @@
                 app:layout_constraintTop_toTopOf="parent">
 
 
-
                 <HorizontalScrollView
                     android:id="@+id/nestedLayout"
                     android:layout_width="match_parent"
@@ -66,7 +67,6 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:id="@+id/horoscope"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:layout_marginTop="7dp"
@@ -75,6 +75,7 @@
                             android:orientation="vertical">
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/horoscope"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:clickable="true"
@@ -105,7 +106,6 @@
 
 
                         <LinearLayout
-                            android:id="@+id/loveRelationShip"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:layout_marginTop="7dp"
@@ -114,6 +114,7 @@
                             android:orientation="vertical">
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/loveRelationShip"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:clickable="true"
@@ -142,7 +143,6 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/marriageKundly"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:layout_marginTop="7dp"
@@ -151,6 +151,7 @@
                             android:orientation="vertical">
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/marriageKundly"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:clickable="true"
@@ -179,7 +180,6 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/career"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:layout_marginTop="7dp"
@@ -188,6 +188,7 @@
                             android:orientation="vertical">
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/career"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:clickable="true"
@@ -216,7 +217,6 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/money"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:layout_marginTop="7dp"
@@ -225,6 +225,7 @@
                             android:orientation="vertical">
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/money"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:clickable="true"
@@ -338,14 +339,23 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewBlogDetails"
                     android:layout_width="wrap_content"
-                    android:layout_height="200dp"
+                    android:layout_height="180dp"
                     android:layout_below="@+id/layoutBlog" />
+
+                <ImageView
+                    android:id="@+id/banner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_below="@+id/recyclerViewBlogDetails"
+                    android:layout_margin="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mukti_sir_profile" />
 
                 <LinearLayout
                     android:id="@+id/layoutRecycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/recyclerViewBlogDetails"
+                    android:layout_below="@+id/banner1"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="3dp"
                     android:layout_marginEnd="3dp"

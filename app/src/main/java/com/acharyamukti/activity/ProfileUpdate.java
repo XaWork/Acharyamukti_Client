@@ -2,7 +2,6 @@ package com.acharyamukti.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,15 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.UserProfileModel;
-import com.acharyamukti.ui.home.HomeFragment;
-
 import java.util.Objects;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -63,17 +58,17 @@ public class ProfileUpdate extends AppCompatActivity implements View.OnClickList
         mobileNumber = mobile.getText().toString().trim();
         String userId = Backend.getInstance(this).getUserId();
         Call<UserProfileModel> call = RetrofitClient.getInstance().getApi().updateProfile(
-                userId, fName, fName, lName, emailId, mobileNumber);
+                userId, fName, lName, emailId, mobileNumber);
         call.enqueue(new Callback<UserProfileModel>() {
             @Override
             public void onResponse(Call<UserProfileModel> call, Response<UserProfileModel> response) {
                 UserProfileModel userModel = response.body();
                 try {
                     if (userModel.getMsg().equals("Profile Updated Successfully..")) {
-                        Backend.getInstance(getApplicationContext()).saveUserId(fName);
-                        Backend.getInstance(getApplicationContext()).saveUserId(lName);
-                        Backend.getInstance(getApplicationContext()).saveUserId(emailId);
-                        Backend.getInstance(getApplicationContext()).saveUserId(mobileNumber);
+                        Backend.getInstance(getApplicationContext()).saveName(fName);
+                        Backend.getInstance(getApplicationContext()).saveLastname(lName);
+                        Backend.getInstance(getApplicationContext()).saveEmail(emailId);
+                        Backend.getInstance(getApplicationContext()).saveMobile(mobileNumber);
                         Intent intent = new Intent(getApplicationContext(), DashBoard.class);
                         startActivity(intent);
                         Toast.makeText(ProfileUpdate.this, "Profile Updated Successfully..", Toast.LENGTH_SHORT).show();
@@ -86,7 +81,7 @@ public class ProfileUpdate extends AppCompatActivity implements View.OnClickList
                 }
             }
             @Override
-            public void onFailure(Call<UserProfileModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<UserProfileModel> call, @NonNull Throwable t) {
                 Toast.makeText(ProfileUpdate.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
