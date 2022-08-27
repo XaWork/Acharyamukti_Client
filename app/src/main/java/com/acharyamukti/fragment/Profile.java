@@ -47,12 +47,12 @@ public class Profile extends Fragment implements View.OnClickListener {
         email = view.findViewById(R.id.txtEmail);
         mobile = view.findViewById(R.id.txtMobile);
         txtEditImage.setOnClickListener(this);
-        fName = Backend.getInstance(getContext()).getName();
-        name.setText(fName);
-        emailId = Backend.getInstance(getContext()).getEmail();
-        email.setText(emailId);
-        mobileNumber = Backend.getInstance(getContext()).getMobile();
-        mobile.setText(mobileNumber);
+//        fName = Backend.getInstance(getContext()).getName();
+//        name.setText(fName);
+//        emailId = Backend.getInstance(getContext()).getEmail();
+//        email.setText(emailId);
+//        mobileNumber = Backend.getInstance(getContext()).getMobile();
+//        mobile.setText(mobileNumber);
         viewProfile();
         return view;
     }
@@ -72,7 +72,6 @@ public class Profile extends Fragment implements View.OnClickListener {
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
-                    assert dataModel != null;
                     name.setText(dataModel.getName());
                     email.setText(dataModel.getEmail());
                     mobile.setText(dataModel.getMobile());

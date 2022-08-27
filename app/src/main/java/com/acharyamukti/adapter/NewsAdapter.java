@@ -41,8 +41,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         BlogModel blogModel = blogModels.get(position);
-       // holder.titleView.setText(blogModel.getName());
-        holder.subTitle.setText(blogModel.getDescription());
+        holder.titleView.setText(blogModel.getName());
+//        holder.subTitle.setText(blogModel.getDescription());
         holder.date.setText(blogModel.getDate());
         String url = "https://theacharyamukti.com/image/product/" + blogModel.getImage();
         Glide.with(context).load(url).into(holder.imageView);
@@ -74,7 +74,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             imageView = itemView.findViewById(R.id.blog_image);
             titleView = itemView.findViewById(R.id.txtTitle);
             date = itemView.findViewById(R.id.txtDate);
-            subTitle = itemView.findViewById(R.id.subTitle);
+         //   subTitle = itemView.findViewById(R.id.subTitle);
         }
     }
 
