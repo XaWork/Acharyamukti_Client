@@ -180,6 +180,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
                     if (data.getError().equals("false")) {
                         Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+                        intent.putExtra("clam_now","clamNow");
                         startActivity(intent);
                         String userid = data.getUserid();
                         Backend.getInstance(getApplicationContext()).saveUserId(userid);

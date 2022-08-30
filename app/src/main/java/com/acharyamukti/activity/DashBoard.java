@@ -13,10 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.widget.Toolbar;
-
 import com.acharyamukti.R;
 import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
@@ -77,12 +74,18 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         walletAmount = findViewById(R.id.walletAmount);
         String totalBalance = Backend.getInstance(this).getWalletBalance();
         walletAmount.setText(totalBalance);
-        getDialog();
-        Handler handler = new Handler();
-        handler.postDelayed(() -> {
-            // close your dialog
-            dialog.dismiss();
-        }, 10000);
+        Intent intent = getIntent();
+        String clam_now = intent.getStringExtra("clam_now");
+        String userid = Backend.getInstance(this).getUserId();
+        if (clam_now != null && userid != null) {
+            getDialog();
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                // close your dialog
+                dialog.dismiss();
+            }, 3000);
+        }
+
     }
 
     @Override
@@ -126,7 +129,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     public void onBackPressed() {
         finish();
         super.onBackPressed();
-
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -197,10 +199,10 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 fragmentTransaction5.commit();
                 break;
             case R.id.logout:
-                    SessionManager sessionManager=new SessionManager(getApplicationContext());
-                    sessionManager.setLogin(false);
-                    Intent logout = new Intent(getApplicationContext(), Login.class);
-                    startActivity(logout);
+                SessionManager sessionManager = new SessionManager(getApplicationContext());
+                sessionManager.setLogin(false);
+                Intent logout = new Intent(getApplicationContext(), Login.class);
+                startActivity(logout);
                 break;
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

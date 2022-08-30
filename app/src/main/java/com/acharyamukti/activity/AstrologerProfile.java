@@ -126,7 +126,6 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         dialog.show();
         dialog.setCanceledOnTouchOutside(true);
     }
-
     private void getProfileData(String userId) {
         String url = "https://theacharyamukti.com/clientapi/single-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -248,7 +247,6 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             }
         });
     }
-
     @Override
     public void onClick(View view) {
         String status = Backend.getInstance(this).getStatus();
@@ -283,6 +281,4 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             }
         });
     }
-
-
 }
