@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ConsultNow extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerViewConsult;
-    Button book_now_pack;
+    Button book_now_pack1, book_now_pack2, book_now_pack3, book_now_pack4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,14 @@ public class ConsultNow extends AppCompatActivity implements View.OnClickListene
         LinearLayoutManager layout = new LinearLayoutManager(this);
         recyclerViewConsult = findViewById(R.id.recyclerViewConsult);
         recyclerViewConsult.setLayoutManager(layout);
-        book_now_pack = findViewById(R.id.book_now_pack);
-        book_now_pack.setOnClickListener(this);
+        book_now_pack1 = findViewById(R.id.book_now_pack);
+        book_now_pack2 = findViewById(R.id.pack2);
+        book_now_pack3 = findViewById(R.id.pack3);
+        book_now_pack4 = findViewById(R.id.pack4);
+        book_now_pack1.setOnClickListener(this);
+        book_now_pack2.setOnClickListener(this);
+        book_now_pack3.setOnClickListener(this);
+        book_now_pack4.setOnClickListener(this);
         getOnlineAstro();
     }
 
@@ -88,8 +95,23 @@ public class ConsultNow extends AppCompatActivity implements View.OnClickListene
         requestQueue.add(request);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.book_now_pack:
+                buyNowDialog();
+                break;
+            case R.id.pack2:
+                buyNowDialog();
+                break;
+            case R.id.pack3:
+                buyNowDialog();
+                break;
+            case R.id.pack4:
+                buyNowDialog();
+                break;
+        }
         buyNowDialog();
     }
 
@@ -97,6 +119,9 @@ public class ConsultNow extends AppCompatActivity implements View.OnClickListene
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.book_now_custom_layout);
+        dialog.show();
         dialog.setCanceledOnTouchOutside(true);
+        ImageView cancel_icon = dialog.findViewById(R.id.cancel_icon);
+        cancel_icon.setOnClickListener(view -> dialog.dismiss());
     }
 }

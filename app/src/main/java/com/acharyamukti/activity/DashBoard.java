@@ -2,7 +2,9 @@ package com.acharyamukti.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -13,12 +15,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
+
 import com.acharyamukti.R;
+import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.fragment.Free;
 import com.acharyamukti.fragment.Profile;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.helper.SessionManager;
+import com.acharyamukti.model.DataModel;
 import com.acharyamukti.ui.about.AboutFragment;
 import com.acharyamukti.ui.gallery.GalleryFragment;
 import com.acharyamukti.ui.home.HomeFragment;
@@ -37,6 +44,10 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
     private AppBarConfiguration mAppBarConfiguration;
@@ -46,6 +57,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     TextView walletAmount;
     DrawerLayout drawer;
     NavigationView navigationView;
+    String userid;
+    String total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +85,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         walletLayout = findViewById(R.id.walletLayout);
         walletLayout.setOnClickListener(this);
         walletAmount = findViewById(R.id.walletAmount);
-        String totalBalance = Backend.getInstance(this).getWalletBalance();
-        walletAmount.setText(totalBalance);
         Intent intent = getIntent();
         String clam_now = intent.getStringExtra("clam_now");
-        String userid = Backend.getInstance(this).getUserId();
+        userid = Backend.getInstance(this).getUserId();
         if (clam_now != null && userid != null) {
             getDialog();
             Handler handler = new Handler();
@@ -85,7 +96,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 dialog.dismiss();
             }, 3000);
         }
-
+        getTotalBalance(userid);
     }
 
     @Override
@@ -215,9 +226,33 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         super.onPointerCaptureChanged(hasCapture);
     }
 
+
+    private void getTotalBalance(String userId) {
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().getTotalBalance(userId);
+        call.enqueue(new Callback<DataModel>() {
+            @Override
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
+                DataModel dataModel = response.body();
+                if (response.isSuccessful()) {
+                    assert dataModel != null;
+                    if (dataModel.getError().equals("false")) {
+                        total = dataModel.getWallet();
+                        walletAmount.setText(total);
+                    } else {
+                        Toast.makeText(DashBoard.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
+                Toast.makeText(DashBoard.this, t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(getApplicationContext(), Wallet.class);
+        intent.putExtra("total", total);
         startActivity(intent);
     }
 }

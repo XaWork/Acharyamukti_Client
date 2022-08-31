@@ -1,48 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:orientation="vertical">
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    app:cardElevation="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/cancel_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_baseline_cancel_24" />
 
         <LinearLayout
             android:id="@+id/layoutSupport"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cancel_icon"
-            android:layout_centerHorizontal="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Customer Supports:-"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <TextView
+            <ImageView
+                android:id="@+id/cancel_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(+91) 7330004646, (+91) 8010104747"
-                android:textColor="@color/black" />
+                android:layout_gravity="end"
+                android:src="@drawable/ic_baseline_cancel_24" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/support_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutSupport"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="(+91) 7330004646,    (+91) 8010104747"
+            android:textColor="@color/grey1"
+            android:textSize="12sp" />
 
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="0.25dp"
-            android:layout_below="@+id/layoutSupport"
+            android:layout_below="@+id/support_number"
             android:layout_marginTop="10dp"
             android:background="#888484" />
 
@@ -51,17 +64,144 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="Bank Details"
+            android:text="Account Details"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/bank_details"
+            android:layout_marginTop="3dp"
+            android:background="#888484" />
 
         <TableLayout
-
+            android:id="@+id/account_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bank_details">
+            android:layout_below="@+id/view1"
+            android:layout_margin="10dp">
 
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Name:-"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Minfotech India"
+                    android:textColor="@color/grey1"
+                    android:textStyle="normal" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Account No.:-"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50200055288129"
+                    android:textColor="@color/grey1"
+                    android:textStyle="normal" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IFSC:-"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HDFC0004737"
+                    android:textColor="@color/grey1"
+                    android:textStyle="normal" />
+            </TableRow>
         </TableLayout>
+
+        <TextView
+            android:id="@+id/upi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/account_detail"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="UPI"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/paymentUI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/upi"
+            android:layout_marginStart="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/google_pay" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/bhim_pay" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:src="@drawable/phone_pay" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/paytm" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/paymentUI"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:paddingBottom="10dp"
+            android:text="Mobile No. "
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_below="@+id/paymentUI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="80dp"
+            android:text="9560073304"
+            android:textColor="@color/grey1" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

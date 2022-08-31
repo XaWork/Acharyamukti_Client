@@ -2,6 +2,7 @@ package com.acharyamukti.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.DataModel;
+
 import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,12 +44,15 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
         text5.setOnClickListener(this);
         text6.setOnClickListener(this);
         totalBalance = findViewById(R.id.totalBalance);
-        userId = Backend.getInstance(this).getUserId();
-        if (userId != null) {
-            getTotalBalance(userId);
-        } else {
-            Toast.makeText(this, "User are not login", Toast.LENGTH_SHORT).show();
-        }
+        Intent intent = getIntent();
+        String balance = intent.getStringExtra("total");
+        totalBalance.setText(balance);
+//        userId = Backend.getInstance(this).getUserId();
+//        if (userId != null) {
+//            getTotalBalance(userId);
+//        } else {
+//            Toast.makeText(this, "User are not login", Toast.LENGTH_SHORT).show();
+//        }
 
     }
 
@@ -98,27 +105,27 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    private void getTotalBalance(String userId) {
-        Call<DataModel> call = RetrofitClient.getInstance().getApi().getTotalBalance(userId);
-        call.enqueue(new Callback<DataModel>() {
-            @Override
-            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
-                DataModel dataModel = response.body();
-                if (response.isSuccessful()) {
-                    assert dataModel != null;
-                    if (dataModel.getError().equals("false")) {
-                        String total = dataModel.getWallet();
-                        totalBalance.setText(total);
-                        Backend.getInstance(getApplicationContext()).saveWalletBalance(total);
-                    } else {
-                        Toast.makeText(Wallet.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-            @Override
-            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
-                Toast.makeText(Wallet.this, t.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//    private void getTotalBalance(String userId) {
+//        Call<DataModel> call = RetrofitClient.getInstance().getApi().getTotalBalance(userId);
+//        call.enqueue(new Callback<DataModel>() {
+//            @Override
+//            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
+//                DataModel dataModel = response.body();
+//                if (response.isSuccessful()) {
+//                    assert dataModel != null;
+//                    if (dataModel.getError().equals("false")) {
+//                        String total = dataModel.getWallet();
+//                        totalBalance.setText(total);
+//                        Backend.getInstance(getApplicationContext()).saveWalletBalance(total);
+//                    } else {
+//                        Toast.makeText(Wallet.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            }
+//            @Override
+//            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
+//                Toast.makeText(Wallet.this, t.toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//}
 }

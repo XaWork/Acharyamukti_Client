@@ -55,6 +55,15 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
         checkBox9 = findViewById(R.id.checkbox9);
         checkBox10 = findViewById(R.id.checkbox10);
         checkBox1.setOnClickListener(this);
+        checkBox2.setOnClickListener(this);
+        checkBox3.setOnClickListener(this);
+        checkBox4.setOnClickListener(this);
+        checkBox5.setOnClickListener(this);
+        checkBox6.setOnClickListener(this);
+        checkBox7.setOnClickListener(this);
+        checkBox8.setOnClickListener(this);
+        checkBox9.setOnClickListener(this);
+        checkBox10.setOnClickListener(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerViewFilter.setLayoutManager(linearLayoutManager);
 //        String type = "Vedic";
@@ -145,6 +154,4 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
         };
         requestQueue.add(request);
     }
-
-
 }
