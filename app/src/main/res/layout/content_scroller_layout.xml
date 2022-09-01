@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:fitsSystemWindows="true"
         android:theme="@style/AppThemeActionBar">
 
@@ -38,10 +38,10 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:background="#1BFFFFFF"
                 app:layout_collapseMode="pin"
-                app:title="Astro Profile"
+                app:title="Blog"
                 android:gravity="center_vertical"
                 app:titleTextColor="@color/black">
 
@@ -63,11 +63,11 @@
                     app:layout_collapseMode="pin" />
             </androidx.appcompat.widget.Toolbar>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="230dp"
-                android:background="@drawable/whitewithoutconner_bg" />
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="230dp"-->
+<!--                android:background="@drawable/whitewithoutconner_bg" />-->
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
     <include layout="@layout/activity_blog_details" />

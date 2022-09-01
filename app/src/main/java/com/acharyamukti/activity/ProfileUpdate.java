@@ -2,6 +2,7 @@ package com.acharyamukti.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,11 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.UserProfileModel;
+
 import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,6 +26,7 @@ public class ProfileUpdate extends AppCompatActivity implements View.OnClickList
     EditText name, l_name, mobile, email;
     String fName, lName, emailId, mobileNumber;
     Button updateDetails;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,8 @@ public class ProfileUpdate extends AppCompatActivity implements View.OnClickList
         mobile.setText(mobileNumber);
         updateDetails = findViewById(R.id.updateDetails);
         updateDetails.setOnClickListener(this);
+        userId = Backend.getInstance(this).getUserId();
+
     }
 
     @Override
@@ -56,7 +63,6 @@ public class ProfileUpdate extends AppCompatActivity implements View.OnClickList
         lName = l_name.getText().toString().trim();
         emailId = email.getText().toString().trim();
         mobileNumber = mobile.getText().toString().trim();
-        String userId = Backend.getInstance(this).getUserId();
         Call<UserProfileModel> call = RetrofitClient.getInstance().getApi().updateProfile(
                 userId, fName, lName, emailId, mobileNumber);
         call.enqueue(new Callback<UserProfileModel>() {
@@ -80,14 +86,22 @@ public class ProfileUpdate extends AppCompatActivity implements View.OnClickList
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<UserProfileModel> call, @NonNull Throwable t) {
                 Toast.makeText(ProfileUpdate.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     @Override
     public void onClick(View view) {
-        updateProfile();
+        if (userId != null) {
+            updateProfile();
+        } else {
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+        }
+
     }
 }
