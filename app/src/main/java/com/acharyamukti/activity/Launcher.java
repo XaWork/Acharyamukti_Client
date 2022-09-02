@@ -18,7 +18,7 @@ public class Launcher extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splace);
         imageView = findViewById(R.id.lunchLogo);
-        Glide.with(this).load(R.drawable.luncher_screen_new).into(imageView);
+    //    Glide.with(this).load(R.drawable.luncher_screen_new).into(imageView);
         new Handler().postDelayed(() -> {
             SharedPreferences sharedPreferences=getSharedPreferences(Login.PRES_NAME,MODE_PRIVATE);
             boolean hasLoggedIn=sharedPreferences.getBoolean("hasLoggedIn",false);

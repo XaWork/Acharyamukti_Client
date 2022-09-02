@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@drawable/background_image"
     tools:context=".activity.Launcher">
 
     <ImageView
@@ -30,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="@string/text_luncher_name"
-        android:textColor="@color/black"
+        android:textColor="@color/grey1"
         android:textSize="18sp"
         android:textStyle="bold" />
 </RelativeLayout>

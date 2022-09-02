@@ -177,7 +177,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 DataModel data = response.body();
                 if (response.isSuccessful()) {
                     assert data != null;
-
                     if (data.getError().equals("false")) {
                         Intent intent = new Intent(getApplicationContext(), DashBoard.class);
                         intent.putExtra("clam_now","clamNow");

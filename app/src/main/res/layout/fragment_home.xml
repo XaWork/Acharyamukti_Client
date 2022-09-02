@@ -266,9 +266,9 @@
                         android:id="@+id/consult_now_image"
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/consult_banner" />
@@ -404,10 +404,8 @@
                         android:id="@+id/bannerImage2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="15dp"
-                        app:cardCornerRadius="10dp">
+                        app:cardCornerRadius="5dp">
 
 
                         <LinearLayout
@@ -416,7 +414,7 @@
                             android:layout_height="190dp"
                             android:background="@drawable/earn_bg"
                             android:orientation="vertical"
-                            android:padding="5dp">
+                            android:padding="10dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -449,20 +447,19 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="15dp"
+                        android:layout_margin="10dp"
                         android:elevation="15dp"
-                        app:cardCornerRadius="15dp">
+                        app:cardCornerRadius="5dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="#F0F3F4"
                             android:orientation="vertical"
-                            android:padding="10dp">
+                            android:padding="5dp">
 
                             <TextView
                                 android:layout_width="match_parent"
