@@ -238,17 +238,20 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                     if (dataModel.getError().equals("false")) {
                         total = dataModel.getWallet();
                         walletAmount.setText(total);
+                        Backend.getInstance(getApplicationContext()).saveWalletBalance(total);
                     } else {
                         Toast.makeText(DashBoard.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(DashBoard.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(getApplicationContext(), Wallet.class);

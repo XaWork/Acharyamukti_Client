@@ -70,6 +70,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     Toolbar toolbar;
     String userid, reg_id;
     ProgressBar progressBar;
+    String callDuration;
 
 
     @Override
@@ -126,6 +127,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         dialog.show();
         dialog.setCanceledOnTouchOutside(true);
     }
+
     private void getProfileData(String userId) {
         String url = "https://theacharyamukti.com/clientapi/single-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -216,7 +218,50 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         request.add(stringRequest);
     }
 
+
+    @Override
+    public void onClick(View view) {
+        String userid = Backend.getInstance(this).getUserId();
+        String status = Backend.getInstance(this).getStatus();
+        String balance = Backend.getInstance(this).getWalletBalance();
+        if (status.equals("Online")) {
+            getCallForAstrologer();
+        } else if (userid != null && balance != null) {
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Something is wrong", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void getCallDuration() {
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().getCallDurations(userid, reg_id);
+        call.enqueue(new Callback<DataModel>() {
+            @Override
+            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
+                progressBar.setVisibility(View.INVISIBLE);
+                DataModel data = response.body();
+                if (response.isSuccessful()) {
+                    assert data != null;
+                    callDuration = data.getCallDurationTime();
+                    if (callDuration != null) {
+                        Backend.getInstance(getApplicationContext()).saveCallDuration(callDuration);
+                    } else {
+                        Toast.makeText(AstrologerProfile.this, data.getStatus(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
+                progressBar.setVisibility(View.INVISIBLE);
+                Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void getCallForAstrologer() {
+       // int callTiming = Integer.parseInt(callDuration);
         String k_number = "+919513632690";
         String agentNumber = Backend.getInstance(this).getAstroMobile();
         String agent_number = "+91" + agentNumber;
@@ -228,7 +273,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id,20);
+        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id, 30);
         Call<CallDataModel> dataModelCall = apiInterface.getCalling(callDataModel);
         dataModelCall.enqueue(new Callback<CallDataModel>() {
             @Override
@@ -242,40 +287,6 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             }
             @Override
             public void onFailure(@NonNull Call<CallDataModel> call, @NonNull Throwable t) {
-                progressBar.setVisibility(View.INVISIBLE);
-                Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-    @Override
-    public void onClick(View view) {
-        String status = Backend.getInstance(this).getStatus();
-        if (status.equals("Online")) {
-            getCallForAstrologer();
-        } else {
-            Toast.makeText(this, "Astrologer is Offline", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-    private void getCallDuration() {
-        Call<DataModel> call = RetrofitClient.getInstance().getApi().getCallDurations(userid, reg_id);
-        call.enqueue(new Callback<DataModel>() {
-            @Override
-            public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
-                progressBar.setVisibility(View.INVISIBLE);
-                DataModel data = response.body();
-                if (response.isSuccessful()) {
-                    assert data != null;
-                    String callDuration = data.getCallDurationTime();
-                    if (callDuration != null) {
-                        Backend.getInstance(getApplicationContext()).saveCallDuration(callDuration);
-                    } else {
-                        Toast.makeText(AstrologerProfile.this, data.getStatus(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-            @Override
-            public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(AstrologerProfile.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
