@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "590608362832",
+    "project_id": "acharyamukti-70d75",
+    "storage_bucket": "acharyamukti-70d75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590608362832:android:84d9cd74b198ddc7be1055",
+        "android_client_info": {
+          "package_name": "com.acharyamukti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590608362832-evoua4csmc66htkps2om5aesnumln09l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzWoc36DGCywJh-JCczHa0pMEG-VgjN1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590608362832-evoua4csmc66htkps2om5aesnumln09l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

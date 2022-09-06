@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.acharyamukti.R;
-import com.bumptech.glide.Glide;
 
 public class Launcher extends AppCompatActivity {
     ImageView imageView,profileImage;

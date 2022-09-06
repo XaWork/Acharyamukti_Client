@@ -9,18 +9,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.acharyamukti.R;
-import com.acharyamukti.api.RetrofitClient;
-import com.acharyamukti.helper.Backend;
-import com.acharyamukti.model.DataModel;
 
 import java.util.Objects;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Wallet extends AppCompatActivity implements View.OnClickListener {
     TextView text0, text1, text2, text3, text4, text5, text6, totalBalance;
