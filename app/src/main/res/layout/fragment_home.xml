@@ -94,6 +94,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <TextView
+                                android:fontFamily="@font/calibril"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -101,7 +102,7 @@
                                 android:paddingBottom="5dp"
                                 android:text="@string/text_horoscope"
                                 android:textColor="@color/black"
-                                android:textSize="11sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
 
 
@@ -132,6 +133,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <TextView
+                                android:fontFamily="@font/calibril"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -139,7 +141,7 @@
                                 android:paddingBottom="5dp"
                                 android:text="@string/text_love"
                                 android:textColor="@color/black"
-                                android:textSize="11sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -169,6 +171,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <TextView
+                                android:fontFamily="@font/calibril"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -176,7 +179,7 @@
                                 android:paddingBottom="5dp"
                                 android:text="@string/text_marriage"
                                 android:textColor="@color/black"
-                                android:textSize="11sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -206,6 +209,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <TextView
+                                android:fontFamily="@font/calibril"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -213,7 +217,7 @@
                                 android:paddingBottom="5dp"
                                 android:text="@string/text_career"
                                 android:textColor="@color/black"
-                                android:textSize="11sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -243,6 +247,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <TextView
+                                android:fontFamily="@font/calibril"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -250,7 +255,7 @@
                                 android:paddingBottom="5dp"
                                 android:text="@string/text_business"
                                 android:textColor="@color/black"
-                                android:textSize="11sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </HorizontalScrollView>
@@ -282,10 +287,12 @@
                     android:gravity="center_vertical">
 
                     <TextView
+                        android:textSize="15sp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/calibril"
                         android:text="Join Acharyamukti Astrologer"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -296,6 +303,7 @@
                         android:layout_height="25dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/layout_bg"
+                        android:fontFamily="@font/calibril"
                         android:gravity="center"
                         android:text="View all"
                         android:textColor="@color/black"
@@ -316,15 +324,18 @@
                     android:gravity="center_vertical">
 
                     <TextView
+                        android:fontFamily="@font/calibril"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:text="Latest from blog"
                         android:textColor="@color/black"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:fontFamily="@font/calibril"
                         android:id="@+id/viewAllBlog"
                         android:layout_width="70dp"
                         android:layout_height="25dp"
@@ -372,6 +383,7 @@
 
 
                         <TextView
+                            android:fontFamily="@font/calibrib"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginStart="10dp"
@@ -382,6 +394,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:fontFamily="@font/calibril"
                             android:id="@+id/viewAll2"
                             android:layout_width="70dp"
                             android:layout_height="25dp"
@@ -417,6 +430,7 @@
                             android:padding="10dp">
 
                             <TextView
+                                android:fontFamily="@font/calibrib"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
@@ -426,6 +440,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:fontFamily="@font/calibril"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="5dp"
@@ -436,6 +451,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:fontFamily="@font/calibrib"
                                 android:layout_width="120dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="bottom"
@@ -462,6 +478,7 @@
                             android:padding="5dp">
 
                             <TextView
+                                android:fontFamily="@font/calibrib"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Feedback to the CEO office"
@@ -470,6 +487,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:fontFamily="@font/calibril"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="5dp"
@@ -479,6 +497,7 @@
                                 android:textStyle="normal" />
 
                             <EditText
+                                android:fontFamily="@font/calibril"
                                 android:id="@+id/feedback"
                                 android:layout_width="match_parent"
                                 android:layout_height="100dp"
@@ -494,6 +513,7 @@
                                 android:textSize="12sp" />
 
                             <Button
+                                android:fontFamily="@font/calibrib"
                                 android:id="@+id/sendFeedback"
                                 android:layout_width="140dp"
                                 android:layout_height="35dp"
@@ -528,6 +548,7 @@
                                 android:src="@drawable/private01" />
 
                             <TextView
+                                android:fontFamily="@font/calibril"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -549,6 +570,7 @@
                                 android:src="@drawable/profile_summery" />
 
                             <TextView
+                                android:fontFamily="@font/calibril"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -570,6 +592,7 @@
                                 android:src="@drawable/secure_payment" />
 
                             <TextView
+                                android:fontFamily="@font/calibril"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"

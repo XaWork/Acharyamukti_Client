@@ -230,6 +230,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     }
 
     private void getCallDuration() {
+        String user_id="";
         Call<DataModel> call = RetrofitClient.getInstance().getApi().getCallDurations(userid, reg_id);
         call.enqueue(new Callback<DataModel>() {
             @Override
@@ -256,7 +257,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     }
 
     private void getCallForAstrologer() {
-       // int callTiming = Integer.parseInt(callDuration);
+        int callTiming = Integer.parseInt(callDuration);
         String k_number = "+919513632690";
         String agentNumber = Backend.getInstance(this).getAstroMobile();
         String agent_number = "+91" + agentNumber;
@@ -268,7 +269,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id, 30);
+        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id,callTiming);
         Call<CallDataModel> dataModelCall = apiInterface.getCalling(callDataModel);
         dataModelCall.enqueue(new Callback<CallDataModel>() {
             @Override

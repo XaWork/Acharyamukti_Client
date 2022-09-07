@@ -29,6 +29,7 @@
             app:civ_border_width="2dp" />
 
         <TextView
+            android:fontFamily="@font/calibrib"
             android:id="@+id/status1"
             android:layout_width="70dp"
             android:layout_height="20dp"
@@ -41,6 +42,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:fontFamily="@font/calibrib"
             android:id="@+id/name1"
             android:layout_width="70dp"
             android:layout_height="wrap_content"

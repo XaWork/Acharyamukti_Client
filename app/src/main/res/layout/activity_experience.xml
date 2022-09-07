@@ -88,12 +88,13 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/promo_bg"
+                android:background="@drawable/custom_horoscope_bg"
                 android:orientation="vertical"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
                 <TextView
+                    android:fontFamily="@font/calibrib"
                     android:id="@+id/bannerTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -107,16 +108,18 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:lineSpacingExtra="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:lines="5"
+                    android:fontFamily="@font/calibril"
                     android:id="@+id/bannerDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="15dp"
-                    android:text="Description"/>
+                    android:lineSpacingExtra="10dp"
+                    android:text="Description"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <!--            <androidx.recyclerview.widget.RecyclerView-->
@@ -158,6 +161,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
+                        android:fontFamily="@font/calibrib"
                         android:text="Love"
                         android:textColor="@color/red"
                         android:textSize="18sp"
@@ -169,11 +173,12 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="3dp"
+                        android:fontFamily="@font/calibril"
                         android:lines="3"
                         android:paddingBottom="5dp"
                         android:text="@string/text_about_longtext"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -206,6 +211,7 @@
 
 
                     <TextView
+                        android:fontFamily="@font/calibrib"
                         android:id="@+id/careerTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -216,6 +222,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:fontFamily="@font/calibril"
                         android:id="@+id/careerDesc"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -224,7 +231,7 @@
                         android:paddingBottom="5dp"
                         android:text="@string/text_about_longtext"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -256,6 +263,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:fontFamily="@font/calibrib"
                         android:id="@+id/txtTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -266,6 +274,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:fontFamily="@font/calibril"
                         android:id="@+id/healthDesc"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -274,7 +283,7 @@
                         android:paddingBottom="5dp"
                         android:text="@string/text_about_longtext"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -306,6 +315,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:fontFamily="@font/calibrib"
                         android:id="@+id/financeTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -316,6 +326,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:fontFamily="@font/calibril"
                         android:id="@+id/financeDesc"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -324,7 +335,7 @@
                         android:paddingBottom="5dp"
                         android:text="@string/text_about_longtext"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -356,6 +367,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:fontFamily="@font/calibrib"
                         android:id="@+id/travelTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -366,6 +378,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:fontFamily="@font/calibril"
                         android:id="@+id/travelDesc"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -375,7 +388,7 @@
                         android:paddingBottom="5dp"
                         android:text="@string/text_about_longtext"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
 
