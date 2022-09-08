@@ -18,6 +18,8 @@ public class SessionManager {
         this.context = context;
         preferences = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = preferences.edit();
+        editor.commit();
+        editor.clear();
     }
 
     public void setLogin(boolean isLoggedIn) {

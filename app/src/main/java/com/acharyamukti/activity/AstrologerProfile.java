@@ -101,6 +101,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         calling.setOnClickListener(this);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
+        getCallDuration();
     }
 
     @Override
@@ -217,11 +218,11 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         String userid = Backend.getInstance(this).getUserId();
-        String status = Backend.getInstance(this).getStatus();
         String balance = Backend.getInstance(this).getWalletBalance();
-        if (status.equals("Online")) {
-            getCallForAstrologer();
-        } else if (userid != null && balance != null) {
+        if (userid != null && balance != null) {
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+        } else if (userid == null) {
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
         } else {
@@ -230,7 +231,6 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     }
 
     private void getCallDuration() {
-        String user_id="";
         Call<DataModel> call = RetrofitClient.getInstance().getApi().getCallDurations(userid, reg_id);
         call.enqueue(new Callback<DataModel>() {
             @Override
@@ -257,6 +257,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     }
 
     private void getCallForAstrologer() {
+        getCallDuration();
         int callTiming = Integer.parseInt(callDuration);
         String k_number = "+919513632690";
         String agentNumber = Backend.getInstance(this).getAstroMobile();
@@ -269,7 +270,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id,callTiming);
+        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id, callTiming);
         Call<CallDataModel> dataModelCall = apiInterface.getCalling(callDataModel);
         dataModelCall.enqueue(new Callback<CallDataModel>() {
             @Override
@@ -277,10 +278,10 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 progressBar.setVisibility(View.INVISIBLE);
                 CallDataModel dataModelCall = response.body();
                 if (response.isSuccessful()) {
-                    getCallDuration();
                     dialog();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<CallDataModel> call, @NonNull Throwable t) {
                 progressBar.setVisibility(View.INVISIBLE);

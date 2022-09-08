@@ -80,10 +80,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnOtp:
-                SharedPreferences sharedPreferences = getSharedPreferences(Login.PRES_NAME, MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("hasLoggedIn", true);
-                editor.apply();
+                SessionManager sessionManager = new SessionManager(getApplicationContext());
+                sessionManager.setLogin(true);
                 getOtp();
                 break;
             case R.id.loginToEmail:
@@ -92,6 +90,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.icon_close:
                 Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+                Backend.getInstance(this).saveName("");
+                Backend.getInstance(this).saveEmail("");
+                Backend.getInstance(this).saveUserId("");
                 startActivity(intent);
                 finish();
                 break;
@@ -149,6 +150,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();
@@ -179,7 +181,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     assert data != null;
                     if (data.getError().equals("false")) {
                         Intent intent = new Intent(getApplicationContext(), DashBoard.class);
-                        intent.putExtra("clam_now","clamNow");
+                        intent.putExtra("clam_now", "clamNow");
                         startActivity(intent);
                         String userid = data.getUserid();
                         Backend.getInstance(getApplicationContext()).saveUserId(userid);
@@ -190,6 +192,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();

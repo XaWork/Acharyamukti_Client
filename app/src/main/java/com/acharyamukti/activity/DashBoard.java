@@ -235,6 +235,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 SessionManager sessionManager = new SessionManager(getApplicationContext());
                 sessionManager.setLogin(false);
                 Intent logout = new Intent(getApplicationContext(), Login.class);
+                Backend.getInstance(this).saveName("");
+                Backend.getInstance(this).saveEmail("");
                 startActivity(logout);
                 break;
         }

@@ -27,6 +27,8 @@ public class Backend {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("userid", userId);
         editor.apply();
+        editor.clear();
+
     }
 
     public String getHoroscope() {
@@ -37,6 +39,8 @@ public class Backend {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("horoscop_name", horoscop_name);
         editor.apply();
+        editor.clear();
+
     }
 
     public String getName() {
@@ -47,6 +51,7 @@ public class Backend {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("name", name);
         editor.apply();
+        editor.clear();
     }
 
     public String getMobile() {
@@ -57,6 +62,8 @@ public class Backend {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("mobile", mobile);
         editor.apply();
+        editor.clear();
+
     }
 
     public String getEmail() {
