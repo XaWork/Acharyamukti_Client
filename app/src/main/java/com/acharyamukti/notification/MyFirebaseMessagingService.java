@@ -26,7 +26,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(MyFirebaseMessagingService.this.getApplicationContext(),from + "->" + body, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(MyFirebaseMessagingService.this.getApplicationContext(),from + "->" + body, Toast.LENGTH_SHORT).show();
             }
         });
     }

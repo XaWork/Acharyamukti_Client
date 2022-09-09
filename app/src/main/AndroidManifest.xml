@@ -40,7 +40,8 @@
         <activity
             android:name=".activity.WhatCanAsk"
             android:exported="false"
-            android:label="What can you ask" />
+            android:label="What can you ask"
+            android:theme="@style/AppThemeActionBar" />
         <activity
             android:name=".activity.FilterActivity"
             android:exported="false"

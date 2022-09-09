@@ -24,39 +24,39 @@ public class ExpandableListDataItems {
 
         List<String> marriage = new ArrayList<String>();
         marriage.add("Will I get married in this year/Month?");
-        marriage.add("What will be the perfect Muhurth for my marriage?\n");
+        marriage.add("What will be the perfect Muhurth for my marriage?");
         marriage.add("I am not able to find a perfect life partner for my marriage, what should I do?");
         marriage.add("Who will be my life partner and when will I get married to him/her?");
-        marriage.add("My parents are very sad because I am not finding a suitable time and day for marriage, what to do?\n");
+        marriage.add("My parents are very sad because I am not finding a suitable time and day for marriage, what to do?");
 
         List<String> money = new ArrayList<>();
         money.add(" I am not able to save my money, what to do to save my money?");
-        money.add("I am having financial problems since a long time and I am having bad times, is there any perfect time\n" +
+        money.add("I am having financial problems since a long time and I am having bad times, is there any perfect time" +
                 "for me to be happy with money?");
         money.add("I had invested in one project and I am not sure I have taken a right decision, what to do?");
-        money.add(" I have lost my money in some investment, I have lost my balance in money, what to do?\n");
+        money.add(" I have lost my money in some investment, I have lost my balance in money, what to do?");
         money.add("There is an issue with me in spending money, I spend a lot, how can I stop spending money?");
 
         List<String> business = new ArrayList<>();
         business.add("How should I increase my business?");
         business.add("I am having issues with choosing a business, what business should I chose?");
         business.add("What do I need to explain about my business?");
-        business.add("What should I do to be successful in my business?\n");
+        business.add("What should I do to be successful in my business?");
         business.add("What legal aspects do I need to know about the business?");
 
         List<String> life = new ArrayList<>();
-        life.add("What does my palm say about my future?\n");
+        life.add("What does my palm say about my future?");
         life.add("Which Gemstone is suitable for me?");
         life.add("I want to talk to astrologer, how should I find them?");
         life.add("I am confused with my birth date and time, what to do?");
         life.add("My son is into bad habits, how should I make him a good person?");
 
-        expandableListDetail.put("Love and relationships:\n", love);
+        expandableListDetail.put("Love and relationships:", love);
         expandableListDetail.put("Career", career);
         expandableListDetail.put("Marriage and Kundali", marriage);
         expandableListDetail.put("Money and Investment", money);
         expandableListDetail.put("Business", business);
-        expandableListDetail.put("Everyday life\n", life);
+        expandableListDetail.put("Everyday life", life);
         return expandableListDetail;
     }
 }

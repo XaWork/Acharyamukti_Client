@@ -10,9 +10,10 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.acharyamukti.R;
+import com.acharyamukti.helper.Backend;
 
 public class Launcher extends AppCompatActivity {
-    ImageView imageView,profileImage;
+    ImageView imageView, profileImage;
 
 
     @Override
@@ -20,7 +21,7 @@ public class Launcher extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splace);
         imageView = findViewById(R.id.lunchLogo);
-        profileImage=findViewById(R.id.profileImage);
+        profileImage = findViewById(R.id.profileImage);
         final ValueAnimator anim = ValueAnimator.ofFloat(1f, 1.5f);
         anim.setDuration(1000);
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -33,12 +34,14 @@ public class Launcher extends AppCompatActivity {
         anim.setRepeatCount(1);
         anim.setRepeatMode(ValueAnimator.REVERSE);
         anim.start();
-    //    Glide.with(this).load(R.drawable.bg_image2).into(imageView);
+        //    Glide.with(this).load(R.drawable.bg_image2).into(imageView);
+        String userid = Backend.getInstance(this).getUserId();
+
         new Handler().postDelayed(() -> {
             SharedPreferences sharedPreferences = getSharedPreferences(Login.PRES_NAME, MODE_PRIVATE);
             boolean hasLoggedIn = sharedPreferences.getBoolean("hasLoggedIn", false);
             Intent intent;
-            if (hasLoggedIn) {
+            if (hasLoggedIn && userid.length()!= 0) {
                 intent = new Intent(getApplicationContext(), DashBoard.class);
             } else {
                 intent = new Intent(getApplicationContext(), Login.class);

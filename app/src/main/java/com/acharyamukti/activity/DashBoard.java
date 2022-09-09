@@ -116,9 +116,44 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         // Log and toast
                         Log.d(TAG, token);
                         Log.d("token", token);
-                        Toast.makeText(DashBoard.this, "register token" + token, Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(DashBoard.this, "register token" + token, Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    protected void onStart() {
+        Log.d("Activity","Stop");
+        getTotalBalance(userid);
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        getTotalBalance(userid);
+        Log.d("Activity","Resume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onRestart() {
+        getTotalBalance(userid);
+        Log.d("Activity","Restart");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d("Activity","Stop");
+        getTotalBalance(userid);
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        getTotalBalance(userid);
+        Log.d("Activity","Stop");
+        super.onDestroy();
     }
 
     @Override

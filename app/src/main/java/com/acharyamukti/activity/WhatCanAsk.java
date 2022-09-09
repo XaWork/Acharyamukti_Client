@@ -30,7 +30,7 @@ public class WhatCanAsk extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wcua);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        expandableListViewExample = (ExpandableListView) findViewById(R.id.expandableListViewSample);
+        expandableListViewExample = findViewById(R.id.expandableListViewSample);
         expandableDetailList = ExpandableListDataItems.getData();
         expandableTitleList = new ArrayList<>(expandableDetailList.keySet());
         expandableListAdapter = new CustomizedExpandableListAdapter(this, expandableTitleList, expandableDetailList);

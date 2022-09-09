@@ -11,7 +11,11 @@
     android:layout_margin="5dp">
 
     <RelativeLayout
-        android:layout_margin="10dp"
+        android:background="@drawable/promo_bg"
+        android:paddingTop="10dp"
+        android:paddingStart="15dp"
+        android:paddingBottom="5dp"
+        android:paddingEnd="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -19,10 +23,11 @@
             android:id="@+id/call_name"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:drawableEnd="@drawable/ic_baseline_cancel_24"
+            android:drawableEnd="@drawable/ic_baseline_close_24"
+            android:fontFamily="@font/calibrib"
             android:text="@string/text_reg_fname"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TableLayout
@@ -34,18 +39,20 @@
             <TableRow>
 
                 <TextView
+                    android:fontFamily="@font/calibril"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="25dp"
                     android:layout_weight="1"
                     android:text="Call duration:                    "
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/calibril"
                     android:id="@+id/call_duration"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:text="0"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -55,17 +62,19 @@
             <TableRow>
 
                 <TextView
+                    android:fontFamily="@font/calibril"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:text="Minutes"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/calibril"
                     android:id="@+id/minutes"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:text="0.0"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -75,17 +84,19 @@
             <TableRow>
 
                 <TextView
+                    android:fontFamily="@font/calibril"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:text="Call rate"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/calibril"
                     android:id="@+id/call_rate"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:text="0.0"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -95,17 +106,19 @@
             <TableRow>
 
                 <TextView
+                    android:fontFamily="@font/calibril"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:text="Call amount"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/calibril"
                     android:id="@+id/call_amount"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:text="0.0"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -115,17 +128,19 @@
             <TableRow>
 
                 <TextView
+                    android:fontFamily="@font/calibril"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:text="Call date"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/calibril"
                     android:id="@+id/call_date"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:text="0.0"
                     android:textColor="@color/black"
                     android:textSize="16sp"

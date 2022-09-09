@@ -19,6 +19,7 @@
             android:background="@color/white">
 
             <TextView
+                android:fontFamily="@font/calibrib"
                 android:id="@+id/textDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -30,6 +31,7 @@
                 android:textStyle="italic" />
 
             <TextView
+                android:fontFamily="@font/calibrib"
                 android:id="@+id/blogTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,7 +41,7 @@
                 android:layout_marginEnd="10dp"
                 android:text="What Does Narendra Modi’s Zodiac Sign Say About His Personality?"
                 android:textColor="@color/grey1"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
 
@@ -52,10 +54,11 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
+                android:fontFamily="@font/calibril"
                 android:lineSpacingExtra="10dp"
                 android:text="@string/large_text"
                 android:textColor="@color/grey1"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="normal" />
         </RelativeLayout>
         <!--        </FrameLayout>-->

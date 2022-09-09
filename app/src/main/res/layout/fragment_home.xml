@@ -293,7 +293,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/calibril"
-                        android:text="Join Acharyamukti Astrologer"
+                        android:text="Join The Acharyamukti Astrologers"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -356,14 +356,14 @@
                 <ImageView
                     android:id="@+id/banner1"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="300dp"
                     android:layout_below="@+id/recyclerViewBlogDetails"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/banner2" />
+                    android:src="@drawable/banner6" />
 
                 <LinearLayout
                     android:id="@+id/layoutRecycler"

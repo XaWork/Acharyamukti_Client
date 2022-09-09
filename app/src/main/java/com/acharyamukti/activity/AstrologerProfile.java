@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.ReviewAdapter;
 import com.acharyamukti.api.ApiInterface;
@@ -30,22 +29,18 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -119,7 +114,14 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         calling_number = dialog.findViewById(R.id.calling_number);
         String mobile = Backend.getInstance(this).getMobile();
         calling_number.setText(mobile);
-        goBack.setOnClickListener(view -> dialog.dismiss());
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
         dialog.show();
         dialog.setCanceledOnTouchOutside(true);
     }
@@ -220,8 +222,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         String userid = Backend.getInstance(this).getUserId();
         String balance = Backend.getInstance(this).getWalletBalance();
         if (userid != null && balance != null) {
-            Intent intent = new Intent(getApplicationContext(), Login.class);
-            startActivity(intent);
+            getCallForAstrologer();
         } else if (userid == null) {
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);

@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -86,6 +87,36 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStart() {
+        Log.d("Activity", "Stop");
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d("Activity", "Resume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.d("Activity", "Restart");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d("Activity", "Stop");
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d("Activity", "Stop");
+        super.onDestroy();
     }
 
 
