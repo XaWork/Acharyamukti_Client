@@ -8,57 +8,93 @@
     tools:context=".fragment.Profile">
 
     <RelativeLayout
-        android:id="@+id/profileLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="5dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/profileLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/coverPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_baseline_person_24"
+                app:civ_border_color="@color/yellow"
+                app:civ_border_width="2dp" />
+
+            <ImageView
+                android:id="@+id/camaraIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="125dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_photo_camera_24" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/txtMobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/calibril"
+            android:text="0000000000"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/profileUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/txtMobile"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="10dp"
-            android:paddingTop="15dp"
+            android:paddingTop="5dp"
             android:text="Acharyamukti"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profileUsername"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
-            android:text="minfotech@gmail.com" />
-
-        <TextView
-            android:id="@+id/txtMobile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtEmail"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:text="1456878552414"
+            android:fontFamily="@font/calibril"
+            android:text="minfotech@gmail.com"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <ImageView
+        <View
+            android:layout_below="@+id/txtEmail"
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <TextView
             android:id="@+id/txtEditImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="15dp"
-            android:src="@drawable/ic_baseline_edit_24" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="115dp">
-
+            android:layout_below="@+id/view"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/ic_baseline_edit_24"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="Update Profile"
+            android:textColor="@color/black" />
     </RelativeLayout>
 </FrameLayout>

@@ -1,7 +1,10 @@
 package com.acharyamukti.fragment;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,14 +33,17 @@ import retrofit2.Response;
 public class Profile extends Fragment implements View.OnClickListener {
     TextView name, email, mobile;
     String emailId, mobileNumber;
-    ImageView txtEditImage;
+    TextView txtEditImage;
     String fName, lName;
+    ImageView camaraIcon;
+    private static final int SELECT_PICTURE = 1;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,6 +53,17 @@ public class Profile extends Fragment implements View.OnClickListener {
         email = view.findViewById(R.id.txtEmail);
         mobile = view.findViewById(R.id.txtMobile);
         txtEditImage.setOnClickListener(this);
+        camaraIcon = view.findViewById(R.id.camaraIcon);
+        camaraIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,
+                        "Select Picture"), SELECT_PICTURE);
+            }
+        });
 //        fName = Backend.getInstance(getContext()).getName();
 //        name.setText(fName);
 //        emailId = Backend.getInstance(getContext()).getEmail();
@@ -55,6 +72,14 @@ public class Profile extends Fragment implements View.OnClickListener {
 //        mobile.setText(mobileNumber);
         viewProfile();
         return view;
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == SELECT_PICTURE) {
+                Uri selectedImageUri = data.getData();
+            //    selectedImagePath = (selectedImageUri);
+            }
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -79,6 +104,7 @@ public class Profile extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(), Objects.requireNonNull(dataModel).getError(), Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();

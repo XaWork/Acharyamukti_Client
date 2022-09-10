@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         sendFeedback.setOnClickListener(this);
         viewAllBlog = root.findViewById(R.id.viewAllBlog);
         viewAllBlog.setOnClickListener(this);
-        consultNow = root.findViewById(R.id.consult_now_image);
+        consultNow = root.findViewById(R.id.banner1);
         consultNow.setOnClickListener(this);
         getProfileData();
         getLiveData();
@@ -188,7 +188,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 fragmentTransaction4.commit();
                 fragment4.setArguments(bundle);
                 break;
-            case R.id.consult_now_image:
+            case R.id.banner1:
                 Intent intent = new Intent(getActivity(), ConsultNow.class);
                 startActivity(intent);
                 break;

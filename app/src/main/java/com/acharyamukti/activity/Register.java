@@ -7,16 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.helper.DBHelper;
 import com.acharyamukti.model.DataModel;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,8 +40,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
         dbHelper = new DBHelper(this);
-
-
     }
 
     @Override
@@ -58,9 +53,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             Toast.makeText(this, "Table not create", Toast.LENGTH_SHORT).show();
         } else {
             dbHelper.insertData(fName, lName, mobile, email, pass);
-            Toast.makeText(this, "Table are create", Toast.LENGTH_SHORT).show();
             registerUser();
-
         }
     }
 
@@ -137,7 +130,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 progressBar.setVisibility(View.VISIBLE);
