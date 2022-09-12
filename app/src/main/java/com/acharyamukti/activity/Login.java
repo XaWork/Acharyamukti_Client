@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,6 +43,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public static String PRES_NAME = "profile";
     ProgressBar progressBar;
     ImageView close;
+    CheckBox check_box_condition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +51,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         Button login = findViewById(R.id.btnOtp);
         login.setOnClickListener(this);
-        Button loginToEmail = findViewById(R.id.loginToEmail);
-        loginToEmail.setOnClickListener(this);
+        check_box_condition = findViewById(R.id.check_box_condition);
         layout = findViewById(R.id.linearLayout);
         Toolbar toolbar = findViewById(R.id.toolbarLogin);
         setSupportActionBar(toolbar);
@@ -80,14 +81,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnOtp:
-                SessionManager sessionManager = new SessionManager(getApplicationContext());
-                sessionManager.setLogin(true);
-                getOtp();
+                if (check_box_condition.isChecked()) {
+                    SessionManager sessionManager = new SessionManager(getApplicationContext());
+                    sessionManager.setLogin(true);
+                    getOtp();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please accepts terms and condition", Toast.LENGTH_LONG).show();
+                }
                 break;
-            case R.id.loginToEmail:
-                layout.setVisibility(View.GONE);
-                getSupportFragmentManager().beginTransaction().add(R.id.fragment, new EmailLogin()).commit();
-                break;
+//            case R.id.loginToEmail:
+//                layout.setVisibility(View.GONE);
+//                getSupportFragmentManager().beginTransaction().add(R.id.fragment, new EmailLogin()).commit();
+//                break;
             case R.id.icon_close:
                 Intent intent = new Intent(getApplicationContext(), DashBoard.class);
                 Backend.getInstance(this).saveName("");
@@ -192,7 +197,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();

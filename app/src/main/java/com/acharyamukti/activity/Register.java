@@ -56,7 +56,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             registerUser();
         }
     }
-
     private void registerUser() {
         fName = first_name.getText().toString().trim();
         lName = last_name.getText().toString().trim();

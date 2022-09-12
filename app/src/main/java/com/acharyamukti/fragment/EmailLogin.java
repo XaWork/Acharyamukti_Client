@@ -144,12 +144,15 @@ public class EmailLogin extends Fragment implements View.OnClickListener {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
                     assert dataModel != null;
-                    if (dataModel.getMessage().equals("Login successfully")) {
+                    if (dataModel.getError().equals("false")) {
                         Intent intent1 = new Intent(getActivity(), DashBoard.class);
                         startActivity(intent1);
                         SessionManager sessionManager = new SessionManager(getContext());
                         sessionManager.setLogin(true);
-                    } else {
+                      //  Backend.getInstance(getContext()).saveUserId(email);
+                      String userId= dataModel.getUserid();
+                        Backend.getInstance(getContext()).saveUserId(userId);
+                      } else {
                         Toast.makeText(getActivity(), "The username or password is incorrect", Toast.LENGTH_SHORT).show();
                     }
                 } else {

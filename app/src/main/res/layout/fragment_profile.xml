@@ -80,10 +80,12 @@
             android:textSize="16sp" />
 
         <View
-            android:layout_below="@+id/txtEmail"
+            android:layout_marginTop="10dp"
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            android:layout_height="1dp"
+            android:background="@color/grey1"
+            android:layout_below="@+id/txtEmail" />
 
         <TextView
             android:id="@+id/txtEditImage"
@@ -95,6 +97,36 @@
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:text="Update Profile"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtEditImage"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_baseline_login_24"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="Login"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLogin"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_baseline_logout_24"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="Logout"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 </FrameLayout>

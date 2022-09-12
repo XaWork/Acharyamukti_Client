@@ -201,4 +201,5 @@ People like talking to us and they call us again and again for best advice. They
     <string name="text_home">Home</string>
     <string name="text_free">Free</string>
     <string name="text_profile">Profile</string>
+    <string name="text_check_box">By signing in, you agree to our.<font color='#FF5722'>Terms and Condition</font></string>
 </resources>

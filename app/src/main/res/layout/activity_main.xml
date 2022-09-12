@@ -25,10 +25,10 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
-        android:background="#F8F7F4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
+        android:background="#F8F7F4"
         android:scrollbars="vertical">
 
         <androidx.cardview.widget.CardView
@@ -77,7 +77,8 @@
                         android:id="@+id/progressBar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"/>
+                        android:layout_gravity="center_horizontal" />
+
                     <LinearLayout
                         android:id="@+id/linearLayout"
                         android:layout_width="match_parent"
@@ -163,51 +164,74 @@
                         <!--                            android:text="@string/text_name4"-->
                         <!--                            android:textColor="@color/grey1"-->
                         <!--                            android:textSize="12sp" />-->
-
                         <LinearLayout
+                            android:id="@+id/checkBoxLayout"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="10dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/text_forgot_password"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="0.5dp"
-                                android:layout_weight="1"
-                                android:background="@color/yellow" />
+                            <CheckBox
+                                android:id="@+id/check_box_condition"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:buttonTint="@color/yellow"
+                                android:textColor="@color/black" />
 
                             <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="20dp"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="@string/text_name5"
-                                android:textColor="@color/grey1"
+                                android:id="@+id/termAndCondition"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:text="@string/text_check_box"
                                 android:textSize="12sp" />
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="0.5dp"
-                                android:layout_weight="1"
-                                android:background="@color/yellow" />
                         </LinearLayout>
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:layout_marginTop="20dp"-->
+<!--                            android:layout_marginEnd="20dp"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:orientation="horizontal">-->
 
-                        <Button
-                            android:id="@+id/loginToEmail"
-                            android:layout_width="200dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="30dp"
-                            android:background="@drawable/text_bg"
-                            android:gravity="center"
-                            android:text="Login via Email"
-                            android:textAllCaps="false"
-                            android:textColor="@color/grey1"
-                            tools:ignore="RtlHardcoded,RtlSymmetry" />
+<!--                            <View-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="0.5dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:background="@color/yellow" />-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="20dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:gravity="center"-->
+<!--                                android:text="@string/text_name5"-->
+<!--                                android:textColor="@color/grey1"-->
+<!--                                android:textSize="12sp" />-->
+
+<!--                            <View-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="0.5dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:background="@color/yellow" />-->
+<!--                        </LinearLayout>-->
+
+<!--                        <Button-->
+<!--                            android:id="@+id/loginToEmail"-->
+<!--                            android:layout_width="200dp"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:layout_gravity="center_horizontal"-->
+<!--                            android:layout_marginTop="20dp"-->
+<!--                            android:layout_marginBottom="30dp"-->
+<!--                            android:background="@drawable/text_bg"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="Login via Email"-->
+<!--                            android:textAllCaps="false"-->
+<!--                            android:textColor="@color/grey1"-->
+<!--                            tools:ignore="RtlHardcoded,RtlSymmetry" />-->
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>

@@ -66,18 +66,12 @@ public class BlogDetails extends AppCompatActivity implements View.OnClickListen
     }
 
     public void shareViaWhatsApp() {
-        Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
-        whatsappIntent.setType("text/plain");
-        whatsappIntent.setPackage("com.whatsapp");
-        whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Application of social rating share with your friend");
-        try {
-            Objects.requireNonNull(getApplicationContext()).startActivity(whatsappIntent);
-        } catch (android.content.ActivityNotFoundException ex) {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://theacharyamukti.com/blog"));
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            this.startActivity(intent);
-            this.finish();
-        }
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://theacharyamukti.com/blog");
+        sendIntent.setType("text/plain");
+        sendIntent.setPackage("com.whatsapp");
+        startActivity(sendIntent);
     }
     private void getBlogDetails() {
         Call<BlogModel> call = RetrofitClient.getInstance().getApi().getBlogDetails(id);

@@ -1,15 +1,11 @@
 package com.acharyamukti.api;
-
-
 import com.acharyamukti.model.BlogModel;
 import com.acharyamukti.model.CallDataModel;
 import com.acharyamukti.model.DataModel;
 import com.acharyamukti.model.HoroscopeModel;
 import com.acharyamukti.model.ImageModel;
 import com.acharyamukti.model.UserProfileModel;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
