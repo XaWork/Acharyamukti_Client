@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class PaymentInformation extends AppCompatActivity implements PaymentResultListener, View.OnClickListener {
     String mobile, email_id;
     String orderId;
-    String paymentId;
+    String paymentId,userid;
     Button processToPay;
     String userAmount, totalGstAmount, profile_name;
     int num3;
@@ -48,6 +48,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
         email_id = Backend.getInstance(this).getEmail();
         mobile = Backend.getInstance(this).getMobile();
         profile_name = Backend.getInstance(this).getName();
+        userid=Backend.getInstance(this).getUserId();
         Intent intent = getIntent();
         userAmount = intent.getStringExtra("balance");
         amount = findViewById(R.id.amount);
@@ -100,7 +101,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
         try {
             JSONObject options = new JSONObject();
             options.put("name", profile_name);
-            options.put("description", "Reference No. #123456");
+            options.put("description", userid);
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             //  options.put("order_id", "000010"); //from response of step 3.
             options.put("theme.color", "#3399cc");

@@ -116,14 +116,14 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         // Log and toast
                         Log.d(TAG, token);
                         Log.d("token", token);
-                      //  Toast.makeText(DashBoard.this, "register token" + token, Toast.LENGTH_SHORT).show();
+                        //  Toast.makeText(DashBoard.this, "register token" + token, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     @Override
     protected void onStart() {
-        Log.d("Activity","Stop");
+        Log.d("Activity", "Stop");
         getTotalBalance(userid);
         super.onStart();
     }
@@ -131,20 +131,20 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     @Override
     protected void onResume() {
         getTotalBalance(userid);
-        Log.d("Activity","Resume");
+        Log.d("Activity", "Resume");
         super.onResume();
     }
 
     @Override
     protected void onRestart() {
         getTotalBalance(userid);
-        Log.d("Activity","Restart");
+        Log.d("Activity", "Restart");
         super.onRestart();
     }
 
     @Override
     protected void onStop() {
-        Log.d("Activity","Stop");
+        Log.d("Activity", "Stop");
         getTotalBalance(userid);
         super.onStop();
     }
@@ -152,7 +152,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     @Override
     protected void onDestroy() {
         getTotalBalance(userid);
-        Log.d("Activity","Stop");
+        Log.d("Activity", "Stop");
         super.onDestroy();
     }
 
@@ -313,8 +313,15 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), Wallet.class);
-        intent.putExtra("total", total);
-        startActivity(intent);
+        String userid = Backend.getInstance(getApplicationContext()).getUserId();
+        String mobileNumber = Backend.getInstance(getApplicationContext()).getMobile();
+        if (userid.length() == 0 && mobileNumber.length() == 0) {
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(getApplicationContext(), Wallet.class);
+            intent.putExtra("total", total);
+            startActivity(intent);
+        }
     }
 }

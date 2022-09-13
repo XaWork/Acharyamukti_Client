@@ -356,14 +356,14 @@
                 <ImageView
                     android:id="@+id/banner1"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="200dp"
                     android:layout_below="@+id/recyclerViewBlogDetails"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/consult_now2_banner" />
+                    android:src="@drawable/sir_banner" />
 
                 <LinearLayout
                     android:id="@+id/layoutRecycler"
