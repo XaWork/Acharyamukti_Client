@@ -18,8 +18,11 @@ android {
     }
 
     buildTypes {
-
+        debug{
+            signingConfig signingConfigs.debug
+        }
         release {
+            debuggable true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -30,6 +33,14 @@ android {
     }
     buildFeatures {
         viewBinding true
+    }
+    signingConfigs{
+        debug{
+            keyAlias 'android'
+            keyPassword 'Ds$@hjP4545'
+            storeFile file('D:\\app signIn key\\astrology.jks')
+            storePassword 'Ds$@hjP4545'
+        }
     }
 }
 

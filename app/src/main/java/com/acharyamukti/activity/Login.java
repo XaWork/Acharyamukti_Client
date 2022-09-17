@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,6 +46,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     ProgressBar progressBar;
     ImageView close;
     CheckBox check_box_condition;
+    TextView termAndCondition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         close.setOnClickListener(this);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
+        termAndCondition=findViewById(R.id.termAndCondition);
+        termAndCondition.setOnClickListener(this);
     }
 
     @Override
@@ -89,10 +94,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), "Please accepts terms and condition", Toast.LENGTH_LONG).show();
                 }
                 break;
-//            case R.id.loginToEmail:
+            case R.id.termAndCondition:
 //                layout.setVisibility(View.GONE);
-//                getSupportFragmentManager().beginTransaction().add(R.id.fragment, new EmailLogin()).commit();
-//                break;
+////                getSupportFragmentManager().beginTransaction().add(R.id.fragment, new EmailLogin()).commit();
+                String termConditionUrl = "https://theacharyamukti.com/terms-and-conditions.php";
+                Intent terms = new Intent(Intent.ACTION_VIEW);
+                terms.putExtra("", "1");
+                terms.setData(Uri.parse(termConditionUrl));
+                startActivity(terms);
+                break;
             case R.id.icon_close:
                 Intent intent = new Intent(getApplicationContext(), DashBoard.class);
                 Backend.getInstance(this).saveName("");
@@ -163,7 +173,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         });
     }
-
     private void verifyOTP() {
         String mobile = Backend.getInstance(this).getMobile();
         String otp = etOTP.getText().toString();

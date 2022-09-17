@@ -121,7 +121,7 @@
                                 android:paddingStart="5dp"
                                 android:text="@string/text_name3"
                                 android:textColor="@color/black"
-                                android:textSize="12sp" />
+                                android:textSize="14sp" />
 
                             <ImageView
                                 android:layout_width="20dp"
@@ -144,7 +144,7 @@
                                 android:inputType="number"
                                 android:textColor="@color/grey1"
                                 android:textColorHint="@color/grey1"
-                                android:textSize="12sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
 
 
@@ -159,7 +159,7 @@
                             android:background="@drawable/text_bg"
                             android:text="@string/text_button"
                             android:textColor="@color/grey1"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
                         <!--                        <TextView-->
                         <!--                            android:layout_width="match_parent"-->
                         <!--                            android:layout_height="wrap_content"-->
@@ -173,7 +173,6 @@
                             android:id="@+id/checkBoxLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/text_forgot_password"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
@@ -187,13 +186,21 @@
 
                             <TextView
                                 android:textColor="@color/black"
-                                android:fontFamily="@font/calibrib"
+                                android:fontFamily="@font/calibril"
+                                android:gravity="center_vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:text="By signing in, you agree to our."
+                                android:textSize="14sp" />
+                            <TextView
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/calibril"
                                 android:gravity="center_vertical"
                                 android:id="@+id/termAndCondition"
                                 android:layout_width="wrap_content"
                                 android:layout_height="30dp"
-                                android:layout_marginEnd="10dp"
-                                android:text="@string/text_check_box"
+                                android:textStyle="bold"
+                                android:text="Terms and Condition"
                                 android:textSize="14sp" />
                         </LinearLayout>
 <!--                        <LinearLayout-->
