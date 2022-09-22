@@ -11,7 +11,6 @@
     android:layout_margin="5dp">
 
     <RelativeLayout
-        android:background="@drawable/astro_bg"
         android:layout_width="match_parent"
         android:layout_height="170dp">
 
@@ -35,7 +34,7 @@
             android:gravity="center"
             android:paddingTop="5dp"
             android:text="Kuldeep"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="11sp"
             android:textStyle="bold" />
 
@@ -51,7 +50,7 @@
             android:paddingEnd="10dp"
             android:paddingBottom="3dp"
             android:text="33/min"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="11sp" />
 
         <TextView
