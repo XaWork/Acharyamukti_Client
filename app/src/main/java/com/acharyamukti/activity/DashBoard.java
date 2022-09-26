@@ -121,6 +121,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 });
     }
 
+
     @Override
     protected void onStart() {
         Log.d("Activity", "Stop");
@@ -152,7 +153,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     @Override
     protected void onDestroy() {
         getTotalBalance(userid);
-        Log.d("Activity", "Stop");
+        Log.d("Activity", "Destroy");
         super.onDestroy();
     }
 
@@ -195,7 +196,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
     @Override
     public void onBackPressed() {
-        finish();
+        this.finish();
         super.onBackPressed();
     }
 
