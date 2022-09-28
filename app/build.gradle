@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services'
+  //  id 'com.google.gms.google-services'
 
 }
 
@@ -34,14 +34,14 @@ android {
     buildFeatures {
         viewBinding true
     }
-    signingConfigs{
-        debug{
-            keyAlias 'android'
-            keyPassword 'Ds$@hjP4545'
-            storeFile file('D:\\app signIn key\\astrology.jks')
-            storePassword 'Ds$@hjP4545'
-        }
-    }
+//    signingConfigs{
+//        debug{
+//            keyAlias 'android'
+//            keyPassword 'Ds$@hjP4545'
+//            storeFile file('D:\\app signIn key\\astrology.jks')
+//            storePassword 'Ds$@hjP4545'
+//        }
+//    }
 }
 
 dependencies {

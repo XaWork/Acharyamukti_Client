@@ -101,24 +101,24 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             }, 3000);
         }
         getTotalBalance(userid);
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
-                            return;
-                        }
-
-                        // Get new FCM registration token
-                        String token = task.getResult();
-
-                        // Log and toast
-                        Log.d(TAG, token);
-                        Log.d("token", token);
-                        //  Toast.makeText(DashBoard.this, "register token" + token, Toast.LENGTH_SHORT).show();
-                    }
-                });
+//        FirebaseMessaging.getInstance().getToken()
+//                .addOnCompleteListener(new OnCompleteListener<String>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<String> task) {
+//                        if (!task.isSuccessful()) {
+//                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+//                            return;
+//                        }
+//
+//                        // Get new FCM registration token
+//                        String token = task.getResult();
+//
+//                        // Log and toast
+//                        Log.d(TAG, token);
+//                        Log.d("token", token);
+//                        //  Toast.makeText(DashBoard.this, "register token" + token, Toast.LENGTH_SHORT).show();
+//                    }
+//                });
     }
 
 
@@ -311,7 +311,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             }
         });
     }
-
     @Override
     public void onClick(View view) {
         String userid = Backend.getInstance(getApplicationContext()).getUserId();

@@ -8,13 +8,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.acharyamukti.R;
 import com.acharyamukti.activity.AstrologerProfile;
+import com.acharyamukti.chat.UserDetailsForm;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.AstroProfileModel;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 
@@ -61,13 +65,20 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
             intent.putExtra("reg_id", reg_id);
             context.startActivity(intent);
         });
-
+        holder.status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (model.getStatus().equals("Online")) {
+                    Intent intent = new Intent(context, UserDetailsForm.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            }
+        });
     }
-
 
     @Override
     public int getItemCount() {
-
         return astroProfileModels.size();
     }
 

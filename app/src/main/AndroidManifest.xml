@@ -4,12 +4,9 @@
     package="com.acharyamukti">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission
-        android:name="android.permission.POST_NOTIFICATIONS"
-        tools:node="remove" />
-
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- <uses-permission -->
+    <!-- android:name="android.permission.POST_NOTIFICATIONS" -->
+    <!-- tools:node="remove" /> -->
     <meta-data
         android:name="firebase_messaging_auto_init_enabled"
         android:value="false" />
@@ -24,7 +21,11 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-
+        <activity
+            android:name=".chat.UserDetailsForm"
+            android:exported="false"
+            android:label="Chat From"
+            android:theme="@style/AppThemeActionBar"/>
         <activity
             android:name=".activity.ConsultNow"
             android:exported="false"
@@ -103,6 +104,7 @@
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -110,16 +112,6 @@
             android:name=".activity.Login"
             android:exported="true"
             android:theme="@style/AppThemeNoActionBar" />
-
-        <service
-            android:name=".notification.MyFirebaseMessagingService"
-            android:exported="false"
-            tools:ignore="Instantiatable">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
     </application>
-
 
 </manifest>
