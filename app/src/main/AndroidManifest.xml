@@ -22,10 +22,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
+            android:name=".chat.ChatRequest"
+            android:exported="false"
+            android:theme="@style/AppThemeNoActionBar"/>
+        <activity
             android:name=".chat.UserDetailsForm"
             android:exported="false"
             android:label="Chat From"
-            android:theme="@style/AppThemeActionBar"/>
+            android:theme="@style/AppThemeActionBar" />
         <activity
             android:name=".activity.ConsultNow"
             android:exported="false"
