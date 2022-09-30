@@ -1,5 +1,6 @@
 package com.acharyamukti.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
     Context context;
     List<AstroProfileModel> astroProfileModels;
 
+    @SuppressLint("NotifyDataSetChanged")
     public UserDetailsAdapter(Context context, List<AstroProfileModel> astroProfileModels) {
         this.context = context;
         this.astroProfileModels = astroProfileModels;
@@ -47,17 +49,17 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
         holder.vedic.setText(model.getAsttype());
         holder.charge.setText(model.getCallrate());
         holder.exp.setText(model.getExperience());
-        holder.status.setText(model.getStatus());
         String reg_id = model.getReg_id();
         Backend.getInstance(context).saveReg_id(reg_id);
         String rating = model.getAvgrating1();
-        Float f = Float.parseFloat(rating);
-        holder.ratingBar.setRating(f);
+        holder.ratingBar.setText(rating);
+//        Float f = Float.parseFloat(rating);
+//        holder.ratingBar.setRating(f);
         Picasso.with(context).load(model.getImage()).into(holder.imageView);
         if (model.getStatus().equals("Online")) {
-            holder.status.setBackgroundResource(R.drawable.green_conner_bg);
+            holder.call.setBackgroundResource(R.drawable.call);
         } else {
-            holder.status.setBackgroundResource(R.drawable.red_without_conner_bg);
+            holder.call.setBackgroundResource(R.drawable.redicon);
         }
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, AstrologerProfile.class);
@@ -65,7 +67,7 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
             intent.putExtra("reg_id", reg_id);
             context.startActivity(intent);
         });
-        holder.status.setOnClickListener(new View.OnClickListener() {
+        holder.chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (model.getStatus().equals("Online")) {
@@ -83,17 +85,18 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView profile_name, charge, vedic, status, exp;
-        ImageView imageView;
-        RatingBar ratingBar;
+        TextView profile_name, charge, vedic,exp;
+        ImageView imageView,call,chat;
+        TextView ratingBar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             profile_name = itemView.findViewById(R.id.ProfileName);
             charge = itemView.findViewById(R.id.chargeOnline);
             vedic = itemView.findViewById(R.id.exptz);
-            status = itemView.findViewById(R.id.status);
+            call = itemView.findViewById(R.id.call);
             exp = itemView.findViewById(R.id.exp);
+            chat=itemView.findViewById(R.id.chat);
             imageView = itemView.findViewById(R.id.imageViewAstro);
             ratingBar = itemView.findViewById(R.id.ratingBar);
         }

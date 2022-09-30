@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,7 +25,7 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImage"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -47,24 +48,24 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        android:paddingBottom="100dp">
+        android:paddingBottom="50dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:src="@drawable/ic_baseline_person_24"
-            app:civ_border_color="@color/yellow"
-            app:civ_border_width="3dp" />
+            app:civ_border_color="@color/grey1"
+            app:civ_border_width="1dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/calibrib"
             android:gravity="center_horizontal"
             android:text="Theacharyamukti"
@@ -73,19 +74,21 @@
 
         <LinearLayout
             android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="100dp"
-            android:background="@color/green"
+            android:background="@drawable/green_background"
             android:gravity="center">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
+                android:padding="2dp"
                 android:src="@drawable/chat" />
 
             <TextView
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -107,6 +110,4 @@
             android:textSize="18sp" />
 
     </LinearLayout>
-
-
 </LinearLayout>

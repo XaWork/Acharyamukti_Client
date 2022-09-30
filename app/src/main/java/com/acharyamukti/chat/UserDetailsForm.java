@@ -126,12 +126,13 @@ public class UserDetailsForm extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onClick(View view) {
-        if ((male.isChecked() || female.isChecked()) || (unmarried.isChecked() || married.isChecked())) {
-            Intent intent = new Intent(this, ChatRequest.class);
-            startActivity(intent);
-        } else {
-            validation();
-            Toast.makeText(this, "Enter the proper details", Toast.LENGTH_SHORT).show();
-        }
+        Intent intent = new Intent(this, ChatRequest.class);
+        startActivity(intent);
+//        if ((male.isChecked() || female.isChecked()) || (unmarried.isChecked() || married.isChecked())) {
+//
+//        } else {
+//            validation();
+//            Toast.makeText(this, "Enter the proper details", Toast.LENGTH_SHORT).show();
+//        }
     }
 }

@@ -16,80 +16,109 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_height="wrap_content">
+
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"/>
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileImageSingle"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center_horizontal"
-                android:padding="10dp"
-                android:src="@drawable/logo" />
+                android:layout_centerInParent="true" />
 
-            <TextView
-                android:id="@+id/profileNameS"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="110dp"
-                android:paddingTop="10dp"
-                android:text="The Acharya mukti"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/astro_bg">
 
-            <TextView
-                android:id="@+id/designation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profileNameS"
-                android:layout_marginStart="114dp"
-                android:paddingTop="5dp"
-                android:text="Designation"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
 
-            <TextView
-                android:id="@+id/total_rating"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
-                android:layout_below="@+id/designation"
-                android:layout_marginStart="120dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/search_bg"
-                android:drawableEnd="@drawable/ic_baseline_star_24"
-                android:gravity="center"
-                android:padding="2dp"
-                android:text="4.7"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profileImageSingle"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:gravity="center_horizontal"
+                        android:padding="10dp"
+                        android:src="@drawable/logo"
+                        app:civ_border_color="@color/yellow"
+                        app:civ_border_width="2dp" />
 
-            <TextView
-                android:id="@+id/user_online_status"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/total_rating"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/search_bg"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Call status"
-                android:textColor="@color/black"
-                android:textStyle="normal" />
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="90dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="end"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/offernew" />
+
+                    <TextView
+                        android:id="@+id/profileNameS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="110dp"
+                        android:paddingTop="10dp"
+                        android:text="The Acharya mukti"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/designation"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profileNameS"
+                        android:layout_marginStart="114dp"
+                        android:paddingTop="5dp"
+                        android:text="Designation"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/total_rating"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/designation"
+                        android:layout_marginStart="120dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/search_bg"
+                        android:drawableEnd="@drawable/ic_baseline_star_24"
+                        android:gravity="center"
+                        android:padding="2dp"
+                        android:text="4.7"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/user_online_status"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/total_rating"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/search_bg"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Call status"
+                        android:textColor="@color/black"
+                        android:textStyle="normal" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/txtExperience"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/user_online_status"
+                android:layout_below="@+id/linearLayout"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:drawableLeft="@drawable/ic_baseline_school_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
@@ -111,7 +140,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtExperience2"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
@@ -134,7 +165,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtMin"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:drawableLeft="@drawable/ic_baseline_g_translate_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
@@ -156,7 +189,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtSpoken"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:drawableLeft="@drawable/ic_baseline_workspace_premium_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
@@ -178,7 +213,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtExp1"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:drawableLeft="@drawable/ic_baseline_summarize_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
@@ -200,7 +237,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtSummary_long"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:drawableLeft="@drawable/ic_baseline_reviews_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
@@ -212,32 +251,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtReview"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center_vertical"
                 android:textSize="12sp" />
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        android:layout_margin="10dp"-->
-<!--        android:layout_marginStart="10dp"-->
-<!--        android:orientation="horizontal">-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="40dp"-->
+    <!--        android:layout_gravity="bottom"-->
+    <!--        android:layout_margin="10dp"-->
+    <!--        android:layout_marginStart="10dp"-->
+    <!--        android:orientation="horizontal">-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/calling"-->
-<!--            android:layout_width="150dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:background="@color/yellow"-->
-<!--            android:drawableRight="@drawable/ic_baseline_call_24"-->
-<!--            android:gravity="center"-->
-<!--            android:paddingEnd="40dp"-->
-<!--            android:text="Offline"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textStyle="bold" />-->
-<!--    </LinearLayout>-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/calling"-->
+    <!--            android:layout_width="150dp"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_marginStart="5dp"-->
+    <!--            android:background="@color/yellow"-->
+    <!--            android:drawableRight="@drawable/ic_baseline_call_24"-->
+    <!--            android:gravity="center"-->
+    <!--            android:paddingEnd="40dp"-->
+    <!--            android:text="Offline"-->
+    <!--            android:textAllCaps="false"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textStyle="bold" />-->
+    <!--    </LinearLayout>-->
 </FrameLayout>
