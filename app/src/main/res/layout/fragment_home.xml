@@ -604,4 +604,47 @@
             </RelativeLayout>
         </ScrollView>
     </FrameLayout>
+
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="65dp">
+
+        <Button
+            android:id="@+id/chat_astrologer"
+            android:gravity="center"
+            android:paddingStart="15dp"
+            android:drawableLeft="@drawable/ic_baseline_chat_24"
+            android:background="@drawable/text_bg"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:lines="1"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/calibrib"
+            android:text="Chat with Astrologer"
+            android:layout_marginEnd="5dp"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+
+        <Button
+            android:textStyle="bold"
+            android:lines="1"
+            android:id="@+id/call_astrologer"
+            android:gravity="center"
+            android:paddingStart="15dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/text_bg"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:drawableLeft="@drawable/ic_baseline_call_24"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/calibrib"
+            android:text="Call with Astrologer"
+            android:textSize="11sp"
+            android:textAllCaps="false" />
+    </LinearLayout>
 </FrameLayout>

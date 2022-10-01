@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.acharyamukti.R;
 import com.acharyamukti.activity.ConsultNow;
 import com.acharyamukti.activity.KundaliniMarriage;
@@ -38,10 +40,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,7 +65,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     NewsAdapter newsAdapter;
     TextView feedback, viewAllBlog;
     ImageView consultNow;
-    Button sendFeedback;
+    Button sendFeedback, chat, call;
     Bundle bundle;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -94,6 +99,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         viewAllBlog.setOnClickListener(this);
         consultNow = root.findViewById(R.id.banner1);
         consultNow.setOnClickListener(this);
+        chat = root.findViewById(R.id.chat_astrologer);
+        call = root.findViewById(R.id.call_astrologer);
+        call.setOnClickListener(this);
+        chat.setOnClickListener(this);
         getProfileData();
         getLiveData();
         recyclerViewData(root);
@@ -192,6 +201,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Intent intent = new Intent(getActivity(), ConsultNow.class);
                 startActivity(intent);
                 break;
+            case R.id.call_astrologer:
+                Intent call = new Intent(getActivity(), KundaliniMarriage.class);
+                startActivity(call);
+                break;
+            case R.id.chat_astrologer:
+                Intent chat = new Intent(getActivity(), KundaliniMarriage.class);
+                chat.putExtra("1", "");
+                startActivity(chat);
+                break;
         }
     }
 
@@ -225,6 +243,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show());
         requestQueue.add(objectRequest);
     }
+
     private void getLiveData() {
         final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
         String url = "https://theacharyamukti.com/clientapi/online-astro.php";
@@ -283,6 +302,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }, error -> Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show());
         requestQueue.add(stringRequest);
     }
+
     private void postFeedBackData() {
         String content = feedback.getText().toString();
         String userId = Backend.getInstance(getContext()).getUserId();
@@ -300,6 +320,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), dataModel.getError(), Toast.LENGTH_LONG).show();
                 }
             }
+
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_SHORT).show();

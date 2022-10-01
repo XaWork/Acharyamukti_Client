@@ -8,14 +8,13 @@
     android:clickable="true"
     android:focusable="true"
     app:cardCornerRadius="10dp"
-    android:layout_margin="5dp">
+    android:layout_margin="2dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="170dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/astroImage"
             android:layout_width="70dp"
             android:layout_height="70dp"
