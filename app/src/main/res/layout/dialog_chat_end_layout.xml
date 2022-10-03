@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/calibrib"
+        android:text="End Chat?"
+        android:textColor="@color/grey1"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/calibril"
+        android:text="Are you sure you want to end the chat session" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/calibril"
+        android:text="Astro Amrita" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:background="#F3EFEF"
+            android:layout_weight="1"
+            android:id="@+id/end"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/calibrib"
+            android:text="End chat"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:textColor="@color/grey1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:background="@color/yellow"
+            android:layout_weight="1"
+            android:id="@+id/cont_chat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/calibrib"
+            android:gravity="center"
+            android:text="Continue Chat"
+            android:textAllCaps="false"
+            android:textColor="@color/grey1"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

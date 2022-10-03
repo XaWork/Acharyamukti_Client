@@ -57,7 +57,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/block"
+                android:id="@+id/end_chat"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -71,8 +71,7 @@
         android:id="@+id/chatrecycle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/chatlayout"
-        android:layout_below="@id/toolbar" />
+        android:layout_above="@id/chatlayout"/>
 
     <LinearLayout
         android:id="@+id/chatlayout"

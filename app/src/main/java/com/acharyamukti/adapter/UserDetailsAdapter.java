@@ -1,25 +1,23 @@
 package com.acharyamukti.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.acharyamukti.R;
 import com.acharyamukti.activity.AstrologerProfile;
 import com.acharyamukti.chat.UserDetailsForm;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.model.AstroProfileModel;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 
@@ -74,6 +72,7 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
                     Intent intent = new Intent(context, UserDetailsForm.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
+
                 }
             }
         });
@@ -85,8 +84,8 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView profile_name, charge, vedic,exp;
-        ImageView imageView,call,chat;
+        TextView profile_name, charge, vedic, exp;
+        ImageView imageView, call, chat;
         TextView ratingBar;
 
         public ViewHolder(@NonNull View itemView) {
@@ -96,9 +95,11 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
             vedic = itemView.findViewById(R.id.exptz);
             call = itemView.findViewById(R.id.call);
             exp = itemView.findViewById(R.id.exp);
-            chat=itemView.findViewById(R.id.chat);
+            chat = itemView.findViewById(R.id.chat);
             imageView = itemView.findViewById(R.id.imageViewAstro);
             ratingBar = itemView.findViewById(R.id.ratingBar);
         }
     }
+
+
 }

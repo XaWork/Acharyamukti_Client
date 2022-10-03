@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/calibrib"
+        android:gravity="center_horizontal"
+        android:text="Chat Now Astro Amrita"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#75BEF4C0"
+        android:fontFamily="@font/calibrib"
+        android:gravity="center"
+        android:text="Note:Astro Amrita can chat in Hindi"
+        android:textColor="@color/green" />
+
+    <TableLayout
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TableRow>
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/calibril"
+                android:gravity="center_vertical"
+                android:text="Per minute Consultation \nCharge:" />
+
+            <TextView
+                android:fontFamily="@font/calibril"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:text="10:00" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:textColor="@color/black"
+                android:fontFamily="@font/calibril"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Available Balance:" />
+
+            <TextView
+                android:fontFamily="@font/calibril"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:text="10:00" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:textColor="@color/black"
+                android:fontFamily="@font/calibril"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Maximum Chat Duration:" />
+
+            <TextView
+                android:fontFamily="@font/calibril"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:text="00:00:00" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/yellow"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cancel"
+            android:textSize="16sp"
+            android:fontFamily="@font/calibrib"
+            android:textAllCaps="true"
+            android:textColor="@color/grey1"
+            android:layout_marginStart="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+
+        <TextView
+            android:textSize="16sp"
+            android:fontFamily="@font/calibrib"
+            android:id="@+id/startChat"
+            android:textAllCaps="true"
+            android:layout_marginEnd="10dp"
+            android:gravity="end"
+            android:textColor="@color/grey1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Chat" />
+    </LinearLayout>
+</LinearLayout>
