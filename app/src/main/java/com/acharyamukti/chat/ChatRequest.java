@@ -13,12 +13,17 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.acharyamukti.R;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class ChatRequest extends AppCompatActivity implements View.OnClickListener {
     LinearLayout startChat;
     Toolbar toolbarChat;
+    Dialog dialog;
 
     @SuppressLint("UseSupportActionBar")
     @Override
@@ -29,7 +34,6 @@ public class ChatRequest extends AppCompatActivity implements View.OnClickListen
         startChat.setOnClickListener(this);
         toolbarChat = findViewById(R.id.toolbarChat);
         setSupportActionBar(toolbarChat);
-   //     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -42,8 +46,6 @@ public class ChatRequest extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         getChatDetails();
-//        Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
-//        startActivity(intent);
     }
 
     private void getChatDetails() {
@@ -70,5 +72,18 @@ public class ChatRequest extends AppCompatActivity implements View.OnClickListen
             }
         });
         dialog.setCanceledOnTouchOutside(true);
+    }
+
+    @Override
+    protected void onDestroy() {
+        try {
+            if (dialog != null) {
+                dialog.dismiss();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        super.onDestroy();
     }
 }

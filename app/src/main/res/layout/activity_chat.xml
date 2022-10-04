@@ -71,7 +71,7 @@
         android:id="@+id/chatrecycle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/chatlayout"/>
+        android:layout_above="@id/chatlayout" />
 
     <LinearLayout
         android:id="@+id/chatlayout"

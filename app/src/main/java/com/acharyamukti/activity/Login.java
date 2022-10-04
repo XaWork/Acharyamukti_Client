@@ -47,6 +47,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     ImageView close;
     CheckBox check_box_condition;
     TextView termAndCondition;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         close.setOnClickListener(this);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
-        termAndCondition=findViewById(R.id.termAndCondition);
+        termAndCondition = findViewById(R.id.termAndCondition);
         termAndCondition.setOnClickListener(this);
     }
 
@@ -115,7 +116,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void dialog() {
-        Dialog dialog = new Dialog(this);
+        dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.verify_otp);
         Button btnVerify = dialog.findViewById(R.id.btnVerify);
@@ -173,6 +174,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         });
     }
+
     private void verifyOTP() {
         String mobile = Backend.getInstance(this).getMobile();
         String otp = etOTP.getText().toString();
@@ -206,10 +208,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        try {
+            if (dialog != null) {
+                dialog.dismiss();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        super.onDestroy();
     }
 }
