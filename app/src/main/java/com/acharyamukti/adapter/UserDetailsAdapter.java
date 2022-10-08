@@ -65,17 +65,17 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
             intent.putExtra("reg_id", reg_id);
             context.startActivity(intent);
         });
-        holder.chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (model.getStatus().equals("Online")) {
-                    Intent intent = new Intent(context, UserDetailsForm.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-
-                }
-            }
-        });
+//        holder.chat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (model.getStatus().equals("Online")) {
+//                    Intent intent = new Intent(context, UserDetailsForm.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    context.startActivity(intent);
+//
+//                }
+//            }
+//        });
     }
 
     @Override

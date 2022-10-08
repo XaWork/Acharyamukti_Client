@@ -119,13 +119,13 @@
             android:layout_marginTop="5dp"
             android:orientation="vertical">
 
-            <ImageView
-                android:scaleType="fitXY"
-                android:layout_marginStart="40dp"
-                android:layout_gravity="end"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/offernew"/>
+<!--            <ImageView-->
+<!--                android:scaleType="fitXY"-->
+<!--                android:layout_marginStart="40dp"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:layout_width="70dp"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:src="@drawable/offernew"/>-->
             <!--            <TextView-->
             <!--                android:id="@+id/status"-->
             <!--                android:layout_width="80dp"-->
@@ -142,7 +142,7 @@
                 android:paddingBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="100dp"
                 android:orientation="horizontal"
                 android:paddingStart="10dp">
 

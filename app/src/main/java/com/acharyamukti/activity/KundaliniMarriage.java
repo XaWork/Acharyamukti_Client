@@ -68,10 +68,10 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
                 Intent search = new Intent(getApplicationContext(), FilterActivity.class);
                 startActivity(search);
                 break;
-            case R.id.checkbox3:
-                Intent search1 = new Intent(getApplicationContext(), Search.class);
-                startActivity(search1);
-                break;
+//            case R.id.checkbox3:
+//                Intent search1 = new Intent(getApplicationContext(), Search.class);
+//                startActivity(search1);
+//                break;
             case R.id.checkbox0:
                 getProfileDta();
                 break;
