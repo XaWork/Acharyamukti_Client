@@ -74,6 +74,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        getProfileData();
+        getLiveData();
+        recyclerViewData(root);
         final TextView textView = binding.textHome;
         homeViewModel.getText().
                 observe(getViewLifecycleOwner(),
@@ -103,9 +106,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         call = root.findViewById(R.id.call_astrologer);
         call.setOnClickListener(this);
         chat.setOnClickListener(this);
-        getProfileData();
-        getLiveData();
-        recyclerViewData(root);
         String blog = "Blog";
         bundle = new Bundle();
         bundle.putString("title", blog);
@@ -320,7 +320,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), dataModel.getError(), Toast.LENGTH_LONG).show();
                 }
             }
-
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_SHORT).show();

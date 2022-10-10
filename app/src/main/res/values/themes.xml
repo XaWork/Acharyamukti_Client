@@ -23,7 +23,8 @@
 
     <style name="Theme.Acharyamukti.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
 
-    <style name="AppThemeNoActionBar" parent="Theme.Acharyamukti.NoActionBar">
+    <style name="AppThemeNoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="colorPrimary">@color/yellow</item>
         <item name="colorPrimaryDark">@color/darkYellow</item>
         <item name="colorAccent">@color/black</item>
@@ -31,6 +32,7 @@
     </style>
 
     <style name="AppThemeActionBar" parent="@style/Theme.AppCompat.Light">
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="colorPrimary">@color/yellow</item>
         <item name="colorPrimaryDark">@color/darkYellow</item>
         <item name="colorAccent">@color/black</item>

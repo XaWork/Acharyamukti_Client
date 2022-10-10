@@ -122,16 +122,16 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        shareAppLink();
+     //   shareAppLink();
     }
 
     private void shareAppLink() {
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.astroacharyamukti.app");
-        sendIntent.setType("text/plain");
-        sendIntent.setPackage("com.whatsapp");
-        startActivity(sendIntent);
+//        Intent sendIntent = new Intent();
+//        sendIntent.setAction(Intent.ACTION_SEND);
+//        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.astroacharyamukti.app");
+//        sendIntent.setType("text/plain");
+//        sendIntent.setPackage("com.whatsapp");
+//        startActivity(sendIntent);
     }
 
     private void getData() {

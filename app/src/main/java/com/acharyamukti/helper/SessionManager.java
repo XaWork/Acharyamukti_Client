@@ -25,7 +25,7 @@ public class SessionManager {
     public void setLogin(boolean isLoggedIn) {
         editor.putBoolean(KET_IS_LOG_IN, isLoggedIn);
         editor.commit();
-        Toast.makeText(context, "User login session modified", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "User login session modified", Toast.LENGTH_SHORT).show();
     }
 
     public boolean isLoggedIn() {

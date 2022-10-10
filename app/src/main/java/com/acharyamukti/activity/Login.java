@@ -37,7 +37,7 @@ import retrofit2.Response;
 
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
-    LinearLayout layout, navigationBar;
+    LinearLayout layout;
     EditText mobileNumber;
     EditText etOTP;
     String Otp;
@@ -63,8 +63,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mobileNumber = findViewById(R.id.getOtpMobile);
         close = findViewById(R.id.icon_close);
         close.setOnClickListener(this);
-        progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.INVISIBLE);
         termAndCondition = findViewById(R.id.termAndCondition);
         termAndCondition.setOnClickListener(this);
     }
@@ -106,11 +104,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.icon_close:
                 Intent intent = new Intent(getApplicationContext(), DashBoard.class);
-                Backend.getInstance(this).saveName("");
-                Backend.getInstance(this).saveEmail("");
-                Backend.getInstance(this).saveUserId("");
                 startActivity(intent);
-                finish();
                 break;
         }
     }
@@ -149,24 +143,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
-                    progressBar.setVisibility(View.INVISIBLE);
-                    assert dataModel != null;
-                    if (dataModel.getMessage().equals("Check OTP Your Mobile No")) {
-                        dialog();
-                        if (dataModel.getUserid() == null) {
-                            shp = getSharedPreferences("myPreferences", MODE_PRIVATE);
-                            SessionManager sessionManager = new SessionManager(getApplicationContext());
-                            sessionManager.setLogin(true);
-                        }
-                        Toast.makeText(Login.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(Login.this, "Enter valid mobile number", Toast.LENGTH_SHORT).show();
-                    }
+                  dialog();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Error! Please try again!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Enter valid mobile number", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();

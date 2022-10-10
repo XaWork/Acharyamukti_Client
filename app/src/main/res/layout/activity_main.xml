@@ -35,7 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="15dp"
+            android:layout_margin="10dp"
+            android:background="@color/white"
             android:elevation="15dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="20dp">
@@ -58,27 +59,21 @@
 
 
                 <TextView
-                    android:fontFamily="@font/calibrib"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/calibrib"
                     android:gravity="center_horizontal"
                     android:text="@string/text_name1"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="normal" />
 
                 <FrameLayout
                     android:id="@+id/fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-                    <ProgressBar
-                        android:id="@+id/progressBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal" />
 
                     <LinearLayout
                         android:id="@+id/linearLayout"
@@ -88,68 +83,70 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:fontFamily="@font/calibrib"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="15dp"
+                            android:fontFamily="@font/calibrib"
                             android:gravity="center_horizontal"
                             android:text="@string/text_name2"
                             android:textColor="@color/grey1"
                             android:textSize="14sp" />
 
-                        <LinearLayout
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="45dp"-->
+                        <!--                            android:layout_marginStart="15dp"-->
+                        <!--                            android:layout_marginTop="40dp"-->
+                        <!--                            android:layout_marginEnd="15dp"-->
+                        <!--                            android:background="@drawable/text_bg"-->
+                        <!--                            android:gravity="center_vertical"-->
+                        <!--                            android:orientation="horizontal"-->
+                        <!--                            android:paddingStart="10dp">-->
+
+                        <!--                            <ImageView-->
+                        <!--                                android:layout_width="20dp"-->
+                        <!--                                android:layout_height="20dp"-->
+                        <!--                                android:src="@drawable/flag" />-->
+
+                        <!--                            <TextView-->
+                        <!--                                android:fontFamily="@font/calibrib"-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:paddingStart="5dp"-->
+                        <!--                                android:text="@string/text_name3"-->
+                        <!--                                android:textColor="@color/black"-->
+                        <!--                                android:textSize="14sp" />-->
+
+                        <!--                            <ImageView-->
+                        <!--                                android:layout_width="20dp"-->
+                        <!--                                android:layout_height="20dp"-->
+                        <!--                                android:src="@drawable/ic_baseline_expand_more_24" />-->
+
+                        <!--                            <View-->
+                        <!--                                android:layout_width="0.3dp"-->
+                        <!--                                android:layout_height="30dp"-->
+                        <!--                                android:background="@color/black" />-->
+
+                        <EditText
+                            android:id="@+id/getOtpMobile"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:layout_marginStart="15dp"
                             android:layout_marginTop="40dp"
                             android:layout_marginEnd="15dp"
                             android:background="@drawable/text_bg"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingStart="10dp">
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@drawable/flag" />
-
-                            <TextView
-                                android:fontFamily="@font/calibrib"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingStart="5dp"
-                                android:text="@string/text_name3"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@drawable/ic_baseline_expand_more_24" />
-
-                            <View
-                                android:layout_width="0.3dp"
-                                android:layout_height="30dp"
-                                android:background="@color/black" />
-
-                            <EditText
-                                android:fontFamily="@font/calibrib"
-                                android:id="@+id/getOtpMobile"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginEnd="15dp"
-                                android:hint="Mobile number"
-                                android:inputType="number"
-                                android:textColor="@color/grey1"
-                                android:textColorHint="@color/grey1"
-                                android:textSize="14sp" />
-                        </LinearLayout>
+                            android:fontFamily="@font/calibrib"
+                            android:hint="Mobile number"
+                            android:inputType="number"
+                            android:paddingStart="15dp"
+                            android:textColor="@color/grey1"
+                            android:textColorHint="@color/grey1"
+                            android:textSize="14sp" />
+                        <!--                        </LinearLayout>-->
 
 
                         <Button
-                            android:fontFamily="@font/calibrib"
                             android:id="@+id/btnOtp"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
@@ -157,6 +154,7 @@
                             android:layout_marginTop="20dp"
                             android:layout_marginEnd="15dp"
                             android:background="@drawable/text_bg"
+                            android:fontFamily="@font/calibrib"
                             android:text="@string/text_button"
                             android:textColor="@color/grey1"
                             android:textSize="16sp" />
@@ -184,69 +182,70 @@
                                 android:buttonTint="@color/black"
                                 android:textColor="@color/black" />
 
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:fontFamily="@font/calibril"-->
+<!--                                android:gravity="center_vertical"-->
+<!--                                android:text="By signing in, you agree to our."-->
+<!--                                android:textColor="@color/black" />-->
+
                             <TextView
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/calibril"
-                                android:gravity="center_vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="30dp"
-                                android:text="By signing in, you agree to our."
-                                android:textSize="14sp" />
-                            <TextView
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/calibril"
-                                android:gravity="center_vertical"
                                 android:id="@+id/termAndCondition"
                                 android:layout_width="wrap_content"
                                 android:layout_height="30dp"
-                                android:textStyle="bold"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:fontFamily="@font/calibril"
+                                android:gravity="center_vertical"
                                 android:text="Terms and Condition"
-                                android:textSize="14sp" />
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
                         </LinearLayout>
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_marginStart="10dp"-->
-<!--                            android:layout_marginTop="20dp"-->
-<!--                            android:layout_marginEnd="20dp"-->
-<!--                            android:gravity="center_vertical"-->
-<!--                            android:orientation="horizontal">-->
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="match_parent"-->
+                        <!--                            android:layout_marginStart="10dp"-->
+                        <!--                            android:layout_marginTop="20dp"-->
+                        <!--                            android:layout_marginEnd="20dp"-->
+                        <!--                            android:gravity="center_vertical"-->
+                        <!--                            android:orientation="horizontal">-->
 
-<!--                            <View-->
-<!--                                android:layout_width="0dp"-->
-<!--                                android:layout_height="0.5dp"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:background="@color/yellow" />-->
+                        <!--                            <View-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="0.5dp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@color/yellow" />-->
 
-<!--                            <TextView-->
-<!--                                android:layout_width="0dp"-->
-<!--                                android:layout_height="20dp"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:gravity="center"-->
-<!--                                android:text="@string/text_name5"-->
-<!--                                android:textColor="@color/grey1"-->
-<!--                                android:textSize="12sp" />-->
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="20dp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:gravity="center"-->
+                        <!--                                android:text="@string/text_name5"-->
+                        <!--                                android:textColor="@color/grey1"-->
+                        <!--                                android:textSize="12sp" />-->
 
-<!--                            <View-->
-<!--                                android:layout_width="0dp"-->
-<!--                                android:layout_height="0.5dp"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:background="@color/yellow" />-->
-<!--                        </LinearLayout>-->
+                        <!--                            <View-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="0.5dp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@color/yellow" />-->
+                        <!--                        </LinearLayout>-->
 
-<!--                        <Button-->
-<!--                            android:id="@+id/loginToEmail"-->
-<!--                            android:layout_width="200dp"-->
-<!--                            android:layout_height="40dp"-->
-<!--                            android:layout_gravity="center_horizontal"-->
-<!--                            android:layout_marginTop="20dp"-->
-<!--                            android:layout_marginBottom="30dp"-->
-<!--                            android:background="@drawable/text_bg"-->
-<!--                            android:gravity="center"-->
-<!--                            android:text="Login via Email"-->
-<!--                            android:textAllCaps="false"-->
-<!--                            android:textColor="@color/grey1"-->
-<!--                            tools:ignore="RtlHardcoded,RtlSymmetry" />-->
+                        <!--                        <Button-->
+                        <!--                            android:id="@+id/loginToEmail"-->
+                        <!--                            android:layout_width="200dp"-->
+                        <!--                            android:layout_height="40dp"-->
+                        <!--                            android:layout_gravity="center_horizontal"-->
+                        <!--                            android:layout_marginTop="20dp"-->
+                        <!--                            android:layout_marginBottom="30dp"-->
+                        <!--                            android:background="@drawable/text_bg"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:text="Login via Email"-->
+                        <!--                            android:textAllCaps="false"-->
+                        <!--                            android:textColor="@color/grey1"-->
+                        <!--                            tools:ignore="RtlHardcoded,RtlSymmetry" />-->
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>
