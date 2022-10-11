@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acharyamukti.R;
+import com.acharyamukti.activity.AstrologerProfile;
 import com.acharyamukti.activity.ConsultNow;
 import com.acharyamukti.activity.KundaliniMarriage;
 import com.acharyamukti.activity.Horoscope;
@@ -102,10 +103,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         viewAllBlog.setOnClickListener(this);
         consultNow = root.findViewById(R.id.banner1);
         consultNow.setOnClickListener(this);
-        chat = root.findViewById(R.id.chat_astrologer);
-        call = root.findViewById(R.id.call_astrologer);
-        call.setOnClickListener(this);
-        chat.setOnClickListener(this);
+//        chat = root.findViewById(R.id.chat_astrologer);
+//        call = root.findViewById(R.id.call_astrologer);
+//        call.setOnClickListener(this);
+//        chat.setOnClickListener(this);
         String blog = "Blog";
         bundle = new Bundle();
         bundle.putString("title", blog);
@@ -201,15 +202,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Intent intent = new Intent(getActivity(), ConsultNow.class);
                 startActivity(intent);
                 break;
-            case R.id.call_astrologer:
-                Intent call = new Intent(getActivity(), KundaliniMarriage.class);
-                startActivity(call);
-                break;
-            case R.id.chat_astrologer:
-                Intent chat = new Intent(getActivity(), KundaliniMarriage.class);
-                chat.putExtra("1", "");
-                startActivity(chat);
-                break;
+//            case R.id.call_astrologer:
+//                Intent call = new Intent(getActivity(), KundaliniMarriage.class);
+//                startActivity(call);
+//                break;
+//            case R.id.chat_astrologer:
+//                Intent chat = new Intent(getActivity(), KundaliniMarriage.class);
+//                chat.putExtra("1", "");
+//                startActivity(chat);
+//                break;
         }
     }
 
@@ -320,10 +321,31 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), dataModel.getError(), Toast.LENGTH_LONG).show();
                 }
             }
+
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+//    private void getDataProfile() {
+//        final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
+//        Call<List<AstroProfileModel>> call = RetrofitClient.getInstance().getApi().getProfileData();
+//        call.enqueue(new Callback<List<AstroProfileModel>>() {
+//            @Override
+//            public void onResponse(Call<List<AstroProfileModel>> call, Response<List<AstroProfileModel>> response) {
+//                if (response.isSuccessful()) {
+//                    astroProfile = new AstroProfileAdapter(getContext(), astroProfileModels);
+//                    recyclerView1.setAdapter(astroProfile);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<AstroProfileModel>> call, Throwable t) {
+//
+//            }
+//        });
+ //   }
+
 }
