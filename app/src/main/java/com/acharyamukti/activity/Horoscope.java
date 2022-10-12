@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +55,9 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
     RelativeLayout share;
     List<ImageModel> imageModels = new ArrayList<>();
     TextView love, career, money, health, travels, bannerTitle, desc;
+    ProgressBar progressBar;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +78,9 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         travels = findViewById(R.id.travelDesc);
         bannerTitle = findViewById(R.id.bannerTitle);
         desc = findViewById(R.id.bannerDescription);
+        progressBar=findViewById(R.id.progress);
+        progressBar.setVisibility(View.VISIBLE);
+
         getData();
         String title = "";
         getHoroscopeData(title);
@@ -140,6 +147,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         recyclerViewHoroscope.setLayoutManager(linearLayoutManager);
         RequestQueue request = Volley.newRequestQueue(this);
         @SuppressLint("NotifyDataSetChanged") StringRequest request1 = new StringRequest(Request.Method.GET, url, response -> {
+            progressBar.setVisibility(View.GONE);
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONArray jsonArray = jsonObject.getJSONArray("body");
@@ -210,6 +218,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onResponse(@NonNull Call<HoroscopeModel> call, @NonNull Response<HoroscopeModel> response) {
                 HoroscopeModel model = response.body();
+                progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     assert model != null;
                     bannerTitle.setText(model.getHeading());
@@ -243,6 +252,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
         String url = "https://theacharyamukti.com/clientapi/online-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         @SuppressLint("NotifyDataSetChanged") StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
+            progressBar.setVisibility(View.GONE);
             try {
                 JSONObject obj = new JSONObject(response);
                 JSONArray arr = obj.getJSONArray("body");

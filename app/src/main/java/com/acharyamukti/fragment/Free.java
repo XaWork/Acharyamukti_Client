@@ -54,7 +54,7 @@ public class Free extends Fragment {
         String url = "https://theacharyamukti.com/clientapi/blog.php";
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
         @SuppressLint("NotifyDataSetChanged") StringRequest stringRequest = new StringRequest(Request.Method.GET, url, response -> {
-            progressBar.setVisibility(View.INVISIBLE);
+            progressBar.setVisibility(View.GONE);
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONArray jsonArray = jsonObject.getJSONArray("body");

@@ -6,11 +6,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.UserDetailsAdapter;
@@ -31,7 +33,9 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
     UserDetailsAdapter userDetailsAdapter;
     LinearLayoutManager linearLayoutManager;
     CheckBox search, filter, onCall, available;
+    ProgressBar progressBar;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,8 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
         onCall = findViewById(R.id.checkbox0);
         available = findViewById(R.id.checkbox1);
         available.setOnClickListener(this);
+        progressBar=findViewById(R.id.progress);
+        progressBar.setVisibility(View.VISIBLE);
         getProfileDta();
     }
 
@@ -87,6 +93,7 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         @SuppressLint("NotifyDataSetChanged") StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
             try {
+                progressBar.setVisibility(View.GONE);
                 JSONObject obj = new JSONObject(response);
                 JSONArray arr = obj.getJSONArray("body");
                 for (int i = 0; i < arr.length(); i++) {
@@ -121,6 +128,7 @@ public class KundaliniMarriage extends AppCompatActivity implements View.OnClick
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         @SuppressLint("NotifyDataSetChanged") StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
             try {
+                progressBar.setVisibility(View.GONE);
                 JSONObject obj = new JSONObject(response);
                 JSONArray arr = obj.getJSONArray("body");
                 for (int i = 0; i < arr.length(); i++) {

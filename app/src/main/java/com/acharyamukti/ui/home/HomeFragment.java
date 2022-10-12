@@ -2,6 +2,7 @@ package com.acharyamukti.ui.home;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +43,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -54,7 +57,7 @@ import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    CardView relationShip, marriage, career, money, horoscope;
+    ImageView relationShip, marriage, career, money, horoscope;
     FragmentHomeBinding binding;
     LiveAdapter liveAdapter;
     AstroProfileAdapter astroProfile;
@@ -65,7 +68,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     List<BlogModel> blogModels = new ArrayList<>();
     NewsAdapter newsAdapter;
     TextView feedback, viewAllBlog;
-    ImageView consultNow;
+    ImageView consultNow, h_image;
     Button sendFeedback, chat, call;
     Bundle bundle;
 
@@ -103,6 +106,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         viewAllBlog.setOnClickListener(this);
         consultNow = root.findViewById(R.id.banner1);
         consultNow.setOnClickListener(this);
+        // h_image = root.findViewById(R.id.h_image);
+        //    Glide.with(getActivity()).load(R.drawable.horoscope1).into(h_image);
 //        chat = root.findViewById(R.id.chat_astrologer);
 //        call = root.findViewById(R.id.call_astrologer);
 //        call.setOnClickListener(this);
@@ -110,6 +115,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         String blog = "Blog";
         bundle = new Bundle();
         bundle.putString("title", blog);
+//        progress = new ProgressDialog(getActivity());
+//        progress.setMessage("Please wait....... ");
+//        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+//        progress.setIndeterminate(true);
         return root;
     }
 
@@ -215,6 +224,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void getProfileData() {
+        ProgressDialog progress = ProgressDialog.show(getActivity(), "Data Loading..",
+                "Please wait......", true);
         final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
         String url = "https://theacharyamukti.com/clientapi/online-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
@@ -237,6 +248,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 astroProfile = new AstroProfileAdapter(getContext(), astroProfileModels);
                 astroProfile.notifyDataSetChanged();
                 recyclerView1.setAdapter(astroProfile);
+                progress.dismiss();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -277,6 +289,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void getBloData() {
+        ProgressDialog progress = ProgressDialog.show(getActivity(), "Data is Loading..",
+                "Please wait......", true);
         String url = "https://theacharyamukti.com/clientapi/blog.php";
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
         @SuppressLint("NotifyDataSetChanged") StringRequest stringRequest = new StringRequest(Request.Method.GET, url, response -> {
@@ -297,6 +311,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 newsAdapter = new NewsAdapter(getContext(), R.layout.lasted_custom_blog, blogModels);
                 newsAdapter.notifyDataSetChanged();
                 recyclerViewBlogDetails.setAdapter(newsAdapter);
+                progress.dismiss();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -346,6 +361,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 //
 //            }
 //        });
- //   }
+    //   }
 
 }

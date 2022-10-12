@@ -105,6 +105,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.icon_close:
                 Intent intent = new Intent(getApplicationContext(), DashBoard.class);
                 startActivity(intent);
+                finish();
                 break;
         }
     }
@@ -180,6 +181,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         Intent intent = new Intent(getApplicationContext(), DashBoard.class);
                         intent.putExtra("clam_now", "clamNow");
                         startActivity(intent);
+                        finish();
                         String userid = data.getUserid();
                         Backend.getInstance(getApplicationContext()).saveUserId(userid);
                     } else {

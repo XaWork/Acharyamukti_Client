@@ -7,15 +7,12 @@
     android:background="@color/white"
     tools:context=".fragment.Free">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp">
-
         <RelativeLayout
+            android:theme="@style/AppThemeActionBar"
+            android:layout_marginBottom="60dp"
             android:id="@+id/freeLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <!--            <ImageView-->
             <!--                android:id="@+id/imagePersonal"-->
@@ -91,5 +88,4 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
-    </ScrollView>
 </FrameLayout>

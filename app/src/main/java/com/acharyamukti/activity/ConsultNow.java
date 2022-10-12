@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -61,6 +62,8 @@ public class ConsultNow extends AppCompatActivity implements View.OnClickListene
     }
 
     private void getOnlineAstro() {
+        ProgressDialog progress = ProgressDialog.show(getApplicationContext(), "Blog is Loading..",
+                "Please wait......", true);
         final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
         String url = "https://theacharyamukti.com/clientapi/online-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -86,6 +89,7 @@ public class ConsultNow extends AppCompatActivity implements View.OnClickListene
                 userDetailsAdapter.notifyDataSetChanged();
                 recyclerViewConsult.setAdapter(userDetailsAdapter);
                 recyclerViewConsult.setNestedScrollingEnabled(false);
+                progress.dismiss();
             } catch (Exception e) {
                 e.printStackTrace();
             }
