@@ -1,13 +1,11 @@
 package com.acharyamukti.adapter;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -51,8 +49,6 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
         Backend.getInstance(context).saveReg_id(reg_id);
         String rating = model.getAvgrating1();
         holder.ratingBar.setText(rating);
-//        Float f = Float.parseFloat(rating);
-//        holder.ratingBar.setRating(f);
         Picasso.with(context).load(model.getImage()).into(holder.imageView);
         if (model.getStatus().equals("Online")) {
             holder.call.setBackgroundResource(R.drawable.call);
@@ -65,17 +61,14 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<UserDetailsAdapter.
             intent.putExtra("reg_id", reg_id);
             context.startActivity(intent);
         });
-//        holder.chat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (model.getStatus().equals("Online")) {
-//                    Intent intent = new Intent(context, UserDetailsForm.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    context.startActivity(intent);
-//
-//                }
-//            }
-//        });
+        holder.chat.setOnClickListener(view -> {
+            if (model.getStatus().equals("Online")) {
+                Intent intent = new Intent(context, UserDetailsForm.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+
+            }
+        });
     }
 
     @Override

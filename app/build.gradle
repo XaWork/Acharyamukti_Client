@@ -11,8 +11,8 @@ android {
         applicationId "com.acharyamukti"
         minSdk 21
         targetSdk 32
-        versionCode 3
-        versionName "1.001"
+        versionCode 4
+        versionName "1.004"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -65,9 +65,9 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.razorpay:checkout:1.6.23'
-    implementation 'com.google.firebase:firebase-messaging:23.0.8'
+    implementation 'com.google.firebase:firebase-messaging:23.1.0'
     testImplementation 'junit:junit:4.13.2'
-    implementation 'com.google.firebase:firebase-messaging-directboot:23.0.8'
+    implementation 'com.google.firebase:firebase-messaging-directboot:23.1.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

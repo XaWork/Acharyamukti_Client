@@ -3,7 +3,6 @@ package com.acharyamukti.activity;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,7 +23,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
-import com.acharyamukti.fragment.EmailLogin;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.helper.SessionManager;
 import com.acharyamukti.model.DataModel;
@@ -41,7 +39,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText mobileNumber;
     EditText etOTP;
     String Otp;
-    SharedPreferences shp;
     public static String PRES_NAME = "profile";
     ProgressBar progressBar;
     ImageView close;
@@ -198,7 +195,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         });
     }
-
     @Override
     protected void onDestroy() {
         try {
