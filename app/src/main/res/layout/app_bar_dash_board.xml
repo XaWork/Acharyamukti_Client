@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,7 +32,7 @@
                 android:padding="5dp">
 
                 <ImageView
-                    android:layout_width="11dp"
+                    android:layout_width="15dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_account_balance_wallet_24" />
 
@@ -42,10 +43,9 @@
                     android:drawableStart="@drawable/ic_baseline_currency_rupee_24"
                     android:gravity="center"
                     android:text="0.0"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
     <include layout="@layout/content_dash_board" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

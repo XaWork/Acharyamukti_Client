@@ -10,6 +10,8 @@ import android.webkit.WebView;
 
 import com.acharyamukti.R;
 
+import java.util.Objects;
+
 
 public class PrivacyPolicy extends AppCompatActivity {
 
@@ -22,7 +24,7 @@ public class PrivacyPolicy extends AppCompatActivity {
         view.getSettings().setJavaScriptEnabled(true);
         view.loadUrl("file:///android_asset/privacy.html");
         setContentView(view);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

@@ -6,12 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.acharyamukti.R;
 import com.acharyamukti.helper.Backend;
-import com.bumptech.glide.Glide;
+
 
 public class Launcher extends AppCompatActivity {
     ImageView imageView, profileImage;
@@ -25,24 +23,20 @@ public class Launcher extends AppCompatActivity {
         profileImage = findViewById(R.id.profileImage);
         final ValueAnimator anim = ValueAnimator.ofFloat(1f, 1.5f);
         anim.setDuration(1000);
-        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                profileImage.setScaleX((Float) animation.getAnimatedValue());
-                profileImage.setScaleY((Float) animation.getAnimatedValue());
-            }
+        anim.addUpdateListener(animation -> {
+            profileImage.setScaleX((Float) animation.getAnimatedValue());
+            profileImage.setScaleY((Float) animation.getAnimatedValue());
         });
         anim.setRepeatCount(1);
         anim.setRepeatMode(ValueAnimator.REVERSE);
         anim.start();
-       // Glide.with(this).load(R.drawable.bg_image2).into(imageView);
         String userid = Backend.getInstance(this).getUserId();
 
         new Handler().postDelayed(() -> {
             SharedPreferences sharedPreferences = getSharedPreferences(Login.PRES_NAME, MODE_PRIVATE);
             boolean hasLoggedIn = sharedPreferences.getBoolean("hasLoggedIn", false);
             Intent intent;
-            if (hasLoggedIn && userid.length() != 0) {
+            if (hasLoggedIn || userid.length() != 0) {
                 intent = new Intent(getApplicationContext(), DashBoard.class);
             } else {
                 intent = new Intent(getApplicationContext(), Login.class);

@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -132,15 +130,6 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
      //   shareAppLink();
     }
 
-    private void shareAppLink() {
-//        Intent sendIntent = new Intent();
-//        sendIntent.setAction(Intent.ACTION_SEND);
-//        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.astroacharyamukti.app");
-//        sendIntent.setType("text/plain");
-//        sendIntent.setPackage("com.whatsapp");
-//        startActivity(sendIntent);
-    }
-
     private void getData() {
         String url = "https://theacharyamukti.com/clientapi/daily-horoscope.php";
         linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false);
@@ -241,7 +230,7 @@ public class Horoscope extends AppCompatActivity implements View.OnClickListener
             }
 
             @Override
-            public void onFailure(Call<HoroscopeModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<HoroscopeModel> call, @NonNull Throwable t) {
                 Toast.makeText(Horoscope.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });

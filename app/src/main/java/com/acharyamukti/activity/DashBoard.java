@@ -1,7 +1,5 @@
 package com.acharyamukti.activity;
 
-import static android.content.ContentValues.TAG;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
@@ -18,8 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
-
 import com.acharyamukti.R;
 import com.acharyamukti.api.RetrofitClient;
 import com.acharyamukti.fragment.Free;
@@ -31,14 +27,11 @@ import com.acharyamukti.ui.about.AboutFragment;
 import com.acharyamukti.ui.gallery.GalleryFragment;
 import com.acharyamukti.ui.home.HomeFragment;
 import com.acharyamukti.ui.slideshow.SlideshowFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.acharyamukti.databinding.ActivityDashBoardBinding;
-import com.google.firebase.messaging.FirebaseMessaging;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -47,7 +40,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -315,7 +307,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     public void onClick(View view) {
         String userid = Backend.getInstance(getApplicationContext()).getUserId();
         String mobileNumber = Backend.getInstance(getApplicationContext()).getMobile();
-        if (userid.length() == 0 && mobileNumber.length() == 0) {
+        if (userid.length() == 0 || mobileNumber.length() == 0) {
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
         } else {

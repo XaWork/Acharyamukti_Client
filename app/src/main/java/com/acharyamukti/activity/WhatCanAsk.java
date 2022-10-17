@@ -2,17 +2,14 @@ package com.acharyamukti.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
-
 import com.acharyamukti.R;
 import com.acharyamukti.adapter.CustomizedExpandableListAdapter;
 import com.acharyamukti.model.ExpandableListDataItems;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

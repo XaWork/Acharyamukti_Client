@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -77,9 +76,10 @@ public class BlogDetails extends AppCompatActivity implements View.OnClickListen
         Call<BlogModel> call = RetrofitClient.getInstance().getApi().getBlogDetails(id);
         call.enqueue(new Callback<BlogModel>() {
             @Override
-            public void onResponse(Call<BlogModel> call, Response<BlogModel> response) {
+            public void onResponse(@NonNull Call<BlogModel> call, @NonNull Response<BlogModel> response) {
                 BlogModel blogModel = response.body();
                 if (response.isSuccessful()) {
+                    assert blogModel != null;
                     blogTitle.setText(blogModel.getName());
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         blogDes.setText(Html.fromHtml(blogModel.getDescription(), Html.FROM_HTML_MODE_COMPACT));
@@ -92,7 +92,7 @@ public class BlogDetails extends AppCompatActivity implements View.OnClickListen
                 }
             }
             @Override
-            public void onFailure(Call<BlogModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<BlogModel> call, @NonNull Throwable t) {
                 Toast.makeText(BlogDetails.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });

@@ -91,8 +91,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 }
                 break;
             case R.id.termAndCondition:
-//                layout.setVisibility(View.GONE);
-////                getSupportFragmentManager().beginTransaction().add(R.id.fragment, new EmailLogin()).commit();
                 String termConditionUrl = "https://theacharyamukti.com/terms-and-conditions.php";
                 Intent terms = new Intent(Intent.ACTION_VIEW);
                 terms.putExtra("", "1");
@@ -139,7 +137,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         call.enqueue(new Callback<DataModel>() {
             @Override
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
-                DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
                   dialog();
                 } else {
