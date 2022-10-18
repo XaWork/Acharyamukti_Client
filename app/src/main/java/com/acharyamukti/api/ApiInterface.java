@@ -125,6 +125,5 @@ public interface ApiInterface {
 
     @GET("clientapi/online-astro.php")
     Call<List<AstroProfileModel>> getProfileData();
-
 }
 
