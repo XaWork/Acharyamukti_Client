@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -323,14 +324,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         String content = feedback.getText().toString();
         String userId = Backend.getInstance(getContext()).getUserId();
         Call<DataModel> call = RetrofitClient.getInstance().getApi().postFeedBack(userId, content);
+
+        Log.e("home", "user id : " + userId);
+
         call.enqueue(new Callback<DataModel>() {
             @Override
             public void onResponse(Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
                     if (dataModel.getError().equals("false")) {
-                        Toast.makeText(getContext(), dataModel.getMessage(), Toast.LENGTH_SHORT).show();
-                        messageAlert();
+                        Toast.makeText(getActivity(), "Feedback Send Successfully..", Toast.LENGTH_SHORT).show();
+                        feedback.setText("");
+                        //messageAlert();
                     }
                 } else {
                     Toast.makeText(getActivity(), dataModel.getError(), Toast.LENGTH_LONG).show();

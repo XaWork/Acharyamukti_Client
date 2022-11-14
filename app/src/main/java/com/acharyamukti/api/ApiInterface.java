@@ -8,6 +8,7 @@ import com.acharyamukti.model.DataModel;
 import com.acharyamukti.model.HoroscopeModel;
 import com.acharyamukti.model.ImageModel;
 import com.acharyamukti.model.UserProfileModel;
+import com.acharyamukti.model.WalletModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +101,8 @@ public interface ApiInterface {
     @POST("clientapi/pay.php")
     Call<DataModel> postPaymentDetails(
             @Field("user_id") String user_id,
-            @Field("account_credited") String acc_details
+            @Field("amount_credited") String acc_details,
+            @Field("txnid") String txnid
     );
 
     @FormUrlEncoded

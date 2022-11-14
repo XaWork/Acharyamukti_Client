@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class PaymentInformation extends AppCompatActivity implements PaymentResultListener, View.OnClickListener {
     String mobile, email_id;
     String orderId;
-    String paymentId,userid;
+    String paymentId, userid;
     Button processToPay;
     String userAmount, totalGstAmount, profile_name;
     int num3;
@@ -48,7 +48,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
         email_id = Backend.getInstance(this).getEmail();
         mobile = Backend.getInstance(this).getMobile();
         profile_name = Backend.getInstance(this).getName();
-        userid=Backend.getInstance(this).getUserId();
+        userid = Backend.getInstance(this).getUserId();
         Intent intent = getIntent();
         userAmount = intent.getStringExtra("balance");
         amount = findViewById(R.id.amount);
@@ -129,7 +129,7 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
     public void onPaymentSuccess(String s) {
         Toast.makeText(PaymentInformation.this, "Payment Success", Toast.LENGTH_LONG).show();
         Log.d("paymentId", "razorpayPaymentID");
-        postPaymentDetails();
+        postPaymentDetails(s);
 
     }
 
@@ -143,15 +143,18 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
         startPayment();
     }
 
-    private void postPaymentDetails() {
+    private void postPaymentDetails(String transactionId) {
         String userId = Backend.getInstance(this).getUserId();
-        Call<DataModel> call = RetrofitClient.getInstance().getApi().postPaymentDetails(userId, userAmount);
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().postPaymentDetails(userId, userAmount, transactionId);
         call.enqueue(new Callback<DataModel>() {
             @Override
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 DataModel dataModel = response.body();
                 if (response.isSuccessful()) {
                     assert dataModel != null;
+
+                    Log.e("payment", dataModel.toString());
+
                     if (dataModel.getError().equals("false")) {
                         Toast.makeText(PaymentInformation.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
                     } else {

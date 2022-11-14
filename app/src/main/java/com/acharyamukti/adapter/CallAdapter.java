@@ -33,7 +33,7 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.ViewHolder> {
         CallingModel call = calling.get(position);
         holder.name.setText(call.getName());
         holder.call_duration.setText(call.getDuration());
-        holder.minute.setText(call.getMinute());
+       // holder.minute.setText(call.getMinute());
         holder.call_date.setText(call.getCalldate());
         holder.call_rate.setText(call.getCallrat());
         holder.amount.setText(call.getCallamount());
@@ -54,7 +54,7 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.ViewHolder> {
             call_duration = itemView.findViewById(R.id.call_duration);
             call_date = itemView.findViewById(R.id.call_date);
             amount = itemView.findViewById(R.id.call_amount);
-            minute = itemView.findViewById(R.id.minutes);
+            //minute = itemView.findViewById(R.id.minutes);
         }
     }
 }

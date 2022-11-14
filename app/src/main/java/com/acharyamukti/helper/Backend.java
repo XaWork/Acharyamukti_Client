@@ -43,6 +43,12 @@ public class Backend {
 
     }
 
+    public void logOut(){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+    }
+
     public String getName() {
         return preferences.getString("name", "");
     }

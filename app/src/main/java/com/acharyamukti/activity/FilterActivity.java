@@ -31,6 +31,7 @@ import java.util.Objects;
 
 
 public class FilterActivity extends AppCompatActivity implements View.OnClickListener {
+
     List<AstroProfileModel> astroProfile = new ArrayList<>();
     RecyclerView recyclerViewFilter;
     UserDetailsAdapter userDetailsAdapter;

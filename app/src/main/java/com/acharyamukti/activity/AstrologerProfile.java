@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -65,7 +66,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     Toolbar toolbar;
     String userid, reg_id;
     ProgressBar progressBar;
-    String callDuration;
+    int callDuration;
 
 
     @Override
@@ -94,14 +95,13 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         Intent intent = getIntent();
-        String userid = intent.getStringExtra("reg_id");
+        userid = intent.getStringExtra("reg_id");
         getProfileData(userid);
         getClientReview(userid);
         calling = findViewById(R.id.calling);
         calling.setOnClickListener(this);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
-        getCallDuration();
     }
 
     @Override
@@ -129,6 +129,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     }
 
     private void getProfileData(String userId) {
+
         String url = "https://theacharyamukti.com/clientapi/single-astro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
@@ -139,19 +140,27 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 String mobile = jb.getString("astro_moble");
                 String name = jb.getString("name");
                 String userStatus = jb.getString("status");
-                jb.getString("reg_id");
+                reg_id = jb.getString("reg_id");
+
+                Log.e("astro profile", "Get Astro Profile reg id : "+jb.getString("reg_id"));
+
                 String exp = jb.getString("experience");
-                jb.getString("callrate");
+                String expertise = jb.getString("expertise");
+                String callRate = jb.getString("callrate");
+                Log.e("astro profile", "Call rate "+jb.getString("callrate"));
                 String language = jb.getString("language");
                 String astroType = jb.getString("asttype");
                 String ratingTotal = jb.getString("avgrating1");
+
                 String summary = jb.getString("biographic");
                 Glide.with(this).load(image).into(profileImage);
                 Backend.getInstance(this).saveAstroMobile(mobile);
                 profileName.setText(name);
                 status.setText(userStatus);
                 txtSpoken.setText(language);
-                txtExp1.setText(exp);
+                txtExp1.setText(expertise);
+                txtExperience2.setText(exp);
+                txtMin.setText(callRate);
                 txtSummary_long.setText(summary);
                 rating.setText(ratingTotal);
                 designation.setText(astroType);
@@ -167,6 +176,8 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 } else {
                     status.setBackgroundResource(R.drawable.red_without_conner_bg);
                 }
+
+                getCallDuration();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -175,6 +186,9 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("reg_id", userId);
+
+                Log.e("astro profile", "User id : "+userId);
+
                 return params;
             }
         };
@@ -189,9 +203,14 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             progressBar.setVisibility(View.INVISIBLE);
             try {
                 JSONObject jsonObject = new JSONObject(response);
+
                 JSONArray jsonArray = jsonObject.getJSONArray("body");
+
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jb = jsonArray.getJSONObject(i);
+
+                    Log.e("home", jb.toString());
+
                     ReviewModel reviewModel = new ReviewModel(
                             jb.getString("rating"),
                             jb.getString("reg_id"),
@@ -218,25 +237,37 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
         request.add(stringRequest);
     }
 
-
     @Override
     public void onClick(View view) {
+        getCallDuration();
         String userid = Backend.getInstance(this).getUserId();
         String balance = Backend.getInstance(this).getWalletBalance();
-        if (userid.length() != 0 && balance.length() != 0) {
+
+        Log.e("astro profile", "user id " + userid.length()
+                + "balance " + balance.length() + "car duration " + callDuration);
+
+        if (userid.length() != 0 && balance.length() != 0 && callDuration != 0) {
             getCallForAstrologer();
         } else if (userid.length() == 0) {
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
-        } else {
+        }/*else if(callDuration == null){
             Intent intent = new Intent(this, Wallet.class);
             startActivity(intent);
-           // Toast.makeText(this, "Please recharge now ", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Please recharge now ", Toast.LENGTH_SHORT).show();
+        }*/ else {
+            Intent intent = new Intent(this, Wallet.class);
+            startActivity(intent);
+            Toast.makeText(this, "Please recharge now ", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void getCallDuration() {
-        Call<DataModel> call = RetrofitClient.getInstance().getApi().getCallDurations(userid, reg_id);
+        String userId = Backend.getInstance(this).getUserId();
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().getCallDurations(userId, reg_id);
+
+        Log.e("astro profile", "user id : "+userId+"\nreg id : "+reg_id);
+
         call.enqueue(new Callback<DataModel>() {
             @Override
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
@@ -244,14 +275,15 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 DataModel data = response.body();
                 if (response.isSuccessful()) {
                     assert data != null;
-                    callDuration = data.getCallDurationTime();
-                    if (callDuration != null) {
-                        Backend.getInstance(getApplicationContext()).saveCallDuration(callDuration);
+                    callDuration = Integer.parseInt(data.getCallDurationTime());
+                    if (callDuration != 0) {
+                        Backend.getInstance(getApplicationContext()).saveCallDuration(String.valueOf(callDuration));
                     } else {
                         Toast.makeText(AstrologerProfile.this, data.getStatus(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 progressBar.setVisibility(View.INVISIBLE);
@@ -261,8 +293,12 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
     }
 
     private void getCallForAstrologer() {
-        getCallDuration();
-        int callTiming = Integer.parseInt(callDuration);
+        String userid = Backend.getInstance(this).getUserId();
+        String balance = Backend.getInstance(this).getWalletBalance();
+
+        Log.e("astro profile", "user id " + userid.length()
+                + "balance" + balance.length() + "car duration" + callDuration);
+
         String k_number = "+919513632690";
         String agentNumber = Backend.getInstance(this).getAstroMobile();
         String agent_number = "+91" + agentNumber;
@@ -274,7 +310,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id, callTiming);
+        CallDataModel callDataModel = new CallDataModel(k_number, agent_number, customer_number, caller_id, callDuration);
         Call<CallDataModel> dataModelCall = apiInterface.getCalling(callDataModel);
         dataModelCall.enqueue(new Callback<CallDataModel>() {
             @Override
@@ -284,6 +320,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                     dialog();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<CallDataModel> call, @NonNull Throwable t) {
                 progressBar.setVisibility(View.INVISIBLE);

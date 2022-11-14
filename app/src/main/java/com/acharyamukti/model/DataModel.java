@@ -6,17 +6,19 @@ public class DataModel {
     private String mobile;
     private String message;
     private String status;
+    private boolean canUsPromotionalPack;
     private String callDurationTime;
     private String wallet;
     private String name;
     private String email;
 
 
-    public DataModel(String error, String mobile, String message, String userid, String status, String callDurationTime, String wallet, String name, String email) {
+    public DataModel(String error, String mobile, String message, boolean canUsPromotionalPack, String userid, String status, String callDurationTime, String wallet, String name, String email) {
         this.userid = userid;
         this.error = error;
         this.mobile = mobile;
         this.message = message;
+        this.canUsPromotionalPack = canUsPromotionalPack;
         this.status = status;
         this.callDurationTime = callDurationTime;
         this.wallet = wallet;
@@ -54,6 +56,14 @@ public class DataModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public boolean getCanUsPromotionalPack() {
+        return canUsPromotionalPack;
+    }
+
+    public void setCanUsPromotionalPack(boolean canUsPromotionalPack) {
+        this.canUsPromotionalPack = canUsPromotionalPack;
     }
 
     public String getCallDurationTime() {

@@ -70,7 +70,6 @@ public class AboutFragment extends Fragment {
                             jb.getString("order_date"));
                     callingModels.add(callingModel);
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }

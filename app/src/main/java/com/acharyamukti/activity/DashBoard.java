@@ -23,6 +23,7 @@ import com.acharyamukti.fragment.Profile;
 import com.acharyamukti.helper.Backend;
 import com.acharyamukti.helper.SessionManager;
 import com.acharyamukti.model.DataModel;
+import com.acharyamukti.model.WalletModel;
 import com.acharyamukti.ui.about.AboutFragment;
 import com.acharyamukti.ui.gallery.GalleryFragment;
 import com.acharyamukti.ui.home.HomeFragment;
@@ -92,7 +93,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 dialog.dismiss();
             }, 3000);
         }
+
         getTotalBalance(userid);
+
 //        FirebaseMessaging.getInstance().getToken()
 //                .addOnCompleteListener(new OnCompleteListener<String>() {
 //                    @Override
@@ -176,6 +179,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.notification) {
+            Toast.makeText(this, "Notification clicked", Toast.LENGTH_SHORT).show();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -265,6 +271,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 Intent logout = new Intent(getApplicationContext(), Login.class);
                 Backend.getInstance(this).saveName("");
                 Backend.getInstance(this).saveEmail("");
+                Backend.getInstance(this).logOut();
                 startActivity(logout);
                 break;
         }
@@ -292,7 +299,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         walletAmount.setText(total);
                         Backend.getInstance(getApplicationContext()).saveWalletBalance(total);
                     } else {
-                        Toast.makeText(DashBoard.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DashBoard.this, "Failed to load balance", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
