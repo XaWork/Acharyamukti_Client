@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activity.BlogDetails">
+    tools:context=".astrology.activity.BlogDetails">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"

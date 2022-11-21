@@ -7,7 +7,7 @@
     android:fillViewport="true"
     android:orientation="vertical"
     android:scrollbars="vertical"
-    tools:context=".chat.UserDetailsForm">
+    tools:context=".astrology.chat.UserDetailsForm">
 
     <LinearLayout
         android:layout_width="match_parent"

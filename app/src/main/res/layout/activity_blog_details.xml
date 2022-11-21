@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.BlogDetails"
+    tools:context=".astrology.activity.BlogDetails"
     tools:showIn="@layout/content_scroller_layout">
 
     <androidx.core.widget.NestedScrollView

@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:id="@+id/frameLayout"
-    tools:context=".fragment.CallHistory">
+    tools:context=".astrology.fragment.CallHistory">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCallHistory"

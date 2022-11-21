@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".ui.about.AboutFragment"
+    tools:context=".astrology.ui.about.AboutFragment"
     android:layout_marginBottom="50dp">
 
     <androidx.recyclerview.widget.RecyclerView

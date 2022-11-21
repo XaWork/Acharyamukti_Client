@@ -36,92 +36,92 @@
             android:value="true" />
 
         <activity
-            android:name=".chat.ChatActivity"
+            android:name=".astrology.chat.ChatActivity"
             android:exported="false"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".chat.ChatRequest"
+            android:name=".astrology.chat.ChatRequest"
             android:exported="false"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".chat.UserDetailsForm"
+            android:name=".astrology.chat.UserDetailsForm"
             android:exported="false"
             android:label="Chat From"
             android:theme="@style/AppThemeActionBar" />
         <activity
-            android:name=".activity.ConsultNow"
+            android:name=".astrology.activity.ConsultNow"
             android:exported="false"
             android:label="Consult Now"
             android:theme="@style/AppThemeActionBar" />
         <activity
-            android:name=".activity.PrivacyPolicy"
+            android:name=".astrology.activity.PrivacyPolicy"
             android:exported="false"
             android:label="Privacy policy"
             android:theme="@style/AppThemeActionBar" />
         <activity
-            android:name=".activity.WhatCanAsk"
+            android:name=".astrology.activity.WhatCanAsk"
             android:exported="false"
             android:label="What can you ask"
             android:theme="@style/AppThemeActionBar" />
         <activity
-            android:name=".activity.FilterActivity"
+            android:name=".astrology.activity.FilterActivity"
             android:exported="false"
             android:label="Filter"
             android:theme="@style/AppThemeActionBar" />
         <activity
-            android:name=".activity.BlogDetails"
+            android:name=".astrology.activity.BlogDetails"
             android:exported="false"
             android:label="The Acharyamukti blog"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.Search"
+            android:name=".astrology.activity.Search"
             android:exported="false"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.PaymentInformation"
+            android:name=".astrology.activity.PaymentInformation"
             android:exported="false"
             android:label="Payment Information"
             android:theme="@style/AppThemeActionBar" />
         <activity
-            android:name=".activity.ProfileUpdate"
+            android:name=".astrology.activity.ProfileUpdate"
             android:exported="false"
             android:label="Edit"
             android:theme="@style/AppThemeActionBar" />
         <activity
-            android:name=".activity.Wallet"
+            android:name=".astrology.activity.Wallet"
             android:exported="true"
             android:label="Wallet"
             android:theme="@style/AppThemeActionBar" />
         <activity
-            android:name=".activity.Register"
+            android:name=".astrology.activity.Register"
             android:exported="false"
             android:label="Register"
             android:theme="@style/AppThemeActionBar" />
         <activity
-            android:name=".activity.KundaliniMarriage"
+            android:name=".astrology.activity.KundaliniMarriage"
             android:exported="false"
             android:label="Call with Astrologer"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.AstrologerProfile"
+            android:name=".astrology.activity.AstrologerProfile"
             android:exported="false"
             android:label="@string/title_activity_astrologer_profile"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.Horoscope"
+            android:name=".astrology.activity.Horoscope"
             android:exported="false"
             android:label="Horoscope"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.DashBoard"
+            android:name=".astrology.activity.DashBoard"
             android:exported="true"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.ArcheryLive"
+            android:name=".astrology.activity.ArcheryLive"
             android:exported="false"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.Launcher"
+            android:name=".astrology.activity.Launcher"
             android:exported="true"
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
@@ -131,12 +131,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.Login"
+            android:name=".astrology.activity.Login"
             android:exported="false"
             android:theme="@style/AppThemeNoActionBar" />
 
         <service
-            android:name=".notification.MyFirebaseMessagingService"
+            android:name=".astrology.notification.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>

@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.acharyamukti.ui.home.HomeFragment"
+        android:name="com.acharyamukti.astrology.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.acharyamukti.ui.gallery.GalleryFragment"
+        android:name="com.acharyamukti.astrology.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.acharyamukti.ui.slideshow.SlideshowFragment"
+        android:name="com.acharyamukti.astrology.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/promo_bg"
-    tools:context=".activity.WhatCanAsk">
+    tools:context=".astrology.activity.WhatCanAsk">
 
     <RelativeLayout
         android:layout_marginTop="10dp"

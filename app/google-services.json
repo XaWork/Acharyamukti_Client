@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:590608362832:android:84d9cd74b198ddc7be1055",
+        "mobilesdk_app_id": "1:590608362832:android:b9b0f1a97a8ee631be1055",
         "android_client_info": {
-          "package_name": "com.acharyamukti"
+          "package_name": "com.acharyamukti.astrology"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "590608362832-lt9qqgn79bkmln06lb572fs2gffh9l6o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.acharyamukti.astrology",
+            "certificate_hash": "e50ce0d56bd0fbc06345fd31c6d1346b30a4ac4d"
+          }
+        },
         {
           "client_id": "590608362832-evoua4csmc66htkps2om5aesnumln09l.apps.googleusercontent.com",
           "client_type": 3

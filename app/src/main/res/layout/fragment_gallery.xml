@@ -7,7 +7,7 @@
     android:fillViewport="true"
     android:scrollbars="vertical"
     android:background="@color/white"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".astrology.ui.gallery.GalleryFragment">
 
     <RelativeLayout
         android:background="@color/white"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    tools:context=".activity.ProfileUpdate">
+    tools:context=".astrology.activity.ProfileUpdate">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input1"
