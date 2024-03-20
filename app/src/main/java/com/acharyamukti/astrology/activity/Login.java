@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -26,6 +28,7 @@ import com.acharyamukti.astrology.api.RetrofitClient;
 import com.acharyamukti.astrology.helper.Backend;
 import com.acharyamukti.astrology.helper.SessionManager;
 import com.acharyamukti.astrology.model.DataModel;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Objects;
 
@@ -62,6 +65,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         close.setOnClickListener(this);
         termAndCondition = findViewById(R.id.termAndCondition);
         termAndCondition.setOnClickListener(this);
+
+        if (Objects.equals(Backend.getInstance(this).getToken(), ""))
+            firebaseToken();
     }
 
     @Override
@@ -105,6 +111,27 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    private void firebaseToken() {
+        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(token -> {
+            if (!TextUtils.isEmpty(token)) {
+                Log.e("launcher", "retrieve token successful : " + token);
+                Backend.getInstance(this).saveToken(token);
+            } else {
+                Log.e("launcher", "token should not be null...");
+            }
+        }).addOnFailureListener(e -> {
+            e.printStackTrace();
+            Log.e("launcher", "fail to get");
+        }).addOnCanceledListener(() -> {
+            Log.e("launcher", "cancel");
+            //handle cancel
+        }).addOnCompleteListener(task -> {
+                    Log.e("launcher", "This is the token : " + task.getResult());
+                    Backend.getInstance(this).saveToken(task.getResult());
+                }
+        );
+    }
+
     public void dialog() {
         dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -125,7 +152,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             mobileNumber.setError("Please Enter your Mobile No.");
             return;
         }
-        if (mobile.length() == 9) {
+        if (mobile.length() < 10) {
             mobileNumber.requestFocus();
             mobileNumber.setError("Mobile number Invalid");
             return;
@@ -138,15 +165,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
                 if (response.isSuccessful()) {
-                  dialog();
+                    dialog();
                 } else {
                     Toast.makeText(Login.this, "Enter valid mobile number", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<DataModel> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, t.toString(), Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.VISIBLE);
+                //progressBar.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -154,6 +182,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void verifyOTP() {
         String mobile = Backend.getInstance(this).getMobile();
         String otp = etOTP.getText().toString();
+        String token = Backend.getInstance(this).getToken();
+
+        Log.e("login", "Mobile : " + mobile + "\nOtp : " + otp + "\nToken : " + token);
+
         if (otp.isEmpty()) {
             etOTP.requestFocus();
             etOTP.setError("Please Entre given OTP");
@@ -164,7 +196,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             etOTP.setError("Incorrect OTP");
             return;
         }
-        Call<DataModel> call = RetrofitClient.getInstance().getApi().verifyOTP(otp, mobile);
+        Call<DataModel> call = RetrofitClient.getInstance().getApi().verifyOTP(otp, mobile, token);
         call.enqueue(new Callback<DataModel>() {
             @Override
             public void onResponse(@NonNull Call<DataModel> call, @NonNull Response<DataModel> response) {
@@ -192,6 +224,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         });
     }
+
     @Override
     protected void onDestroy() {
         try {

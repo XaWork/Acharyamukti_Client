@@ -48,7 +48,7 @@ import retrofit2.Response;
 public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
     private AppBarConfiguration mAppBarConfiguration;
     private Toolbar toolbar;
-    Dialog dialog;
+    //Dialog dialog;
     LinearLayout walletLayout;
     TextView walletAmount;
     DrawerLayout drawer;
@@ -85,11 +85,11 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         String clam_now = intent.getStringExtra("clam_now");
         userid = Backend.getInstance(this).getUserId();
         if (clam_now != null && userid != null) {
-            getDialog();
+            //getDialog();
             Handler handler = new Handler();
             handler.postDelayed(() -> {
                 // close your dialog
-                dialog.dismiss();
+                //dialog.dismiss();
             }, 3000);
         }
 
@@ -157,7 +157,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         return true;
     }
 
-    public void getDialog() {
+    /*public void getDialog() {
         dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottom_sheet_dialog_layout);
@@ -173,7 +173,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         });
         dialog.show();
         dialog.setCanceledOnTouchOutside(true);
-    }
+    }*/
 
     @SuppressLint("NonConstantResourceId")
     @Override

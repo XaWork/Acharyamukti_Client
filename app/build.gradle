@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
-
 }
 
 android {
@@ -12,8 +11,8 @@ android {
         applicationId "com.acharyamukti.astrology"
         minSdk 21
         targetSdk 33
-        versionCode 5
-        versionName "1.005"
+        versionCode 16
+        versionName "1.16"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

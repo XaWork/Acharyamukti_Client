@@ -59,7 +59,7 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
         totalBalance.setText(balance);
         userId = Backend.getInstance(this).getUserId();
         if (userId != null) {
-            getProfile();
+            //getProfile();
             getTotalBalance(userId);
         } else {
             Toast.makeText(this, "User are not login", Toast.LENGTH_SHORT).show();
@@ -85,7 +85,7 @@ public class Wallet extends AppCompatActivity implements View.OnClickListener {
 //                break;
             case R.id.txtRs1:
                 Intent intent = new Intent(getApplicationContext(), PaymentInformation.class);
-                intent.putExtra("balance", "1");
+                intent.putExtra("balance", "49");
                 startActivity(intent);
                 break;
             case R.id.txtRs2:

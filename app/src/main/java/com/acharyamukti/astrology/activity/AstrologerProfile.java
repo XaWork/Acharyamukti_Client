@@ -64,7 +64,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             txtMin, txtSpoken, txtExp1,
             txtSummary_long, calling_number;
     Toolbar toolbar;
-    String userid, reg_id, callRate;
+    String userid, reg_id, callRate, callStatus, callMessage, userStatus;
     ProgressBar progressBar;
     int callDuration;
 
@@ -139,7 +139,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 String image = jb.getString("image");
                 String mobile = jb.getString("astro_moble");
                 String name = jb.getString("name");
-                String userStatus = jb.getString("status");
+                userStatus = jb.getString("status");
                 reg_id = jb.getString("reg_id");
 
                 Log.e("astro profile", "Get Astro Profile reg id : " + jb.getString("reg_id"));
@@ -177,7 +177,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                     status.setBackgroundResource(R.drawable.red_without_conner_bg);
                 }
 
-                getCallDuration();
+                //getCallDuration();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -239,28 +239,44 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        getCallDuration();
         String userid = Backend.getInstance(this).getUserId();
-        String balance = Backend.getInstance(this).getWalletBalance();
+        int balance = Integer.parseInt(Backend.getInstance(this).getWalletBalance());
+
+        StringBuilder customizeCallRate = new StringBuilder();
+        for (int i = 0; i <= callRate.length(); i++) {
+            if (callRate.charAt(i) == '/')
+                break;
+            else
+                customizeCallRate.append(callRate.charAt(i));
+        }
 
         Log.e("astro profile", "user id " + userid.length()
                 + "\nbalance " + balance +
-                "\ncall duration " + callDuration+
-        "\ncall rate : "+callRate);
+                "\ncall duration " + callDuration +
+                "\ncall rate : " + callRate +
+                "\ncustomize call rate : " + customizeCallRate);
 
-        if (userid.length() != 0 && balance.length() != 0 && callDuration != 0 && Integer.parseInt(callRate) <= Integer.parseInt(balance)) {
-            getCallForAstrologer();
+        if (userid.length() != 0 &&
+                balance > 0 &&
+                userStatus.equals("Online") &&
+                Integer.parseInt(String.valueOf(customizeCallRate)) <= balance
+        ) {
+            getCallDuration();
         } else if (userid.length() == 0) {
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
-        }/*else if(callDuration == null){
-            Intent intent = new Intent(this, Wallet.class);
-            startActivity(intent);
-            //Toast.makeText(this, "Please recharge now ", Toast.LENGTH_SHORT).show();
-        }*/ else {
+        } else if (userStatus.equals("Offline")) {
+            Toast.makeText(this, "Astrologer is now offline, try again later", Toast.LENGTH_SHORT).show();
+        } else {
+            if(balance < 0)
+                Log.e("astro", "Balance is low : "+balance);
+            else if(Integer.parseInt(String.valueOf(customizeCallRate)) > balance)
+                Log.e("astro", "Balance is low and call rate is high: "+balance + "\n Call rate : "+customizeCallRate);
+
             Intent intent = new Intent(this, Wallet.class);
             startActivity(intent);
             Toast.makeText(this, "Please recharge now ", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
@@ -277,11 +293,16 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
                 DataModel data = response.body();
                 if (response.isSuccessful()) {
                     assert data != null;
-                    callDuration = Integer.parseInt(data.getCallDurationTime());
-                    if (callDuration != 0) {
-                        Backend.getInstance(getApplicationContext()).saveCallDuration(String.valueOf(callDuration));
+                    callStatus = data.getStatus();
+                    callMessage = data.getMessage();
+
+                    if (Objects.equals(callStatus, "true")) {
+                        dialog();
                     } else {
-                        Toast.makeText(AstrologerProfile.this, data.getStatus(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AstrologerProfile.this, callMessage, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), Wallet.class);
+                        startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -319,7 +340,7 @@ public class AstrologerProfile extends AppCompatActivity implements View.OnClick
             public void onResponse(@NonNull Call<CallDataModel> call, @NonNull Response<CallDataModel> response) {
                 progressBar.setVisibility(View.INVISIBLE);
                 if (response.isSuccessful()) {
-                    dialog();
+                    //dialog();
                 }
             }
 

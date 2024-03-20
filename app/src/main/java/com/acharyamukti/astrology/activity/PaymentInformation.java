@@ -156,7 +156,10 @@ public class PaymentInformation extends AppCompatActivity implements PaymentResu
                     Log.e("payment", dataModel.toString());
 
                     if (dataModel.getError().equals("false")) {
-                        Toast.makeText(PaymentInformation.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(PaymentInformation.this, dataModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+                        startActivity(intent);
+                        finish();
                     } else {
                         Toast.makeText(PaymentInformation.this, "Error", Toast.LENGTH_SHORT).show();
                     }

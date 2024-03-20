@@ -3,7 +3,7 @@ package com.acharyamukti.astrology.model;
 public class AstroProfileModel {
     String image;
     String name;
-    String reg_id;
+    String regid ;
     String experience;
     String callrate;
     String language;
@@ -11,10 +11,10 @@ public class AstroProfileModel {
     String avgrating1;
     String status;
 
-    public AstroProfileModel(String image, String name, String reg_id, String experience, String callrate, String language, String asttype,String avgrating1) {
+    public AstroProfileModel(String image, String name, String regid, String experience, String callrate, String language, String asttype,String avgrating1) {
         this.image = image;
         this.name = name;
-        this.reg_id = reg_id;
+        this.regid = regid;
         this.experience = experience;
         this.callrate = callrate;
         this.language = language;
@@ -23,11 +23,11 @@ public class AstroProfileModel {
     }
 
 
-    public AstroProfileModel(String image, String status, String name, String reg_id, String experience, String callrate, String language, String asttype, String avgrating1) {
+    public AstroProfileModel(String image, String status, String name, String regid, String experience, String callrate, String language, String asttype, String avgrating1) {
         this.image = image;
         this.status = status;
         this.name = name;
-        this.reg_id = reg_id;
+        this.regid = regid;
         this.experience = experience;
         this.callrate = callrate;
         this.language = language;
@@ -53,7 +53,7 @@ public class AstroProfileModel {
     }
 
     public String getReg_id() {
-        return reg_id;
+        return regid;
     }
 
     public String getExperience() {

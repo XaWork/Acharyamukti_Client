@@ -140,6 +140,7 @@
                             android:hint="Mobile number"
                             android:inputType="number"
                             android:paddingStart="15dp"
+                            android:maxLength="10"
                             android:textColor="@color/grey1"
                             android:textColorHint="@color/grey1"
                             android:textSize="14sp" />

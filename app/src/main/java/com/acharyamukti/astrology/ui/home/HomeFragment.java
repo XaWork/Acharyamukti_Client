@@ -47,6 +47,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -225,7 +226,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 "Please wait......", true);
         final List<AstroProfileModel> astroProfileModels = new ArrayList<>();
         String url = "https://theacharyamukti.com/clientapi/online-astro.php";
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        RequestQueue requestQueue = Volley.newRequestQueue(requireActivity());
         @SuppressLint("NotifyDataSetChanged") JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             try {
                 JSONArray jsonArray = response.getJSONArray("body");
@@ -234,7 +235,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     AstroProfileModel astro = new AstroProfileModel(
                             jb.getString("image"),
                             jb.getString("name"),
-                            jb.getString("reg_id"),
+                            jb.getString("regid"),
                             jb.getString("experience"),
                             jb.getString("callrate"),
                             jb.getString("language"),
@@ -268,7 +269,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             jb.getString("image"),
                             jb.getString("status"),
                             jb.getString("name"),
-                            jb.getString("reg_id"),
+                            jb.getString("regid"),
                             jb.getString("experience"),
                             jb.getString("callrate"),
                             jb.getString("language"),

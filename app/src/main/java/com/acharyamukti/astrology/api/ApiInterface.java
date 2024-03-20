@@ -1,5 +1,6 @@
 package com.acharyamukti.astrology.api;
 
+import com.acharyamukti.astrology.model.AppVersionModel;
 import com.acharyamukti.astrology.model.AstroProfileModel;
 import com.acharyamukti.astrology.model.BlogModel;
 import com.acharyamukti.astrology.model.DataModel;
@@ -48,7 +49,8 @@ public interface ApiInterface {
     @POST("appapi/verify_otp.php")
     Call<DataModel> verifyOTP(
             @Field("otp") String otp,
-            @Field("mobile") String mobile
+            @Field("mobile") String mobile,
+            @Field("device_token") String device_token
 
     );
 
@@ -108,6 +110,9 @@ public interface ApiInterface {
             @Field("user_id") String userId,
             @Field("reg_id") String reg_id
     );
+
+    @GET("API/get-app-version")
+    Call<AppVersionModel> getAppVersion();
 
     @FormUrlEncoded
     @POST("/clientapi/profile.php")

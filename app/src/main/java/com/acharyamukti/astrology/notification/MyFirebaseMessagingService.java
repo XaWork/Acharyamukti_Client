@@ -15,10 +15,12 @@ import androidx.core.app.NotificationCompat;
 
 import com.acharyamukti.R;
 import com.acharyamukti.astrology.activity.Launcher;
+import com.acharyamukti.astrology.helper.Backend;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.Objects;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -27,8 +29,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
-
         Log.e(TAG, token);
+
+        Backend.getInstance(getApplicationContext()).saveToken(token);
     }
 
     @Override
@@ -45,8 +48,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @SuppressLint("UnspecifiedImmutableFlag")
     private void sendNotification(String from, String body) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "0")
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle(from)
+                //.setVibrate(vibrate)
+                .setOnlyAlertOnce(true)
+                .setContentText(body)
+                .setAutoCancel(true);
+        //.setContentIntent(pendingIntent);
+
         Intent notificationIntent = new Intent(this, Launcher.class);
-        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         PendingIntent pendingIntent;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -56,25 +68,19 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         }
 
-        long[] vibrate = {1000L, 1000L, 1000L, 1000L};
+        builder.setContentIntent(pendingIntent);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "0")
-                .setSmallIcon(R.drawable.logo)
-                .setContentTitle(from)
-                .setVibrate(vibrate)
-                .setOnlyAlertOnce(true)
-                .setContentText(body)
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntent);
+        //long[] vibrate = {1000L, 1000L, 1000L, 1000L};
 
-        builder = builder.setContent(getRemoteView(from, body));
+
+        //builder = builder.setContent(getRemoteView(from, body));
 
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel("0", "channelName", NotificationManager.IMPORTANCE_HIGH);
             manager.createNotificationChannel(notificationChannel);
-        }
+        }*/
         manager.notify(0, builder.build());
     }
 

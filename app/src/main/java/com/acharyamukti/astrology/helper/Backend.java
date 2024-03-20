@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 public class Backend {
     AssetManager assetManager;
@@ -60,6 +61,18 @@ public class Backend {
         editor.clear();
     }
 
+    public void saveToken(String token){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("token", token);
+        editor.apply();
+        Log.e("backend", "Token saved "+preferences.getString("token", ""));
+    }
+
+    public String getToken(){
+        Log.e("backend", "Token get "+preferences.getString("token", ""));
+        return preferences.getString("token", "");
+    }
+
     public String getMobile() {
         return preferences.getString("mobile", "");
     }
@@ -69,7 +82,6 @@ public class Backend {
         editor.putString("mobile", mobile);
         editor.apply();
         editor.clear();
-
     }
 
     public String getEmail() {
